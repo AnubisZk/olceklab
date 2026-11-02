@@ -7,7 +7,7 @@
 - Kodlama kuralları: [`AGENTS.md`](AGENTS.md)
 - Sürümler: [`docs/VERSIONS.md`](docs/VERSIONS.md)
 
-**Durum:** Faz 1 tamamlandı: veri yükleme ve temizleme (M1), madde analizi (M2), uygunluk (M3), faktör sayısı ve paralel analiz (M4). Diğer analiz uç noktaları ait oldukları faza kadar `501` döndürür.
+**Durum:** Faz 2 tamamlandı: veri yükleme ve temizleme (M1), madde analizi (M2), uygunluk (M3), faktör sayısı ve paralel analiz (M4), açımlayıcı faktör analizi (M5), doğrulayıcı faktör analizi ve model karşılaştırma (M6), güvenirlik ve geçerlik (M7). Diğer analiz uç noktaları ait oldukları faza kadar `501` döndürür.
 
 Doğrulama kayıtları: [`docs/VALIDATION.md`](docs/VALIDATION.md).
 
@@ -40,7 +40,7 @@ cd ai-gateway && npm ci && npm run typecheck && npm test
 cd web && npx playwright install chromium && npx playwright test
 ```
 
-BİDEKÇET regresyon testleri (SPEC §11.3) yalnızca yerelde çalışır; adımlar `docs/VALIDATION.md` dosyasındadır.
+BİDEKÇET regresyon testleri (SPEC §11.3) yalnızca belge sahibinin makinesinde çalışır: `cd engine && BIDEKCET_DATA_DIR=/veri LANG=C.UTF-8 Rscript tests/private/run_bidekcet.R`. Ayrıntı: `docs/VALIDATION.md`.
 
 ## Klasörler
 

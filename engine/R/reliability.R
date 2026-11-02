@@ -42,8 +42,14 @@ reliability_calls <- function(fit, x, m, s) {
                                ordered = if (s$htmt_correlation == "polychoric") as.character(m$observed) else NULL,
                                absolute = s$htmt_absolute, htmt2 = s$htmt2))
   }
-  list(omega = stats::setNames(as.numeric(unclass(omega$value)), names(omega$value)),
-       ave = stats::setNames(as.numeric(unclass(ave$value)), names(ave$value)),
+  # Tek bileşik varsa semTools adsız tek sayı döndürür (0.5-10); ad modeldeki faktörden verilir.
+  named <- function(v) {
+    out <- as.numeric(unclass(v))
+    nm <- names(v)
+    if (is.null(nm) && length(out) == 1L && length(m$first_order) == 1L) nm <- m$first_order
+    stats::setNames(out, nm)
+  }
+  list(omega = named(omega$value), ave = named(ave$value),
        htmt = if (is.null(ht)) NULL else unclass(ht$value),
        warnings = unique(c(omega$warnings, ave$warnings, if (!is.null(ht)) ht$warnings)))
 }

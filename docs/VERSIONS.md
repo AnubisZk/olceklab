@@ -1,6 +1,6 @@
 # Kullanılan sürümler
 
-Son güncelleme: 3 Kasım 2026 (Faz 1).
+Son güncelleme: 3 Kasım 2026 (Faz 2). Faz 2'de yeni paket eklenmedi.
 
 ## 1. Testlerin gerçekten koştuğu ortam
 
@@ -18,7 +18,7 @@ Bu bölümdeki sürümler kurulu ortamdan okunmuştur (`npm ls`, `renv.lock`, `R
 | Paket | Sürüm |
 |---|---|
 | lavaan | 0.7-2 |
-| semTools | 0.5-10 |
+| semTools | 0.5-10 (§11.3 değerleri 0.5-9 ile üretildi; ilgili fonksiyonlar iki sürümde birebir aynı, V10) |
 | psych | 2.6.9 |
 | GPArotation | 2026.8-2 |
 | MASS | 7.3-66 |

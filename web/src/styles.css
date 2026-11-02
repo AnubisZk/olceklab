@@ -197,7 +197,9 @@ a.btn { display: inline-block; text-decoration: none; }
 
 .table-wrap { overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
-th, td { text-align: left; padding: 6px 12px 6px 0; border-bottom: 1px solid var(--color-border); }
+th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--color-border); }
+th:first-child, td:first-child { padding-left: 0; }
+th:last-child, td:last-child { padding-right: 0; }
 th { color: var(--color-text-muted); font-weight: 600; }
 .table-note { color: var(--color-text-muted); font-size: 0.78rem; margin: 8px 0 0; }
 
@@ -277,7 +279,7 @@ input[type="checkbox"] { accent-color: var(--color-accent); width: 16px; height:
 
 .rtable { margin: 0 0 20px; }
 .rtable-title { font-weight: 600; margin-bottom: 8px; }
-td.num, th.num { text-align: right; padding-right: 0; padding-left: 12px; }
+td.num, th.num { text-align: right; white-space: nowrap; }
 .th-sort { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: inherit; }
 
 .chart-figure { margin: 0 0 20px; }
@@ -301,3 +303,29 @@ td.num, th.num { text-align: right; padding-right: 0; padding-left: 12px; }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+
+/* --- Faz 2: model kurucu, AFA görünümü, yol şeması --------------------------- */
+.model-builder { display: grid; gap: 12px; }
+.builder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.builder-col { border: 1px solid var(--color-border); background: var(--color-bg); padding: 10px; min-height: 96px; }
+.builder-col.pool { border-style: dashed; }
+.builder-col h4 { margin: 0 0 8px; font-size: 0.9rem; }
+.factor-head { display: flex; gap: 6px; align-items: center; margin-bottom: 8px; }
+.factor-name { font-weight: 600; }
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--color-border); background: var(--color-surface-raised);
+        padding: 2px 4px 2px 8px; cursor: grab; font-size: 0.85rem; }
+.chip select { font-size: 0.75rem; padding: 1px 2px; max-width: 7.5em; }
+.cov-box { border: 1px solid var(--color-border); padding: 8px 12px; margin: 0; }
+.syntax-input { width: 100%; min-height: 9em; background: var(--color-bg); color: var(--color-text); border: 1px solid var(--color-border); padding: 8px; }
+.syntax-preview pre { background: var(--color-bg); border: 1px solid var(--color-border); padding: 8px 12px; overflow-x: auto; margin: 0 0 8px; }
+.syntax-preview h4 { margin: 0 0 6px; font-size: 0.9rem; }
+.warning-line { border-left: 3px solid var(--color-accent-2); padding: 4px 10px; margin: 0 0 6px; font-size: 0.85rem; }
+.factor-view { border: 1px solid var(--color-border); padding: 8px 12px; margin: 0 0 12px; }
+.factor-view-item { display: flex; align-items: flex-end; gap: 6px; }
+.factor-view-item .text-input { width: 9em; }
+td.salient { font-weight: 600; }
+.check-field { justify-content: flex-end; }
+.path-diagram { display: block; border: 1px solid var(--color-border); }
+.saved-models li { margin-bottom: 4px; }
+details > summary { cursor: pointer; font-weight: 600; margin-bottom: 8px; }

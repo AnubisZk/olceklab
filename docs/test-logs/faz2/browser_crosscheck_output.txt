@@ -1,0 +1,42 @@
+                        olcut       arayuz   bagimsiz_R sonuc
+         AFA faktör sütunları  MR3 MR2 MR1  MR3 MR2 MR1  AYNI
+               AFA yük x1 MR3         ,196         ,196  AYNI
+               AFA yük x1 MR2         ,592         ,592  AYNI
+               AFA yük x1 MR1         ,031         ,031  AYNI
+               AFA yük x5 MR3         ,886         ,886  AYNI
+               AFA yük x5 MR2        −,065        −,065  AYNI
+               AFA yük x5 MR1         ,007         ,007  AYNI
+               AFA yük x9 MR3         ,032         ,032  AYNI
+               AFA yük x9 MR2         ,382         ,382  AYNI
+               AFA yük x9 MR1         ,456         ,456  AYNI
+                    AFA h² x9         ,460         ,460  AYNI
+                       AFA χ²        22,56        22,56  AYNI
+             AFA RMSEA %90 GA [,016; ,088] [,016; ,088]  AYNI
+             DFA χ² (Wishart)       85,022       85,022  AYNI
+                      DFA CFI         ,931         ,931  AYNI
+                      DFA TLI        0,896        0,896  AYNI
+             DFA RMSEA %90 GA [,071; ,114] [,071; ,114]  AYNI
+                     DFA SRMR         ,065         ,065  AYNI
+         Bollen–Stine B_etkin          200          200  AYNI
+               Bollen–Stine b            0            0  AYNI
+               Bollen–Stine p       < ,005       < ,005  AYNI
+        Bollen–Stine tutucu p         ,005         ,005  AYNI
+                     DFA β x1         ,772         ,772  AYNI
+                     DFA β x2         ,424         ,424  AYNI
+                     DFA β x5         ,855         ,855  AYNI
+                     DFA β x9         ,665         ,665  AYNI
+ Yol şeması etiketi visual→x2          ,42          ,42  AYNI
+                Tek faktör χ²      311,227      311,227  AYNI
+        Δχ² (tek – üç faktör)       226,20       226,20  AYNI
+                          Δsd            3            3  AYNI
+                         ΔCFI        −,254        −,254  AYNI
+                     α visual         ,626         ,626  AYNI
+                     ω visual         ,612         ,612  AYNI
+                    ω textual         ,885         ,885  AYNI
+                    AVE speed         ,424         ,424  AYNI
+                     α toplam         ,760         ,760  AYNI
+          HTMT textual–visual         ,424         ,424  AYNI
+           HTMT speed–textual         ,290         ,290  AYNI
+
+38/38 AYNI
+Ayrıca: açık temada yol şeması kenar rengi #00707F ; yatay kaydırma (masaüstü/mobil): FALSE FALSE 

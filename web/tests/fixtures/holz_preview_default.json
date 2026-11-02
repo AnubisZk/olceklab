@@ -1,0 +1,1 @@
+{"syntax":"visual =~ x1 + x2 + x3\ntextual =~ x4 + x5 + x6\nspeed =~ x7 + x8 + x9","source":"builder","factors":[{"name":"visual","items":["x1","x2","x3"]},{"name":"textual","items":["x4","x5","x6"]},{"name":"speed","items":["x7","x8","x9"]}],"covariances":[],"observed":["x1","x2","x3","x4","x5","x6","x7","x8","x9"],"warnings":[]}

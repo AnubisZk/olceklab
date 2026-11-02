@@ -136,3 +136,75 @@ export interface HeatmapData {
   counts: (number | null)[][];
   labels: Record<Lang, string[][]>;
 }
+
+// --- Faz 2: ölçme modeli, AFA, DFA, güvenirlik -----------------------------------
+
+export interface FactorSpec { name: string; items: string[] }
+export interface ModelSpec {
+  factors?: FactorSpec[];
+  covariances?: [string, string][];
+  syntax?: string;
+}
+export interface ModelPreview {
+  syntax: string;
+  source: 'builder' | 'syntax';
+  factors: FactorSpec[];
+  covariances: [string, string][];
+  observed: string[];
+  warnings: RWarning[];
+}
+
+export type EfaFm = 'minres' | 'ml' | 'pa' | 'uls';
+export type EfaRotate = 'oblimin' | 'promax' | 'geominQ' | 'varimax' | 'none';
+export interface EfaSettings {
+  nfactors: number;
+  fm: EfaFm;
+  rotate: EfaRotate;
+  correlation: 'pearson' | 'polychoric';
+  n_rotations: number;
+  threshold: number;
+  seed: number;
+}
+export interface EfaResults {
+  n: number;
+  items: string[];
+  factors: string[];
+  oblique: boolean;
+  loadings: Record<string, number[]>;
+  salient: Record<string, boolean[]>;
+  sorted_items: string[];
+  threshold_fmt: Record<Lang, string>;
+}
+
+export type Estimator = 'ML' | 'MLR' | 'WLSMV';
+export interface CfaSettings {
+  model: ModelSpec;
+  estimator: Estimator;
+  likelihood: 'normal' | 'wishart';
+  std_lv: boolean;
+  bootstrap: number;
+  seed: number;
+  mi_top: number;
+}
+export interface CompareSettings {
+  models: { name: string; model: ModelSpec }[];
+  estimator: Estimator;
+  likelihood: 'normal' | 'wishart';
+  std_lv: boolean;
+  seed: number;
+}
+export interface ReliabilitySettings {
+  model: ModelSpec;
+  estimator: Estimator;
+  obs_var: boolean;
+  htmt: { htmt2: boolean; absolute: boolean; correlation: 'pearson' | 'polychoric' };
+  thresholds: { cr: number; ave: number; htmt: number };
+}
+
+export interface PathLabel { label_tr: string; label_en: string; std: number | null }
+export interface PathData {
+  factors: { name: string; items: string[] }[];
+  loadings: (PathLabel & { factor: string; item: string; r2_label_tr: string; r2_label_en: string })[];
+  correlations: (PathLabel & { a: string; b: string })[];
+  covariances: (PathLabel & { a: string; b: string })[];
+}

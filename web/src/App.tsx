@@ -11,6 +11,9 @@ import { DataPage } from './pages/DataPage';
 // Grafik içeren sayfalar (ECharts) ayrı parçada, ihtiyaç olunca yüklenir.
 const ItemsPage = lazy(() => import('./pages/ItemsPage').then((m) => ({ default: m.ItemsPage })));
 const FactorNumberPage = lazy(() => import('./pages/FactorNumberPage').then((m) => ({ default: m.FactorNumberPage })));
+const EfaPage = lazy(() => import('./pages/EfaPage').then((m) => ({ default: m.EfaPage })));
+const CfaPage = lazy(() => import('./pages/CfaPage').then((m) => ({ default: m.CfaPage })));
+const ReliabilityPage = lazy(() => import('./pages/ReliabilityPage').then((m) => ({ default: m.ReliabilityPage })));
 
 const implemented: Partial<Record<PageKey, ComponentType>> = {
   start: StartPage,
@@ -18,6 +21,9 @@ const implemented: Partial<Record<PageKey, ComponentType>> = {
   data: DataPage,
   items: ItemsPage,
   factorNumber: FactorNumberPage,
+  efa: EfaPage,
+  cfa: CfaPage,
+  reliability: ReliabilityPage,
 };
 
 function Loading() {

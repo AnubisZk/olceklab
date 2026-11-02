@@ -42,6 +42,14 @@ function downloadText(text: string, filename: string) {
   URL.revokeObjectURL(url);
 }
 
+export function modulePackages(module: string): string[] {
+  if (module === 'cfa') return ['lavaan'];
+  if (module === 'cfa_compare') return ['lavaan', 'semTools'];
+  if (module === 'reliability') return ['lavaan', 'semTools', 'psych'];
+  if (module === 'efa') return ['psych', 'GPArotation'];
+  return ['psych'];
+}
+
 // SPEC §9: her sonuç sayfasında "R kodunu indir" ve "Rapora ekle" düğmeleri.
 export function ResultActions({ record }: { record: AnalysisRecord }) {
   const { t } = useTranslation();
@@ -59,7 +67,7 @@ export function ResultActions({ record }: { record: AnalysisRecord }) {
         {t('result.addToReport')}
       </button>
       <span className="muted small mono">
-        R {record.engine.R} · psych {record.engine.packages.psych ?? '—'}{record.seed != null ? ` · seed ${record.seed}` : ''}
+        R {record.engine.R} · {modulePackages(record.module).map((p) => `${p} ${record.engine.packages[p] ?? '—'}`).join(' · ')}{record.seed != null ? ` · seed ${record.seed}` : ''}
       </span>
     </div>
   );

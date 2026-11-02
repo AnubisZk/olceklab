@@ -16,15 +16,29 @@ Her referans karşılaştırmasının sonucu, tarihi ve ortamı burada tutulur.
 | 2026-11-03 | 1 | PA-1: genel `mc.cores = 2` iken aynı tohum → aynı özdeğerler | Geçti | `test-factor-number.R` |
 | 2026-11-03 | 1 | M12: üretilen R betiği ayrı süreçte çalışıp aynı sayıları veriyor (M2, M3, M4) | Geçti | `test-script-export.R` |
 | 2026-11-03 | 1 | Tarayıcıda görünen metinler ↔ bağımsız R hesabı (bfi, 9 denetim) | 9/9 aynı | `test-logs/faz1/browser_crosscheck_output.txt` |
-| ⏳ | 1 | §11.3 BİDEKÇET: temizleme sayıları, alfa, KMO, paralel analiz | **Koşulmadı: veri bu ortamda yok** | `test-private-bidekcet.R` (atlandı) |
-| — | 2–3 | §11.3 DFA ve değişmezlik satırları | henüz yok | — |
+| 2026-11-03 | 1–2 | §11.3 düzeneği ↔ belge sahibinin referans betiği, **sentetik** BİDEKÇET düzenindeki iki Excel dosyasında: temizleme adımları, veri, alfa, KMO, paralel analiz, DFA χ², Δχ², HTMT (absolute = TRUE/FALSE), WLSMV indeksleri | **Birebir aynı** | `test-bidekcet-harness.R` |
+| ⏳ | 1–2 | §11.3 BİDEKÇET gerçek verisi (40 ölçüt: temizleme, alfa, KMO, PA, DFA, Δχ², HTMT, WLSMV) | **Belge sahibinin makinesinde koşulacak** (`BIDEKCET_DATA_DIR=… Rscript tests/private/run_bidekcet.R`) | `test-private-bidekcet.R` (burada atlandı) |
+| 2026-11-03 | 2 | §11.2 HS1939 üç faktör (ML): lavaan belgesindeki χ² 85.306 (24), CFI .931, TLI .896, RMSEA .092 [.071, .114], SRMR .065 | Raporlanan basamakta aynı; bütün ölçütler `lavaan::cfa` ile birebir | `test-cfa.R` |
+| 2026-11-03 | 2 | M5: psych::fa (minres/ml/pa/uls × oblimin/promax/geominQ/varimax/none; Pearson ve polikorik), aynı tohum | Yükler, h², Phi, açıklanan varyans ve uyum birebir | `test-efa.R` |
+| 2026-11-03 | 2 | M6: Wishart (χ² oranı N/(N − 1)), MLR ve WLSMV ölçeklenmiş/dayanıklı indeksler, Bollen–Stine (p, B_etkin, b; aynı iseed), MI | `lavaan` ile birebir | `test-cfa.R` |
+| 2026-11-03 | 2 | M6 karşılaştırma: lavTestLRT (standard, satorra.bentler.2001, satorra.2000), semTools::net iç içelik matrisi | Birebir. SB2001 < 0 → SB2010 dalı sahte bir ilk sonuçla sınandı (gerçek veride örnek bulunamadı) | `test-cfa-compare.R` |
+| 2026-11-03 | 2 | M7: α, compRelSEM (obs.var TRUE/FALSE, ord.scale), AVE, HTMT (htmt2 × absolute; polikorik) | semTools ile birebir; ω ve AVE ayrıca formülle elle yeniden hesaplandı (1e-12) | `test-reliability.R` |
+| 2026-11-03 | 2 | M12: M5–M7 betikleri ayrı süreçte aynı sayıları verir (Bollen–Stine p dâhil) | Geçti | `test-script-export.R` |
+| 2026-11-03 | 2 | Tarayıcıda görünen metinler ↔ bağımsız R hesabı (HS1939; AFA, DFA, Bollen–Stine, karşılaştırma, güvenirlik) | 38/38 aynı | `test-logs/faz2/browser_crosscheck_output.txt` |
+| 2026-11-03 | 2 | V10: semTools 0.5-9 ↔ 0.5-10 (htmt, compRelSEM, AVE, measEq.syntax) | 21/21 birebir aynı | `review/verify/out/V10_semtools_059_vs_0510.txt` |
+| — | 3 | §11.3 değişmezlik satırları | henüz yok | — |
 | — | 4 | §11.4 referans simülasyon | henüz yok (paket bekleniyor) | — |
 
 ### §11.3 testlerini yerelde çalıştırma
 
-1. Veri dosyalarını `engine/tests/private/data/` altına koyun. Bu klasör `.gitignore` ile dışlanmıştır.
-2. `engine/tests/private/bidekcet.example.json` dosyasını `bidekcet.json` adıyla kopyalayın ve sütun adlarını dosyanıza göre düzenleyin.
-3. `engine/` içinde `LANG=C.UTF-8 Rscript tests/testthat.R` komutunu çalıştırın. Sonucu bu tabloya işleyin.
+```
+cd engine
+BIDEKCET_DATA_DIR=/iki/excel/dosyasinin/klasoru LANG=C.UTF-8 Rscript tests/private/run_bidekcet.R
+```
+
+Dosyalar başlıklarına bakılarak bulunur (ortaokul: `sınıf`, `M1–M13`; lise: `Sinif`, `Madde1–Madde13`); dosya adları depoda yazılı değildir. Çıktı tablosu `tests/private/bidekcet_sonuc.csv` dosyasına da yazılır (yalnızca toplu değerler). Sonucu bu tabloya işleyin.
+
+Belge sahibinin 3 Kasım 2026 tarihli referans çıktısı: `docs/validation/bidekcet_referans_cikti_2026-11-03.txt` (R 4.5.3, lavaan 0.7-2, psych 2.6.9, semTools 0.5-9).
 
 ## Şartname incelemesi doğrulamaları (2 Kasım 2026)
 
@@ -41,3 +55,4 @@ Her referans karşılaştırmasının sonucu, tarihi ve ortamı burada tutulur.
 | V07 | Şartname vurguları beyaz zeminde 1,54:1 ve 1,79:1. |
 | V08 | Tekrar başına tohum, mirai işçi sayısından bağımsız. |
 | V09 | psych `fa()` döndürmesi tohuma bağlı (n.rotations = 20). |
+| V10 | semTools 0.5-9 ile 0.5-10 arasında htmt, compRelSEM, AVE ve measEq.syntax çıktıları birebir aynı (21/21). |

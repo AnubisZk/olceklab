@@ -1,7 +1,8 @@
 import { config } from '../config';
 import { request } from './client';
 import type {
-  AnalysisRecord, CleanResults, CleanRules, DatasetOverview, FactorNumberResults, FactorNumberSettings, RolesBody,
+  AnalysisRecord, CfaSettings, CleanResults, CleanRules, CompareSettings, DatasetOverview, EfaResults, EfaSettings,
+  FactorNumberResults, FactorNumberSettings, ModelPreview, ModelSpec, ReliabilitySettings, RolesBody,
 } from './types';
 
 const engine = config.engineUrl;
@@ -30,3 +31,18 @@ export const runFactorNumber = (id: string, settings: FactorNumberSettings) =>
   request<AnalysisRecord<FactorNumberResults>>(engine, '/analyses/factor-number', {
     method: 'POST', json: { dataset_id: id, settings },
   });
+
+// --- Faz 2 -----------------------------------------------------------------------
+
+const post = <T>(path: string, json: unknown) => request<T>(engine, path, { method: 'POST', json });
+
+export const previewModel = (id: string, model?: ModelSpec) =>
+  post<ModelPreview>('/models/preview', model ? { dataset_id: id, model } : { dataset_id: id });
+export const runEfa = (id: string, settings: EfaSettings) =>
+  post<AnalysisRecord<EfaResults>>('/analyses/efa', { dataset_id: id, settings });
+export const runCfa = (id: string, settings: CfaSettings) =>
+  post<AnalysisRecord>('/analyses/cfa', { dataset_id: id, settings });
+export const runCfaCompare = (id: string, settings: CompareSettings) =>
+  post<AnalysisRecord>('/analyses/cfa/compare', { dataset_id: id, settings });
+export const runReliability = (id: string, settings: ReliabilitySettings) =>
+  post<AnalysisRecord>('/analyses/reliability', { dataset_id: id, settings });

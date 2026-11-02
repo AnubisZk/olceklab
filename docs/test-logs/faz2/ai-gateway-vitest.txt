@@ -1,0 +1,9 @@
+
+ RUN  v5.1.0 /home/claude/olceklab/ai-gateway
+
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  01:14:56
+   Duration  690ms (import 44%, tests 41%, transform 13%, worker 2%)
+

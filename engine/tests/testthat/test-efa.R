@@ -130,4 +130,5 @@ test_that("tablolar R'de biçimlenir: yükler baştaki sıfırsız, uyum tablosu
                    fmt_ci(rec$results$fit$rmsea_lower, rec$results$fit$rmsea_upper, 3, "tr", TRUE))
   expect_match(fit$rows_fmt$tr$value[fit$rows$key == "rmsea_ci"], "^\\[,[0-9]{3}; ,[0-9]{3}\\]$")
   expect_match(fit$rows_fmt$en$value[fit$rows$key == "rmsea_ci"], "^\\[\\.[0-9]{3}, \\.[0-9]{3}\\]$")
+  expect_identical(rec$results$threshold_fmt, list(tr = ",30", en = ".30"))
 })

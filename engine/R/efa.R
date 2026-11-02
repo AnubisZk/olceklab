@@ -171,6 +171,7 @@ analysis_efa <- function(data, config, settings, dataset_hash) {
       n = f$n.obs, items = I(items), factors = I(fac), oblique = oblique,
       loadings = col_list(L), communality = I(h2), uniqueness = I(u2), complexity = I(com),
       salient = col_list(salient), sorted_items = I(sorted_items),
+      threshold_fmt = list(tr = fmt_num(thr, 2, "tr", TRUE), en = fmt_num(thr, 2, "en", TRUE)),
       variance = lapply(stats::setNames(va_rows_keys, c("ss", "proportion", "cumulative")[seq_along(va_rows_keys)]),
                         function(r) I(unname(va[r, fac]))),
       phi = if (is.null(phi)) NULL else col_list(phi),

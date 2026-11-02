@@ -125,6 +125,11 @@ test_that("tek faktörlü modelde HTMT ve Fornell–Larcker tablosu yoktur", {
   rec <- run_rel(list(model = list(factors = list(list(name = "g", items = paste0("x", 1:9))))))
   expect_length(rec$tables, 1L)
   expect_null(rec$results$htmt)
+  # semTools tek bileşikte adsız değer döndürür; ω yine de raporlanmalı (tarayıcı akışında bulunan hata)
+  fit <- lavaan::cfa("g =~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9", hs_x, estimator = "ML", likelihood = "normal", std.lv = FALSE)
+  expect_identical(rec$results$omega$g, as.numeric(semTools::compRelSEM(fit, simplify = TRUE)))
+  expect_false(is.na(rec$results$omega$g))
+  expect_identical(rec$tables[[1]]$rows_fmt$tr$omega[1], fmt_num(rec$results$omega$g, 3, "tr", TRUE))
 })
 
 test_that("ikinci düzey modelde güvenirlik birinci düzey faktörler için raporlanır", {

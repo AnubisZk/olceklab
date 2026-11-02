@@ -1,0 +1,197 @@
+✔ | F W  S  OK | Context
+
+⠏ |          0 | api-analyses                                                   
+⠋ |          1 | api-analyses                                                   
+⠴ |          6 | api-analyses                                                   
+⠦ |          7 | api-analyses                                                   
+⠇ |          9 | api-analyses                                                   
+⠼ |         15 | api-analyses                                                   
+⠦ |         17 | api-analyses                                                   
+⠹ |         23 | api-analyses                                                   
+⠦ |         27 | api-analyses                                                   
+⠧ |         28 | api-analyses                                                   
+⠋ |         31 | api-analyses                                                   
+⠹ |         33 | api-analyses                                                   
+⠴ |         36 | api-analyses                                                   
+⠋ |         41 | api-analyses                                                   
+⠹ |         43 | api-analyses                                                   
+✔ |         47 | api-analyses [42.3s]
+
+⠏ |          0 | api                                                            
+⠋ |          1 | api                                                            
+⠼ |          5 | api                                                            
+⠙ |         12 | api                                                            
+⠹ |         13 | api                                                            
+⠧ |         18 | api                                                            
+⠋ |         21 | api                                                            
+⠹ |         23 | api                                                            
+✔ |         25 | api [3.0s]
+
+⠏ |          0 | bidekcet-harness                                               
+⠋ |          1 | bidekcet-harness                                               
+⠹ |          3 | bidekcet-harness                                               
+⠧ |         58 | bidekcet-harness                                               
+⠦ |         67 | bidekcet-harness                                               
+⠧ |         68 | bidekcet-harness                                               
+✔ |         68 | bidekcet-harness [17.3s]
+
+⠏ |          0 | cfa-compare                                                    
+⠋ |          1 | cfa-compare                                                    
+⠦ |         17 | cfa-compare                                                    
+⠧ |         18 | cfa-compare                                                    
+⠏ |         20 | cfa-compare                                                    
+⠴ |         26 | cfa-compare                                                    
+⠇ |         29 | cfa-compare                                                    
+⠴ |         36 | cfa-compare                                                    
+✔ |         41 | cfa-compare [8.1s]
+
+⠏ |          0 | cfa                                                            
+⠋ |          1 | cfa                                                            
+⠹ |         13 | cfa                                                            
+⠋ |         21 | cfa                                                            
+⠸ |         24 | cfa                                                            
+⠧ |         28 | cfa                                                            
+⠼ |         35 | cfa                                                            
+⠹ |         43 | cfa                                                            
+⠙ |         52 | cfa                                                            
+⠼ |         55 | cfa                                                            
+⠋ |         61 | cfa                                                            
+⠸ |         64 | cfa                                                            
+⠼ |         65 | cfa                                                            
+⠧ |         68 | cfa                                                            
+⠼ |         75 | cfa                                                            
+✔ |         79 | cfa [15.0s]
+
+⠏ |          0 | cors                                                           
+✔ |          2 | cors
+
+⠏ |          0 | data-clean                                                     
+⠏ |         30 | data-clean                                                     
+⠸ |         44 | data-clean                                                     
+⠸ |         64 | data-clean                                                     
+⠋ |         71 | data-clean                                                     
+✔ |         73 | data-clean
+
+⠏ |          0 | efa                                                            
+⠋ |          1 | efa                                                            
+⠴ |         16 | efa                                                            
+⠇ |         19 | efa                                                            
+⠙ |         22 | efa                                                            
+⠼ |         25 | efa                                                            
+⠧ |         28 | efa                                                            
+⠏ |         30 | efa                                                            
+⠸ |         34 | efa                                                            
+⠼ |         35 | efa                                                            
+⠹ |         43 | efa                                                            
+⠴ |         46 | efa                                                            Error in if (s < eps) break : missing value where TRUE/FALSE needed
+
+⠼ |         55 | efa                                                            
+✔ |         60 | efa [6.8s]
+
+⠏ |          0 | errors                                                         
+✔ |         25 | errors
+
+⠏ |          0 | factor-number                                                  
+⠋ |          1 | factor-number                                                  
+⠹ |          3 | factor-number                                                  
+⠸ |          4 | factor-number                                                  
+⠼ |          5 | factor-number                                                  
+⠴ |          6 | factor-number                                                  
+⠧ |          8 | factor-number                                                  
+⠙ |         12 | factor-number                                                  
+⠼ |         15 | factor-number                                                  
+⠧ |         18 | factor-number                                                  
+⠋ |         21 | factor-number                                                  
+⠸ |         24 | factor-number                                                  
+⠼ |         25 | factor-number                                                  
+⠧ |         28 | factor-number                                                  
+⠇ |         29 | factor-number                                                  
+⠼ |         35 | factor-number                                                  
+⠧ |         38 | factor-number                                                  
+⠋ |         41 | factor-number                                                  
+✔ |         50 | factor-number [29.3s]
+
+⠏ |          0 | format                                                         
+✔ |         23 | format
+
+⠏ |          0 | item-analysis                                                  
+⠋ |          1 | item-analysis                                                  
+⠴ |          6 | item-analysis                                                  
+⠙ |         12 | item-analysis                                                  
+⠹ |         23 | item-analysis                                                  
+⠦ |         37 | item-analysis                                                  
+⠙ |         42 | item-analysis                                                  
+✔ |         45 | item-analysis [1.5s]
+
+⠏ |          0 | json                                                           
+✔ |         18 | json
+
+⠏ |          0 | model                                                          
+⠹ |         23 | model                                                          
+✔ |         29 | model
+
+⠏ |          0 | packages                                                       
+⠇ |          9 | packages                                                       
+⠏ |         10 | packages                                                       
+✔ |         15 | packages
+
+⠏ |          0 | private-bidekcet                                               
+✔ |      1   0 | private-bidekcet
+
+⠏ |          0 | reliability                                                    
+⠋ |          1 | reliability                                                    
+⠼ |         15 | reliability                                                    
+⠹ |         33 | reliability                                                    
+⠼ |         35 | reliability                                                    
+⠋ |         41 | reliability                                                    
+⠙ |         42 | reliability                                                    
+⠹ |         43 | reliability                                                    
+⠸ |         44 | reliability                                                    
+⠼ |         45 | reliability                                                    
+⠴ |         46 | reliability                                                    
+⠙ |         52 | reliability                                                    
+⠼ |         55 | reliability                                                    
+⠦ |         57 | reliability                                                    
+⠏ |         60 | reliability                                                    
+✔ |         60 | reliability [6.4s]
+
+⠏ |          0 | script-export                                                  
+⠋ |          1 | script-export                                                  
+⠼ |          5 | script-export                                                  
+⠴ |          6 | script-export                                                  
+⠧ |          8 | script-export                                                  
+⠏ |         10 | script-export                                                  
+⠹ |         13 | script-export                                                  
+⠴ |         16 | script-export                                                  
+⠧ |         18 | script-export                                                  
+⠹ |         23 | script-export                                                  
+⠼ |         25 | script-export                                                  
+⠇ |         29 | script-export                                                  
+✔ |         32 | script-export [18.8s]
+
+⠏ |          0 | session                                                        
+✔ |          8 | session
+
+⠏ |          0 | source-files                                                   
+⠸ |         24 | source-files                                                   
+⠧ |         48 | source-files                                                   
+⠏ |         60 | source-files                                                   
+✔ |         60 | source-files
+
+⠏ |          0 | suitability                                                    
+⠸ |          4 | suitability                                                    
+⠇ |          9 | suitability                                                    
+✔ |         14 | suitability [3.4s]
+
+⠏ |          0 | versions                                                       
+⠦ |          7 | versions                                                       
+✔ |          8 | versions
+
+══ Results ═════════════════════════════════════════════════════════════════════
+Duration: 154.2 s
+
+── Skipped tests (1) ───────────────────────────────────────────────────────────
+• BIDEKCET_DATA_DIR tanımlı değil; KVKK gereği veri depoda değil (SPEC §11.3)
+  (1): 'test-private-bidekcet.R:22:3'
+
+[ FAIL 0 | WARN 0 | SKIP 1 | PASS 782 ]
