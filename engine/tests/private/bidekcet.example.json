@@ -1,0 +1,35 @@
+{
+  "_aciklama": "Bu dosyayı bidekcet.json adıyla kopyalayın; sütun adlarını kendi dosyanıza göre düzenleyin. Veri dosyaları data/ altına konur ve depoya girmez.",
+  "ortaokul": {
+    "file": "data/ortaokul.csv",
+    "roles": {
+      "Sinif": "group",
+      "M1": "item", "M2": "item", "M3": "item", "M4": "item", "M5": "item", "M6": "item",
+      "M7": "ignore",
+      "M8": "item", "M9": "item", "M10": "item", "M11": "item", "M12": "item", "M13": "item"
+    },
+    "items": {
+      "M1": { "min": 1, "max": 5, "subscale": "FM" },
+      "M2": { "min": 1, "max": 5, "subscale": "FM" },
+      "M3": { "min": 1, "max": 5, "subscale": "FM" },
+      "M4": { "min": 1, "max": 5, "subscale": "BK" },
+      "M5": { "min": 1, "max": 5, "subscale": "BK" },
+      "M6": { "min": 1, "max": 5, "subscale": "BK" },
+      "M8": { "min": 1, "max": 5, "subscale": "BK" },
+      "M9": { "min": 1, "max": 5, "subscale": "KD" },
+      "M10": { "min": 1, "max": 5, "subscale": "CT" },
+      "M11": { "min": 1, "max": 5, "subscale": "KD" },
+      "M12": { "min": 1, "max": 5, "subscale": "CT" },
+      "M13": { "min": 1, "max": 5, "subscale": "CT" }
+    },
+    "group_valid_values": ["5", "6", "7", "8"],
+    "rules": {}
+  },
+  "lise": {
+    "file": "data/lise.csv",
+    "roles": { "...": "ortaokul ile aynı yapıda" },
+    "items": { "...": "ortaokul ile aynı yapıda" },
+    "group_valid_values": ["9", "10", "11", "12"],
+    "rules": {}
+  }
+}

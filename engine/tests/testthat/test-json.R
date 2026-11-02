@@ -25,3 +25,12 @@ test_that("plumber serileştiricisi aynı seçenekleri kullanır", {
   out <- ser(list(x = pi), list(), res, function(e) stop(e))
   expect_identical(jsonlite::fromJSON(out$body)$x, pi)
 })
+
+test_that("tek elemanlı diziler JSON'da dizi kalır (I() ile işaretli alanlar)", {
+  out <- jsonlite::fromJSON(to_json(list(a = I("x"), b = I(1), c = I(character()))), simplifyVector = FALSE)
+  expect_identical(out$a, list("x"))
+  expect_identical(out$b, list(1L))
+  expect_identical(out$c, list())
+  v <- jsonlite::fromJSON(to_json(engine_versions(c("lavaan", "olceklabYokBoylePaket"))), simplifyVector = FALSE)
+  expect_identical(v$missing, list("olceklabYokBoylePaket"))
+})

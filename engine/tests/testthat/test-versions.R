@@ -25,6 +25,6 @@ test_that("kurulu sürümler renv.lock ile birebir aynı (SPEC_REVIEW REP-1)", {
 
 test_that("kurulu olmayan paket uydurulmaz, 'missing' listesine girer", {
   v <- engine_versions(c("lavaan", "olceklabYokBoylePaket"))
-  expect_identical(v$missing, "olceklabYokBoylePaket")
+  expect_identical(as.character(v$missing), "olceklabYokBoylePaket")
   expect_null(v$packages$olceklabYokBoylePaket)
 })

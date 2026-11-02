@@ -20,7 +20,20 @@ not_implemented_handler <- function(module, phase) {
   }
 }
 
+#' Kullanıcıya gösterilecek, durum kodlu hata. İşçiden ana sürece güvenle taşınır.
+api_stop <- function(code, message_tr, status = 400L, detail = NULL) {
+  cond <- structure(
+    class = c("api_error", "error", "condition"),
+    list(message = message_tr, call = NULL, code = code, status = as.integer(status), detail = detail)
+  )
+  stop(cond)
+}
+
 engine_error_handler <- function(req, res, err) {
+  if (inherits(err, "api_error")) {
+    res$status <- err$status
+    return(api_error_body(err$code, conditionMessage(err), err$detail))
+  }
   res$status <- 500L
   api_error_body(
     code = "engine_error",

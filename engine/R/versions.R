@@ -17,7 +17,7 @@ engine_versions <- function(pkgs = engine_core_packages) {
   list(
     R = paste(R.version$major, R.version$minor, sep = "."),
     packages = as.list(vers[!is.na(vers)]),
-    missing = unname(pkgs[is.na(vers)]),
+    missing = I(unname(pkgs[is.na(vers)])),
     platform = R.version$platform,
     blas = if (is.null(si$BLAS)) NA_character_ else si$BLAS,
     lapack = if (is.null(si$LAPACK)) NA_character_ else si$LAPACK,

@@ -7,6 +7,17 @@ fake_req <- function(method = "POST", path = "/analyses/efa") {
   list(REQUEST_METHOD = method, PATH_INFO = path)
 }
 
+test_that("api_stop durum kodlu ve sınıflı hata üretir; işleyici onu kullanır", {
+  e <- tryCatch(api_stop("x_code", "ileti", 422L, "ayrıntı"), error = function(e) e)
+  expect_s3_class(e, "api_error")
+  expect_identical(e$status, 422L)
+  res <- fake_res()
+  body <- engine_error_handler(fake_req(), res, e)
+  expect_identical(res$status, 422L)
+  expect_identical(body$error$code, "x_code")
+  expect_identical(body$error$detail, "ayrıntı")
+})
+
 test_that("hata gövdesi şartnamedeki biçimdedir (SPEC §8)", {
   body <- api_error_body("x_code", "Türkçe ileti", "R ayrıntısı")
   expect_named(body, "error")
@@ -42,9 +53,9 @@ test_that("404 ve 500 işleyicileri standart biçimi kullanır", {
   expect_identical(b500$error$detail, "deneme hatası")
 })
 
-test_that("§8'deki bütün uç noktalar kayıtlı ve faz numarası geçerli", {
-  expect_equal(nrow(planned_endpoints), 20L)
+test_that("henüz uygulanmamış uç noktalar Faz 2–5'e ait ve benzersiz", {
+  expect_equal(nrow(planned_endpoints), 13L)
   expect_false(any(duplicated(paste(planned_endpoints$method, planned_endpoints$path))))
-  expect_true(all(planned_endpoints$phase %in% 1:5))
+  expect_true(all(planned_endpoints$phase %in% 2:5))
   expect_true(all(planned_endpoints$method %in% c("GET", "POST")))
 })
