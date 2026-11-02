@@ -1,0 +1,124 @@
+{
+  "app": {
+    "name": "ÖlçekLab",
+    "tagline": "Scale development and adaptation analysis platform",
+    "skipToContent": "Skip to content",
+    "mainNav": "Main navigation"
+  },
+  "nav": {
+    "start": "Start",
+    "data": "Data",
+    "items": "Item analysis",
+    "factorNumber": "Number of factors",
+    "efa": "EFA",
+    "cfa": "CFA",
+    "reliability": "Reliability and validity",
+    "invariance": "Invariance",
+    "simulation": "Simulation",
+    "report": "Report",
+    "settings": "Settings"
+  },
+  "pages": {
+    "start": {
+      "title": "Start",
+      "description": "Start a new project, import a project, or try the example data."
+    },
+    "data": {
+      "title": "Data",
+      "description": "File upload, column roles, cleaning rules and cleaning summary."
+    },
+    "items": {
+      "title": "Item analysis and suitability",
+      "description": "Descriptive statistics, item–total correlations, KMO, Bartlett and Mardia tests."
+    },
+    "factorNumber": {
+      "title": "Number of factors",
+      "description": "Parallel analysis, Velicer's MAP test and scree plot."
+    },
+    "efa": {
+      "title": "Exploratory factor analysis",
+      "description": "Pattern coefficients and communalities with estimation and rotation options."
+    },
+    "cfa": {
+      "title": "Confirmatory factor analysis",
+      "description": "Model builder, fit indices, competing-model comparison and path diagram."
+    },
+    "reliability": {
+      "title": "Reliability and validity",
+      "description": "Alpha, omega/CR, AVE and HTMT."
+    },
+    "invariance": {
+      "title": "Measurement invariance",
+      "description": "Step-by-step invariance across groups, partial invariance wizard and latent means."
+    },
+    "simulation": {
+      "title": "Monte Carlo simulation",
+      "description": "Population model, condition grid, job tracking and sample size recommendation."
+    },
+    "report": {
+      "title": "Report",
+      "description": "APA 7 tables, Word and CSV export."
+    },
+    "settings": {
+      "title": "Settings",
+      "description": "Language, theme, AI provider and privacy notice."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "The page you are looking for does not exist.",
+      "back": "Back to start"
+    }
+  },
+  "phase": {
+    "badge": "Phase {{phase}}",
+    "placeholder": "This page will be enabled in Phase {{phase}}. No analysis runs and no results are shown yet."
+  },
+  "start": {
+    "newProject": "New project",
+    "importProject": "Import project",
+    "tryExample": "Try example data",
+    "actionsPhase": "These buttons are enabled in Phase 1."
+  },
+  "engine": {
+    "title": "R analysis engine",
+    "loading": "Connecting to the engine…",
+    "ok": "Running",
+    "error": "Could not connect",
+    "errorCode": "Error code",
+    "retry": "Retry",
+    "rVersion": "R version",
+    "package": "Package",
+    "version": "Version",
+    "missing": "Missing packages",
+    "rng": "RNG kind",
+    "source": "Source: GET /versions (R engine)"
+  },
+  "theme": {
+    "label": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "toggle": "Toggle theme"
+  },
+  "language": {
+    "label": "Language",
+    "tr": "Türkçe",
+    "en": "English"
+  },
+  "settings": {
+    "decimal": "Decimal format",
+    "decimalNote": "Numbers are formatted by the R engine; this option is enabled in Phase 1.",
+    "ai": "AI provider",
+    "aiUnavailable": "AI gateway unreachable",
+    "mode": "Mode",
+    "modeLocal": "Local (offline)",
+    "modeOnline": "Online",
+    "privacyTitle": "Privacy notice (draft)",
+    "privacy1": "Uploaded data are never written to disk; they are processed in session memory only.",
+    "privacy2": "Session memory is cleared after 60 minutes of inactivity.",
+    "privacy3": "Student data must not contain names, student numbers or national ID numbers.",
+    "privacy4": "By default only result summaries, never raw data, are sent to the AI assistant."
+  },
+  "simulation": {
+    "banner": "SIMULATION — synthetic data; not evidence of the scale's validity"
+  }
+}

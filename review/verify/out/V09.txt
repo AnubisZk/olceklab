@@ -1,0 +1,5 @@
+R: R version 4.4.3 (2025-02-28) | psych: 2.6.9 | GPArotation: 2026.8.2 
+formals(psych::fa)$n.rotations = 20 
+
+oblimin  aynı tohum -> aynı yükler: TRUE | tohum 1 vs 2 en büyük fark: 6.02e-06
+geominQ  aynı tohum -> aynı yükler: TRUE | tohum 1 vs 2 en büyük fark: 1.17e-05

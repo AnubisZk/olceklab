@@ -1,0 +1,85 @@
+# Web — 2026-11-02T19:40:39Z
+
+> olceklab-web@0.0.0 typecheck
+> tsc --noEmit -p tsconfig.json
+
+typecheck çıkış: 0
+
+ RUN  v5.1.0 /home/claude/olceklab/web
+
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > 11 sayfa tanımlı ve yollar benzersiz 4ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > / sayfası Türkçe başlığıyla açılır 180ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /data sayfası Türkçe başlığıyla açılır 21ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /items sayfası Türkçe başlığıyla açılır 22ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /factor-number sayfası Türkçe başlığıyla açılır 19ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /efa sayfası Türkçe başlığıyla açılır 26ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /cfa sayfası Türkçe başlığıyla açılır 19ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /reliability sayfası Türkçe başlığıyla açılır 18ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /invariance sayfası Türkçe başlığıyla açılır 19ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /simulation sayfası Türkçe başlığıyla açılır 19ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /report sayfası Türkçe başlığıyla açılır 23ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /settings sayfası Türkçe başlığıyla açılır 24ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > henüz uygulanmamış sayfa analiz sonucu göstermez, faz bilgisini gösterir 17ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > simülasyon sayfası kalıcı SİMÜLASYON etiketini taşır (SPEC 9.9) 15ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > bilinmeyen yol "Sayfa bulunamadı" gösterir 16ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > dil düğmesi arayüzü İngilizceye çevirir 86ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > gezinme bağlantıları her sayfaya gider 62ms
+ ✓ tests/engineStatus.test.tsx > motor durumu kartı > yalnızca /versions yanıtındaki değerleri gösterir 241ms
+ ✓ tests/engineStatus.test.tsx > motor durumu kartı > motor hata verirse hata kodunu gösterir, hiçbir sürüm ya da tablo göstermez 51ms
+ ✓ tests/engineStatus.test.tsx > motor durumu kartı > ağ hatası network_error olarak gösterilir 25ms
+ ✓ tests/engineStatus.test.tsx > motor durumu kartı > eksik paket varsa uyarı gösterilir 30ms
+ ✓ tests/engineStatus.test.tsx > HTTP istemcisi > standart hata biçimini (SPEC §8) ApiError olarak çözer 1ms
+ ✓ tests/engineStatus.test.tsx > HTTP istemcisi > JSON olmayan yanıtı invalid_json olarak bildirir 1ms
+ ✓ tests/engineStatus.test.tsx > HTTP istemcisi > sayıları değiştirmeden döndürür 1ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > koyu tema şartnamedeki renkleri aynen kullanır (SPEC §4) 3ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > kontrast formülü bilinen değerleri verir 1ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: gövde metni / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: gövde metni / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: gövde metni / kart ≥ 4.5:1 1ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: ikincil metin / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: ikincil metin / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: vurgu / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: vurgu / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: ikinci vurgu / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: ikinci vurgu / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: düğme metni / vurgu ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: hata / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: başarı / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: gövde metni / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: gövde metni / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: gövde metni / kart ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: ikincil metin / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: ikincil metin / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: vurgu / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: vurgu / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: ikinci vurgu / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: ikinci vurgu / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: düğme metni / vurgu ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: hata / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: başarı / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > şartnamedeki vurgular beyaz zeminde 4.5:1 sağlamaz; bu yüzden açık temada kullanılmaz 1ms
+ ✓ tests/theme.test.tsx > tema uygulama > applyTheme CSS değişkenlerini ve data-theme özniteliğini ayarlar 8ms
+ ✓ tests/theme.test.tsx > tema uygulama > localStorage hata fırlatsa bile tema seçilebilir 2ms
+ ✓ tests/theme.test.tsx > tema uygulama > tema düğmesi temayı değiştirir ve tercihi saklar 230ms
+ ✓ tests/i18n.test.ts > çeviri dosyaları > Türkçe ve İngilizce anahtarlar birebir aynı 3ms
+ ✓ tests/i18n.test.ts > çeviri dosyaları > boş çeviri yok 3ms
+ ✓ tests/i18n.test.ts > çeviri dosyaları > her sayfanın gezinme adı, başlığı ve açıklaması var 1ms
+ ✓ tests/i18n.test.ts > çeviri dosyaları > yer tutucular iki dilde aynı 1ms
+ ✓ tests/i18n.test.ts > çeviri dosyaları > çeviri metinlerinde rakamla yazılmış istatistik değeri yok 1ms
+ ✓ tests/i18n.test.ts > dil ayarı > varsayılan dil Türkçedir ve <html lang> güncellenir 4ms
+
+ Test Files  4 passed (4)
+      Tests  60 passed (60)
+   Start at  22:40:40
+   Duration  5.59s (environment 52%, tests 26%, setup 10%, import 9%, transform 4%, worker 1%)
+
+Environment  jsdom was created 4 times · 2.46s total, 52% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
+vitest çıkış: 0
+dist/assets/index-6pBRiwhv.css                                   38.80 kB │ gzip:  22.25 kB
+dist/assets/index-Cw5QAunB.js                                   362.32 kB │ gzip: 114.52 kB
+
+✓ built in 744ms
+build çıkış: 0

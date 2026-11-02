@@ -1,0 +1,65 @@
+R: R version 4.4.3 (2025-02-28) | lavaan: 0.7.2 | semTools: 0.5.10 
+
+Grup büyüklükleri:
+
+  male female 
+   861   1756 
+
+== (a) Adım adım uyum (WLSMV, theta) ==
+                      chisq.scaled  df cfi.scaled cfi.robust rmsea.scaled
+configural                1517.788  68     0.9188     0.8565       0.1277
+thresholds                1727.061  98     0.9087         NA       0.1128
+thr_loadings              1594.640 106     0.9166         NA       0.1036
+thr_load_intercepts       1738.050 114     0.9090         NA       0.1044
+thr_load_int_residual     1731.462 124     0.9100         NA       0.0996
+                      rmsea.robust   srmr
+configural                  0.1237 0.0819
+thresholds                      NA 0.0819
+thr_loadings                    NA 0.0820
+thr_load_intercepts             NA 0.0821
+thr_load_int_residual           NA 0.0823
+
+== (b) Wu–Estabrook önermesi: C ≥ 3 kategoride 'thresholds' modeli configural ile eşdeğer mi? ==
+configural: chisq(standard) = 1268.606737, df = 68
+thresholds: chisq(standard) = 1287.016468, df = 98
+
+== (c) Ardışık ölçeklenmiş fark testleri (lavTestLRT, satorra.2000) ==
+configural             -> thresholds             Δχ²=41.944 Δdf=30 p=0.07237 | ΔCFI.scaled=-0.0100 ΔCFI.robust=NA ΔRMSEA.scaled=-0.0149
+thresholds             -> thr_loadings           Δχ²=6.063 Δdf=8 p=0.6402 | ΔCFI.scaled=0.0079 ΔCFI.robust=NA ΔRMSEA.scaled=-0.0091
+configural             -> thr_loadings           Δχ²=42.185 Δdf=38 p=0.2948 | ΔCFI.scaled=-0.0022 ΔCFI.robust=NA ΔRMSEA.scaled=-0.0241
+thr_loadings           -> thr_load_intercepts    Δχ²=164.458 Δdf=8 p=1.868e-31 | ΔCFI.scaled=-0.0076 ΔCFI.robust=NA ΔRMSEA.scaled=0.0007
+thr_load_intercepts    -> thr_load_int_residual  Δχ²=31.203 Δdf=10 p=0.0005432 | ΔCFI.scaled=0.0009 ΔCFI.robust=NA ΔRMSEA.scaled=-0.0048
+
+== (b2) Aynı veri 3 kategoriye indirgenince (1-2 | 3-4 | 5-6) ==
+C=3 configural: chisq = 785.955654, df = 68
+C=3 thresholds: chisq = 785.955654, df = 68
+
+== (d) Skor testi (lavTestScore) WLSMV modelinde çalışıyor mu? ==
+toplam (çok değişkenli) test:
+
+total score test:
+
+            test     X2     df p.value
+1          score 26.094 60.000   1.000
+2   score.scaled 23.949 60.000   1.000
+3 score.adjusted  8.452 21.175   0.994
+4   score.robust 44.270 60.000   0.936
+en büyük 5 tek değişkenli test:
+
+univariate score tests:
+
+   lhs op    rhs    X2 df p.value X2.scaled p.value.scaled
+ .p26. == .p121. 5.366  1   0.021     7.548          0.006
+  .p4. ==  .p99. 4.328  1   0.037     3.249          0.071
+ .p57. == .p152. 2.334  1   0.127     5.383          0.020
+ .p52. == .p147. 2.172  1   0.141     3.914          0.048
+ .p15. == .p110. 2.135  1   0.144     3.123          0.077
+ilk satırın okunur hâli: N4|t1 [g1] <-> N4|t1 [g2] 
+
+== (e) Gizil ortalama farkı ve d: tanım seçimi sonucu değiştirir ==
+Neu: kappa=0.2891  ψ1=1.0000 ψ2=1.0327 | d(ref SS)=0.2891  d(odak grup SS)=0.2845  d(birleşik SS, Hancock 2001)=0.2860
+Con: kappa=0.2092  ψ1=1.0000 ψ2=1.0030 | d(ref SS)=0.2092  d(odak grup SS)=0.2089  d(birleşik SS, Hancock 2001)=0.2090
+
+real	0m10.506s
+user	0m10.142s
+sys	0m0.138s

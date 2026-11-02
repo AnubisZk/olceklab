@@ -1,0 +1,19 @@
+node_modules/
+dist/
+coverage/
+.env
+*.log
+.DS_Store
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+engine/renv/library/
+engine/test-results/
+
+# Özel veri ve testler (KVKK): depoya girmez
+engine/tests/private/data/
+*.sav
+*.xlsx
+!docs/**/*.xlsx

@@ -1,0 +1,61 @@
+# Yerel (çevrimdışı) mod: docker compose up --build
+# Yerel yapay zekâ modeli için:  docker compose --profile ai-local up --build
+name: olceklab
+
+services:
+  engine:
+    build:
+      context: ./engine
+    environment:
+      PORT: "8000"
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:5173,http://127.0.0.1:5173}
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "Rscript", "/app/healthcheck.R"]
+      interval: 15s
+      timeout: 5s
+      start_period: 30s
+      retries: 5
+
+  ai-gateway:
+    build:
+      context: ./ai-gateway
+    environment:
+      AI_PROVIDER: ${AI_PROVIDER:-none}
+      AI_GATEWAY_PORT: "8787"
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:5173,http://127.0.0.1:5173}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://ollama:11434/v1}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-}
+      EVREN_BASE_URL: ${EVREN_BASE_URL:-}
+      EVREN_API_KEY: ${EVREN_API_KEY:-}
+      EVREN_MODEL: ${EVREN_MODEL:-}
+    ports:
+      - "8787:8787"
+
+  web:
+    build:
+      context: ./web
+      args:
+        VITE_ENGINE_URL: ${VITE_ENGINE_URL:-http://localhost:8000}
+        VITE_AI_GATEWAY_URL: ${VITE_AI_GATEWAY_URL:-http://localhost:8787}
+        VITE_DEPLOY_MODE: local
+    ports:
+      - "5173:5173"
+    depends_on:
+      engine:
+        condition: service_healthy
+      ai-gateway:
+        condition: service_healthy
+
+  ollama:
+    # Sürüm etiketi, model seçimi yapılınca (SPEC §14 madde 3) Faz 6'da sabitlenecek.
+    image: ollama/ollama:latest
+    profiles: ["ai-local"]
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-models:/root/.ollama
+
+volumes:
+  ollama-models:

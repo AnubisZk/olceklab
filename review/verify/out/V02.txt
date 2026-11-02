@@ -1,0 +1,60 @@
+R: R version 4.4.3 (2025-02-28) | lavaan: 0.7.2 | psych: 2.6.9 
+
+N (liste bazında): 2617 
+== (a) WLSMV test istatistiği adı ==
+standard, scaled.shifted 
+
+== (b) .scaled ile .robust indeksler aynı şey değildir ==
+chisq.scaled    df.scaled   cfi.scaled   cfi.robust   tli.scaled   tli.robust 
+    1412.432       34.000        0.923        0.867        0.898        0.823 
+rmsea.scaled rmsea.robust         srmr 
+       0.124        0.120        0.079 
+
+== (c) WLSMV'de AIC/BIC ==
+aic bic 
+ NA  NA 
+
+== (d) lavTestLRT varsayılan yöntemi (WLSMV) ==
+
+Scaled and Shifted Chi-Squared Difference Test (method = "satorra.2000")
+
+lavaan->lavTestLRT():  
+   lavaan NOTE: The "Chisq" column contains standard test statistics, not the 
+   robust test that should be reported per model. A robust difference test is 
+   a function of two standard (not robust) statistics.
+
+   Df AIC BIC  Chisq Chisq diff  RMSEA Df diff Pr(>Chisq)    
+f2 34         1176.8                                         
+f1 35         4929.2     1100.3 1.1973       1  < 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+başlık: 
+Scaled and Shifted Chi-Squared Difference Test (method = "satorra.2000")
+
+lavaan->lavTestLRT():  
+   lavaan NOTE: The "Chisq" column contains standard test statistics, not the 
+   robust test that should be reported per model. A robust difference test is 
+   a function of two standard (not robust) statistics.
+ 
+Saf fark (chisq.scaled farkı) = 4056.014  <-> lavTestLRT Chisq diff = 1100.261
+
+== (e) MLR (sürekli kabul) için varsayılan yöntem ==
+başlık: 
+Scaled Chi-Squared Difference Test (method = "satorra.bentler.2001")
+
+lavaan->lavTestLRT():  
+   lavaan NOTE: The "Chisq" column contains standard test statistics, not the 
+   robust test that should be reported per model. A robust difference test is 
+   a function of two standard (not robust) statistics.
+ 
+SB2001 Δχ² = 830.323 ; SB2010 Δχ² = 532.530
+
+== (f) ML: likelihood normal vs wishart ==
+          chisq df rmsea     aic      bic
+normal  941.285 34 0.101 87559.3 87682.57
+wishart 940.925 34 0.101 87569.3 87692.57
+chisq oranı normal/wishart = 1.000382 ; N/(N-1) = 1.000382
+
+real	0m1.823s
+user	0m1.711s
+sys	0m0.105s

@@ -1,0 +1,5 @@
+R: R version 4.4.3 (2025-02-28) | mirai: 2.7.2 
+
+Tekrar başına tohum: 1 işçi == 2 işçi ? TRUE 
+Tohumsuz (işçi akışı): iki çalıştırma aynı mı ? TRUE 
+Tohumsuz: 1 işçi == 2 işçi ? TRUE 

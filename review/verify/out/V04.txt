@@ -1,0 +1,36 @@
+R: R version 4.4.3 (2025-02-28) | psych: 2.6.9 | getOption('mc.cores') = NULL | parallel::detectCores() = 2 
+
+== (a) Aynı tohum, varsayılan ayarlar (mclapply, varsayılan RNG) ==
+Parallel analysis suggests that the number of factors =  NA  and the number of components =  3 
+Parallel analysis suggests that the number of factors =  NA  and the number of components =  3 
+values birebir aynı mı: FALSE | en büyük mutlak fark: 0.214 
+
+== (b) options(mc.cores = 1) ile ==
+Parallel analysis suggests that the number of factors =  NA  and the number of components =  3 
+Parallel analysis suggests that the number of factors =  NA  and the number of components =  3 
+values birebir aynı mı: TRUE 
+
+== (c) RNGkind('L\'Ecuyer-CMRG') + mc.cores = 2 ==
+Parallel analysis suggests that the number of factors =  NA  and the number of components =  3 
+Parallel analysis suggests that the number of factors =  NA  and the number of components =  3 
+values birebir aynı mı: TRUE 
+Parallel analysis suggests that the number of factors =  NA  and the number of components =  3 
+mc.cores=2 ile mc.cores=1 aynı mı (L'Ecuyer): FALSE 
+
+== (d) Döndürülen 'pc.sim' ortalama mı, karar ölçütü (quant=.95) mı? ==
+Parallel analysis suggests that the number of factors =  NA  and the number of components =  3 
+pc.sim == colMeans(sim)?         TRUE 
+gözlenen özdeğerler : 3.216 1.639 1.365 0.699 0.584 0.5 0.473 0.286 0.238 
+referans ortalama   : 1.268 1.181 1.11 1.051 0.994 0.937 0.884 0.823 0.752 
+referans %95 yüzdelik: 1.347 1.238 1.16 1.092 1.029 0.974 0.927 0.862 0.802 
+psych ncomp: 3 | ortalama ölçütüyle sayım: 3 | %95 ölçütüyle sayım: 3 
+fa.parallel varsayılanları: n.iter = 20 , quant = 0.95 , sim = TRUE , fa = both 
+
+== (e) 'resampled' referans: permütasyon mu, yerine koyarak örnekleme mi? (kaynak satırı) ==
+sample(y, nsub, replace = TRUE) 
+
+== (f) cor = 'poly' iken simüle referans hangi korelasyonu kullanır? (kaynak satırı) ==
+sim.cor <- cor(simdata) 
+
+== (g) FA özdeğerleri: indirgenmiş matris mi, 1 faktörlü fa() çözümünün $values'u mu? ==
+fa.valuesx <- fa(rx, nfactors = nfactors, rotate = "none", fm = fm, warnings = FALSE)$values 

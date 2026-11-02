@@ -1,0 +1,39 @@
+R: R version 4.4.3 (2025-02-28) | lavaan: 0.7.2 | semTools: 0.5.10 | psych: 2.6.9 
+
+== (a) Varsayılan argümanlar ==
+semTools::htmt: absolute = TRUE; htmt2 = TRUE; ordered = NULL
+semTools::compRelSEM: obs.var = TRUE; tau.eq = FALSE; ord.scale = TRUE; return.total = FALSE
+semTools::AVE: obs.var = TRUE; omit.imps = c("no.conv", "no.se"); omit.factors = character(0)
+
+== (b) HTMT: htmt2 ve absolute seçimi sonucu değiştirir mi? (bfi, Pearson ve polikorik) ==
+htmt2 = TRUE  absolute = TRUE  -> HTMT(Neu,Con) Pearson = 0.194 | polikorik = 0.176
+htmt2 = TRUE  absolute = FALSE -> HTMT(Neu,Con) Pearson = 0.194 | polikorik = 0.176
+htmt2 = FALSE absolute = TRUE  -> HTMT(Neu,Con) Pearson = 0.298 | polikorik = 0.298
+htmt2 = FALSE absolute = FALSE -> HTMT(Neu,Con) Pearson = NaN | polikorik = NaN
+Warning messages:
+1: In sqrt(m.cor.w[comb[i, 2]] * m.cor.w[comb[i, 1]]) : NaNs produced
+2: In sqrt(m.cor.w[comb[i, 2]] * m.cor.w[comb[i, 1]]) : NaNs produced
+3: In sqrt(m.cor.w[comb[i, 2]] * m.cor.w[comb[i, 1]]) : NaNs produced
+4: In sqrt(m.cor.w[comb[i, 2]] * m.cor.w[comb[i, 1]]) : NaNs produced
+
+== (c) compRelSEM: sürekli vs sıralı ölçek (ord.scale) ==
+compRelSEM dönüş sınıfı (0.5-10): list 
+                   Neu    Con
+ord.scale_TRUE  0.8485 0.7539
+ord.scale_FALSE 0.8720 0.7714
+                    Neu    Con
+ML_obs.var_TRUE  0.8058 0.7321
+ML_obs.var_FALSE 0.8163 0.7338
+
+== (d) SPEC §11.3 tablosunun aritmetik tutarlılığı (yalnızca belgede yazan sayılarla) ==
+[TUTARLI] Ortaokul Δχ² = 179.058 − 147.844 = 31.214 (belge 31.21)
+[TUTARLI] Lise Δχ² = 178.149 − 133.325 = 44.824 (belge 44.82)
+[TUTARLI] Biçimsel χ² ≈ Ortaokul M4 + Lise M4 = 281.169 (belge 281.168; yuvarlama payı ±.001)
+[TUTARLI] Biçimsel sd = 48 + 48 = 96
+[TUTARLI] Metrik sd: 96 + (12 yük − 4 serbest gizil varyans) = 104
+[TUTARLI] Skaler sd: 104 + (12 kesişim − 4 serbest gizil ortalama) = 112
+[TUTARLI] Kısmi metrik: 1 yük serbest -> biçimselle Δsd = 7
+[TUTARLI] Kısmi metrik p: pchisq(3.64, 7) üst kuyruk = 0.820 (belge .821)
+[TUTARLI] Kısmi skaler p: pchisq(11.80, 7) üst kuyruk = 0.107 (belge .107)
+Bilgi: tam metrik Δχ²(8) = 18.453, p = 0.0181 ; tam skaler (metrikle) Δχ²(8) = 20.149, p = 0.0098
+Bilgi: KD faktörü 2 göstergeli (M9, M11); CT'de M10 yükü serbest bırakılınca CT 2 kısıtlı göstergeyle kalır.

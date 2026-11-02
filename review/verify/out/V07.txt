@@ -1,0 +1,8 @@
+Koyu tema                                    #00E5FF camgöbeği  zemin #070B10 : 12.83:1  GEÇER
+Koyu tema                                    #FFB300 kehribar     zemin #070B10 : 10.99:1  GEÇER
+Açık tema (şartnamedeki vurgular aynen)   #00E5FF camgöbeği  zemin #FFFFFF :  1.54:1  KALIR
+Açık tema (şartnamedeki vurgular aynen)   #FFB300 kehribar     zemin #FFFFFF :  1.79:1  KALIR
+Açık tema (önerilen koyulaştırılmış vurgu) #00707F camgöbeği  zemin #FFFFFF :  5.79:1  GEÇER
+Açık tema (önerilen koyulaştırılmış vurgu) #8A5A00 kehribar     zemin #FFFFFF :  5.93:1  GEÇER
+Açık tema (önerilen yüzey)               #00707F camgöbeği  zemin #F4F7FA :  5.39:1  GEÇER
+Açık tema (önerilen yüzey)               #8A5A00 kehribar     zemin #F4F7FA :  5.51:1  GEÇER

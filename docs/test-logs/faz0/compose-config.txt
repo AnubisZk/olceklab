@@ -1,0 +1,5 @@
+# docker compose config — 2026-11-02T19:40:50Z
+geçerli
+ai-gateway
+engine
+web

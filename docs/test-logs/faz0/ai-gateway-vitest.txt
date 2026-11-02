@@ -1,0 +1,30 @@
+# ai-gateway — 2026-11-02T19:40:47Z
+
+> olceklab-ai-gateway@0.0.0 typecheck
+> tsc --noEmit -p tsconfig.json
+
+typecheck çıkış: 0
+
+ RUN  v5.1.0 /home/claude/olceklab/ai-gateway
+
+ ✓ tests/gateway.test.ts > yapılandırma > varsayılan sağlayıcı none 3ms
+ ✓ tests/gateway.test.ts > yapılandırma > geçersiz sağlayıcı reddedilir 1ms
+ ✓ tests/gateway.test.ts > yapılandırma > local için model adı zorunlu; uydurulmaz 1ms
+ ✓ tests/gateway.test.ts > yapılandırma > evren için belgelenmemiş değerlere varsayılan atanmaz 1ms
+ ✓ tests/gateway.test.ts > uç noktalar > GET /health sağlayıcıyı bildirir 57ms
+ ✓ tests/gateway.test.ts > uç noktalar > none modunda yorum isteği 503 ai_disabled döner ve dış istek yapılmaz 6ms
+ ✓ tests/gateway.test.ts > uç noktalar > local sağlayıcısı Faz 0'da 501 döner ve dış istek yapmaz 4ms
+ ✓ tests/gateway.test.ts > uç noktalar > evren sağlayıcısı Faz 0'da 501 döner ve dış istek yapmaz 3ms
+ ✓ tests/gateway.test.ts > uç noktalar > bilinmeyen yol standart hata biçimiyle 404 döner 3ms
+ ✓ tests/gateway.test.ts > uç noktalar > CORS yalnızca izin verilen kaynağa açık 4ms
+ ✓ tests/gateway.test.ts > kaynak kod denetimi > Faz 0 sağlayıcıları ağ kütüphanesi içe aktarmaz ve fetch çağırmaz 1ms
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  22:40:49
+   Duration  471ms (import 40%, tests 34%, transform 21%, worker 5%)
+
+vitest çıkış: 0
+> tsc -p tsconfig.build.json
+
+build çıkış: 0

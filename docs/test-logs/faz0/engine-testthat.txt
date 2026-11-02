@@ -1,0 +1,22 @@
+# R motoru — 2026-11-02T19:40:34Z
+
+
+
+
+
+
+
+
+Duration: 3.5 s
+
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 129 ]
+çıkış kodu: 0
+               dosya beklenti başarısız atlanan hata
+          test-api.R       23         0       0    0
+         test-cors.R        2         0       0    0
+       test-errors.R       19         0       0    0
+         test-json.R       14         0       0    0
+     test-packages.R       15         0       0    0
+ test-source-files.R       48         0       0    0
+     test-versions.R        8         0       0    0
+TOPLAM: 129 beklenti, 25 test bloğu, 0 başarısız

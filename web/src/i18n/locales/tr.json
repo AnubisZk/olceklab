@@ -1,0 +1,124 @@
+{
+  "app": {
+    "name": "ÖlçekLab",
+    "tagline": "Ölçek geliştirme ve uyarlama analiz platformu",
+    "skipToContent": "İçeriğe geç",
+    "mainNav": "Ana gezinme"
+  },
+  "nav": {
+    "start": "Başlangıç",
+    "data": "Veri",
+    "items": "Madde analizi",
+    "factorNumber": "Faktör sayısı",
+    "efa": "AFA",
+    "cfa": "DFA",
+    "reliability": "Güvenirlik ve geçerlik",
+    "invariance": "Değişmezlik",
+    "simulation": "Simülasyon",
+    "report": "Rapor",
+    "settings": "Ayarlar"
+  },
+  "pages": {
+    "start": {
+      "title": "Başlangıç",
+      "description": "Yeni bir proje başlatın, bir projeyi içe aktarın ya da örnek veriyle deneyin."
+    },
+    "data": {
+      "title": "Veri",
+      "description": "Dosya yükleme, sütun rolleri, temizleme kuralları ve temizleme özeti."
+    },
+    "items": {
+      "title": "Madde analizi ve uygunluk",
+      "description": "Betimsel istatistikler, madde-toplam korelasyonları, KMO, Bartlett ve Mardia testleri."
+    },
+    "factorNumber": {
+      "title": "Faktör sayısı",
+      "description": "Paralel analiz, Velicer MAP testi ve scree grafiği."
+    },
+    "efa": {
+      "title": "Açımlayıcı faktör analizi",
+      "description": "Kestirim ve döndürme seçenekleriyle örüntü katsayıları ve ortak varyanslar."
+    },
+    "cfa": {
+      "title": "Doğrulayıcı faktör analizi",
+      "description": "Model kurucu, uyum indeksleri, rakip model karşılaştırması ve yol şeması."
+    },
+    "reliability": {
+      "title": "Güvenirlik ve geçerlik",
+      "description": "Alfa, omega/CR, AVE ve HTMT."
+    },
+    "invariance": {
+      "title": "Ölçme değişmezliği",
+      "description": "Gruplar arası adım adım değişmezlik, kısmi değişmezlik sihirbazı ve gizil ortalamalar."
+    },
+    "simulation": {
+      "title": "Monte Carlo simülasyonu",
+      "description": "Popülasyon modeli, koşul ızgarası, iş takibi ve örneklem büyüklüğü önerisi."
+    },
+    "report": {
+      "title": "Rapor",
+      "description": "APA 7 tabloları, Word ve CSV dışa aktarma."
+    },
+    "settings": {
+      "title": "Ayarlar",
+      "description": "Dil, tema, yapay zekâ sağlayıcısı ve gizlilik bildirimi."
+    },
+    "notFound": {
+      "title": "Sayfa bulunamadı",
+      "description": "Aradığınız sayfa yok.",
+      "back": "Başlangıca dön"
+    }
+  },
+  "phase": {
+    "badge": "Faz {{phase}}",
+    "placeholder": "Bu sayfa Faz {{phase}} kapsamında etkinleşecek. Şu anda hiçbir analiz çalıştırılmaz ve hiçbir sonuç gösterilmez."
+  },
+  "start": {
+    "newProject": "Yeni proje",
+    "importProject": "Projeyi içe aktar",
+    "tryExample": "Örnek veriyle dene",
+    "actionsPhase": "Bu düğmeler Faz 1'de etkinleşir."
+  },
+  "engine": {
+    "title": "R analiz motoru",
+    "loading": "Motora bağlanılıyor…",
+    "ok": "Çalışıyor",
+    "error": "Bağlantı kurulamadı",
+    "errorCode": "Hata kodu",
+    "retry": "Yeniden dene",
+    "rVersion": "R sürümü",
+    "package": "Paket",
+    "version": "Sürüm",
+    "missing": "Eksik paketler",
+    "rng": "RNG türü",
+    "source": "Kaynak: GET /versions (R motoru)"
+  },
+  "theme": {
+    "label": "Tema",
+    "dark": "Koyu",
+    "light": "Açık",
+    "toggle": "Temayı değiştir"
+  },
+  "language": {
+    "label": "Dil",
+    "tr": "Türkçe",
+    "en": "English"
+  },
+  "settings": {
+    "decimal": "Ondalık biçimi",
+    "decimalNote": "Sayılar R motorunda biçimlenir; seçenek Faz 1'de etkinleşir.",
+    "ai": "Yapay zekâ sağlayıcısı",
+    "aiUnavailable": "Ağ geçidine ulaşılamadı",
+    "mode": "Çalışma modu",
+    "modeLocal": "Yerel (çevrimdışı)",
+    "modeOnline": "Çevrim içi",
+    "privacyTitle": "Gizlilik bildirimi (taslak)",
+    "privacy1": "Yüklenen veriler diske kalıcı olarak yazılmaz; yalnızca oturum belleğinde işlenir.",
+    "privacy2": "Oturum belleği 60 dakika işlem yapılmadığında silinir.",
+    "privacy3": "Öğrenci verisi ad, numara ya da T.C. kimlik numarası içermemelidir.",
+    "privacy4": "Yapay zekâya varsayılan olarak ham veri değil, yalnızca sonuç özetleri gönderilir."
+  },
+  "simulation": {
+    "banner": "SİMÜLASYON — sentetik veri; ölçeğin geçerliğine kanıt değildir"
+  }
+}

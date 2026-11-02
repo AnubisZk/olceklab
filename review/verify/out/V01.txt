@@ -1,0 +1,40 @@
+R: R version 4.4.3 (2025-02-28) | lavaan: 0.7.2 
+
+== (a) HS1939, ML: lavaan belgesindeki bilinen uyum değerleri ==
+ chisq     df pvalue    cfi    tli  rmsea   srmr 
+85.306 24.000  0.000  0.931  0.896  0.092  0.065 
+
+== (b) Bollen–Stine p değerinin konumu ==
+lavInspect(fit,'test') ögeleri: standard, bollen.stine 
+stat=85.306 df=24 pvalue=0.0000 boot.larger=0 boot.length=200
+p = boot.larger/boot.length ? TRUE 
+(b+1)/(B+1) (Davison & Hinkley, 1997): 0.005 
+fitMeasures içinde 'bollen' geçen adlar:  
+
+== (c) Tekrarlanabilirlik: set.seed ve iseed ==
+set.seed(1) iki kez -> aynı p: TRUE 
+[1] 0.2655087 0.3721239 0.5728534 0.9082078 0.2016819
+iseed = 7 iki kez (arada RNG ilerletildi) -> aynı boot.T: TRUE 
+
+== (d) Kategorik veri (WLSMV) ile Bollen–Stine ==
+HATA: lavaan->lav_bootstrap_internal():  
+   bollen.stine/yuan bootstrap not available for categorical/ordinal data 
+
+== (e) Eksik veri (missing = 'ml') ile Bollen–Stine ==
+HATA: lavaan->lav_bootstrap_internal():  
+   bollen.stine/yuan bootstrap not available for missing data 
+
+== (f) MLR + Bollen–Stine: hangi istatistik bootstrap'lenir? ==
+testler: standard, bollen.stine, yuan.bentler.mplus 
+bollen.stine$stat = 85.306 ; standard$stat = 85.306 ; yuan.bentler.mplus$stat = 81.956
+Warning message:
+lavaan->lav_options_set():  
+   observed.information for ALL test statistics is set to h1. 
+ok 
+
+== (g) likelihood = 'wishart' ile MLR ==
+hata yok; lavInspect(options)$likelihood = wishart 
+
+real	0m14.217s
+user	0m13.773s
+sys	0m0.189s

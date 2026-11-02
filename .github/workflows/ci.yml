@@ -1,0 +1,97 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  engine:
+    name: R motoru (testthat)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: engine
+    env:
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.4.3"
+          use-public-rspm: true
+      - name: Paketleri renv.lock'tan kur
+        run: |
+          Rscript -e "install.packages('renv')"
+          Rscript -e "renv::restore(lockfile = 'renv.lock', library = .libPaths()[1], prompt = FALSE)"
+      - name: testthat
+        run: Rscript tests/testthat.R
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: testthat-results
+          path: engine/test-results/
+
+  web:
+    name: Ön yüz (vitest, Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [24, 26]
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+  ai-gateway:
+    name: Yapay zekâ ağ geçidi (vitest, Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [24, 26]
+    defaults:
+      run:
+        working-directory: ai-gateway
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: ai-gateway/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+  compose:
+    name: docker compose up (üç servis)
+    runs-on: ubuntu-latest
+    needs: [engine, web, ai-gateway]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Derle ve başlat
+        run: docker compose up --build --detach --wait --wait-timeout 900
+      - name: Sağlık denetimleri
+        run: |
+          curl -fsS http://localhost:8000/health
+          curl -fsS http://localhost:8000/versions
+          curl -fsS http://localhost:8787/health
+          curl -fsS http://localhost:5173/ | grep -q '<div id="root">'
+      - name: Günlükler
+        if: failure()
+        run: docker compose logs
+      - name: Kapat
+        if: always()
+        run: docker compose down
