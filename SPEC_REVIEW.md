@@ -2,7 +2,7 @@
 
 - **İncelenen belge:** `SPEC.md` v1.0 (2 Kasım 2026)
 - **İnceleme tarihi:** 2 Kasım 2026
-- **Durum:** Onay bekliyor. Onaylanan maddeler `SPEC.md` v1.1'e işlenecek; onaylanmayanlar v1.0'daki hâliyle kalacak.
+- **Durum:** 2 Kasım 2026'da bütün maddeler toplu olarak onaylandı ve `SPEC.md` v1.1'e işlendi.
 
 ## 0. Bu inceleme nasıl yapıldı
 
