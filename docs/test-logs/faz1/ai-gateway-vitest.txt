@@ -1,0 +1,6 @@
+# ai-gateway — 2026-11-02T21:04:57Z
+> tsc --noEmit -p tsconfig.json
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+build çıkış: 0

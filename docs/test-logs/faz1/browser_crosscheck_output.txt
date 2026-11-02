@@ -1,0 +1,10 @@
+[AYNI] satır sayısı: arayüz 2800, R 2800
+[AYNI] temizleme özeti metni
+[AYNI] madde tablosu ilk satır (A1): r_drop ,143, alpha_drop ,695
+[AYNI] karar metni (motor, aynı ayar ve tohum)
+[AYNI] önerilen bileşen: motor 5, psych::fa.parallel (doğrudan) 5
+[AYNI] PA tablosu ilk satır: gözlenen 5,143, referans %95 1,211
+[AYNI] PA tablosu satır sayısı 25 = madde sayısı 25
+[AYNI] ısı haritası ve scree SVG olarak çizildi
+[AYNI] masaüstü ve telefon genişliğinde yatay kaydırma yok
+Paralel analiz süresi (tarayıcıdan, 200 yineleme, 25 madde, N = 2432): 5.2 sn

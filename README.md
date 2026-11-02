@@ -2,12 +2,14 @@
 
 Ölçek geliştirme ve uyarlama çalışmaları için tekrarlanabilir psikometrik analiz platformu. Bütün istatistiksel hesaplar R motorunda yapılır.
 
-- Teknik şartname: [`SPEC.md`](SPEC.md) (v1.0)
+- Teknik şartname: [`SPEC.md`](SPEC.md) (v1.1)
 - Şartname incelemesi ve v1.1 önerileri: [`SPEC_REVIEW.md`](SPEC_REVIEW.md)
 - Kodlama kuralları: [`AGENTS.md`](AGENTS.md)
 - Sürümler: [`docs/VERSIONS.md`](docs/VERSIONS.md)
 
-**Durum:** Faz 0 (iskelet). Henüz analiz yapılmaz; analiz uç noktaları `501` döndürür.
+**Durum:** Faz 1 tamamlandı: veri yükleme ve temizleme (M1), madde analizi (M2), uygunluk (M3), faktör sayısı ve paralel analiz (M4). Diğer analiz uç noktaları ait oldukları faza kadar `501` döndürür.
+
+Doğrulama kayıtları: [`docs/VALIDATION.md`](docs/VALIDATION.md).
 
 ## Yerel (çevrimdışı) çalıştırma
 
@@ -33,7 +35,12 @@ cd web && npm ci && npm run typecheck && npm test
 
 # Yapay zekâ ağ geçidi
 cd ai-gateway && npm ci && npm run typecheck && npm test
+
+# Uçtan uca (servisler çalışırken)
+cd web && npx playwright install chromium && npx playwright test
 ```
+
+BİDEKÇET regresyon testleri (SPEC §11.3) yalnızca yerelde çalışır; adımlar `docs/VALIDATION.md` dosyasındadır.
 
 ## Klasörler
 

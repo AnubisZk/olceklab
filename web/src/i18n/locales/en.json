@@ -76,8 +76,8 @@
   "start": {
     "newProject": "New project",
     "importProject": "Import project",
-    "tryExample": "Try example data",
-    "actionsPhase": "These buttons are enabled in Phase 1."
+    "tryExample": "Try example data (bfi)",
+    "importPhase": "Project import is enabled in Phase 5."
   },
   "engine": {
     "title": "R analysis engine",
@@ -120,5 +120,127 @@
   },
   "simulation": {
     "banner": "SIMULATION — synthetic data; not evidence of the scale's validity"
+  },
+  "table": {
+    "sort": "Sort"
+  },
+  "result": {
+    "warnings": "Warnings",
+    "downloadScript": "Download the R code for this analysis",
+    "addToReport": "Add this result to the report",
+    "reportPhase": "The report is enabled in Phase 5.",
+    "running": "Running in the R engine…",
+    "needsClean": "Upload a file and run the cleaning step on the Data page first.",
+    "goToData": "Go to the Data page"
+  },
+  "data": {
+    "uploadTitle": "Upload a file",
+    "privacyNotice": "Student data must not contain names, student numbers or national ID numbers. Uploaded data are never written to disk; they are processed in session memory only.",
+    "chooseFile": "Choose file (CSV or XLSX)",
+    "exampleBfi": "Example: bfi (psych)",
+    "exampleHolzinger": "Example: HolzingerSwineford1939 (lavaan)",
+    "formats": "CSV files must be UTF-8; the delimiter may be a semicolon, comma or tab.",
+    "reading": "Reading the file in the R engine…",
+    "another": "Another dataset",
+    "rows": "Rows",
+    "cols": "Columns",
+    "source": "Source",
+    "rolesTitle": "Column roles and item settings",
+    "idDetected": "Columns that may contain identifying information",
+    "idReason": {
+      "name": "column name",
+      "tc_kimlik": "national ID number format",
+      "unique_text": "different text in every row"
+    },
+    "idHeuristic": "This detection is heuristic; it cannot guarantee that every identifying column is found.",
+    "idExclude": "Exclude the suggested columns",
+    "col": {
+      "name": "Column",
+      "type": "Type",
+      "missing": "Missing",
+      "values": "Values",
+      "role": "Role",
+      "min": "Min",
+      "max": "Max",
+      "reverse": "Reverse",
+      "subscale": "Subscale"
+    },
+    "type": {
+      "number": "number",
+      "text": "text"
+    },
+    "role": {
+      "item": "Item",
+      "group": "Group",
+      "id": "ID",
+      "ignore": "Do not use"
+    },
+    "validGroups": "Valid group values (comma-separated)",
+    "observedValues": "seen in the data",
+    "validGroupsHelp": "If left empty, only rows with a missing group value are invalid.",
+    "saveRoles": "Save roles",
+    "rolesSaved": "Saved",
+    "cleanTitle": "Cleaning",
+    "cleanOrder": "Rules are applied in this order. Straight-lining is detected on raw responses, before reverse coding.",
+    "rule": {
+      "invalid_group": "Remove rows with an invalid group value",
+      "out_of_range": "Remove rows with out-of-range or non-integer values",
+      "missing": "Remove rows with missing responses (listwise)",
+      "straightline": "Remove rows giving the same answer to every item (straight-lining)",
+      "reverse": "Reverse-code reverse-keyed items"
+    },
+    "runClean": "Run cleaning",
+    "toItems": "Go to item analysis"
+  },
+  "items": {
+    "itemTitle": "Item analysis",
+    "rThreshold": "Item–total correlation warning threshold",
+    "run": "Run item analysis",
+    "heatmapTitle": "Category distribution (proportion within item)",
+    "heatmapAria": "Heat map of category proportions by item",
+    "suitTitle": "Suitability for factor analysis",
+    "runSuit": "Run suitability tests"
+  },
+  "fn": {
+    "settingsTitle": "Parallel analysis settings",
+    "extraction": "Extraction",
+    "correlation": "Correlation",
+    "reference": "Reference data",
+    "criterion": "Criterion",
+    "fm": "Factoring method (FA)",
+    "n_iter": "Iterations",
+    "quant": "Quantile",
+    "seed": "Seed",
+    "run": "Determine the number of factors",
+    "runningLong": "Running in the R engine; this may take a few minutes depending on the iterations…",
+    "decisionTitle": "Decision support",
+    "decisionNote": "This text is a fixed template; no AI is used. The numbers come from the R engine.",
+    "opt": {
+      "pc": "Principal components",
+      "fa": "Common factors",
+      "both": "Both",
+      "pearson": "Pearson",
+      "polychoric": "Polychoric",
+      "simulated_normal": "Simulated normal data",
+      "resampled_bootstrap": "Column-wise resampling (with replacement)",
+      "permutation": "Column-wise permutation (ÖlçekLab implementation only)",
+      "quantile": "Quantile",
+      "mean": "Mean",
+      "minres": "minres",
+      "ml": "ml",
+      "uls": "uls",
+      "wls": "wls",
+      "gls": "gls",
+      "pa": "pa"
+    },
+    "chart": {
+      "title": "Scree plot: observed and reference eigenvalues",
+      "aria": "Scree plot of observed and reference eigenvalues",
+      "eigenvalue": "Eigenvalue",
+      "pcObserved": "PC observed",
+      "pcReference": "PC reference",
+      "faObserved": "FA observed",
+      "faReference": "FA reference"
+    }
   }
 }

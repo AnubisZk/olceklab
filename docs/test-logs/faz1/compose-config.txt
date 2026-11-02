@@ -1,0 +1,3 @@
+# docker compose config — 2026-11-02T21:05:03Z
+geçerli
+ci.yml geçerli YAML

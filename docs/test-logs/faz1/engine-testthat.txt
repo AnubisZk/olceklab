@@ -1,0 +1,25 @@
+# R motoru — 2026-11-02T21:03:20Z — R 4.4.3, lavaan 0.7-2, psych 2.6.9, semTools 0.5-10
+                   dosya beklenti başarısız atlanan_blok hata uyarı
+     test-api-analyses.R       27         0            0    0     0
+              test-api.R       28         0            0    0     0
+             test-cors.R        2         0            0    0     0
+       test-data-clean.R       69         0            0    0     0
+           test-errors.R       24         0            0    0     0
+    test-factor-number.R       50         0            0    0     0
+           test-format.R       23         0            0    0     0
+    test-item-analysis.R       45         0            0    0     0
+             test-json.R       18         0            0    0     0
+         test-packages.R       15         0            0    0     0
+ test-private-bidekcet.R        2         0            2    0     0
+    test-script-export.R       12         0            0    0     0
+          test-session.R        8         0            0    0     0
+     test-source-files.R       58         0            0    0     0
+      test-suitability.R       14         0            0    0     0
+         test-versions.R        8         0            0    0     0
+
+TOPLAM: 403 beklenti, 97 test bloğu | başarısız 0 | hata 0 | atlanan blok 2 | uyarı 0
+
+Atlanan testler:
+                    file                                                   test
+ test-private-bidekcet.R §11.3 ortaokul: temizleme, alfa, KMO ve paralel analiz
+ test-private-bidekcet.R     §11.3 lise: temizleme, alfa, KMO ve paralel analiz

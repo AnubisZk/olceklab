@@ -11,6 +11,7 @@ import './styles.css';
 import { App } from './App';
 import { initI18n } from './i18n';
 import { ThemeProvider, applyTheme, initialTheme } from './theme/ThemeContext';
+import { DatasetProvider } from './state/DatasetContext';
 
 const theme = initialTheme();
 applyTheme(theme); // ilk boyamadan önce: tema yanıp sönmesin
@@ -23,9 +24,11 @@ initI18n().then((i18n) => {
       <I18nextProvider i18n={i18n}>
         <ThemeProvider initial={theme}>
           <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
+            <DatasetProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </DatasetProvider>
           </QueryClientProvider>
         </ThemeProvider>
       </I18nextProvider>

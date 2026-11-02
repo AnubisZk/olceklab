@@ -76,8 +76,8 @@
   "start": {
     "newProject": "Yeni proje",
     "importProject": "Projeyi içe aktar",
-    "tryExample": "Örnek veriyle dene",
-    "actionsPhase": "Bu düğmeler Faz 1'de etkinleşir."
+    "tryExample": "Örnek veriyle dene (bfi)",
+    "importPhase": "Proje içe aktarma Faz 5'te etkinleşir."
   },
   "engine": {
     "title": "R analiz motoru",
@@ -120,5 +120,127 @@
   },
   "simulation": {
     "banner": "SİMÜLASYON — sentetik veri; ölçeğin geçerliğine kanıt değildir"
+  },
+  "table": {
+    "sort": "Sırala"
+  },
+  "result": {
+    "warnings": "Uyarılar",
+    "downloadScript": "Bu analizin R kodunu indir",
+    "addToReport": "Bu sonucu rapora ekle",
+    "reportPhase": "Rapor Faz 5'te etkinleşir.",
+    "running": "R motorunda çalışıyor…",
+    "needsClean": "Bu analiz için önce Veri sayfasında dosya yükleyip temizleme adımını çalıştırın.",
+    "goToData": "Veri sayfasına git"
+  },
+  "data": {
+    "uploadTitle": "Dosya yükle",
+    "privacyNotice": "Öğrenci verisi ad, numara ya da T.C. kimlik numarası içermemelidir. Yüklenen veri diske yazılmaz; yalnızca oturum belleğinde işlenir.",
+    "chooseFile": "Dosya seç (CSV ya da XLSX)",
+    "exampleBfi": "Örnek: bfi (psych)",
+    "exampleHolzinger": "Örnek: HolzingerSwineford1939 (lavaan)",
+    "formats": "CSV dosyaları UTF-8 olmalı; ayraç noktalı virgül, virgül ya da sekme olabilir.",
+    "reading": "Dosya R motorunda okunuyor…",
+    "another": "Başka bir veri seti",
+    "rows": "Satır",
+    "cols": "Sütun",
+    "source": "Kaynak",
+    "rolesTitle": "Sütun rolleri ve madde ayarları",
+    "idDetected": "Kimlik bilgisi içerebilecek sütunlar",
+    "idReason": {
+      "name": "sütun adı",
+      "tc_kimlik": "T.C. kimlik numarası biçimi",
+      "unique_text": "her satırda farklı metin"
+    },
+    "idHeuristic": "Bu algılama sezgiseldir; kimlik bilgisi taşıyan bütün sütunları bulacağı garanti edilemez.",
+    "idExclude": "Önerilen sütunları analiz dışı bırak",
+    "col": {
+      "name": "Sütun",
+      "type": "Tür",
+      "missing": "Eksik",
+      "values": "Değerler",
+      "role": "Rol",
+      "min": "En küçük",
+      "max": "En büyük",
+      "reverse": "Ters",
+      "subscale": "Alt boyut"
+    },
+    "type": {
+      "number": "sayı",
+      "text": "metin"
+    },
+    "role": {
+      "item": "Madde",
+      "group": "Grup",
+      "id": "Kimlik",
+      "ignore": "Kullanma"
+    },
+    "validGroups": "Geçerli grup değerleri (virgülle ayırın)",
+    "observedValues": "veride görülenler",
+    "validGroupsHelp": "Boş bırakılırsa yalnızca grup değeri eksik olan satırlar geçersiz sayılır.",
+    "saveRoles": "Rolleri kaydet",
+    "rolesSaved": "Kaydedildi",
+    "cleanTitle": "Temizleme",
+    "cleanOrder": "Kurallar bu sırayla uygulanır. Düz yanıt, ters kodlamadan önce ham yanıtlarda aranır.",
+    "rule": {
+      "invalid_group": "Geçersiz grup değeri olan satırları çıkar",
+      "out_of_range": "Aralık dışı ya da tam sayı olmayan değer içeren satırları çıkar",
+      "missing": "Eksik yanıtı olan satırları çıkar (liste bazında)",
+      "straightline": "Bütün maddelere aynı yanıtı veren satırları çıkar (düz yanıt)",
+      "reverse": "Ters maddeleri yeniden kodla"
+    },
+    "runClean": "Temizlemeyi çalıştır",
+    "toItems": "Madde analizine geç"
+  },
+  "items": {
+    "itemTitle": "Madde analizi",
+    "rThreshold": "Madde-toplam korelasyonu uyarı eşiği",
+    "run": "Madde analizini çalıştır",
+    "heatmapTitle": "Kategori dağılımı (madde içi oran)",
+    "heatmapAria": "Maddelere göre kategori oranları ısı haritası",
+    "suitTitle": "Faktör analizine uygunluk",
+    "runSuit": "Uygunluk testlerini çalıştır"
+  },
+  "fn": {
+    "settingsTitle": "Paralel analiz ayarları",
+    "extraction": "Çıkarma",
+    "correlation": "Korelasyon",
+    "reference": "Referans veri",
+    "criterion": "Karar ölçütü",
+    "fm": "Faktör kestirimi (FA)",
+    "n_iter": "Yineleme sayısı",
+    "quant": "Yüzdelik",
+    "seed": "Tohum",
+    "run": "Faktör sayısını belirle",
+    "runningLong": "R motorunda çalışıyor; yineleme sayısına göre birkaç dakika sürebilir…",
+    "decisionTitle": "Karar desteği",
+    "decisionNote": "Bu metin hazır bir şablondur; yapay zekâ kullanılmaz. Sayılar R motorundan gelir.",
+    "opt": {
+      "pc": "Temel bileşenler",
+      "fa": "Ortak faktörler",
+      "both": "İkisi de",
+      "pearson": "Pearson",
+      "polychoric": "Polikorik",
+      "simulated_normal": "Simüle normal veri",
+      "resampled_bootstrap": "Sütun içi yeniden örnekleme (yerine koyarak)",
+      "permutation": "Sütun içi permütasyon (yalnızca ÖlçekLab uygulaması)",
+      "quantile": "Yüzdelik",
+      "mean": "Ortalama",
+      "minres": "minres",
+      "ml": "ml",
+      "uls": "uls",
+      "wls": "wls",
+      "gls": "gls",
+      "pa": "pa"
+    },
+    "chart": {
+      "title": "Scree grafiği: gözlenen ve referans özdeğerler",
+      "aria": "Gözlenen ve referans özdeğerlerin scree grafiği",
+      "eigenvalue": "Özdeğer",
+      "pcObserved": "TB gözlenen",
+      "pcReference": "TB referans",
+      "faObserved": "OF gözlenen",
+      "faReference": "OF referans"
+    }
   }
 }

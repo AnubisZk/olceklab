@@ -117,4 +117,5 @@ test_that("geçersiz ayarlar reddedilir", {
   expect_identical(code(n_iter = 0L), "invalid_setting")
   expect_identical(code(extraction = "pca"), "invalid_setting")
   expect_identical(code(seed = 1.5), "invalid_setting")
+  expect_identical(code(n_iter = ""), "invalid_setting")  # ön yüz boş alanı olduğu gibi gönderir
 })

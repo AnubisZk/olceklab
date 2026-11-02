@@ -1,0 +1,89 @@
+# Web — 2026-11-02T21:04:40Z — Node v24.22.1
+> tsc --noEmit -p tsconfig.json
+
+typecheck çıkış: 0
+ RUN  v5.1.0 /home/claude/olceklab/web
+ ✓ tests/phase1Flow.test.tsx > Faz 1 akışı: veri → temizleme → madde analizi → faktör sayısı > örnek veri önerilen rollerle dolar; kaydedilen gövde R önerisiyle aynı 601ms
+ ✓ tests/phase1Flow.test.tsx > Faz 1 akışı: veri → temizleme → madde analizi → faktör sayısı > temizleme özeti ve tablolar R metinleriyle gösterilir; dil değişince İngilizce metin gelir 349ms
+ ✓ tests/phase1Flow.test.tsx > Faz 1 akışı: veri → temizleme → madde analizi → faktör sayısı > madde analizi: tablo hücreleri R biçimidir, ısı haritası R verisini aynen alır 912ms
+ ✓ tests/phase1Flow.test.tsx > Faz 1 akışı: veri → temizleme → madde analizi → faktör sayısı > faktör sayısı: polikorik seçilince simüle referans kapanır; grafik ve karar metni R çıktısıdır 477ms
+Not implemented: navigation to another Document
+ ✓ tests/phase1Flow.test.tsx > Faz 1 akışı: veri → temizleme → madde analizi → faktör sayısı > "R kodunu indir" R motorunun ürettiği betiği aynen indirir 287ms
+ ✓ tests/phase1Flow.test.tsx > Faz 1 akışı: veri → temizleme → madde analizi → faktör sayısı > tema değişince grafik renkleri tema belirteçlerinden yeniden alınır 301ms
+ ✓ tests/phase1Flow.test.tsx > Faz 1 akışı: veri → temizleme → madde analizi → faktör sayısı > boş sayı alanı varsayılana sessizce dönmez; R doğrulasın diye olduğu gibi gönderilir 358ms
+ ✓ tests/phase1Flow.test.tsx > Faz 1 akışı: veri → temizleme → madde analizi → faktör sayısı > temizleme yapılmadan analiz sayfası analiz çalıştırmaz 17ms
+ ✓ tests/phase1Flow.test.tsx > AGENTS kuralı 10: ön yüz sayı biçimlendirmez > kaynak kodda toFixed / toPrecision / toLocaleString / Intl.NumberFormat yok 24ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > 11 sayfa tanımlı ve yollar benzersiz 4ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > / sayfası Türkçe başlığıyla açılır 183ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /data sayfası Türkçe başlığıyla açılır 37ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /items sayfası Türkçe başlığıyla açılır 501ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /factor-number sayfası Türkçe başlığıyla açılır 321ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /efa sayfası Türkçe başlığıyla açılır 23ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /cfa sayfası Türkçe başlığıyla açılır 21ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /reliability sayfası Türkçe başlığıyla açılır 24ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /invariance sayfası Türkçe başlığıyla açılır 24ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /simulation sayfası Türkçe başlığıyla açılır 25ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /report sayfası Türkçe başlığıyla açılır 20ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > /settings sayfası Türkçe başlığıyla açılır 21ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > henüz uygulanmamış sayfa analiz sonucu göstermez, faz bilgisini gösterir 16ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > simülasyon sayfası kalıcı SİMÜLASYON etiketini taşır (SPEC 9.9) 15ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > bilinmeyen yol "Sayfa bulunamadı" gösterir 16ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > dil düğmesi arayüzü İngilizceye çevirir 86ms
+ ✓ tests/routes.test.tsx > SPEC §9 rotaları > gezinme bağlantıları her sayfaya gider 52ms
+ ✓ tests/rtable.test.tsx > R tablosu > hücrelerde geçerli dilin R metnini gösterir 336ms
+ ✓ tests/rtable.test.tsx > R tablosu > sıralama ham değere göre yapılır, gösterim R metni kalır 132ms
+ ✓ tests/rtable.test.tsx > R tablosu > tablo notu (kaynak satırı) gösterilir 29ms
+ ✓ tests/engineStatus.test.tsx > motor durumu kartı > yalnızca /versions yanıtındaki değerleri gösterir 249ms
+ ✓ tests/engineStatus.test.tsx > motor durumu kartı > motor hata verirse hata kodunu gösterir, hiçbir sürüm ya da tablo göstermez 49ms
+ ✓ tests/engineStatus.test.tsx > motor durumu kartı > ağ hatası network_error olarak gösterilir 29ms
+ ✓ tests/engineStatus.test.tsx > motor durumu kartı > eksik paket varsa uyarı gösterilir 28ms
+ ✓ tests/engineStatus.test.tsx > HTTP istemcisi > standart hata biçimini (SPEC §8) ApiError olarak çözer 1ms
+ ✓ tests/engineStatus.test.tsx > HTTP istemcisi > JSON olmayan yanıtı invalid_json olarak bildirir 1ms
+ ✓ tests/engineStatus.test.tsx > HTTP istemcisi > sayıları değiştirmeden döndürür 1ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > koyu tema şartnamedeki renkleri aynen kullanır (SPEC §4) 3ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > kontrast formülü bilinen değerleri verir 1ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: gövde metni / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: gövde metni / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: gövde metni / kart ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: ikincil metin / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: ikincil metin / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: vurgu / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: vurgu / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: ikinci vurgu / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: ikinci vurgu / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: düğme metni / vurgu ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: hata / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > dark: başarı / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: gövde metni / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: gövde metni / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: gövde metni / kart ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: ikincil metin / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: ikincil metin / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: vurgu / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: vurgu / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: ikinci vurgu / zemin ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: ikinci vurgu / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: düğme metni / vurgu ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: hata / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > light: başarı / yüzey ≥ 4.5:1 0ms
+ ✓ tests/theme.test.tsx > ARES-1 renkleri > şartnamedeki vurgular beyaz zeminde 4.5:1 sağlamaz; bu yüzden açık temada kullanılmaz 1ms
+ ✓ tests/theme.test.tsx > tema uygulama > applyTheme CSS değişkenlerini ve data-theme özniteliğini ayarlar 7ms
+ ✓ tests/theme.test.tsx > tema uygulama > localStorage hata fırlatsa bile tema seçilebilir 3ms
+ ✓ tests/theme.test.tsx > tema uygulama > tema düğmesi temayı değiştirir ve tercihi saklar 223ms
+ ✓ tests/i18n.test.ts > çeviri dosyaları > Türkçe ve İngilizce anahtarlar birebir aynı 4ms
+ ✓ tests/i18n.test.ts > çeviri dosyaları > boş çeviri yok 5ms
+ ✓ tests/i18n.test.ts > çeviri dosyaları > her sayfanın gezinme adı, başlığı ve açıklaması var 1ms
+ ✓ tests/i18n.test.ts > çeviri dosyaları > yer tutucular iki dilde aynı 2ms
+ ✓ tests/i18n.test.ts > çeviri dosyaları > çeviri metinlerinde rakamla yazılmış istatistik değeri yok 2ms
+ ✓ tests/i18n.test.ts > dil ayarı > varsayılan dil Türkçedir ve <html lang> güncellenir 4ms
+ Test Files  6 passed (6)
+      Tests  72 passed (72)
+   Start at  00:04:42
+   Duration  12.69s (tests 52%, environment 33%, import 6%, setup 6%, transform 2%)
+vitest çıkış: 0
+dist/assets/ItemsPage-Cbw_u20n.js                                 3.79 kB │ gzip:   1.53 kB
+dist/assets/FactorNumberPage-DRJuJ3fX.js                          5.41 kB │ gzip:   2.09 kB
+dist/assets/index-CHlM02HD.js                                   435.28 kB │ gzip: 134.69 kB
+dist/assets/NeedsCleanData-BR47bcWw.js                          564.06 kB │ gzip: 190.46 kB
+✓ built in 1.45s
+build çıkış: 0

@@ -1,6 +1,6 @@
 # Kullanılan sürümler
 
-Son güncelleme: 2 Kasım 2026 (Faz 0).
+Son güncelleme: 3 Kasım 2026 (Faz 1).
 
 ## 1. Testlerin gerçekten koştuğu ortam
 
@@ -54,6 +54,10 @@ lavaan, psych, semTools ve GPArotation, CRAN'ın GitHub aynasındaki sürüm eti
 | vitest / jsdom | 5.1.0 / 30.1.3 |
 | @testing-library/react / jest-dom / user-event | 16.3.3 / 7.0.1 / 14.6.8 |
 | @types/react / @types/react-dom | 19.3.0 / 19.3.0 |
+| echarts | 6.1.0 (Faz 1) |
+| @tanstack/react-table | 8.21.3 (Faz 1; 9.x yayımlanmış, ancak kararlı v8 API'si seçildi) |
+| @playwright/test | 1.64.1 (Faz 1; tarayıcı bu ortamda indirilemedi, CI'da koşar) |
+| @types/node | 24.19.2 (Faz 1, yalnızca testler için) |
 
 ### Yapay zekâ ağ geçidi (`ai-gateway/package-lock.json`)
 
