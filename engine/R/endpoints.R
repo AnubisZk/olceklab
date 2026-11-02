@@ -1,12 +1,8 @@
-# SPEC §8'deki API yüzeyi. Faz 3'te M1–M8, /models/preview, /health, /versions ve /analyses/<id>/script çalışır;
+# SPEC §8'deki API yüzeyi. Faz 4'te M1–M9, iş sistemi, /models/preview, /health, /versions ve /analyses/<id>/script çalışır;
 # diğerleri, ait oldukları faz gelene kadar 501 + standart hata biçimi döndürür.
 
 planned_endpoints <- data.frame(
-  method = c("POST", "GET", "POST", "POST", "GET", "GET", "POST"),
-  path = c("/simulations", "/jobs/<id>", "/jobs/<id>/cancel", "/jobs/<id>/resume", "/simulations/<id>/results",
-           "/simulations/<id>/package", "/reports/docx"),
-  module = c("M9", "M9", "M9", "M9", "M9", "M9", "M10"),
-  phase = c(4, 4, 4, 4, 4, 4, 5),
+  method = "POST", path = "/reports/docx", module = "M10", phase = 5,
   stringsAsFactors = FALSE
 )
 

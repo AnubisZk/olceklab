@@ -153,6 +153,66 @@ function(req, res) analysis_endpoint(req, res, "analysis_invariance")
 #* @parser json list(simplifyVector = FALSE)
 function(req, res) analysis_endpoint(req, res, "analysis_invariance_scores")
 
+#* M9: popülasyon tanımını bir DFA sonucundan kur (yalnızca özet parametreler)
+#* @post /simulations/population/from-cfa
+#* @parser json list(simplifyVector = FALSE)
+function(req) {
+  b <- req$body
+  a <- analysis_get(if (is.null(b$analysis_id)) "" else b$analysis_id)
+  ds <- dataset_get(a$dataset_id)
+  shift <- if (is.null(b$shift)) 0 else as.numeric(b$shift)
+  if (is.na(shift) || shift < 0 || shift > 0.3) api_stop("invalid_setting", "Duyarlılık kaydırması 0 ile ,30 arasında olmalıdır.", 422L)
+  population_from_cfa(a$record, ds$clean$data, ds$config, shift)
+}
+
+#* M9: süre tahmini (en büyük N'li koşulda iki tekrar)
+#* @post /simulations/estimate
+#* @parser json list(simplifyVector = FALSE)
+function(req, res) run_in_worker(res, "sim_estimate", list(body = req$body))
+
+#* M9: simülasyon işi başlat → job_id
+#* @post /simulations
+#* @parser json list(simplifyVector = FALSE)
+function(req) {
+  id <- sim_job_create(req$body)
+  sim_job_schedule(id)
+  sim_job_status(id)
+}
+
+#* İş durumu: ilerleme ve tahmini kalan süre
+#* @get /jobs/<id>
+function(id) sim_job_status(id)
+
+#* İşi iptal et (yazılmış parçalar korunur)
+#* @post /jobs/<id>/cancel
+function(id) sim_job_cancel(id)
+
+#* İşi kaldığı yerden sürdür
+#* @post /jobs/<id>/resume
+function(id) sim_job_resume(id)
+
+#* Simülasyon sonuçları (iş tamamlanınca)
+#* @get /simulations/<id>/results
+function(id, res) {
+  j <- sim_job_get(id)
+  if (!is.null(j$results)) return(j$results)
+  st <- sim_job_status(id)
+  if (st$status != "done") api_stop("job_not_done", "Simülasyon henüz tamamlanmadı.", 409L)
+  run_in_worker(res, "sim_results_for", list(dir = j$dir, job_id = id), then = function(rec) {
+    .olceklab$jobs[[id]]$results <- rec
+    rec
+  })
+}
+
+#* Bağımsız R paketi (zip)
+#* @get /simulations/<id>/package
+#* @serializer contentType list(type = "application/zip")
+function(id, res) {
+  j <- sim_job_get(id)
+  res$setHeader("Content-Disposition", "attachment; filename=\"olceklab_simulasyon.zip\"")
+  sim_export_package(readRDS(file.path(j$dir, "spec.rds")), id)
+}
+
 #* Model kurucu önizlemesi: lavaan sözdizimi ve yapı (analiz yapmaz). Model verilmezse M1 alt boyutlarından varsayılan model.
 #* @post /models/preview
 #* @parser json list(simplifyVector = FALSE)

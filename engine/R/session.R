@@ -5,6 +5,7 @@
 .olceklab$datasets <- list()
 .olceklab$analyses <- list()
 .olceklab$workers <- 0L
+.olceklab$jobs <- list()
 
 session_ttl_minutes <- function() {
   v <- suppressWarnings(as.numeric(Sys.getenv("SESSION_TTL_MINUTES", "60")))
@@ -38,7 +39,7 @@ dataset_update <- function(id, ds) {
 analysis_store <- function(record, dataset_id) {
   .olceklab$analyses[[record$analysis_id]] <- list(
     dataset_id = dataset_id, module = record$module, r_script = record$r_script,
-    created = Sys.time()
+    record = record, created = Sys.time()
   )
   invisible(record$analysis_id)
 }
