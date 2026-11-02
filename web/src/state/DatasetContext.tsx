@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useMemo, useState, type ReactNo
 import type { AnalysisRecord, CleanResults, DatasetOverview, ModelSpec, RolesBody } from '../api/types';
 
 // Veri seti durumu yalnızca bellekte tutulur; tarayıcı deposuna yazılmaz (SPEC §10).
-export type AnalysisKey = 'item' | 'suitability' | 'factorNumber' | 'efa' | 'cfa' | 'cfaCompare' | 'reliability';
+export type AnalysisKey = 'item' | 'suitability' | 'factorNumber' | 'efa' | 'cfa' | 'cfaCompare' | 'reliability' | 'invariance' | 'invarianceScores';
 
 // DFA ve güvenirlik aynı modeli paylaşır; karşılaştırma için kaydedilen modeller ayrıca tutulur.
 export interface SavedModel { name: string; model: ModelSpec }

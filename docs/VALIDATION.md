@@ -26,7 +26,13 @@ Her referans karşılaştırmasının sonucu, tarihi ve ortamı burada tutulur.
 | 2026-11-03 | 2 | M12: M5–M7 betikleri ayrı süreçte aynı sayıları verir (Bollen–Stine p dâhil) | Geçti | `test-script-export.R` |
 | 2026-11-03 | 2 | Tarayıcıda görünen metinler ↔ bağımsız R hesabı (HS1939; AFA, DFA, Bollen–Stine, karşılaştırma, güvenirlik) | 38/38 aynı | `test-logs/faz2/browser_crosscheck_output.txt` |
 | 2026-11-03 | 2 | V10: semTools 0.5-9 ↔ 0.5-10 (htmt, compRelSEM, AVE, measEq.syntax) | 21/21 birebir aynı | `review/verify/out/V10_semtools_059_vs_0510.txt` |
-| — | 3 | §11.3 değişmezlik satırları | henüz yok | — |
+| 2026-11-03 | 3 | §11.3 düzeneği (değişmezlik) ↔ referans betiğin `cf`, `me`, `sc`, `mk`, `sk` modelleri ve `anova` sonuçları, sentetik BİDEKÇET verisi (birleşik dosya platformun yükleme yolundan geçer) | χ², sd, iki SRMR, kısmi metrik ve kısmi skaler Δχ² aynı (1e-10) | `test-bidekcet-harness.R` |
+| ⏳ | 3 | §11.3 değişmezlik ve kısmi değişmezlik gerçek verisi (18 ölçüt) | **Belge sahibinin makinesinde koşulacak** | `test-private-bidekcet.R` (burada atlandı) |
+| 2026-11-03 | 3 | M8 sürekli: her adım ve ardışık lavTestLRT (ML, MLR SB2001), group.partial, ΔSRMR (Bentler ortalamasız) | `lavaan::cfa` ile birebir | `test-invariance.R` |
+| 2026-11-03 | 3 | M8 kategorik: measEq.syntax (theta, Wu–Estabrook) adımları, Satorra (2000); üç kategoride eşik adımının atlanması; ikili maddelerin reddi | Birebir | `test-invariance.R` |
+| 2026-11-03 | 3 | Gizil ortalamalar: κ skaler modelle aynı; d (Hancock birleşik SS) elle hesapla aynı; gizil ortalama modeli skalerle eşdeğer (χ² farkı ≤ 1e-6 denetimi motorda) | Geçti | `test-invariance.R` |
+| 2026-11-03 | 3 | Skor testleri: lavTestScore ile aynı χ²; parTable ile okunur parametre adları | Birebir | `test-invariance.R` |
+| 2026-11-03 | 3 | Tarayıcı (HS1939, okul): tam ve kısmi zincir, gizil ortalamalar, skor testi ↔ bağımsız R | 38/38 aynı | `test-logs/faz3/browser_crosscheck_output.txt` |
 | — | 4 | §11.4 referans simülasyon | henüz yok (paket bekleniyor) | — |
 
 ### §11.3 testlerini yerelde çalıştırma

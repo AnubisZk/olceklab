@@ -60,3 +60,24 @@ Pay (gerçek puan varyansı) iki seçenekte de aynıdır ve modelden gelir. Fark
   her çağrıda açıkça verilir. Ters maddeler temizlemede yeniden kodlanmamışsa `absolute = FALSE` ile sonuç tanımsız
   (NaN) olabilir; uyarı verilir.
 - Eşikler (ayarlanabilir): ω ≥ ,70, AVE ≥ ,50 (Fornell ve Larcker, 1981); HTMT < ,85 (Henseler vd., 2015; Roemer vd., 2021).
+
+# Ölçme değişmezliği (M8, Faz 3)
+
+- **Sürekli yaklaşım:** `lavaan::cfa(model, group, group.label, group.equal, group.partial, estimator, likelihood, std.lv)`.
+  Adımlar: biçimsel → metrik (`loadings`) → skaler (+ `intercepts`) → isteğe bağlı katı (+ `residuals`).
+  Grup sırası `group.label` ile açıkça verilir; ilk grup referanstır (Veri sayfasındaki geçerli değer sırası ya da seçilen referans).
+- **Kategorik yaklaşım:** `semTools::measEq.syntax(parameterization = "theta", ID.fac = "std.lv", ID.cat = "Wu.Estabrook.2016")`
+  ile her adımın sözdizimi üretilir ve `lavaan::cfa(..., estimator = "WLSMV", parameterization = "theta")` ile kestirilir.
+  Adımlar: biçimsel → eşikler → + yükler → + kesişimler → + artık varyanslar. Bütün maddeler üç kategoriliyse eşik adımı
+  biçimselle eşdeğerdir ve atlanır; ikili madde içeren ölçeklerde kategorik değişmezlik v1'de kapalıdır.
+- **Kararlar:** Δ = kısıtlı − daha az kısıtlı. ΔCFI ≥ −,01; ΔRMSEA ≤ ,015; ΔSRMR ≤ ,030 (yük adımı) / ≤ ,010 (diğer adımlar);
+  Δχ² p ≥ ,05. Her ölçüt ayrı sütundadır; isteğe bağlı birleşik kural ΔCFI VE/VEYA ΔRMSEA'dır. MLR ve WLSMV'de Δ'lar
+  ölçeklenmiş indekslerle hesaplanır. ΔSRMR varsayılan olarak Bentler'in ortalamasız SRMR'siyle hesaplanır (§11.3).
+- **Kısmi değişmezlik:** `lavTestScore(univariate = TRUE)` skor testleri; parametre adları `parTable` ile okunur. Sıralama
+  ML'de χ²'ye, MLR/WLSMV'de ölçeklenmiş χ²'ye göredir. Serbest bırakma kullanıcının onayıyla yapılır ve bütün gruplarda
+  geçerlidir (`group.partial`). Yükü serbest bırakılan maddenin kesişimi varsayılan olarak kısıtlı kalır.
+- **Gizil ortalamalar:** her faktörde yükü ve kesişimi (kategorikte eşikleri) değişmez en az iki madde varsa hesaplanır.
+  Skaler modelle eşdeğer bir model kurulur: referans grupta ortalama 0, varyans 1; diğer gruplarda ortalama κ ve varyans ψ
+  etiketlenir ve `d := κ / sqrt(((n₁ − 1) · 1 + (n₂ − 1) · ψ) / (n₁ + n₂ − 2))` (Hancock, 2001) ya da `d := κ / 1`
+  (referans grup SS'si) tanımlanır. SH ve güven aralığı lavaan'ın delta yönteminden gelir. Motor iki modelin χ²'sinin
+  aynı olduğunu denetler.

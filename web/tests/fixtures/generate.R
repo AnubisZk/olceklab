@@ -51,3 +51,12 @@ rel <- analysis_reliability(hcl$clean$data, hcfg, list(model = m3), hd$hash)
 rel$r_script <- build_r_script("reliability", hd, rel$settings, rel$seed, rel$results)
 write_fx(rel, "holz_reliability.json")
 cat("Faz 2 fikstürleri yazıldı\n")
+
+# --- Faz 3 fikstürleri ---------------------------------------------------------------
+inv <- analysis_invariance(hcl$clean$data, hcfg, list(model = m3), hd$hash)
+inv$r_script <- build_r_script("invariance", hd, inv$settings, inv$seed, inv$results)
+write_fx(inv, "holz_invariance.json")
+invs <- analysis_invariance_scores(hcl$clean$data, hcfg, list(model = m3, step = "scalar"), hd$hash)
+invs$r_script <- build_r_script("invariance_scores", hd, invs$settings, invs$seed, invs$results)
+write_fx(invs, "holz_scores.json")
+cat("Faz 3 fikstürleri yazıldı\n")

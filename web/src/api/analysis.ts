@@ -2,7 +2,8 @@ import { config } from '../config';
 import { request } from './client';
 import type {
   AnalysisRecord, CfaSettings, CleanResults, CleanRules, CompareSettings, DatasetOverview, EfaResults, EfaSettings,
-  FactorNumberResults, FactorNumberSettings, ModelPreview, ModelSpec, ReliabilitySettings, RolesBody,
+  FactorNumberResults, FactorNumberSettings, InvarianceResults, InvarianceSettings, ModelPreview, ModelSpec, ReliabilitySettings,
+  RolesBody, ScoreTestResults,
 } from './types';
 
 const engine = config.engineUrl;
@@ -46,3 +47,7 @@ export const runCfaCompare = (id: string, settings: CompareSettings) =>
   post<AnalysisRecord>('/analyses/cfa/compare', { dataset_id: id, settings });
 export const runReliability = (id: string, settings: ReliabilitySettings) =>
   post<AnalysisRecord>('/analyses/reliability', { dataset_id: id, settings });
+export const runInvariance = (id: string, settings: InvarianceSettings) =>
+  post<AnalysisRecord<InvarianceResults>>('/analyses/invariance', { dataset_id: id, settings });
+export const runInvarianceScores = (id: string, settings: InvarianceSettings & { step: string }) =>
+  post<AnalysisRecord<ScoreTestResults>>('/analyses/invariance/score-tests', { dataset_id: id, settings });

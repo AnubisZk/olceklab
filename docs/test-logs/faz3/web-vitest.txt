@@ -1,0 +1,74 @@
+
+ RUN  v5.1.0 /home/claude/olceklab/web
+
+Not implemented: navigation to another Document
+
+ Test Files  8 passed (8)
+      Tests  84 passed (84)
+   Start at  01:35:24
+   Duration  24.00s (tests 64%, environment 25%, import 5%, setup 4%, transform 2%)
+
+    Isolate  8 workers spawned · ~909ms startup each (spawn + environment, per file)
+             at least ~6.36s faster with isolate: false — reuses workers across files instead of one per file
+
+
+> olceklab-web@0.0.0 typecheck
+> tsc --noEmit -p tsconfig.json
+
+
+> olceklab-web@0.0.0 build
+> vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 793 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                   0.61 kB │ gzip:   0.34 kB
+dist/assets/jetbrains-mono-greek-400-normal-C190GLew.woff2        4.22 kB
+dist/assets/jetbrains-mono-greek-700-normal-C6CZE3T8.woff2        4.30 kB
+dist/assets/jetbrains-mono-greek-600-normal-H7WoG9Et.woff2        4.30 kB
+dist/assets/jetbrains-mono-cyrillic-400-normal-BEIGL1Tu.woff2     5.32 kB
+dist/assets/jetbrains-mono-cyrillic-700-normal-BWTpRfYl.woff2     5.33 kB
+dist/assets/jetbrains-mono-vietnamese-400-normal-CqNFfHCs.woff    5.37 kB
+dist/assets/jetbrains-mono-cyrillic-600-normal-EVf6-Yzo.woff2     5.38 kB
+dist/assets/jetbrains-mono-vietnamese-700-normal-BDLVIk2r.woff    5.45 kB
+dist/assets/jetbrains-mono-vietnamese-600-normal-OWROknRo.woff    5.47 kB
+dist/assets/jetbrains-mono-greek-400-normal-B9oWc5Lo.woff         5.66 kB
+dist/assets/jetbrains-mono-greek-700-normal-DEigVDxa.woff         5.69 kB
+dist/assets/jetbrains-mono-greek-600-normal-mc2nkWzM.woff         5.70 kB
+dist/assets/jetbrains-mono-cyrillic-400-normal-ugxPyKxw.woff      6.97 kB
+dist/assets/jetbrains-mono-cyrillic-700-normal-CEoEElIJ.woff      7.01 kB
+dist/assets/jetbrains-mono-cyrillic-600-normal-8K4wrrwR.woff      7.02 kB
+dist/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2    7.33 kB
+dist/assets/jetbrains-mono-latin-ext-700-normal-CZipNAKV.woff2    7.47 kB
+dist/assets/jetbrains-mono-latin-ext-600-normal-BfB_LPfz.woff2    7.51 kB
+dist/assets/jetbrains-mono-latin-ext-400-normal-fXTG6kC5.woff    10.12 kB
+dist/assets/jetbrains-mono-latin-ext-700-normal-CxPITLHs.woff    10.30 kB
+dist/assets/jetbrains-mono-latin-ext-600-normal-DObL3zCW.woff    10.31 kB
+dist/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2       21.16 kB
+dist/assets/jetbrains-mono-latin-600-normal-C8RAYTDA.woff2       21.86 kB
+dist/assets/jetbrains-mono-latin-700-normal-BYuf6tUa.woff2       21.90 kB
+dist/assets/jetbrains-mono-latin-400-normal-6-qcROiO.woff        27.49 kB
+dist/assets/jetbrains-mono-latin-600-normal-BfsvjouI.woff        28.18 kB
+dist/assets/jetbrains-mono-latin-700-normal-D3wTyLJW.woff        28.20 kB
+dist/assets/index-BbV36rlW.css                                   43.54 kB │ gzip:  23.44 kB
+dist/assets/NeedsCleanData-B47N9L46.js                            0.29 kB │ gzip:   0.22 kB
+dist/assets/rolldown-runtime-XKyaHtl9.js                          0.72 kB │ gzip:   0.42 kB
+dist/assets/Fields-V9GZdyQr.js                                    1.14 kB │ gzip:   0.45 kB
+dist/assets/ReliabilityPage-CQi-lEFw.js                           2.86 kB │ gzip:   1.19 kB
+dist/assets/ItemsPage-Df0ju_Sh.js                                 3.91 kB │ gzip:   1.55 kB
+dist/assets/FactorNumberPage-znR7tl7j.js                          5.52 kB │ gzip:   2.15 kB
+dist/assets/EfaPage-CoF5pxcE.js                                   6.25 kB │ gzip:   2.26 kB
+dist/assets/InvariancePage-DFZQfClT.js                            8.81 kB │ gzip:   2.84 kB
+dist/assets/CfaPage-C644129r.js                                  14.23 kB │ gzip:   4.55 kB
+dist/assets/RTable-CCF7fS54.js                                  167.58 kB │ gzip:  52.16 kB
+dist/assets/index-BLbzgACV.js                                   283.50 kB │ gzip:  89.38 kB
+dist/assets/EChart-CcT_q9Bi.js                                  563.81 kB │ gzip: 190.39 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1.66s

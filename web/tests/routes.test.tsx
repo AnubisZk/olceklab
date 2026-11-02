@@ -26,8 +26,8 @@ describe('SPEC §9 rotaları', () => {
   }
 
   it('henüz uygulanmamış sayfa analiz sonucu göstermez, faz bilgisini gösterir', async () => {
-    await renderApp('/invariance');
-    expect(screen.getByText(/Faz 3 kapsamında etkinleşecek/)).toBeInTheDocument();
+    await renderApp('/report');
+    expect(screen.getByText(/Faz 5 kapsamında etkinleşecek/)).toBeInTheDocument();
     expect(screen.queryByRole('table')).not.toBeInTheDocument();
   });
 

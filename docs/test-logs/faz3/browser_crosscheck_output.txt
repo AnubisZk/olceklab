@@ -1,0 +1,41 @@
+                           olcut  arayuz bagimsiz_R sonuc
+                  full adım 1 χ² 115,084    115,084  AYNI
+                 full adım 1 CFI    ,924       ,924  AYNI
+      full adım 1 SRMR (Bentler)   ,0743      ,0743  AYNI
+                  full adım 2 χ² 123,222    123,222  AYNI
+                 full adım 2 CFI    ,921       ,921  AYNI
+      full adım 2 SRMR (Bentler)   ,0785      ,0785  AYNI
+                  full adım 3 χ² 162,762    162,762  AYNI
+                 full adım 3 CFI    ,883       ,883  AYNI
+      full adım 3 SRMR (Bentler)   ,0795      ,0795  AYNI
+                 full metrik Δχ²    8,14       8,14  AYNI
+                 full skaler Δχ²   39,54      39,54  AYNI
+                full skaler ΔCFI   −,038      −,038  AYNI
+                   full κ visual  −0,165     −0,165  AYNI
+                   full d visual  −0,170     −0,170  AYNI
+                  full κ textual   0,613      0,613  AYNI
+                  full d textual   0,614      0,614  AYNI
+                    full κ speed  −0,311     −0,311  AYNI
+                    full d speed  −0,276     −0,276  AYNI
+               partial adım 1 χ² 115,084    115,084  AYNI
+              partial adım 1 CFI    ,924       ,924  AYNI
+   partial adım 1 SRMR (Bentler)   ,0743      ,0743  AYNI
+               partial adım 2 χ² 123,222    123,222  AYNI
+              partial adım 2 CFI    ,921       ,921  AYNI
+   partial adım 2 SRMR (Bentler)   ,0785      ,0785  AYNI
+               partial adım 3 χ² 143,492    143,492  AYNI
+              partial adım 3 CFI    ,904       ,904  AYNI
+   partial adım 3 SRMR (Bentler)   ,0791      ,0791  AYNI
+              partial metrik Δχ²    8,14       8,14  AYNI
+              partial skaler Δχ²   20,27      20,27  AYNI
+             partial skaler ΔCFI   −,017      −,017  AYNI
+                partial κ visual   0,057      0,057  AYNI
+                partial d visual   0,058      0,058  AYNI
+               partial κ textual   0,613      0,613  AYNI
+               partial d textual   0,614      0,614  AYNI
+                 partial κ speed  −0,311     −0,311  AYNI
+                 partial d speed  −0,276     −0,276  AYNI
+ en büyük skor testi parametresi    x3~1       x3~1  AYNI
+          en büyük skor testi χ²  19,072     19,072  AYNI
+
+38/38 AYNI; mobil yatay kaydırma: FALSE

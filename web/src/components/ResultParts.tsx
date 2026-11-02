@@ -47,6 +47,7 @@ export function modulePackages(module: string): string[] {
   if (module === 'cfa_compare') return ['lavaan', 'semTools'];
   if (module === 'reliability') return ['lavaan', 'semTools', 'psych'];
   if (module === 'efa') return ['psych', 'GPArotation'];
+  if (module === 'invariance' || module === 'invariance_scores') return ['lavaan', 'semTools'];
   return ['psych'];
 }
 

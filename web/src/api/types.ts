@@ -208,3 +208,30 @@ export interface PathData {
   correlations: (PathLabel & { a: string; b: string })[];
   covariances: (PathLabel & { a: string; b: string })[];
 }
+
+// --- Faz 3: ölçme değişmezliği -----------------------------------------------------
+export interface InvarianceSettings {
+  model: ModelSpec;
+  approach: 'continuous' | 'categorical';
+  estimator: Estimator;
+  likelihood: 'normal' | 'wishart';
+  std_lv: boolean;
+  include_strict: boolean;
+  reference_group: string | null;
+  srmr_type: 'bentler_nomean' | 'srmr';
+  rule: 'none' | 'and' | 'or';
+  d_sd: 'pooled' | 'reference';
+  partial: string[];
+  criteria: { cfi: number; rmsea: number; srmr_load: number; srmr_int: number; alpha: number };
+  seed: number;
+}
+export interface InvarianceResults {
+  groups: string[];
+  steps: string[];
+  decisions: { cfi_ok: boolean; rmsea_ok: boolean; srmr_ok: boolean; chisq_ok: boolean }[];
+  latent_means_available: boolean;
+}
+export interface ScoreTestResults {
+  step: string;
+  tests: { parameter: string; groups: string; free: string; x2: number }[];
+}
