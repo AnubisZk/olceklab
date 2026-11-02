@@ -112,3 +112,25 @@ test_that("M7 betiği aynı α, ω, AVE ve HTMT değerlerini verir", {
   expect_identical(as.numeric(out$ave[["A"]]), rec$results$ave$A)
   expect_identical(unclass(out$htmt)["A", "C"], rec$results$htmt$A$C)
 })
+
+# --- Faz 3: M8 ------------------------------------------------------------------
+
+test_that("M8 sürekli betik (ML, kısmi, gizil ortalamalar) ayrı süreçte aynı χ², fark testleri ve d değerlerini verir", {
+  rec <- analysis_invariance(hs$clean$data, hs$config, list(model = m3, partial = c("x3~1"), likelihood = "wishart"), hs$hash)
+  out <- run_script(build_r_script("invariance", hs, rec$settings, rec$seed, rec$results))
+  expect_identical(unname(out$fit$scalar[["chisq"]]), rec$results$fit$scalar$chisq)
+  expect_identical(out$testler$scalar[["Chisq diff"]], rec$results$comparisons$chisq_diff[2])
+  dd <- out$gizil[out$gizil$op == ":=", ]
+  expect_identical(dd$est, rec$results$latent_means$d)
+})
+
+test_that("M8 kategorik betik measEq.syntax ile aynı ölçeklenmiş χ²'leri verir; skor testi betiği de aynı", {
+  mod <- list(factors = list(list(name = "A", items = paste0("A", 1:5)), list(name = "C", items = paste0("C", 1:5))))
+  rec <- analysis_invariance(bfi10$clean$data, bfi10$config, list(model = mod, approach = "categorical"), bfi10$hash)
+  out <- run_script(build_r_script("invariance", bfi10, rec$settings, rec$seed, rec$results))
+  expect_identical(unname(out$fit$metric[["chisq.scaled"]]), rec$results$fit$metric$chisq_scaled)
+  expect_identical(out$testler$metric[["Chisq diff"]], rec$results$comparisons$chisq_diff[2])
+  sc <- analysis_invariance_scores(hs$clean$data, hs$config, list(model = m3, step = "metric"), hs$hash)
+  o2 <- run_script(build_r_script("invariance_scores", hs, sc$settings, sc$seed, sc$results))
+  expect_identical(sort(o2$uni$X2), sort(sc$results$tests$x2))
+})

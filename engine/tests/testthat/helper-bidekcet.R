@@ -96,3 +96,31 @@ bidekcet_platform <- function(files, ...) {
 
 # Raporlandıkları basamakta karşılaştırma: |x − ref| ≤ 0,5 × 10⁻ᵈ (SPEC §11.1, REP-2).
 at_reported_precision <- function(got, ref, digits) isTRUE(abs(got - ref) <= 0.5 * 10^(-digits) + 1e-12)
+
+# Değişmezlik (§11.3): iki kademenin temiz verisi tek dosyada birleştirilir (grup: Ortaokul, Lise; referans Ortaokul),
+# lise maddeleri M adlarına çevrilir (referans betiğindeki gibi) ve dosya platformun yükleme yolundan geçer.
+bidekcet_combined_upload <- function(levels) {
+  o <- levels$ortaokul$data[, bidekcet_item("ortaokul", bidekcet_k)]
+  l <- levels$lise$data[, bidekcet_item("lise", bidekcet_k)]
+  names(l) <- names(o)
+  d <- rbind(cbind(grup = "Ortaokul", o), cbind(grup = "Lise", l))
+  f <- tempfile(fileext = ".csv"); on.exit(unlink(f), add = TRUE)
+  utils::write.csv(d, f, row.names = FALSE)
+  raw <- readBin(f, "raw", file.size(f))
+  up <- parse_upload(raw, "birlesik.csv")
+  items <- bidekcet_item("ortaokul", bidekcet_k)
+  roles <- c(list(grup = "group"), stats::setNames(as.list(rep("item", length(items))), items))
+  cfg <- build_config(up$data, list(roles = roles, items = lapply(stats::setNames(items, items), function(i) list(min = 1, max = 5)),
+                                    group_valid_values = c("Ortaokul", "Lise")))
+  cl <- analysis_clean(up$data, cfg, list(), up$hash)$clean
+  list(data = cl$data, config = cfg, hash = up$hash, n_final = cl$n_final, n_raw = cl$n_raw)
+}
+
+bidekcet_platform_invariance <- function(levels) {
+  cu <- bidekcet_combined_upload(levels)
+  m4 <- bidekcet_model("ortaokul", bidekcet_m4)
+  base <- list(model = m4, approach = "continuous", estimator = "ML", likelihood = "wishart", std_lv = TRUE)
+  full <- analysis_invariance(cu$data, cu$config, base, cu$hash)
+  part <- analysis_invariance(cu$data, cu$config, c(base, list(partial = c("CT=~M10", "M4~1"))), cu$hash)
+  list(combined = cu, full = full$results, partial = part$results)
+}

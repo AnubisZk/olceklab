@@ -25,7 +25,11 @@ run_reference <- function(files) {
                           function(k) as.numeric(lavaan::fitMeasures(fw, k))),
            data = x)
     })
-    list(steps = rbind(e$a1, e$a2, e$a3, e$a4), n_raw = c(Ortaokul = e$n_o_ham, Lise = e$n_l_ham),
+    fmv <- function(f) lapply(c(chisq = "chisq", df = "df", srmr = "srmr", srmr_bentler_nomean = "srmr_bentler_nomean"),
+                              function(k) as.numeric(lavaan::fitMeasures(f, k)))
+    inv <- list(cf = fmv(e$cf), me = fmv(e$me), sc = fmv(e$sc), mk = fmv(e$mk), sk = fmv(e$sk),
+                a = as.list(e$a[2, c("Chisq diff", "Df diff", "Pr(>Chisq)")]), b = as.list(e$b[2, c("Chisq diff", "Df diff", "Pr(>Chisq)")]))
+    list(steps = rbind(e$a1, e$a2, e$a3, e$a4), n_raw = c(Ortaokul = e$n_o_ham, Lise = e$n_l_ham), inv = inv,
          pa = c(Ortaokul = e$po$ncomp, Lise = e$pl$ncomp), per = per,
          h_abs = unclass(e$h_abs), h_raw = unclass(e$h_raw), printed = printed)
   }, args = list(script = ref_script),
@@ -70,6 +74,23 @@ test_that("platform ile belge sahibinin referans betiği aynı dosyalarda aynı 
   # Paralel analiz: referans betiği set.seed(1) ve psych'in çok çekirdekli varsayılanıyla çalışır (özdeğerler
   # tohumla tekrarlanamaz, SPEC_REVIEW PA-1); önerilen bileşen sayısı yine de aynı olmalıdır.
   for (lv in bidekcet_levels) expect_identical(got[[lv]]$pa_pc, as.integer(ref$pa[[lv_ref[[lv]]]]), info = lv)
+  # Değişmezlik (Faz 3): biçimsel/metrik/skaler χ², iki SRMR, kısmi metrik ve kısmi skaler fark testleri
+  inv <- bidekcet_platform_invariance(got)
+  expect_identical(inv$combined$n_final, got$ortaokul$n_final + got$lise$n_final)
+  for (st in c(configural = "cf", metric = "me", scalar = "sc")) {
+    k <- names(which(c(configural = "cf", metric = "me", scalar = "sc") == st))
+    for (fmk in c("chisq", "df", "srmr", "srmr_bentler_nomean")) {
+      expect_equal(inv$full$fit[[k]][[fmk]], ref$inv[[st]][[fmk]], tolerance = 1e-10, info = paste(k, fmk))
+    }
+  }
+  expect_equal(inv$partial$fit$metric$chisq, ref$inv$mk$chisq, tolerance = 1e-10)
+  expect_equal(inv$partial$fit$scalar$chisq, ref$inv$sk$chisq, tolerance = 1e-10)
+  cm <- inv$partial$comparisons
+  expect_equal(cm$chisq_diff[1], ref$inv$a[["Chisq diff"]], tolerance = 1e-8)
+  expect_identical(cm$df_diff[1], ref$inv$a[["Df diff"]])
+  expect_equal(cm$p[1], ref$inv$a[["Pr(>Chisq)"]], tolerance = 1e-8)
+  expect_equal(cm$chisq_diff[2], ref$inv$b[["Chisq diff"]], tolerance = 1e-8)
+  expect_identical(cm$df_diff[2], ref$inv$b[["Df diff"]])
   # Referans betiğinin yazdırdığı temizleme tablosu da aynı sayıları gösterir
   expect_true(any(grepl(sprintf("duz_yanit_sonrasi +%d +%d", got$ortaokul$n_final, got$lise$n_final), ref$printed)))
 })

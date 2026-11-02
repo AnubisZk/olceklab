@@ -143,6 +143,16 @@ function(req, res) analysis_endpoint(req, res, "analysis_cfa_compare")
 #* @parser json list(simplifyVector = FALSE)
 function(req, res) analysis_endpoint(req, res, "analysis_reliability")
 
+#* M8: ölçme değişmezliği ve gizil ortalamalar
+#* @post /analyses/invariance
+#* @parser json list(simplifyVector = FALSE)
+function(req, res) analysis_endpoint(req, res, "analysis_invariance")
+
+#* M8: kısmi değişmezlik sihirbazı — skor testleri
+#* @post /analyses/invariance/score-tests
+#* @parser json list(simplifyVector = FALSE)
+function(req, res) analysis_endpoint(req, res, "analysis_invariance_scores")
+
 #* Model kurucu önizlemesi: lavaan sözdizimi ve yapı (analiz yapmaz). Model verilmezse M1 alt boyutlarından varsayılan model.
 #* @post /models/preview
 #* @parser json list(simplifyVector = FALSE)

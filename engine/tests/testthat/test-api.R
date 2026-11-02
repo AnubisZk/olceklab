@@ -21,7 +21,7 @@ test_that("GET /versions sunucunun gerçek R ve paket sürümlerini döndürür"
 })
 
 test_that("henüz uygulanmamış analiz uç noktaları 501 ve standart hata döndürür", {
-  for (path in c("/analyses/invariance", "/simulations")) {
+  for (path in c("/simulations")) {
     r <- call_api(path, method = "POST")
     expect_identical(httr2::resp_status(r), 501L, info = path)
     b <- body_json(r)

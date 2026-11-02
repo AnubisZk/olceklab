@@ -166,3 +166,20 @@ test_that("Bollen–Stine kilidi HTTP'de 422 ve gerekçeli iletiyle döner", {
   expect_identical(b$error$code, "bollen_stine_unavailable")
   expect_match(b$error$message_tr, "yalnızca ML", fixed = TRUE)
 })
+
+# --- Faz 3: M8 --------------------------------------------------------------------
+
+test_that("M8 değişmezlik ve skor testleri HTTP üzerinden yerel hesapla birebir aynı", {
+  st <- list(model = m_nc, partial = list("N=~N5"))
+  rec <- body_json(api("/analyses/invariance", "POST", json = list(dataset_id = id, settings = st)))
+  l <- local_ds()
+  ref <- analysis_invariance(l$data, l$config, st, "h")
+  expect_identical(rec$results$fit$scalar$chisq, ref$results$fit$scalar$chisq)
+  expect_identical(vapply(rec$results$comparisons, `[[`, 0, "chisq_diff"), ref$results$comparisons$chisq_diff)  # veri çerçevesi satır nesneleri olarak gelir
+  expect_identical(unlist(rec$settings$partial), "N=~N5")
+  expect_identical(unlist(rec$results$groups), c("1", "2"))
+  sc <- body_json(api("/analyses/invariance/score-tests", "POST", json = list(dataset_id = id, settings = c(st, list(step = "metric")))))
+  ref_sc <- analysis_invariance_scores(l$data, l$config, c(st, list(step = "metric")), "h")
+  expect_identical(vapply(sc$results$tests, `[[`, 0, "x2"), ref_sc$results$tests$x2)
+  expect_match(sc$r_script, "lavTestScore", fixed = TRUE)
+})

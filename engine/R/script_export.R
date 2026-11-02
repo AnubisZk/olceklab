@@ -139,6 +139,42 @@ script_analysis_block <- function(module, settings, seed, results = NULL) {
         if (identical(settings$htmt$correlation, "polychoric")) "items" else "NULL",
         r_literal(isTRUE(settings$htmt$absolute)), r_literal(isTRUE(settings$htmt$htmt2))) else "htmt <- NULL\n",
       "sonuc <- list(alfa = alfa, omega = omega, ave = ave, htmt = htmt)\n"),
+    invariance = paste0(
+      sprintf("items <- %s\ngrup <- %s\ngruplar <- %s\n", r_literal(as.character(settings$items)), r_literal(settings$group), r_literal(as.character(settings$groups))),
+      "x <- temiz[, c(items, grup), drop = FALSE]\nx <- x[!is.na(x[[grup]]), , drop = FALSE]\nx[[grup]] <- as.character(x[[grup]])\nx <- x[x[[grup]] %in% gruplar, , drop = FALSE]\n",
+      "options(mc.cores = 1)\n",
+      "RNGkind(\"Mersenne-Twister\", \"Inversion\", \"Rejection\")\n",
+      sprintf("set.seed(%dL)\n", as.integer(seed)),
+      "yapisal_model <- ", r_literal(settings$model$syntax), "\n",
+      "fits <- list()\n",
+      paste(vapply(settings$steps, function(st) {
+        if (identical(settings$approach, "categorical")) paste0(
+          sprintf("## %s: semTools::measEq.syntax (theta, Wu ve Estabrook, 2016)\n", st$step),
+          sprintf("model <- as.character(semTools::measEq.syntax(configural.model = yapisal_model, data = x, ordered = items, parameterization = \"theta\", ID.fac = \"std.lv\", ID.cat = \"Wu.Estabrook.2016\", group = grup, group.label = gruplar, group.equal = %s, group.partial = %s))\n",
+                  r_literal(if (length(st$group_equal)) as.character(st$group_equal) else ""), r_literal(if (length(settings$partial)) as.character(settings$partial) else "")),
+          sprintf("fits[[%s]] <- %s\n", r_literal(st$step), lavaan_call_string(st$lavaan_args)))
+        else paste0("model <- yapisal_model\n", sprintf("fits[[%s]] <- %s\n", r_literal(st$step), lavaan_call_string(st$lavaan_args)))
+      }, ""), collapse = ""),
+      "adimlar <- names(fits)\n",
+      sprintf("testler <- lapply(seq_along(adimlar)[-1], function(k) lavaan::lavTestLRT(fits[[k - 1]], fits[[k]]%s)[2, c(\"Chisq diff\", \"Df diff\", \"Pr(>Chisq)\")])\n",
+              if (identical(settings$lrt_method, "standard")) "" else sprintf(", method = %s", r_literal(settings$lrt_method))),
+      "names(testler) <- adimlar[-1]\n",
+      if (!is.null(results$latent_model)) paste0(
+        "## Gizil ortalamalar: skaler modelle eşdeğer model; d := ile tanımlı (SH ve GA lavaan'dan)\n",
+        "model <- ", r_literal(results$latent_model$syntax), "\n",
+        "fit_gizil <- ", lavaan_call_string(results$latent_model$lavaan_args), "\n",
+        "pe <- lavaan::parameterEstimates(fit_gizil)\n",
+        "gizil <- pe[pe$op == \":=\" | (pe$op == \"~1\" & pe$lhs %in% lavaan::lavNames(fit_gizil, \"lv\")), ]\n") else "gizil <- NULL\n",
+      "sonuc <- list(fit = lapply(fits, lavaan::fitMeasures), testler = testler, gizil = gizil)\n"),
+    invariance_scores = paste0(
+      sprintf("items <- %s\ngrup <- %s\ngruplar <- %s\n", r_literal(as.character(settings$items)), r_literal(settings$group), r_literal(as.character(settings$groups))),
+      "x <- temiz[, c(items, grup), drop = FALSE]\nx <- x[!is.na(x[[grup]]), , drop = FALSE]\nx[[grup]] <- as.character(x[[grup]])\nx <- x[x[[grup]] %in% gruplar, , drop = FALSE]\n",
+      "options(mc.cores = 1)\nRNGkind(\"Mersenne-Twister\", \"Inversion\", \"Rejection\")\n", sprintf("set.seed(%dL)\n", as.integer(seed)),
+      "model <- ", r_literal(settings$syntax), "\n",
+      "fit <- ", lavaan_call_string(settings$lavaan_args), "\n",
+      "skor <- lavaan::lavTestScore(fit, univariate = TRUE, cumulative = FALSE)\n",
+      "pt <- lavaan::parTable(fit)\n",
+      "sonuc <- list(uni = skor$uni, toplam = skor$test, parametreler = pt[pt$plabel %in% c(skor$uni$lhs, skor$uni$rhs), c(\"plabel\", \"lhs\", \"op\", \"rhs\", \"group\")])\n"),
     stop("Bu modül için betik tanımlı değil: ", module)
   )
 }
@@ -155,7 +191,8 @@ script_packages <- function(module, ds) {
     efa = c("psych", "GPArotation"),
     cfa = "lavaan",
     cfa_compare = c("lavaan", "semTools"),
-    reliability = c("lavaan", "semTools", "psych"))
+    reliability = c("lavaan", "semTools", "psych"),
+    invariance = , invariance_scores = c("lavaan", "semTools"))
   unique(c(base, "digest", if (identical(ds$source$type, "example")) c("lavaan", "psych")))
 }
 
@@ -163,7 +200,8 @@ build_r_script <- function(module, ds, settings, seed = NULL, results = NULL) {
   titles <- c(item_analysis = "M2 — Madde analizi", suitability = "M3 — Faktör analizine uygunluk",
               factor_number = "M4 — Faktör sayısı (paralel analiz, MAP)", efa = "M5 — Açımlayıcı faktör analizi",
               cfa = "M6 — Doğrulayıcı faktör analizi", cfa_compare = "M6 — Model karşılaştırma",
-              reliability = "M7 — Güvenirlik ve geçerlik")
+              reliability = "M7 — Güvenirlik ve geçerlik", invariance = "M8 — Ölçme değişmezliği ve gizil ortalamalar",
+              invariance_scores = "M8 — Kısmi değişmezlik: skor testleri")
   pkgs <- script_packages(module, ds)
   fns <- c(script_reader_functions, if (module == "factor_number") script_pa_functions)
   paste0(
