@@ -1,0 +1,24 @@
+semTools sürümleri: 0.5.9 ve 0.5.10 
+htmt_hs_absTRUE_h2TRUE       birebir aynı
+htmt_bfi_absTRUE_h2TRUE      birebir aynı
+htmt_hs_absTRUE_h2FALSE      birebir aynı
+htmt_bfi_absTRUE_h2FALSE     birebir aynı
+htmt_hs_absFALSE_h2TRUE      birebir aynı
+htmt_bfi_absFALSE_h2TRUE     birebir aynı
+htmt_hs_absFALSE_h2FALSE     birebir aynı
+htmt_bfi_absFALSE_h2FALSE    birebir aynı
+htmt_bfi_poly                birebir aynı
+omega_hs_obsTRUE             birebir aynı
+ave_hs_obsTRUE               birebir aynı
+omega_bfi_obsTRUE            birebir aynı
+omega_hs_obsFALSE            birebir aynı
+ave_hs_obsFALSE              birebir aynı
+omega_bfi_obsFALSE           birebir aynı
+omega_bfi_ordscaleF          birebir aynı
+ave_bfi                      birebir aynı
+measEq_configural            birebir aynı
+measEq_thresholds            birebir aynı
+measEq_loadings              birebir aynı
+measEq_intercepts            birebir aynı
+
+Sonuç: 21/21 karşılaştırma birebir aynı.

@@ -99,7 +99,7 @@ analysis_endpoint <- function(req, res, fun) {
                settings = if (is.list(b$settings)) b$settings else list(), dataset_hash = ds$hash)
   if (fun == "analysis_item") args$item_missing <- ds$clean$item_missing
   run_in_worker(res, fun, args, then = function(rec) {
-    rec$r_script <- build_r_script(rec$module, ds, rec$settings, rec$seed)
+    rec$r_script <- build_r_script(rec$module, ds, rec$settings, rec$seed, rec$results)
     analysis_store(rec, ds$id)
     rec
   })
@@ -119,6 +119,44 @@ function(req, res) analysis_endpoint(req, res, "analysis_suitability")
 #* @post /analyses/factor-number
 #* @parser json
 function(req, res) analysis_endpoint(req, res, "analysis_factor_number")
+
+# Faz 2 uç noktalarında JSON basitleştirilmez: iç içe model tanımları (faktör listeleri, model listeleri)
+# veri çerçevesine ya da matrise dönüşmesin diye. Motor fonksiyonları liste girdisini bekler.
+
+#* M5: açımlayıcı faktör analizi
+#* @post /analyses/efa
+#* @parser json list(simplifyVector = FALSE)
+function(req, res) analysis_endpoint(req, res, "analysis_efa")
+
+#* M6: doğrulayıcı faktör analizi (tek model)
+#* @post /analyses/cfa
+#* @parser json list(simplifyVector = FALSE)
+function(req, res) analysis_endpoint(req, res, "analysis_cfa")
+
+#* M6: model karşılaştırma
+#* @post /analyses/cfa/compare
+#* @parser json list(simplifyVector = FALSE)
+function(req, res) analysis_endpoint(req, res, "analysis_cfa_compare")
+
+#* M7: güvenirlik ve geçerlik
+#* @post /analyses/reliability
+#* @parser json list(simplifyVector = FALSE)
+function(req, res) analysis_endpoint(req, res, "analysis_reliability")
+
+#* Model kurucu önizlemesi: lavaan sözdizimi ve yapı (analiz yapmaz). Model verilmezse M1 alt boyutlarından varsayılan model.
+#* @post /models/preview
+#* @parser json list(simplifyVector = FALSE)
+function(req) {
+  b <- req$body
+  ds <- dataset_get(if (is.null(b$dataset_id)) "" else b$dataset_id)
+  if (is.null(ds$config)) api_stop("roles_missing", "Önce sütun rollerini kaydedin.", 409L)
+  spec <- b$model
+  if (is.null(spec)) {
+    spec <- default_model_from_subscales(ds$config)
+    if (is.null(spec)) api_stop("no_default_model", "Maddelere alt boyut atanmadığı için varsayılan model kurulamadı.", 422L)
+  }
+  analysis_model_preview(ds$config, spec)
+}
 
 #* M12: analizin R betiği
 #* @get /analyses/<id>/script

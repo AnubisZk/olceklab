@@ -59,6 +59,7 @@ parse_delimited_bytes <- function(raw) {
     error = function(e) api_stop("parse_error", "Dosya okunamadı: satırlardaki sütun sayısı tutarsız olabilir.",
                                  422L, conditionMessage(e))
   )
+  names(df) <- trimws(names(df))
   df <- convert_columns(df, decimal_comma = sep != ",")
   attr(df, "delimiter") <- sep
   df
@@ -75,6 +76,7 @@ parse_excel_bytes <- function(raw, ext) {
     error = function(e) api_stop("parse_error", "Excel dosyası okunamadı.", 422L, conditionMessage(e))
   )
   df <- as.data.frame(df, stringsAsFactors = FALSE, check.names = FALSE)
+  names(df) <- trimws(names(df))  # ör. "Madde1 " (Excel'de sık görülür)
   df <- convert_columns(df, decimal_comma = TRUE)
   attr(df, "delimiter") <- NA_character_
   df
@@ -273,10 +275,13 @@ build_config <- function(df, body) {
   )
 }
 
-# --- Temizleme (SPEC M1; sıra SPEC_REVIEW CL-1) -------------------------------
-# rules: list(invalid_group, out_of_range, missing, straightline, reverse); her biri TRUE/FALSE.
+# --- Temizleme (SPEC M1; sıra SPEC_REVIEW CL-1, v1.2'de belge sahibinin sırasıyla) ----
+# Sıra: geçersiz grup → eksik → aralık dışı → düz yanıt (ham) → ters kodlama.
+# Satır bazlı kurallar olduğu için son N sıradan bağımsızdır; sıra yalnızca hangi
+# satırın hangi adımda sayıldığını belirler (§11.3 adım sayıları bu sıraya göredir).
+# rules: list(invalid_group, missing, out_of_range, straightline, reverse); her biri TRUE/FALSE.
 
-clean_rule_keys <- c("invalid_group", "out_of_range", "missing", "straightline", "reverse")
+clean_rule_keys <- c("invalid_group", "missing", "out_of_range", "straightline", "reverse")
 
 clean_dataset <- function(data, config, rules = list()) {
   on <- function(key) if (is.null(rules[[key]])) TRUE else isTRUE(rules[[key]])
@@ -299,6 +304,9 @@ clean_dataset <- function(data, config, rules = list()) {
     if (length(config$group_valid_values)) bad <- bad | !(as.character(g) %in% config$group_valid_values)
     add_step("invalid_group", bad)
   }
+  if (on("missing")) {
+    add_step("missing", !stats::complete.cases(x[, items, drop = FALSE]))
+  }
   bounded <- items[!is.na(config$items$min)]
   if (length(bounded) && on("out_of_range")) {
     bad <- rep(FALSE, n_raw)
@@ -309,9 +317,6 @@ clean_dataset <- function(data, config, rules = list()) {
       bad <- bad | (!is.na(v) & (v < lo | v > hi | v != round(v)))
     }
     add_step("out_of_range", bad)
-  }
-  if (on("missing")) {
-    add_step("missing", !stats::complete.cases(x[, items, drop = FALSE]))
   }
   if (on("straightline")) {
     m <- as.matrix(x[, items, drop = FALSE])
@@ -338,8 +343,8 @@ clean_dataset <- function(data, config, rules = list()) {
 
 clean_step_labels <- list(
   invalid_group = c(tr = "hatalı grup", en = "invalid group"),
-  out_of_range = c(tr = "aralık dışı", en = "out of range"),
   missing = c(tr = "eksik", en = "missing"),
+  out_of_range = c(tr = "aralık dışı", en = "out of range"),
   straightline = c(tr = "düz yanıt", en = "straight-lining")
 )
 

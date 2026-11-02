@@ -14,6 +14,9 @@ engine/test-results/
 
 # Özel veri ve testler (KVKK): depoya girmez
 engine/tests/private/data/
+engine/tests/private/bidekcet_sonuc.csv
 *.sav
 *.xlsx
 !docs/**/*.xlsx
+# Sentetik test verisi (gerçek veri değildir; make_fixtures.R ile üretilir)
+!engine/tests/testthat/fixtures/bidekcet_synthetic/*.xlsx

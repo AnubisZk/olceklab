@@ -18,6 +18,13 @@ test_that("noktalı virgül ayraçlı CSV'de ondalık virgülü sayıya çevrili
   expect_identical(r$data$b, c(2, 4))
 })
 
+test_that("sütun adlarının başındaki ve sonundaki boşluklar atılır; kırpınca çakışan adlar reddedilir", {
+  r <- parse_upload(csv_bytes(c(" Sinif ;Madde1 ;Madde2", "9;1;2", "10;3;4")), "v.csv")
+  expect_identical(names(r$data), c("Sinif", "Madde1", "Madde2"))
+  e <- tryCatch(parse_upload(csv_bytes(c("M1;M1 ", "1;2")), "v.csv"), error = function(e) e)
+  expect_identical(e$code, "duplicate_column_name")
+})
+
 test_that("eksik değerler NA olur; sayısal olmayan sütun metin kalır", {
   r <- parse_upload(csv_bytes(c("a,b", "1,x", ",y", "3,")), "v.csv")
   expect_identical(r$data$a, c(1, NA, 3))
@@ -120,17 +127,18 @@ clean_fixture <- function() {
   df[8, c("M1", "M2", "M3", "M4")] <- 4              # ham yanıtta düz yanıt
   df[9, c("M1", "M2", "M3", "M4")] <- c(5, 5, 1, 5)  # M3 ters: ham hâli düz değil, ters kodlanınca hep 5
   df$M3[1] <- NA                                     # ilk kurala da uyan satır: yalnızca bir kez sayılmalı
+  df[10, c("M2", "M4")] <- list(9, NA)               # hem eksik hem aralık dışı: sıraya göre "eksik"te sayılır
   df
 }
 
 reference_clean_counts <- function(df, items, valid, ranges) {
-  removed <- c(invalid_group = 0L, out_of_range = 0L, missing = 0L, straightline = 0L)
+  removed <- c(invalid_group = 0L, missing = 0L, out_of_range = 0L, straightline = 0L)
   for (r in seq_len(nrow(df))) {
     row <- df[r, ]
     vals <- unlist(row[items])
     if (is.na(row$sinif) || !(row$sinif %in% valid)) { removed["invalid_group"] <- removed["invalid_group"] + 1L; next }
-    if (any(!is.na(vals) & (vals < ranges[1] | vals > ranges[2] | vals != floor(vals)))) { removed["out_of_range"] <- removed["out_of_range"] + 1L; next }
     if (any(is.na(vals))) { removed["missing"] <- removed["missing"] + 1L; next }
+    if (any(!is.na(vals) & (vals < ranges[1] | vals > ranges[2] | vals != floor(vals)))) { removed["out_of_range"] <- removed["out_of_range"] + 1L; next }
     if (length(unique(vals)) == 1L) { removed["straightline"] <- removed["straightline"] + 1L; next }
   }
   removed
@@ -143,13 +151,15 @@ fixture_config <- function(df) {
                         group_valid_values = c("5", "6", "7")))
 }
 
-test_that("kurallar CL-1 sırasıyla uygulanır; her satır yalnızca ilk kuralda sayılır", {
+test_that("kurallar M1 sırasıyla uygulanır (grup → eksik → aralık → düz yanıt); her satır yalnızca ilk kuralda sayılır", {
   df <- clean_fixture()
   cl <- clean_dataset(df, fixture_config(df), list())
   ref <- reference_clean_counts(df, c("M1", "M2", "M3", "M4"), c("5", "6", "7"), c(1, 5))
   got <- stats::setNames(cl$steps$removed, cl$steps$step)
   expect_identical(got[names(ref)], ref)
-  expect_identical(cl$steps$step, c("invalid_group", "out_of_range", "missing", "straightline"))
+  expect_identical(cl$steps$step, c("invalid_group", "missing", "out_of_range", "straightline"))
+  expect_identical(got[["missing"]], 4L)       # satır 5, 6, 7 ve 10 (10. satır aralık dışı da)
+  expect_identical(got[["out_of_range"]], 2L)  # satır 3 ve 4
   expect_identical(cl$n_final, nrow(df) - sum(ref))
   expect_identical(cl$steps$remaining[4], cl$n_final)
 })
@@ -158,7 +168,7 @@ test_that("düz yanıt ters kodlamadan önce, ham yanıtlarda aranır", {
   df <- clean_fixture()
   cl <- clean_dataset(df, fixture_config(df), list())
   # 9. satır hamda düz değil; temiz veride kalmalı ve ters kodlanmış M3 = 5 olmalı
-  kept_raw <- df[!(seq_len(nrow(df)) %in% c(1, 2, 3, 4, 5, 6, 7, 8)), ]
+  kept_raw <- df[!(seq_len(nrow(df)) %in% c(1, 2, 3, 4, 5, 6, 7, 8, 10)), ]
   kept_raw <- kept_raw[apply(kept_raw[, c("M1", "M2", "M3", "M4")], 1, function(r) length(unique(r)) > 1), ]
   expect_identical(nrow(cl$data), nrow(kept_raw))
   expect_identical(cl$data$M3, 6 - kept_raw$M3)
@@ -168,10 +178,10 @@ test_that("düz yanıt ters kodlamadan önce, ham yanıtlarda aranır", {
 test_that("kurallar tek tek kapatılabilir", {
   df <- clean_fixture()
   cl <- clean_dataset(df, fixture_config(df), list(invalid_group = FALSE, straightline = FALSE, reverse = FALSE))
-  expect_identical(cl$steps$step, c("out_of_range", "missing"))
+  expect_identical(cl$steps$step, c("missing", "out_of_range"))
   expect_identical(cl$reversed, character())
   expect_identical(cl$data$M3, df$M3[stats::complete.cases(df[, c("M1", "M2", "M3", "M4")]) &
-                                       !(seq_len(nrow(df)) %in% c(3, 4))])
+                                       !(seq_len(nrow(df)) %in% c(3, 4, 10))])
 })
 
 test_that("madde bazında eksiklik oranı ham veriden hesaplanır", {

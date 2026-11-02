@@ -1,6 +1,6 @@
 # AGENTS.md — Kodlama ajanı için çalışma kuralları
 
-> Kaynak: SPEC.md, Bölüm 0 (v1.1, 2 Kasım 2026). Bu dosya SPEC.md ile birlikte güncellenir.
+> Kaynak: SPEC.md, Bölüm 0 (v1.2, 3 Kasım 2026; Bölüm 0 v1.1'den beri değişmedi). Bu dosya SPEC.md ile birlikte güncellenir.
 
 1. **Sayısal sonuçların tek kaynağı R motorudur.** Bütün istatistiksel hesaplar `engine/` altındaki R kodunda, aşağıda adı verilen R paketleriyle yapılır. JavaScript/TypeScript ve Python tarafında istatistik yeniden hesaplanmaz. Yapay zekâ modülü hiçbir sayı üretmez.
 2. **Asla sonuç uydurma.** Bir fonksiyon hata verirse hatayı kullanıcıya göster. Örnek, sahte ya da yer tutucu sayı gösterme. Testlerde beklenen değerleri elle yazma; Bölüm 11'deki referans değerleri kullan ya da referans fonksiyonu doğrudan çağırarak üret.

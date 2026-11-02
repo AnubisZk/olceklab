@@ -3,6 +3,7 @@
 - **İncelenen belge:** `SPEC.md` v1.0 (2 Kasım 2026)
 - **İnceleme tarihi:** 2 Kasım 2026
 - **Durum:** 2 Kasım 2026'da bütün maddeler toplu olarak onaylandı ve `SPEC.md` v1.1'e işlendi.
+- **3 Kasım 2026:** Belge sahibinin yanıtlarıyla W-1 (`cfi.scaled`), REL-1 (Pearson, `htmt2 = FALSE`, `absolute = TRUE`), CL-1 (sıra: grup → eksik → aralık → düz yanıt) ve REP-1 (`sessionInfo()`; semTools 0.5-9, V10 ile 0.5-10'a denk) kapandı ve `SPEC.md` v1.2'ye işlendi. Yanıtlar: `docs/validation/CODEX_YANIT_FAZ1.md`. Açık kalan: REP-4 (referans simülasyon paketi).
 
 ## 0. Bu inceleme nasıl yapıldı
 

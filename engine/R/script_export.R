@@ -47,7 +47,7 @@ script_data_block <- function(ds) {
   )
 }
 
-script_analysis_block <- function(module, settings, seed) {
+script_analysis_block <- function(module, settings, seed, results = NULL) {
   items_line <- sprintf("items <- %s\nx <- temiz[, items, drop = FALSE]\n", r_literal(as.character(settings$items)))
   switch(module,
     item_analysis = paste0(items_line,
@@ -84,14 +84,87 @@ script_analysis_block <- function(module, settings, seed) {
       "sonuc <- list(values = values, map = map, map_suggested = which.min(map),\n",
       "              ncomp = if (exists(\"pa\") && !is.null(pa$ncomp)) pa$ncomp else NULL,\n",
       "              nfact = if (exists(\"pa\") && !is.null(pa$nfact)) pa$nfact else NULL)\n"),
+    efa = paste0(items_line,
+      "options(mc.cores = 1)\n",
+      "RNGkind(\"Mersenne-Twister\", \"Inversion\", \"Rejection\")\n",
+      sprintf("set.seed(%dL)  # psych::fa varsayılan olarak rastgele başlangıçlı döndürme kullanır (SPEC_REVIEW EFA-2)\n", as.integer(seed)),
+      sprintf("f <- psych::fa(x, nfactors = %dL, fm = %s, rotate = %s, cor = %s, correct = 0.5, n.rotations = %dL, scores = \"none\", warnings = TRUE)\n",
+              as.integer(settings$nfactors), r_literal(settings$fm), r_literal(settings$rotate),
+              r_literal(if (identical(settings$correlation, "pearson")) "cor" else "poly"), as.integer(settings$n_rotations)),
+      "sonuc <- list(loadings = unclass(f$loadings)[items, , drop = FALSE], communality = f$communality[items],\n",
+      "              uniqueness = f$uniquenesses[items], phi = f$Phi, vaccounted = f$Vaccounted,\n",
+      "              fit = list(chisq = f$STATISTIC, df = f$dof, p = f$PVAL, tli = f$TLI, rmsea = f$RMSEA, rmsr = f$rms, bic = f$BIC))\n"),
+    cfa = paste0(items_line,
+      "model <- ", r_literal(settings$model$syntax), "\n",
+      "options(mc.cores = 1)\n",
+      "RNGkind(\"Mersenne-Twister\", \"Inversion\", \"Rejection\")\n",
+      sprintf("set.seed(%dL)\n", as.integer(seed)),
+      "fit <- ", lavaan_call_string(settings$lavaan_args), "\n",
+      "pe <- lavaan::parameterEstimates(fit, standardized = TRUE, rsquare = TRUE)\n",
+      "sonuc <- list(fit = lavaan::fitMeasures(fit), loadings = pe[pe$op == \"=~\", ],\n",
+      "              post_check = lavaan::lavInspect(fit, \"post.check\"),\n",
+      if (isTRUE(settings$mi_top > 0)) sprintf("              mi = lavaan::modindices(fit, sort. = TRUE, maximum.number = %dL),\n", as.integer(settings$mi_top)) else "",
+      "              bollen_stine = lavaan::lavInspect(fit, \"test\")$bollen.stine)\n"),
+    cfa_compare = paste0(items_line,
+      "modeller <- ", r_literal(stats::setNames(vapply(settings$models, function(m) m$model$syntax, ""), vapply(settings$models, `[[`, "", "name"))), "\n",
+      "options(mc.cores = 1)\n",
+      "RNGkind(\"Mersenne-Twister\", \"Inversion\", \"Rejection\")\n",
+      sprintf("set.seed(%dL)\n", as.integer(seed)),
+      "fits <- lapply(modeller, function(model) ", lavaan_call_string(settings$lavaan_args), ")\n",
+      "## İç içelik denetimi (Bentler ve Satorra, 2010): satır modeli sütun modelinin içinde iç içedir\n",
+      "net_env <- list2env(stats::setNames(fits, paste0(\"fit\", seq_along(fits))))\n",
+      "ic_ice <- eval(as.call(c(quote(semTools::net), lapply(paste0(\"fit\", seq_along(fits)), as.name))), net_env)@test\n",
+      "testler <- list(\n",
+      paste(vapply(results$tests %||% list(), function(t) sprintf(
+        "  %s = lavaan::lavTestLRT(fits[[%s]], fits[[%s]]%s)[2, c(\"Chisq diff\", \"Df diff\", \"Pr(>Chisq)\")]",
+        r_literal(paste(t$restricted, "-", t$reference)), r_literal(t$reference), r_literal(t$restricted),
+        if (t$method == "standard") "" else sprintf(", method = %s", r_literal(t$method))), ""), collapse = ",\n"),
+      "\n)\n",
+      "sonuc <- list(fit = lapply(fits, lavaan::fitMeasures), ic_ice = ic_ice, testler = testler)\n"),
+    reliability = paste0(items_line,
+      "model <- ", r_literal(settings$model$syntax), "\n",
+      "options(mc.cores = 1)\n",
+      "RNGkind(\"Mersenne-Twister\", \"Inversion\", \"Rejection\")\n",
+      sprintf("set.seed(%dL)\n", as.integer(seed)),
+      "fit <- ", lavaan_call_string(settings$lavaan_args), "\n",
+      "faktorler <- ", r_literal(lapply(stats::setNames(Filter(function(f) f$name %in% settings$model$first_order, settings$model$factors),
+                                                        vapply(Filter(function(f) f$name %in% settings$model$first_order, settings$model$factors), `[[`, "", "name")),
+                                        function(f) as.character(f$items))), "\n",
+      "alfa <- sapply(faktorler, function(it) psych::alpha(x[stats::complete.cases(x[, it]), it], check.keys = FALSE, warnings = FALSE)$total$raw_alpha)\n",
+      sprintf("omega <- semTools::compRelSEM(fit, obs.var = %s, ord.scale = TRUE, simplify = TRUE)\n", r_literal(isTRUE(settings$obs_var))),
+      sprintf("ave <- semTools::AVE(fit, obs.var = %s)\n", r_literal(isTRUE(settings$obs_var))),
+      if (length(settings$model$first_order) >= 2L) sprintf(
+        "htmt <- semTools::htmt(%s, data = x, missing = \"listwise\", ordered = %s, absolute = %s, htmt2 = %s)\n",
+        r_literal(reliability_htmt_syntax(settings$model)),
+        if (identical(settings$htmt$correlation, "polychoric")) "items" else "NULL",
+        r_literal(isTRUE(settings$htmt$absolute)), r_literal(isTRUE(settings$htmt$htmt2))) else "htmt <- NULL\n",
+      "sonuc <- list(alfa = alfa, omega = omega, ave = ave, htmt = htmt)\n"),
     stop("Bu modül için betik tanımlı değil: ", module)
   )
 }
 
-build_r_script <- function(module, ds, settings, seed = NULL) {
+# lavaan::cfa çağrısını, motorun kullandığı argümanlarla okunur biçimde yazar.
+lavaan_call_string <- function(args) {
+  parts <- vapply(names(args), function(n) sprintf("%s = %s", n, r_literal(args[[n]])), "")
+  paste0("lavaan::cfa(model, data = x, ", paste(parts, collapse = ", "), ")")
+}
+
+script_packages <- function(module, ds) {
+  base <- switch(module,
+    item_analysis = , suitability = , factor_number = "psych",
+    efa = c("psych", "GPArotation"),
+    cfa = "lavaan",
+    cfa_compare = c("lavaan", "semTools"),
+    reliability = c("lavaan", "semTools", "psych"))
+  unique(c(base, "digest", if (identical(ds$source$type, "example")) c("lavaan", "psych")))
+}
+
+build_r_script <- function(module, ds, settings, seed = NULL, results = NULL) {
   titles <- c(item_analysis = "M2 — Madde analizi", suitability = "M3 — Faktör analizine uygunluk",
-              factor_number = "M4 — Faktör sayısı (paralel analiz, MAP)")
-  pkgs <- unique(c("psych", "digest", if (identical(ds$source$type, "example")) c("lavaan")))
+              factor_number = "M4 — Faktör sayısı (paralel analiz, MAP)", efa = "M5 — Açımlayıcı faktör analizi",
+              cfa = "M6 — Doğrulayıcı faktör analizi", cfa_compare = "M6 — Model karşılaştırma",
+              reliability = "M7 — Güvenirlik ve geçerlik")
+  pkgs <- script_packages(module, ds)
   fns <- c(script_reader_functions, if (module == "factor_number") script_pa_functions)
   paste0(
     "## ÖlçekLab yeniden üretim betiği: ", titles[[module]], "\n",
@@ -108,7 +181,7 @@ build_r_script <- function(module, ds, settings, seed = NULL) {
     "config <- ", r_literal(ds$config), "\n",
     "rules <- ", r_literal(ds$clean_rules %||% list()), "\n",
     "temiz <- clean_dataset(ham, config, rules)$data\n\n",
-    "## --- 3. Analiz ---\n", script_analysis_block(module, settings, seed),
+    "## --- 3. Analiz ---\n", script_analysis_block(module, settings, seed, results),
     "print(sonuc)\n"
   )
 }

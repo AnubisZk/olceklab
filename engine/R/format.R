@@ -96,3 +96,50 @@ make_table <- function(id, title_tr, title_en, columns, rows, note_tr = NULL, no
     note_tr = note_tr, note_en = note_en
   )
 }
+
+# Güven aralığı: TR "[,045; ,067]" (ondalık virgülüyle karışmasın diye noktalı virgül), EN "[.045, .067]".
+fmt_ci <- function(lo, hi, digits = 3L, lang = "tr", bounded = FALSE) {
+  a <- fmt_num(lo, digits, lang, bounded); b <- fmt_num(hi, digits, lang, bounded)
+  ifelse(a == FMT_MISSING & b == FMT_MISSING, FMT_MISSING,
+         paste0("[", a, if (lang == "tr") "; " else ", ", b, "]"))
+}
+
+fmt_value <- function(v, format, digits = 2L, bounded = FALSE, lang = "tr") {
+  switch(format,
+    text = ifelse(is.na(v), FMT_MISSING, as.character(v)),
+    num  = fmt_num(v, digits, lang, bounded),
+    int  = fmt_int(v, lang),
+    p    = fmt_p(v, lang, max(3L, digits)),
+    pct  = fmt_pct(v, lang, digits),
+    stop("Bilinmeyen biçim: ", format))
+}
+
+# Satır başına biçimli "ölçüt–değer" tablosu (ör. uyum indeksleri: χ² iki basamak, CFI baştaki sıfırsız).
+# rows: key, label_tr, label_en, format, digits, bounded ve her değer sütunu için bir sayısal sütun.
+# text_values[[satır]][[sütun]] = list(tr = , en = ) ile metin değerli hücreler (ör. güven aralığı) verilir.
+make_kv_table <- function(id, title_tr, title_en, rows,
+                          value_cols = list(tbl_col("value", "Değer", "Value", "num")),
+                          text_values = list(), note_tr = NULL, note_en = NULL) {
+  stopifnot(is.data.frame(rows), all(c("key", "label_tr", "label_en", "format", "digits", "bounded") %in% names(rows)))
+  vkeys <- vapply(value_cols, `[[`, "", "key")
+  missing_keys <- setdiff(vkeys, names(rows))
+  if (length(missing_keys)) stop("Tabloda olmayan sütun: ", paste(missing_keys, collapse = ", "))
+  raw <- data.frame(key = rows$key, label = rows$label_tr, stringsAsFactors = FALSE)
+  for (vk in vkeys) raw[[vk]] <- rows[[vk]]
+  fmt_rows <- function(lang) {
+    out <- data.frame(key = rows$key, label = if (lang == "tr") rows$label_tr else rows$label_en, stringsAsFactors = FALSE)
+    for (vk in vkeys) {
+      out[[vk]] <- vapply(seq_len(nrow(rows)), function(i) {
+        tv <- text_values[[rows$key[i]]][[vk]]
+        if (!is.null(tv)) return(tv[[lang]])
+        if (rows$format[i] == "text") return(FMT_MISSING)
+        fmt_value(rows[[vk]][i], rows$format[i], rows$digits[i], rows$bounded[i], lang)
+      }, "")
+    }
+    out
+  }
+  cols <- c(list(list(key = "label", label_tr = "Ölçüt", label_en = "Index", type = "text")),
+            lapply(value_cols, function(c) c[c("key", "label_tr", "label_en", "type")]))
+  list(id = id, title_tr = title_tr, title_en = title_en, columns = cols, rows = raw,
+       rows_fmt = list(tr = fmt_rows("tr"), en = fmt_rows("en")), note_tr = note_tr, note_en = note_en)
+}

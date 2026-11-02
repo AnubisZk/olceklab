@@ -54,3 +54,61 @@ test_that("betik sürüm denetimi ve veri özeti içerir", {
   expect_match(s, sprintf("psych = \"%s\"", as.character(utils::packageVersion("psych"))), fixed = TRUE)
   expect_match(s, "clean_dataset <- function", fixed = TRUE)
 })
+
+# --- Faz 2: M5, M6, M7 ----------------------------------------------------------
+
+bfi10 <- example_ds("bfi", items = c(paste0("A", 1:5), paste0("C", 1:5)))
+m_ac <- list(factors = list(list(name = "A", items = paste0("A", 1:5)), list(name = "C", items = paste0("C", 1:5))))
+m3 <- default_model_from_subscales(hs$config)
+
+test_that("M5 betiği ayrı süreçte psych::fa ile aynı yükleri ve uyumu verir", {
+  rec <- analysis_efa(bfi10$clean$data, bfi10$config, list(nfactors = 2, rotate = "geominQ", seed = 4), bfi10$hash)
+  out <- run_script(build_r_script("efa", bfi10, rec$settings, rec$seed))
+  L <- do.call(cbind, lapply(rec$results$loadings, as.numeric))
+  expect_identical(unname(out$loadings), unname(L))
+  expect_identical(unname(out$fit$chisq), rec$results$fit$chisq)
+  expect_identical(unname(out$fit$tli), rec$results$fit$tli)
+})
+
+test_that("M6 betiği (ML, wishart, Bollen–Stine) ayrı süreçte aynı uyum ve aynı bootstrap p değerini verir", {
+  rec <- analysis_cfa(hs$clean$data, hs$config, list(model = m3, likelihood = "wishart", bootstrap = 100, seed = 12), hs$hash)
+  script <- build_r_script("cfa", hs, rec$settings, rec$seed, rec$results)
+  expect_match(script, "likelihood = \"wishart\"", fixed = TRUE)
+  expect_match(script, "iseed = 12L", fixed = TRUE)
+  out <- run_script(script)
+  expect_identical(unname(out$fit[["chisq"]]), rec$results$fit$chisq)
+  expect_identical(unname(out$fit[["cfi"]]), rec$results$fit$cfi)
+  expect_identical(out$loadings$std.all, rec$results$loadings$std)
+  expect_identical(out$bollen_stine$pvalue, rec$results$bollen_stine$pvalue)
+  expect_identical(out$mi$mi, rec$results$modification_indices$mi)
+})
+
+test_that("M6 WLSMV betiği aynı ölçeklenmiş ve dayanıklı indeksleri verir", {
+  rec <- analysis_cfa(bfi10$clean$data, bfi10$config, list(model = m_ac, estimator = "WLSMV"), bfi10$hash)
+  out <- run_script(build_r_script("cfa", bfi10, rec$settings, rec$seed, rec$results))
+  expect_identical(unname(out$fit[["cfi.scaled"]]), rec$results$fit$cfi_scaled)
+  expect_identical(unname(out$fit[["cfi.robust"]]), rec$results$fit$cfi_robust)
+})
+
+test_that("M6 karşılaştırma betiği aynı iç içelik matrisini ve fark testlerini verir", {
+  two <- list(factors = list(list(name = "vt", items = paste0("x", 1:6)), list(name = "speed", items = c("x7", "x8", "x9"))))
+  rec <- analysis_cfa_compare(hs$clean$data, hs$config, list(estimator = "MLR", models = list(
+    list(name = "Üç faktör", model = m3), list(name = "İki faktör", model = two))), hs$hash)
+  out <- run_script(build_r_script("cfa_compare", hs, rec$settings, rec$seed, rec$results))
+  expect_identical(unname(out$ic_ice), rec$results$nesting$matrix)
+  t <- rec$results$tests[[1]]
+  got <- out$testler[[1]]
+  expect_identical(got[["Chisq diff"]], t$chisq_diff)
+  expect_identical(got[["Pr(>Chisq)"]], t$p)
+  expect_identical(unname(out$fit[["İki faktör"]][["cfi.scaled"]]), rec$results$fit[["İki faktör"]]$cfi_scaled)
+})
+
+test_that("M7 betiği aynı α, ω, AVE ve HTMT değerlerini verir", {
+  rec <- analysis_reliability(bfi10$clean$data, bfi10$config, list(model = m_ac, estimator = "WLSMV", obs_var = FALSE,
+                                                                  htmt = list(correlation = "polychoric")), bfi10$hash)
+  out <- run_script(build_r_script("reliability", bfi10, rec$settings, rec$seed, rec$results))
+  expect_identical(unname(out$alfa[["A"]]), rec$results$alpha$A)
+  expect_identical(as.numeric(out$omega[["C"]]), rec$results$omega$C)
+  expect_identical(as.numeric(out$ave[["A"]]), rec$results$ave$A)
+  expect_identical(unclass(out$htmt)["A", "C"], rec$results$htmt$A$C)
+})

@@ -1,5 +1,5 @@
 # ÖlçekLab — Ölçek Geliştirme ve Uyarlama Analiz Platformu
-## Codex için teknik şartname (v1.1, 2 Kasım 2026)
+## Codex için teknik şartname (v1.2, 3 Kasım 2026)
 
 > Çalışma adı: **ÖlçekLab**. Ad değiştirilebilir.
 > Bu belge, Codex'e (ya da başka bir kodlama ajanına) verilmek üzere yazılmıştır. Belgenin tamamını depo köküne `SPEC.md` olarak koy. Bölüm 0'ı ayrıca `AGENTS.md` olarak kaydet.
@@ -11,13 +11,10 @@
 |---|---|---|
 | 1.0 | 2 Kasım 2026 | İlk sürüm. |
 | 1.1 | 2 Kasım 2026 | `SPEC_REVIEW.md`'deki 58 madde onaylanıp işlendi. Değişen her yer "(v1.1: KİMLİK)" ile işaretlidir; gerekçe ve kanıt için `SPEC_REVIEW.md` ve `review/verify/` klasörüne bakın. |
+| 1.2 | 3 Kasım 2026 | Belge sahibinin Faz 1 yanıtları işlendi (`docs/validation/CODEX_YANIT_FAZ1.md`): W-1, REL-1, CL-1 ve REP-1 kapandı. M1 kural sırası, §11.3 tablosu (yeni satırlar: çok gruplu SRMR, HTMT BK–CT, WLSMV dayanıklı indeksler), HTMT ve çok gruplu SRMR varsayılanları, semTools 0.5-9 ↔ 0.5-10 denkliği (V10). Değişen yerler "(v1.2)" ile işaretlidir. |
 
-**Açıklama bekleyen noktalar.** Aşağıdaki maddeler belge sahibinin yanıtını bekliyor ve ⏳ ile işaretli:
-- §11.3'teki WLSMV CFI değerlerinin türü (W-1).
-- §11.3'teki HTMT satırının korelasyon türü ve `absolute` ayarı (REL-1).
-- BİDEKÇET temizleme sırası (CL-1).
-- Özgün analiz oturumunun `sessionInfo()` çıktısı (REP-1).
-- Referans simülasyon paketi (REP-4).
+**Açıklama bekleyen noktalar.** W-1, REL-1, CL-1 ve REP-1 3 Kasım 2026'da yanıtlandı (v1.2). Yalnızca şu madde belge sahibinin yanıtını bekliyor ve ⏳ ile işaretli:
+- Referans simülasyon paketi (REP-4; Faz 4'ten önce gerekir).
 
 ---
 
@@ -112,6 +109,7 @@ Bunlar Bölüm 13'te ileri sürüm olarak listelenmiştir.
 ## 4. Teknoloji yığını
 
 - **R motoru:** R 4.4.3 (sabit; §11.3 doğrulama sürümü); plumber 1.x (API); lavaan 0.7-2, semTools 0.5-10, psych 2.6.9, GPArotation 2026.8-2, MASS; mirai (işçiler); officer ve flextable (Word raporu); jsonlite; readxl; digest; testthat. Sürüm yükseltme ayrı bir doğrulama turu gerektirir (v1.1: REP-1). Yerel ayar `C.UTF-8`'dir (v1.1: ARCH-8).
+  - §11.3 değerleri semTools 0.5-9 ile üretildi. 0.5-9 ile 0.5-10 arasındaki kaynak farkı yalnızca `measEq.syntax()`'ın `update()` yöntemi, `chisqSmallN()` ve `permuteMeasEq()` içindedir; `htmt`, `compRelSEM`, `AVE` ve `measEq.syntax` çıktıları iki sürümde birebir aynıdır (`review/verify/V10`). Bu yüzden 0.5-10 korunur (v1.2).
 - **Ön yüz:** Vite, React, TypeScript; TanStack Query; grafikler için Apache ECharts; tablolar için TanStack Table; i18next (TR/EN); vitest; playwright.
 - **Yapay zekâ ağ geçidi:** Node 24 LTS (CI'da 24 ve 26 ile de sınanır), TypeScript, Fastify. OpenAI uyumlu sohbet tamamlama istemcisi; Ollama'nın varsayılan adresi `http://localhost:11434/v1` (v1.1: ARCH-2).
 - **Paketleme:** Docker; docker-compose.yml; Hugging Face Space için aynı `engine/Dockerfile` (bağlantı noktası `PORT` ortam değişkeninden okunur).
@@ -218,13 +216,14 @@ Her modül şu sırayla tanımlanır: **amaç → girdiler → R uygulaması →
 
 ### M1 — Veri yükleme ve temizleme
 - **Girdiler:** dosya, sütun rolleri, kurallar (aşağıda).
-- **Kurallar.** Her kural açılıp kapatılabilir. Kurallar **bu sırayla** uygulanır. Bir satır yalnızca ilk eşleştiği kuralda sayılır ve her adımda kaç satırın neden çıkarıldığı raporlanır (v1.1: CL-1):
+- **Kurallar.** Her kural açılıp kapatılabilir. Kurallar **bu sırayla** uygulanır. Bir satır yalnızca ilk eşleştiği kuralda sayılır ve her adımda kaç satırın neden çıkarıldığı raporlanır (v1.1: CL-1; sıra v1.2'de BİDEKÇET çalışmasının sırasıyla aynı yapıldı):
   1. **Geçersiz grup:** grup değeri eksik ya da kullanıcının verdiği geçerli değerler listesinde yok.
-  2. **Aralık dışı değer:** maddelerden birinde değer, tanımlı en küçük–en büyük aralığın dışında ya da tam sayı değil. Satır silinir.
-  3. **Eksik yanıt:** liste bazında silme; v1'de atama yok. Madde bazında eksiklik oranı ayrıca raporlanır (v1.1: CL-3).
+  2. **Eksik yanıt:** maddelerden en az birinde değer yok; liste bazında silme; v1'de atama yok. Madde bazında eksiklik oranı ayrıca raporlanır (v1.1: CL-3). Yalnızca `item` rolündeki sütunlara bakılır.
+  3. **Aralık dışı değer:** maddelerden birinde değer, tanımlı en küçük–en büyük aralığın dışında ya da tam sayı değil. Satır silinir.
   4. **Düz yanıt:** bütün maddelere aynı yanıtı veren satırlar. **Ham** (ters kodlanmamış) yanıtlarda aranır. Ölçekte ters madde yoksa, uç ama tutarlı yanıtları da silebileceği uyarısı gösterilir (v1.1: CL-2).
   5. **Ters kodlama:** x′ = en küçük + en büyük − x.
-- ⏳ Bu sıranın BİDEKÇET çalışmasındaki sırayla aynı olduğu belge sahibince doğrulanacak.
+- Kuralların hepsi satır bazlı olduğu için analize kalan satırlar sıradan bağımsızdır; sıra yalnızca bir satırın hangi adımda sayıldığını belirler. Hem eksik hem aralık dışı değeri olan satır "eksik" adımında sayılır (v1.2).
+- Sütun adlarının başındaki ve sonundaki boşluklar okuma sırasında atılır (ör. `"Madde1 "` → `Madde1`). Kırpılınca aynı adı taşıyan sütunlar hata verir (v1.2).
 - **Kimlik sütunu algılama (v1.1: PRIV-1):** sütun adlarına (ad, soyad, numara, no, tc, kimlik, id) ve değerlere bakılır. T.C. kimlik numarası için 11 hane ve sağlama algoritması kullanılır. Sonuç yalnızca öneridir; arayüz bunun garanti olmadığını yazar.
 - **Örnek veri setleri:** `POST /datasets/examples/{name}` ile `HolzingerSwineford1939` (lavaan) ve `bfi` (psych) yüklenebilir.
 - **Çıktı:** temizleme özet tablosu (ör. "Ham: 279 → hatalı grup 2 → eksik 5 → düz yanıt 16 → analiz: 256") ve temiz veri (yalnızca oturumda).
@@ -292,17 +291,20 @@ Her modül şu sırayla tanımlanır: **amaç → girdiler → R uygulaması →
     - Yalnızca şu koşullarda seçilebilir: `estimator = "ML"`, maddeler sürekli kabul edilmiş, `missing = "listwise"`. Diğer durumlarda arayüzde nedeniyle birlikte kilitlidir.
     - Çağrı: `test = "bollen.stine", bootstrap = B, iseed = seed`. Paralellik kapalıdır (`parallel = "no"`). Varsayılan B = 1000.
     - p değeri `lavInspect(fit, "test")$bollen.stine$pvalue` ile alınır.
-    - Raporlananlar: istenen B, `boot.length` (B_etkin), başarısız tekrar sayısı, uygunsuz çözüm sayısı.
+    - Raporlananlar: istenen B, `boot.length` (B_etkin), başarısız tekrar sayısı (B − B_etkin), uygunsuz çözüm sayısı (lavaan'ın uyarısından).
+    - Faz 2–3'te tek bir mirai işçisinde, istek süresince çalışır; iş kuyruğuna alınması Faz 4'teki iş sistemiyle gelir (v1.2).
     - `boot.larger = 0` ise "p < 1/B_etkin" yazılır. İsteğe bağlı "tutucu p" = (b + 1)/(B + 1) değeri R'de hesaplanır.
 - **Çıktı:**
   - uyum indeksleri: χ², sd, p, χ²/sd (yalnızca ML'de ve "bilgi" etiketiyle; v1.1: W-4), CFI, TLI, RMSEA ve %90 GA, SRMR,
-  - WLSMV'de iki sütun: "ölçeklenmiş (Mplus uyumlu)" `.scaled` ve "dayanıklı (Savalei, 2021)" `.robust` (v1.1: W-1),
+  - WLSMV'de iki sütun: "ölçeklenmiş (Mplus uyumlu)" `.scaled` ve "dayanıklı (Savalei, 2021)" `.robust` (v1.1: W-1). MLR'de de aynı iki sütun gösterilir: "ölçeklenmiş (Yuan–Bentler)" ve "dayanıklı (Brosseau-Liard ve Savalei)". §11.3 karşılaştırması `cfi.scaled` ile yapılır (v1.2: W-1 yanıtı),
   - standardize yükler, faktör korelasyonları,
   - uygunsuz çözüm denetimi (`lavInspect(fit, "post.check")`),
   - yol şeması (SVG).
 - **Model karşılaştırma (v1.1: W-2, W-3):**
   - Birden çok model aynı tabloda gösterilir. Kestirici, `likelihood` veya N'si farklı modeller aynı tabloya alınmaz.
   - İç içe modeller için `lavTestLRT` kullanılır. Kayıtta `method` alanı yer alır: WLSMV'de `satorra.2000`, MLR'de `satorra.bentler.2001`. SB2001 negatif çıkarsa SB2010 ile yeniden hesaplanır ve uyarı eklenir.
+  - Hangi model çiftlerinin iç içe olduğu `semTools::net` ile denetlenir (Bentler ve Satorra, 2010; kategorik veride Asparouhov ve Muthén, 2019). Yalnızca iç içe çiftler test edilir; eşdeğer modeller ayrıca belirtilir (v1.2).
+  - Karşılaştırılan modeller aynı gözlenen değişkenleri kullanmalıdır (v1.2).
   - Ölçeklenmiş χ² değerleri asla elle çıkarılmaz.
   - İç içe olmayan modeller için AIC/BIC yalnızca ML/MLR'de gösterilir. WLSMV'de test sunulmaz; indeksler betimsel olarak yan yana konur.
 - **Modifikasyon indeksleri:** `modindices` ile gösterilir. Kuramsal gerekçe olmadan serbest bırakmanın riskleri hakkında sabit bir uyarı metni eşlik eder.
@@ -313,7 +315,11 @@ Her modül şu sırayla tanımlanır: **amaç → girdiler → R uygulaması →
   - `psych::alpha` (toplam ve alt boyut alfa);
   - `semTools::compRelSEM` (omega/CR). `obs.var` seçeneği gösterilir. WLSMV'de `ord.scale = TRUE` kullanılır; bu, gözlenen toplam puanın güvenirliğidir (Green & Yang, 2009);
   - `semTools::AVE` (sıralı veride y* ölçeğindedir; tabloda yazar);
-  - `semTools::htmt`. `htmt2`, `absolute` ve korelasyon türü (`ordered`) seçenekleri gösterilir ve kayda yazılır (v1.1: REL-1).
+  - `semTools::htmt`. `htmt2`, `absolute` ve korelasyon türü (`ordered`) seçenekleri gösterilir ve kayda yazılır (v1.1: REL-1). Platform varsayılanları: `htmt2 = FALSE`, `absolute = TRUE`, Pearson korelasyonu. semTools'un kendi varsayılanı `htmt2 = TRUE` olduğu için ayarlar çağrıda her zaman açıkça verilir (v1.2: REL-1 yanıtı).
+- **`obs.var` farkı (v1.2).** compRelSEM ω = w′ΛΦΛ′w / w′Σ̂w formülünü kullanır; pay iki seçenekte de modelden gelir.
+  - `obs.var = TRUE` (semTools varsayılanı): payda gözlenen (doymuş model) kovaryans matrisidir. ω, gözlenen toplam puan varyansının modelin açıkladığı payıdır; model uyumsuzluğu paydaya yansır.
+  - `obs.var = FALSE`: payda modelin örtük kovaryans matrisidir. Hata kovaryansı yoksa McDonald'ın (1999) ω = (Σλ)²ψ / ((Σλ)²ψ + Σθ) formülüne, yani yapı güvenirliğine (CR) eşittir.
+  - Model veriye tam uyduğunda ikisi aynıdır. Platform hangisinin kullanıldığını tablo notuna yazar; iki formül testlerde lavaan kestirimlerinden elle yeniden hesaplanarak doğrulanır.
 - **Not:** HTMT'den önce ters maddeler yeniden kodlanmış olmalıdır. Aksi hâlde `absolute = FALSE` ile sonuç tanımsız olabilir.
 - **Çıktı:** faktör × gösterge tablosu. ,70 / ,50 / ,85 eşiklerine göre görsel işaretleme yapılır; eşikler ayarlanabilir ve kaynakları yazılır: Fornell ve Larcker (1981), Henseler vd. (2015), Roemer vd. (2021) (v1.1: REL-2).
 
@@ -325,6 +331,7 @@ Her modül şu sırayla tanımlanır: **amaç → girdiler → R uygulaması →
   - Bütün maddeler üç kategoriliyse eşik adımı "biçimselle eşdeğer (sd farkı 0)" notuyla atlanır.
   - İkili madde içeren ölçeklerde kategorik değişmezlik v1'de kapalıdır.
   - "Metrik" ve "skaler" adları yalnızca parantez içinde takma ad olarak kullanılır.
+- **Çok gruplu SRMR (v1.2).** Hem lavaan'ın `srmr` değeri hem `srmr_bentler_nomean` gösterilir; raporun varsayılan değeri `srmr_bentler_nomean`'dır (§11.3).
 - **Karar ölçütleri** (kullanıcı ayarlayabilir; varsayılanlar; v1.1: I-2):
   - Tanım: Δ = kısıtlı model − daha az kısıtlı model.
   - ΔCFI ≥ −,01 (Cheung & Rensvold, 2002),
@@ -579,11 +586,11 @@ Her sonuç sayfasında "Bu analizin R kodunu indir" ve "Bu sonucu rapora ekle" d
 
 ### 11.3 BİDEKÇET regresyon testleri (özel; veriler depoya konmaz)
 
-Ham veri KVKK kapsamında olduğu için bu testler yalnızca yerelde, `tests/private/` altında, veri dosyası mevcutsa çalışır. Beklenen değerler aşağıdadır; bunlar R 4.4.3 ve lavaan 0.7.2 ile doğrulanmıştır. ⏳ psych ve semTools sürümleri belge sahibinden bekleniyor (REP-1).
+Ham veri KVKK kapsamında olduğu için bu testler yalnızca belge sahibinin makinesinde çalışır: `BIDEKCET_DATA_DIR=/veri/klasoru Rscript tests/private/run_bidekcet.R` (v1.2). Beklenen değerler aşağıdadır. Bunlar belge sahibinin referans betiğiyle (`engine/tests/reference/bidekcet_referans.R`) ham Excel dosyalarından üretilmiş; R 4.4.3 ve R 4.5.3'te, lavaan 0.7-2, psych 2.6.9 ve semTools 0.5-9 ile aynı çıkmıştır. Tam çıktı ve `sessionInfo()`: `docs/validation/bidekcet_referans_cikti_2026-11-03.txt` (v1.2: REP-1 yanıtı). Test düzeneğinin kendisi CI'da sentetik, aynı düzende dosyalarla referans betiğe karşı sınanır.
 
 | Analiz | Ayar | Beklenen değer |
 |---|---|---|
-| Temizleme | Bölüm M1 kuralları (⏳ sıra doğrulanacak) | Ortaokul 253 → 250 (düz yanıt 3); Lise 279 → 277 (hatalı sınıf 2) → 256 (eksik 5, düz yanıt 16) |
+| Temizleme | Bölüm M1 kuralları ve sırası (v1.2) | Ortaokul: ham 255 → boş sınıf 2 → 253 → eksik 0 → aralık dışı 0 → düz yanıt 3 → **250**. Lise: ham 279 → geçersiz sınıf (4 ve 7) 2 → 277 → eksik 5 → 272 → aralık dışı 0 → düz yanıt 16 → **256** |
 | Toplam alfa (12 madde) | psych::alpha | Ortaokul .794; Lise .836 |
 | KMO | psych::KMO | Ortaokul .805; Lise .821 |
 | Paralel analiz | fa = "pc", n.iter = 1000 | Her iki kademede 2 bileşen |
@@ -591,12 +598,14 @@ Ham veri KVKK kapsamında olduğu için bu testler yalnızca yerelde, `tests/pri
 | DFA Model 1 χ² | aynı | Ortaokul 179.058 (sd 51); Lise 178.149 (sd 51) |
 | Δχ² Model 1–Model 4 | anova | Ortaokul 31.21 (sd 3); Lise 44.82 (sd 3) |
 | Değişmezlik χ² | wishart, std.lv | Biçimsel 281.168 (96); Metrik 299.621 (104); Skaler 319.77 (112) |
+| Çok gruplu SRMR (v1.2) | `srmr_bentler_nomean` (rapor değeri) | Biçimsel .0626; Metrik .0710; Skaler .0713 (lavaan `srmr`: .0583; .0661; .0683) |
 | Kısmi metrik | group.partial = "CT=~M10" | Biçimselle Δχ²(7) = 3.64, p = .821 |
 | Kısmi skaler | + "M4~1" (M10 kesişimi kısıtlı) | Kısmi metrikle Δχ²(7) = 11.80, p = .107 |
-| HTMT (ortaokul, BK–FM) | htmt2 = FALSE (⏳ korelasyon türü ve `absolute` bekleniyor) | .773 |
-| WLSMV Model 4 | ordered, std.lv (⏳ `cfi.scaled` mı `cfi.robust` mu bekleniyor) | Ortaokul CFI .908; Lise CFI .931 |
+| HTMT (ortaokul, BK–FM) | Pearson, `htmt2 = FALSE`, `absolute = TRUE` (v1.2) | .773 (`absolute = FALSE` ile de .773) |
+| HTMT (ortaokul, BK–CT) (v1.2) | Pearson, `htmt2 = FALSE` | `absolute = TRUE`: .451; `absolute = FALSE`: .412 |
+| WLSMV Model 4 | `ordered` = 12 madde, `std.lv = TRUE`, her kademe ayrı (v1.2) | `cfi.scaled`: Ortaokul .908; Lise .931. Ayrıca `cfi.robust` .829 / .875; `rmsea.scaled` .096 / .094; `rmsea.robust` .113 / .106 |
 
-Faktör adları: BK = M4, M5, M6, M8; FM = M1, M2, M3; KD = M9, M11; CT = M10, M12, M13. M7 analiz dışıdır.
+Faktör adları: BK = M4, M5, M6, M8; FM = M1, M2, M3; KD = M9, M11; CT = M10, M12, M13. M7 analiz dışıdır. Model 1: BK = M1–M6, M8; CT = M10, M12, M13; KD = M9, M11. Lise dosyasında maddeler `Madde1–Madde13` adını taşır. Değişmezlikte grup değişkeni kademedir (`Ortaokul`, `Lise`; referans grup Ortaokul).
 
 ### 11.4 Simülasyon referansı
 ⏳ `docs/reference_simulation/` paketindeki ayarlarla (tohum 20261030; N = 300, 600, 1000, 1500; 1000 tekrar) beklenen değerler `ozet_tablolar.csv` dosyasındadır. Örnek: N = 600, Senaryo B'de skaler Δχ² gücü .808; ΔCFI/ΔRMSEA gücü .460 (birleşik kuralın VE mi VEYA mı olduğu paketle doğrulanacak). Hızlı CI testi için her koşulda 20 tekrarlık küçük bir sürüm koşulur. Bu küçük sürümde birebir değerler değil, aynı tohumla tekrar üretilebilirlik test edilir.
@@ -643,11 +652,7 @@ Faktör adları: BK = M4, M5, M6, M8; FM = M1, M2, M3; KD = M9, M11; CT = M10, M
 4. **Alan adı ve barındırma:** Netlify sitesi adı; Hugging Face Space adı (ör. `OsirisZk/olceklab-engine`).
 5. **Platformun adı** ve logosu.
 6. **Lisans:** açık kaynak (ör. MIT ya da GPL-3; R paketlerinin lisanslarıyla uyumlu olmalı).
-7. **§11.3 açıklamaları:**
-   - WLSMV CFI türü,
-   - HTMT korelasyon türü ve `absolute` ayarı,
-   - temizleme sırası,
-   - özgün analizin `sessionInfo()` çıktısı.
+7. ~~**§11.3 açıklamaları**~~ — 3 Kasım 2026'da yanıtlandı (`docs/validation/CODEX_YANIT_FAZ1.md`).
 8. **Referans simülasyon paketi:** `docs/reference_simulation/`, `ozet_tablolar.csv` ve Senaryo B tanımı.
 
 ---

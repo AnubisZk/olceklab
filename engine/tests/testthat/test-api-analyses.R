@@ -105,3 +105,64 @@ test_that("ARCH-1: uzun bir paralel analiz sürerken /health hemen yanıt verir"
   long$wait(300000)
   expect_identical(long$get_result(), 200L)
 })
+
+# --- Faz 2: M5, M6, M7 ve model önizlemesi ---------------------------------------
+
+m_nc <- list(factors = list(list(name = "N", items = paste0("N", 1:5)), list(name = "C", items = paste0("C", 1:5))))
+
+test_that("POST /models/preview: varsayılan model alt boyutlardan; kurucu modeli sözdizimine çevrilir", {
+  d <- body_json(api("/models/preview", "POST", json = list(dataset_id = id)))
+  expect_identical(d$syntax, "N =~ N1 + N2 + N3 + N4 + N5\nC =~ C1 + C2 + C3 + C4 + C5")
+  p <- body_json(api("/models/preview", "POST", json = list(dataset_id = id, model = list(syntax = "F =~ N1 + N2 + C1"))))
+  expect_identical(p$source, "syntax")
+  expect_identical(p$warnings, list())
+  bad <- api("/models/preview", "POST", json = list(dataset_id = id, model = list(syntax = "F =~ N1 + Q9")))
+  expect_identical(httr2::resp_status(bad), 422L)
+  expect_identical(body_json(bad)$error$code, "model_unknown_item")
+})
+
+test_that("M5 HTTP sonucu yerel analysis_efa ile birebir aynı", {
+  st <- list(nfactors = 2L, seed = 3L)
+  rec <- body_json(api("/analyses/efa", "POST", json = list(dataset_id = id, settings = st)))
+  l <- local_ds()
+  ref <- analysis_efa(l$data, l$config, st, "h")
+  f1 <- ref$results$factors[[1]]
+  expect_identical(unlist(rec$results$loadings[[f1]]), as.numeric(ref$results$loadings[[f1]]))
+  expect_identical(rec$results$fit$tli, ref$results$fit$tli)
+  expect_match(rec$r_script, "psych::fa(x, nfactors = 2L", fixed = TRUE)
+})
+
+test_that("M6 HTTP sonucu (ML, wishart) yerel analysis_cfa ile birebir aynı; betik indirilebilir", {
+  st <- list(model = m_nc, likelihood = "wishart")
+  rec <- body_json(api("/analyses/cfa", "POST", json = list(dataset_id = id, settings = st)))
+  l <- local_ds()
+  ref <- analysis_cfa(l$data, l$config, st, "h")
+  expect_identical(rec$results$fit$chisq, ref$results$fit$chisq)
+  expect_identical(rec$results$fit$rmsea_ci_upper, ref$results$fit$rmsea_ci_upper)
+  expect_identical(vapply(rec$results$loadings, `[[`, 0, "std"), ref$results$loadings$std)
+  expect_identical(rec$figures[[1]]$type, "path")
+  s <- api(sprintf("/analyses/%s/script", rec$analysis_id))
+  expect_match(httr2::resp_body_string(s), "lavaan::cfa(model, data = x, estimator = \"ML\", likelihood = \"wishart\"", fixed = TRUE)
+})
+
+test_that("M6 karşılaştırma ve M7 güvenirlik HTTP üzerinden yerel hesapla aynı", {
+  one <- list(factors = list(list(name = "G", items = items)))
+  st <- list(models = list(list(name = "İki", model = m_nc), list(name = "Tek", model = one)), estimator = "MLR")
+  rec <- body_json(api("/analyses/cfa/compare", "POST", json = list(dataset_id = id, settings = st)))
+  l <- local_ds()
+  ref <- analysis_cfa_compare(l$data, l$config, st, "h")
+  expect_identical(rec$results$tests[[1]]$chisq_diff, ref$results$tests[[1]]$chisq_diff)
+  expect_identical(rec$results$tests[[1]]$method, "satorra.bentler.2001")
+  rl <- body_json(api("/analyses/reliability", "POST", json = list(dataset_id = id, settings = list(model = m_nc))))
+  rr <- analysis_reliability(l$data, l$config, list(model = m_nc), "h")
+  expect_identical(rl$results$omega$N, rr$results$omega$N)
+  expect_identical(rl$results$htmt$N$C, rr$results$htmt$N$C)
+})
+
+test_that("Bollen–Stine kilidi HTTP'de 422 ve gerekçeli iletiyle döner", {
+  r <- api("/analyses/cfa", "POST", json = list(dataset_id = id, settings = list(model = m_nc, estimator = "MLR", bootstrap = 200L)))
+  expect_identical(httr2::resp_status(r), 422L)
+  b <- body_json(r)
+  expect_identical(b$error$code, "bollen_stine_unavailable")
+  expect_match(b$error$message_tr, "yalnızca ML", fixed = TRUE)
+})

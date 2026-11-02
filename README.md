@@ -2,7 +2,7 @@
 
 Ölçek geliştirme ve uyarlama çalışmaları için tekrarlanabilir psikometrik analiz platformu. Bütün istatistiksel hesaplar R motorunda yapılır.
 
-- Teknik şartname: [`SPEC.md`](SPEC.md) (v1.1)
+- Teknik şartname: [`SPEC.md`](SPEC.md) (v1.2)
 - Şartname incelemesi ve v1.1 önerileri: [`SPEC_REVIEW.md`](SPEC_REVIEW.md)
 - Kodlama kuralları: [`AGENTS.md`](AGENTS.md)
 - Sürümler: [`docs/VERSIONS.md`](docs/VERSIONS.md)

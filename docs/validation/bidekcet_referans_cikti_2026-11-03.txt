@@ -1,0 +1,54 @@
+Ham satir: Ortaokul 255 Lise 279 
+                       Ortaokul Lise
+sinif_filtresi_sonrasi      253  277
+eksik_sonrasi               253  272
+aralik_sonrasi              253  272
+duz_yanit_sonrasi           250  256
+
+Alfa: 0.794 0.836 
+KMO: 0.805 0.821 
+Parallel analysis suggests that the number of factors =  NA  and the number of components =  2 
+Parallel analysis suggests that the number of factors =  NA  and the number of components =  2 
+Paralel analiz (bilesen): 2 2 
+M4 chisq 147.844 df 48 | M1 chisq 179.058 | dchisq 31.21 
+M4 chisq 133.325 df 48 | M1 chisq 178.149 | dchisq 44.82 
+                    bicimsel   metrik   skaler
+chisq               281.1685 299.6211 319.7724
+df                   96.0000 104.0000 112.0000
+srmr                  0.0583   0.0661   0.0683
+srmr_bentler_nomean   0.0626   0.0710   0.0713
+Kismi metrik: dchisq 3.64 df 7 p 0.821 
+Kismi skaler: dchisq 11.8 df 7 p 0.107 
+HTMT formals: model, data, sample.cov, missing, ordered, absolute, htmt2 
+HTMT BK-FM (Pearson) absolute=TRUE: 0.773  absolute=FALSE: 0.773 
+HTMT BK-CT absolute=TRUE: 0.451  absolute=FALSE: 0.412 
+  cfi.scaled   cfi.robust rmsea.scaled rmsea.robust 
+       0.908        0.829        0.096        0.113 
+  cfi.scaled   cfi.robust rmsea.scaled rmsea.robust 
+       0.931        0.875        0.094        0.106 
+R version 4.5.3 (2026-03-11)
+Platform: x86_64-conda-linux-gnu
+Running under: Ubuntu 24.04.5 LTS
+
+Matrix products: default
+BLAS/LAPACK: /tmp/claude-0/mm/renv/lib/libopenblasp-r0.3.34.so;  LAPACK version 3.12.0
+
+locale:
+[1] C
+
+time zone: Europe/Istanbul
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] semTools_0.5-9 lavaan_0.7-2   psych_2.6.9    readxl_1.6.0  
+
+loaded via a namespace (and not attached):
+ [1] cellranger_1.1.0 lattice_0.23-1   magrittr_2.0.5   glue_1.8.1      
+ [5] tibble_3.3.1     parallel_4.5.3   pkgconfig_2.0.3  pbivnorm_0.6.0  
+ [9] lifecycle_1.0.5  stats4_4.5.3     cli_3.6.6        vctrs_0.7.3     
+[13] grid_4.5.3       mnormt_2.1.2     compiler_4.5.3   tools_4.5.3     
+[17] nlme_3.1-170     pillar_1.11.1    quadprog_1.5-8   rlang_1.3.0     
+[21] MASS_7.3-66     
