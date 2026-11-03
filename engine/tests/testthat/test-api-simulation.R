@@ -71,3 +71,9 @@ test_that("geçersiz tanım 422; bilinmeyen iş 404", {
   expect_identical(body_json(r)$error$code, "invalid_population")
   expect_identical(httr2::resp_status(api("/jobs/yok")), 404L)
 })
+
+test_that("ikili yanıtlı uç noktalarda hata yine JSON gövdesiyle döner", {
+  r <- api("/simulations/yok/package")
+  expect_identical(httr2::resp_status(r), 404L)
+  expect_identical(body_json(r)$error$code, "job_not_found")
+})

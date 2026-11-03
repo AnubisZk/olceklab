@@ -1,0 +1,162 @@
+                                     olcut
+                               docx DFA χ²
+                               docx DFA sd
+                              docx DFA CFI
+                              docx DFA TLI
+                            docx DFA RMSEA
+                         docx DFA RMSEA GA
+                             docx DFA SRMR
+                                 docx β x1
+                                 docx β x4
+                                 docx β x9
+                    docx DFA bulgu cümlesi
+                  docx yük aralığı cümlesi
+                             docx α visual
+                             docx ω visual
+                           docx AVE visual
+                            docx α textual
+                            docx ω textual
+                          docx AVE textual
+                              docx α speed
+                              docx ω speed
+                            docx AVE speed
+                         docx HTMT cümlesi
+                           docx metrik Δχ²
+                           docx skaler Δχ²
+                          docx skaler ΔCFI
+                    CSV biçimli metrik Δχ²
+           CSV ham metrik Δχ² (17 basamak)
+             CSV ham skaler p (17 basamak)
+          CSV ham metrik ΔCFI (17 basamak)
+             docx tablo numaraları ardışık
+                    docx yapay zekâ beyanı
+          docx kaynakça: lavaan citation()
+            proje A (örnek veri) durumları
+                       proje A özet satırı
+ proje B (yüklenen veri, onaylı) durumları
+ proje B veri baytları özgün dosyayla aynı
+ onaysız veri eklenemez (düğme devre dışı)
+   örnek veride proje dosyasında data/ yok
+             geri yüklenen oturumda DFA T1
+                                                                                                                                                                                                                                                                                                arayuz
+                                                                                                                                                                                                                                                                                                85,306
+                                                                                                                                                                                                                                                                                                    24
+                                                                                                                                                                                                                                                                                                  ,931
+                                                                                                                                                                                                                                                                                                 0,896
+                                                                                                                                                                                                                                                                                                  ,092
+                                                                                                                                                                                                                                                                                          [,071; ,114]
+                                                                                                                                                                                                                                                                                                  ,065
+                                                                                                                                                                                                                                                                                                  ,772
+                                                                                                                                                                                                                                                                                                  ,852
+                                                                                                                                                                                                                                                                                                  ,665
+                                                                                                                                                                 Modelin uyum değerleri: χ²(24) = 85,306, p < ,001; CFI = ,931; TLI = 0,896; RMSEA = ,092, %90 GA [,071; ,114]; SRMR = ,065 (Tablo 1).
+                                                                                                                                                                                                                                  Standardize faktör yükleri ,424 ile ,855 arasında değişti (Tablo 2).
+                                                                                                                                                                                                                                                                                                  ,626
+                                                                                                                                                                                                                                                                                                  ,612
+                                                                                                                                                                                                                                                                                                  ,371
+                                                                                                                                                                                                                                                                                                  ,883
+                                                                                                                                                                                                                                                                                                  ,885
+                                                                                                                                                                                                                                                                                                  ,721
+                                                                                                                                                                                                                                                                                                  ,688
+                                                                                                                                                                                                                                                                                                  ,686
+                                                                                                                                                                                                                                                                                                  ,424
+                                                                                                                                                                                                                                            En büyük HTMT oranı 0,467 (speed – visual) oldu (Tablo 6).
+                                                                                                                                                                                                                                                                                                  8,19
+                                                                                                                                                                                                                                                                                                 40,06
+                                                                                                                                                                                                                                                                                                 −,038
+                                                                                                                                                                                                                                                                                                  8,19
+                                                                                                                                                                                                                                                                                    8.1922003185999994
+                                                                                                                                                                                                                                                                                4.4345661761853759e-07
+                                                                                                                                                                                                                                                                                -0.0024749118481827148
+                                                                                                                                                                                                                                                                                  1,2,3,4,5,6,7,8,9,10
+                                                                                                                                                                                                                                                                                                  TRUE
+                                                                                                                                                                                                                                                                                                  TRUE
+                                                                                                                                                                                                                                                                                   Aynı,Aynı,Aynı,Aynı
+                                                                                                                                                                                                                                                             Bütün sonuçlar 17 anlamlı basamakta aynı.
+                                                                                                                                                                                                                                                                                             Aynı,Aynı
+                                                                                                                                                                                                                                                                                                  TRUE
+                                                                                                                                                                                                                                                                                                  TRUE
+                                                                                                                                                                                                                                                                                                  TRUE
+ [[["χ²"],["85,306"]],[["sd"],["24"]],[["p"],["< ,001"]],[["χ²/sd (bilgi)"],["3,55"]],[["CFI"],[",931"]],[["TLI"],["0,896"]],[["RMSEA"],[",092"]],[["RMSEA %90 GA"],["[,071; ,114]"]],[["SRMR"],[",065"]],[["AIC"],["7.517,49"]],[["BIC"],["7.595,34"]],[["n"],["301"]],[["Parametre sayısı"],["21"]]]
+                                                                                                                                                                                                                                                                                            bagimsiz_R
+                                                                                                                                                                                                                                                                                                85,306
+                                                                                                                                                                                                                                                                                                    24
+                                                                                                                                                                                                                                                                                                  ,931
+                                                                                                                                                                                                                                                                                                 0,896
+                                                                                                                                                                                                                                                                                                  ,092
+                                                                                                                                                                                                                                                                                          [,071; ,114]
+                                                                                                                                                                                                                                                                                                  ,065
+                                                                                                                                                                                                                                                                                                  ,772
+                                                                                                                                                                                                                                                                                                  ,852
+                                                                                                                                                                                                                                                                                                  ,665
+                                                                                                                                                                 Modelin uyum değerleri: χ²(24) = 85,306, p < ,001; CFI = ,931; TLI = 0,896; RMSEA = ,092, %90 GA [,071; ,114]; SRMR = ,065 (Tablo 1).
+                                                                                                                                                                                                                                  Standardize faktör yükleri ,424 ile ,855 arasında değişti (Tablo 2).
+                                                                                                                                                                                                                                                                                                  ,626
+                                                                                                                                                                                                                                                                                                  ,612
+                                                                                                                                                                                                                                                                                                  ,371
+                                                                                                                                                                                                                                                                                                  ,883
+                                                                                                                                                                                                                                                                                                  ,885
+                                                                                                                                                                                                                                                                                                  ,721
+                                                                                                                                                                                                                                                                                                  ,688
+                                                                                                                                                                                                                                                                                                  ,686
+                                                                                                                                                                                                                                                                                                  ,424
+                                                                                                                                                                                                                                            En büyük HTMT oranı 0,467 (speed – visual) oldu (Tablo 6).
+                                                                                                                                                                                                                                                                                                  8,19
+                                                                                                                                                                                                                                                                                                 40,06
+                                                                                                                                                                                                                                                                                                 −,038
+                                                                                                                                                                                                                                                                                                  8,19
+                                                                                                                                                                                                                                                                                    8.1922003185999994
+                                                                                                                                                                                                                                                                                4.4345661761853759e-07
+                                                                                                                                                                                                                                                                                -0.0024749118481827148
+                                                                                                                                                                                                                                                                                  1,2,3,4,5,6,7,8,9,10
+                                                                                                                                                                                                                                                                                                  TRUE
+                                                                                                                                                                                                                                                                                                  TRUE
+                                                                                                                                                                                                                                                                                   Aynı,Aynı,Aynı,Aynı
+                                                                                                                                                                                                                                                             Bütün sonuçlar 17 anlamlı basamakta aynı.
+                                                                                                                                                                                                                                                                                             Aynı,Aynı
+                                                                                                                                                                                                                                                                                                  TRUE
+                                                                                                                                                                                                                                                                                                  TRUE
+                                                                                                                                                                                                                                                                                                  TRUE
+ [[["χ²"],["85,306"]],[["sd"],["24"]],[["p"],["< ,001"]],[["χ²/sd (bilgi)"],["3,55"]],[["CFI"],[",931"]],[["TLI"],["0,896"]],[["RMSEA"],[",092"]],[["RMSEA %90 GA"],["[,071; ,114]"]],[["SRMR"],[",065"]],[["AIC"],["7.517,49"]],[["BIC"],["7.595,34"]],[["n"],["301"]],[["Parametre sayısı"],["21"]]]
+ sonuc
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+  AYNI
+
+39/39 AYNI; önizlemede italik parça: 35; mobil yatay kaydırma: FALSE

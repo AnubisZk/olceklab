@@ -1,4 +1,6 @@
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FigureDownload } from './FigureDownload';
 import type { PathData } from '../../api/types';
 import { useTheme } from '../../theme/ThemeContext';
 import { palettes } from '../../theme/tokens';
@@ -41,11 +43,12 @@ export function PathDiagram({ data }: { data: PathData }) {
   const c = palettes[theme];
   const L = layoutPath(data);
   const lab = (o: { label_tr: string; label_en: string }) => (lang === 'tr' ? o.label_tr : o.label_en);
+  const svgRef = useRef<SVGSVGElement>(null);
   const rx = 62; const ry = 20; const bw = 64; const bh = 24;
   return (
     <figure className="chart-figure">
       <figcaption className="rtable-title">{t('cfa.pathTitle')}</figcaption>
-      <svg className="path-diagram" role="img" aria-label={t('cfa.pathAria')} viewBox={`0 0 ${L.width} ${L.height}`}
+      <svg ref={svgRef} xmlns="http://www.w3.org/2000/svg" className="path-diagram" role="img" aria-label={t('cfa.pathAria')} viewBox={`0 0 ${L.width} ${L.height}`}
            width="100%" style={{ maxWidth: L.width, background: c.bg }} data-testid="path-diagram">
         <defs>
           <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -106,6 +109,8 @@ export function PathDiagram({ data }: { data: PathData }) {
           ) : null;
         })}
       </svg>
+      <FigureDownload name="dfa_yol_semasi" getSvg={() => (svgRef.current ? new XMLSerializer().serializeToString(svgRef.current) : null)}
+                      size={() => ({ width: L.width, height: L.height })} />
       <p className="table-note">{t('cfa.pathNote')}</p>
     </figure>
   );

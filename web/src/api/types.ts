@@ -255,3 +255,29 @@ export interface BiasHeatmapData {
   estimator: string; params: string[]; conditions: string[];
   values: (number | null)[][]; labels_tr: string[][]; labels_en: string[][]; note_tr: string; note_en: string;
 }
+
+// --- Faz 5: rapor ve proje -----------------------------------------------------------
+export interface TextSegment { text: string; italic: boolean }
+export interface ReportPreviewItem {
+  analysis_id: string; module: string; title: string;
+  methods: TextSegment[][]; results: TextSegment[][]; limitations: TextSegment[][];
+  tables: { id: string; number: number; title: string }[];
+}
+export interface ReportPreview { lang: Lang; items: ReportPreviewItem[]; references: string[]; note: string }
+export interface VersionWarning { component: string; project: string; current: string; message_tr: string; message_en: string }
+export interface ProjectSummary {
+  project_id: string; created_at: string; format_version: number;
+  dataset: { filename: string; hash: string; n_rows: number; n_cols: number; source_type: 'upload' | 'example'; example_name?: string | null; included: boolean; text_tr: string; text_en: string };
+  needs_data: boolean;
+  analyses: { order: number; module: string; analysis_id: string; title_tr: string; title_en: string }[];
+  version_warnings: VersionWarning[];
+}
+export interface ProjectComparison {
+  order: number; module: string; title_tr: string; title_en: string; old_analysis_id: string; new_analysis_id?: string;
+  status: 'identical' | 'different' | 'error'; n_values?: number; n_numeric?: number; n_diff?: number; diffs?: string[];
+  text_tr: string; text_en: string;
+}
+export interface ProjectReproduction {
+  project_id: string; dataset: DatasetOverview; roles: RolesBody; clean: AnalysisRecord<CleanResults> | null; records: AnalysisRecord[];
+  comparisons: ProjectComparison[]; all_identical: boolean; hash_ok: boolean; version_warnings: VersionWarning[];
+}

@@ -15,6 +15,7 @@ const EfaPage = lazy(() => import('./pages/EfaPage').then((m) => ({ default: m.E
 const CfaPage = lazy(() => import('./pages/CfaPage').then((m) => ({ default: m.CfaPage })));
 const InvariancePage = lazy(() => import('./pages/InvariancePage').then((m) => ({ default: m.InvariancePage })));
 const SimulationPage = lazy(() => import('./pages/SimulationPage').then((m) => ({ default: m.SimulationPage })));
+const ReportPage = lazy(() => import('./pages/ReportPage').then((m) => ({ default: m.ReportPage })));
 const ReliabilityPage = lazy(() => import('./pages/ReliabilityPage').then((m) => ({ default: m.ReliabilityPage })));
 
 const implemented: Partial<Record<PageKey, ComponentType>> = {
@@ -28,6 +29,7 @@ const implemented: Partial<Record<PageKey, ComponentType>> = {
   reliability: ReliabilityPage,
   invariance: InvariancePage,
   simulation: SimulationPage,
+  report: ReportPage,
 };
 
 function Loading() {

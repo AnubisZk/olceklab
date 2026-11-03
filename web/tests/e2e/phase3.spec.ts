@@ -13,7 +13,7 @@ test('Faz 3 akışı: değişmezlik, kısmi değişmezlik sihirbazı ve gizil or
   await page.getByRole('button', { name: 'Temizlemeyi çalıştır' }).click();
   await expect(page.getByTestId('clean-summary')).toBeVisible();
   await page.getByRole('link', { name: /Değişmezlik/ }).click();
-  await page.getByLabel('Olabilirlik').selectOption('wishart');
+  await page.getByRole('combobox', { name: /^Olabilirlik/ }).selectOption('wishart');
   const r1 = page.waitForResponse((r) => r.url().endsWith('/analyses/invariance'));
   await page.getByRole('button', { name: 'Değişmezliği sına' }).click();
   const inv = await (await r1).json();

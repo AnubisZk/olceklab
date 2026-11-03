@@ -76,8 +76,7 @@
   "start": {
     "newProject": "Yeni proje",
     "importProject": "Projeyi içe aktar",
-    "tryExample": "Örnek veriyle dene (bfi)",
-    "importPhase": "Proje içe aktarma Faz 5'te etkinleşir."
+    "tryExample": "Örnek veriyle dene (bfi)"
   },
   "engine": {
     "title": "R analiz motoru",
@@ -128,10 +127,15 @@
     "warnings": "Uyarılar",
     "downloadScript": "Bu analizin R kodunu indir",
     "addToReport": "Bu sonucu rapora ekle",
-    "reportPhase": "Rapor Faz 5'te etkinleşir.",
     "running": "R motorunda çalışıyor…",
     "needsClean": "Bu analiz için önce Veri sayfasında dosya yükleyip temizleme adımını çalıştırın.",
-    "goToData": "Veri sayfasına git"
+    "goToData": "Veri sayfasına git",
+    "inReport": "Raporda ✓ (çıkarmak için tıklayın)",
+    "csvTable": "Tablo",
+    "csvRaw": "ham değerler (17 basamak)",
+    "csvDownload": "CSV indir",
+    "downloadSvg": "SVG indir",
+    "downloadPng": "PNG indir"
   },
   "data": {
     "uploadTitle": "Dosya yükle",
@@ -467,5 +471,65 @@
     "package": "Bağımsız R paketini indir (.zip)",
     "powerNote": "Kontrol (değişmez) senaryosunda reddetme oranı I. tip hatadır; DIF senaryolarında güçtür. Her adım ayrı sınanır (önceki adımın sonucuna bakılmaz).",
     "powerStep": "Örneklem önerisinde güç adımı"
+  },
+  "report": {
+    "itemsTitle": "Rapordaki sonuçlar",
+    "empty": "Henüz rapora sonuç eklenmedi. Analiz sayfalarındaki “Bu sonucu rapora ekle” düğmesini kullanın.",
+    "up": "Yukarı taşı",
+    "down": "Aşağı taşı",
+    "remove": "Rapordan çıkar",
+    "lang": "Rapor dili",
+    "docTitle": "Rapor başlığı",
+    "docTitlePlaceholder": "ÖlçekLab analiz raporu",
+    "preview": "Metni önizle",
+    "docx": "Word raporu oluştur (.docx)",
+    "previewTitle": "Önizleme (R motorunun ürettiği metin)",
+    "noAi": "Yöntem ve Bulgular metinleri önceden yazılmış şablonlardır; sayılar R motorunun biçimlediği değerlerdir. Bu bölüm yapay zekâ kullanmaz. Tablolar APA 7 biçimindedir; her tablonun altında kaynak ve sürüm satırı bulunur.",
+    "projectTitle": "Proje dosyası (.olceklab.zip)",
+    "projectHelp": "Ayarlar, sonuç kayıtları (17 anlamlı basamak), R betikleri, sürüm bilgisi ve verinin SHA-256 özeti. İçe aktarıldığında analizler yeniden çalıştırılır ve sonuçlar karşılaştırılır.",
+    "projectNeedsClean": "Proje dosyası için önce Veri sayfasında temizleme adımını çalıştırın.",
+    "projectCount": "Projeye eklenecek kayıt: {{count}} (temizleme ve ekrandaki analiz sonuçları).",
+    "projectExample": "Örnek veri projeye eklenmez; içe aktarılınca adıyla yeniden yüklenir.",
+    "includeData": "Veri dosyasını da ekle",
+    "consent": "Veri dosyasının proje dosyasına eklenmesine açıkça onay veriyorum (kişisel veriler: KVKK).",
+    "exportProject": "Projeyi dışa aktar",
+    "exporting": "Proje dosyası hazırlanıyor…",
+    "modules": {
+      "data_clean": "Veri temizleme",
+      "item_analysis": "Madde analizi",
+      "suitability": "Faktör analizine uygunluk",
+      "factor_number": "Faktör sayısı",
+      "efa": "Açımlayıcı faktör analizi",
+      "cfa": "Doğrulayıcı faktör analizi",
+      "cfa_compare": "Model karşılaştırma",
+      "reliability": "Güvenirlik ve geçerlik",
+      "invariance": "Ölçme değişmezliği",
+      "invariance_scores": "Kısmi değişmezlik: skor testleri",
+      "simulation": "Monte Carlo simülasyonu"
+    }
+  },
+  "project": {
+    "importTitle": "Projeyi içe aktar",
+    "importHelp": "Bir .olceklab.zip dosyası seçin. Paket sürümleri karşılaştırılır; aynı veriyle bütün analizler yeniden çalıştırılır ve sonuçlar 17 anlamlı basamakla karşılaştırılır.",
+    "chooseFile": "Proje dosyası seç",
+    "working": "R motorunda çalışıyor…",
+    "dataset": "Veri",
+    "dataIncluded": "Veri dosyası projede var (kullanıcı onayıyla eklenmiş).",
+    "dataExample": "Örnek veri; adıyla yeniden yüklenecek.",
+    "dataNotIncluded": "Veri dosyası projede yok. Aynı dosyayı yükleyin; SHA-256 özeti denetlenir.",
+    "versionWarnings": "Sürüm uyarıları",
+    "uploadSame": "Aynı veri dosyasını yükle ve yeniden üret",
+    "reproduce": "Yeniden üret ve karşılaştır",
+    "allIdentical": "Bütün sonuçlar 17 anlamlı basamakta aynı.",
+    "notAllIdentical": "Bazı sonuçlar farklı; ayrıntılar aşağıda.",
+    "analysis": "Analiz",
+    "status": "Durum",
+    "comparison": "Karşılaştırma",
+    "continue": "Oturuma devam et",
+    "st": {
+      "identical": "Aynı",
+      "different": "Farklı",
+      "error": "Hata"
+    }
   }
 }

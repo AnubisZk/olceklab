@@ -1,8 +1,0 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="1" errors="0" time="0.049173">
-<testsuite name="phase1.spec.ts" timestamp="2026-11-02T20:57:02.539Z" hostname="chromium" tests="1" failures="0" skipped="1" time="0" errors="0">
-<testcase name="Faz 1 akışı gerçek R motoruyla çalışır ve paralel analiz grafiği ile tablosu görünür" classname="phase1.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-</testsuite>
-</testsuites>

@@ -9,7 +9,7 @@ import { useDataset } from '../state/DatasetContext';
 import { useLang } from '../useLang';
 import { RTable } from '../components/RTable';
 import { CheckField, NumField, SelectField, toNum } from '../components/Fields';
-import { Busy, ErrorBox, Warnings } from '../components/ResultParts';
+import { Busy, ErrorBox, ResultActions, Warnings } from '../components/ResultParts';
 import { BiasHeatmap, PowerChart } from '../components/charts/SimCharts';
 import { PageHeader } from './PageHeader';
 
@@ -207,6 +207,7 @@ export function SimulationPage() {
                   <BiasHeatmap data={bd} /><p className="table-note">{lang === 'tr' ? bd.note_tr : bd.note_en}</p></figure>); })()}
               {[...rec.tables].sort((a, b) => (a.id === 'T7' ? -1 : b.id === 'T7' ? 1 : 0)).map((tb) => <RTable key={tb.id} table={tb} />)}
               <Warnings warnings={rec.warnings} />
+              <ResultActions record={rec} />
               <div className="actions">
                 <button type="button" className="btn" onClick={async () => {
                   const blob = await downloadSimPackage(jobId);

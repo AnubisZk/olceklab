@@ -20,3 +20,8 @@ engine/tests/private/bidekcet_sonuc.csv
 !docs/**/*.xlsx
 # Sentetik test verisi (gerçek veri değildir; make_fixtures.R ile üretilir)
 !engine/tests/testthat/fixtures/bidekcet_synthetic/*.xlsx
+
+# Ön yüz test çıktıları ve yerel Playwright yapılandırması
+web/test-results/
+web/playwright-report/
+web/playwright.local.config.ts

@@ -194,14 +194,14 @@ sim_power_target <- function(spec, sc, est) {
 
 sim_criteria_met <- function(cell, crit, power_target) {
   ok <- c(admissible = isTRUE(cell$admissible_rate >= crit$admissible))
-  if (!is.null(cell$params)) {
-    pr <- cell$params
+  if (!is.null(cell[["params"]])) {
+    pr <- cell[["params"]]
     rb <- pr$rel_bias[!is.na(pr$rel_bias)]
     ok <- c(ok, param_bias = all(abs(rb) <= crit$param_bias), se_bias = all(abs(pr$se_rel_bias) <= crit$se_bias, na.rm = TRUE),
             coverage = all(pr$coverage >= crit$coverage[1] & pr$coverage <= crit$coverage[2], na.rm = TRUE))
   }
-  if (!is.null(power_target) && !is.null(cell$invariance)) {
-    r <- cell$invariance[cell$invariance$step == power_target$step, ]
+  if (!is.null(power_target) && !is.null(cell[["invariance"]])) {
+    r <- cell[["invariance"]][cell[["invariance"]]$step == power_target$step, ]
     if (nrow(r)) ok <- c(ok, power = isTRUE(r$reject_chisq >= crit$power))
   }
   ok
@@ -265,7 +265,7 @@ sim_results_record <- function(spec, sm, job_id) {
                       tbl_col("empty_rate", "Boş kategori oranı (bütün veri)", "Empty-category rate (all data)", "pct", 1L))),
     t1, note_tr = n1$tr, note_en = n1$en))
   # T2 uyum
-  fr <- do.call(rbind, lapply(sm$cells, function(c) if (is.null(c$fit)) NULL else do.call(rbind, lapply(c$fit, function(f) cbind(base_row(c), data.frame(index = toupper(f$index),
+  fr <- do.call(rbind, lapply(sm$cells, function(c) if (is.null(c[["fit"]])) NULL else do.call(rbind, lapply(c[["fit"]], function(f) cbind(base_row(c), data.frame(index = toupper(f$index),
     mean = f$mean, sd = f$sd, q025 = f$q025, q975 = f$q975, good = c$fit_rates$good, acceptable = c$fit_rates$acceptable, stringsAsFactors = FALSE))))))
   if (!is.null(fr)) {
     n2 <- note("Robust kestiricilerde ölçeklenmiş indeksler. İyi uyum: CFI ≥ ,95, RMSEA ≤ ,06, SRMR ≤ ,08; kabul edilebilir: CFI ≥ ,90, RMSEA ≤ ,08 (Hu ve Bentler, 1999; ML ve sürekli veri için önerilmiştir, WLSMV'de farklı davranır: Xia ve Yang, 2019).",
@@ -277,7 +277,7 @@ sim_results_record <- function(spec, sm, job_id) {
       fr, note_tr = n2$tr, note_en = n2$en)
   }
   # T3 parametreler (MC-1, MC-3, MC-4)
-  pr <- do.call(rbind, lapply(sm$cells, function(c) if (is.null(c$params)) NULL else cbind(base_row(c)[rep(1, nrow(c$params)), ], c$params)))
+  pr <- do.call(rbind, lapply(sm$cells, function(c) if (is.null(c[["params"]])) NULL else cbind(base_row(c)[rep(1, nrow(c[["params"]])), ], c[["params"]])))
   if (!is.null(pr)) {
     pr$source_tr <- ifelse(pr$source == "pseudo_true", "sözde-gerçek", "üretim")
     n3 <- note(sprintf("Ölçek: yükler ve faktör korelasyonları std.all, eşikler y* ölçeği (referans grup, tek grup DFA). |θ| ≥ %s için göreli yanlılık; daha küçük θ için ham ve standardize yanlılık (yanlılık/SS; |%%40| üzeri sorunlu, Collins vd., 2001). SH göreli yanlılığı: (ort(SH) − SS(θ̂)) / SS(θ̂). Kapsama: %%95 GA. MCSE: Monte Carlo standart hatası. Gerçek değer kaynağı: üretim parametresi ya da kesin popülasyon momentlerinden sözde-gerçek değer (SPEC_REVIEW MC-2).", fmt_num(spec$recommend$rel_cut, 2, "tr", TRUE)),
@@ -295,9 +295,9 @@ sim_results_record <- function(spec, sm, job_id) {
   # T4 değişmezlik (MC-8). Ölçü türü adım ve senaryoya göre belirlenir (sim_step_kind).
   kind_lab <- list(type_i = c(tr = "I. tip hata", en = "Type I error"), power = c(tr = "güç", en = "power"),
                    mixed = c(tr = "karışık", en = "mixed"))
-  iv <- do.call(rbind, lapply(sm$cells, function(c) if (is.null(c$invariance)) NULL else {
-    k <- vapply(c$invariance$step, function(st) sim_step_kind(spec$pop$dif[[c$scenario]], st, c$estimator, spec$pop$data_type), "")
-    cbind(base_row(c)[rep(1, nrow(c$invariance)), ], c$invariance, kind = k,
+  iv <- do.call(rbind, lapply(sm$cells, function(c) if (is.null(c[["invariance"]])) NULL else {
+    k <- vapply(c[["invariance"]]$step, function(st) sim_step_kind(spec$pop$dif[[c$scenario]], st, c$estimator, spec$pop$data_type), "")
+    cbind(base_row(c)[rep(1, nrow(c[["invariance"]])), ], c[["invariance"]], kind = k,
           kind_tr = vapply(k, function(x) kind_lab[[x]][["tr"]], ""), kind_en = vapply(k, function(x) kind_lab[[x]][["en"]], ""), stringsAsFactors = FALSE)
   }))
   if (!is.null(iv)) {
@@ -319,7 +319,7 @@ sim_results_record <- function(spec, sm, job_id) {
     tables[[length(tables) + 1L]] <- t4
   }
   # T5 güvenirlik
-  rl <- do.call(rbind, lapply(sm$cells, function(c) if (is.null(c$reliability)) NULL else cbind(base_row(c)[rep(1, nrow(c$reliability)), ], c$reliability)))
+  rl <- do.call(rbind, lapply(sm$cells, function(c) if (is.null(c[["reliability"]])) NULL else cbind(base_row(c)[rep(1, nrow(c[["reliability"]])), ], c[["reliability"]])))
   if (!is.null(rl)) {
     n5 <- note("α'nın gerçek değeri gözlenen puanların popülasyon kovaryansından; ω'nınki ML/MLR'de popülasyon matrisine uydurulan modelden (obs.var = TRUE). WLSMV'de ω'nın popülasyon değeri bu sürümde hesaplanmaz (—).",
                "The true α comes from the population covariance of observed scores; the true ω (ML/MLR) from the model fitted to the population matrix (obs.var = TRUE). For WLSMV the population ω is not computed in this version (—).")
@@ -330,16 +330,16 @@ sim_results_record <- function(spec, sm, job_id) {
       rl, note_tr = n5$tr, note_en = n5$en)
   }
   # T6 paralel analiz
-  pa <- do.call(rbind, lapply(sm$cells, function(c) if (is.null(c$pa)) NULL else cbind(base_row(c), data.frame(correct = c$pa$correct,
-    dist = paste(sprintf("%s: %s", names(c$pa$distribution), vapply(unlist(c$pa$distribution), function(v) fmt_pct(v, "tr", 1L), "")), collapse = "; "), stringsAsFactors = FALSE))))
+  pa <- do.call(rbind, lapply(sm$cells, function(c) if (is.null(c[["pa"]])) NULL else cbind(base_row(c), data.frame(correct = c[["pa"]]$correct,
+    dist = paste(sprintf("%s: %s", names(c[["pa"]]$distribution), vapply(unlist(c[["pa"]]$distribution), function(v) fmt_pct(v, "tr", 1L), "")), collapse = "; "), stringsAsFactors = FALSE))))
   if (!is.null(pa)) {
     n6 <- note(if (isTRUE(spec$analyses$pa$per_cell)) "Paralel analiz (pc, Pearson, simüle normal referans, %95 yüzdelik). Referans özdeğerler koşul başına bir kez, tohum seed + 10000·koşul ile hesaplanır (SPEC_REVIEW MC-12)." else "Paralel analiz her tekrarda psych::fa.parallel ile (pc, simüle normal).",
                if (isTRUE(spec$analyses$pa$per_cell)) "Parallel analysis (pc, Pearson, simulated-normal reference, 95% quantile). Reference eigenvalues are computed once per condition with seed + 10000·condition (SPEC_REVIEW MC-12)." else "Parallel analysis with psych::fa.parallel in every replication (pc, simulated normal).")
     t6 <- make_table("T6", "Paralel analizin önerdiği faktör sayısı", "Number of factors suggested by parallel analysis",
       c(base_cols, list(tbl_col("correct", "Doğru sayı oranı", "Correct-number rate", "pct", 1L), tbl_col("dist", "Dağılım (k: oran)", "Distribution (k: rate)"))),
       pa, note_tr = n6$tr, note_en = n6$en)
-    t6$rows_fmt$en$dist <- vapply(sm$cells[!vapply(sm$cells, function(c) is.null(c$pa), logical(1))], function(c)
-      paste(sprintf("%s: %s", names(c$pa$distribution), vapply(unlist(c$pa$distribution), function(v) fmt_pct(v, "en", 1L), "")), collapse = "; "), "")
+    t6$rows_fmt$en$dist <- vapply(sm$cells[!vapply(sm$cells, function(c) is.null(c[["pa"]]), logical(1))], function(c)
+      paste(sprintf("%s: %s", names(c[["pa"]]$distribution), vapply(unlist(c[["pa"]]$distribution), function(v) fmt_pct(v, "en", 1L), "")), collapse = "; "), "")
     tables[[length(tables) + 1L]] <- t6
   }
   # T7 örneklem büyüklüğü önerisi (MC-11)

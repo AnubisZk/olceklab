@@ -1,0 +1,10 @@
+
+Running 5 tests using 1 worker
+
+[1/5] [chromium] › tests/e2e/phase1.spec.ts:6:1 › Faz 1 akışı gerçek R motoruyla çalışır ve paralel analiz grafiği ile tablosu görünür
+[2/5] [chromium] › tests/e2e/phase2.spec.ts:7:1 › Faz 2 akışı gerçek R motoruyla çalışır; DFA, karşılaştırma ve güvenirlik tabloları R metinlerini gösterir
+[3/5] [chromium] › tests/e2e/phase3.spec.ts:6:1 › Faz 3 akışı: değişmezlik, kısmi değişmezlik sihirbazı ve gizil ortalamalar
+[4/5] [chromium] › tests/e2e/phase4.spec.ts:15:1 › Faz 4 akışı: simülasyon işi, iptal/sürdür, sonuçlar ve paket
+[5/5] [chromium] › tests/e2e/phase5.spec.ts:8:1 › Faz 5 akışı: Word raporu, CSV, proje dışa/içe aktarma ve yeniden üretim
+  5 passed (1.5m)
+EXIT=0

@@ -4,16 +4,19 @@ import { HeatmapChart, LineChart } from 'echarts/charts';
 import { GridComponent, LegendComponent, MarkLineComponent, TooltipComponent, VisualMapComponent } from 'echarts/components';
 import { SVGRenderer } from 'echarts/renderers';
 import type { EChartsCoreOption } from 'echarts/core';
+import { FigureDownload, slug } from './FigureDownload';
 
 echarts.use([LineChart, HeatmapChart, GridComponent, LegendComponent, MarkLineComponent, TooltipComponent, VisualMapComponent, SVGRenderer]);
 
 // Grafik yalnızca R'den gelen verilerle çizilir; bu bileşen hesap yapmaz.
 export function EChart({ option, ariaLabel, height = 340 }: { option: EChartsCoreOption; ariaLabel: string; height?: number }) {
   const ref = useRef<HTMLDivElement>(null);
+  const inst = useRef<{ renderToSVGString?: () => string } | null>(null);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const chart = echarts.init(el, undefined, { renderer: 'svg' });
+    inst.current = chart as unknown as { renderToSVGString?: () => string };
     chart.setOption(option);
     let ro: ResizeObserver | undefined;
     if (typeof ResizeObserver !== 'undefined') {
@@ -25,5 +28,11 @@ export function EChart({ option, ariaLabel, height = 340 }: { option: EChartsCor
       chart.dispose();
     };
   }, [option]);
-  return <div ref={ref} className="chart" role="img" aria-label={ariaLabel} style={{ width: '100%', height }} />;
+  return (
+    <>
+      <div ref={ref} className="chart" role="img" aria-label={ariaLabel} style={{ width: '100%', height }} />
+      <FigureDownload name={slug(ariaLabel)} getSvg={() => inst.current?.renderToSVGString?.() ?? null}
+                      size={() => ({ width: ref.current?.clientWidth ?? 800, height })} />
+    </>
+  );
 }

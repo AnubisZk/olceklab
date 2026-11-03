@@ -83,3 +83,28 @@ write_fx(sim_results_for(.olceklab$jobs[[sid]]$dir, sid), "sim_results.json")
 hcfa_rec <- analysis_cfa(hcl$clean$data, hcfg, list(model = m3), hd$hash)
 write_fx(population_from_cfa(hcfa_rec, hcl$clean$data, hcfg, shift = 0.05), "holz_population.json")
 cat("Faz 4 fikstürleri yazıldı\n")
+
+# --- Faz 5 fikstürleri (rapor önizlemesi; proje dışa → içe aktarma → yeniden üretim, gerçek kod yolu) ------------
+for (r in list(cfa, rel)) analysis_store(r, hd$id)
+write_fx(report_preview(c(cfa$analysis_id, rel$analysis_id), "tr"), "holz_report_preview.json")
+pid_ds <- dataset_put(list(data = h$data, hash = h$hash, filename = h$filename, source = list(type = "example", name = "holzinger", label = h$source),
+                           suggested_config = h$suggested_config))
+pds <- dataset_get(pid_ds)
+roles_json <- as.character(to_json(h$suggested_config)); clean_json <- "{\"rules\":{}}"
+pds$config <- build_config(pds$data, project_parse(roles_json, TRUE))
+pcl <- analysis_clean(pds$data, pds$config, list(), pds$hash)
+pds$clean <- pcl$clean; pds$clean_rules <- list(); pds$requests <- list(roles = roles_json, clean = clean_json)
+dataset_update(pid_ds, pds)
+analysis_store(pcl$record, pid_ds, request = clean_json)
+cfa_req <- as.character(to_json(list(dataset_id = pid_ds, settings = list(model = m3))))
+pcfa <- analysis_cfa(pcl$clean$data, pds$config, project_parse(cfa_req, FALSE)$settings, pds$hash)
+pcfa$r_script <- build_r_script("cfa", pds, pcfa$settings, pcfa$seed, pcfa$results)
+analysis_store(pcfa, pid_ds, request = cfa_req)
+pz <- project_export(pid_ds)
+pp <- project_read_zip(pz)
+ppid <- project_store(pp)
+write_fx(project_summary(ppid, pp), "project_summary.json")
+pman <- pp$manifest
+pout <- project_reproduce_job(list(example = "holzinger"), pman$dataset$roles_request, pman$dataset$clean_request, pman$analyses)
+write_fx(project_reproduce_finish(ppid, pp, pout), "project_reproduction.json")
+cat("Faz 5 fikstürleri yazıldı\n")

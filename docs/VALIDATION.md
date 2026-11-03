@@ -41,6 +41,14 @@ Her referans karşılaştırmasının sonucu, tarihi ve ortamı burada tutulur.
 | 2026-11-03 | 4 | HTTP iş sistemi (2 işçi): başlat → iptal → sürdür → sonuçlar (yerel eşzamanlı çalıştırmayla aynı) → paket (zip) | Geçti | `test-api-simulation.R` |
 | 2026-11-03 | 4 | Tarayıcı (Firefox): popülasyon JSON'u → süre tahmini → iş → iptal → sürdür → sonuçlar ↔ belgelenen algoritmanın **bağımsız yeniden yazımı** (MASS + lavaan, motor kodu kullanılmadan; tohum kuralı, uygun çözüm oranı, yük ortalaması/yanlılık/kapsama, Δχ² reddetme oranı, ölçü türü, α/ω gerçek ve ortalama) | 127/127 aynı | `test-logs/faz4/browser_crosscheck_output.txt` |
 | — | 4 | §11.4 referans simülasyon | henüz yok (REP-4: paket bekleniyor) | — |
+| 2026-11-03 | 5 | M10 Word raporu: officer ile yeniden okunur; **her tablo hücresi kayıttaki R-biçimli metnin aynısıdır** (başlıklar dâhil); tablo numaraları ardışık; TR/EN | Geçti | `test-report.R` |
+| 2026-11-03 | 5 | M10 "Word raporu açılır": LibreOffice ile PDF'e dönüştürülür | Geçti | `test-report.R` |
+| 2026-11-03 | 5 | M10 şablon metinler: Yöntem/Bulgular cümlelerindeki her sayı analiz kaydında var (uydurma sayı yok); yapay zekâ kullanılmaz | Geçti | `test-report.R` |
+| 2026-11-03 | 5 | M10 CSV: biçimli (TR `;`, BOM) = ekrandaki metin; ham (17 anlamlı basamak) kayıpsız | Geçti | `test-report.R`, `test-project.R` |
+| 2026-11-03 | 5 | M12 proje dosyası (2 işçi, HTTP): dışa aktarma → içe aktarma → yeniden üretim; M1–M8'in yedi modülü 17 basamakta **aynı**; veri yalnızca açık onayla eklenir (baytlar özgün dosyanın aynısı); farklı dosya `hash_mismatch`; sürüm farkı uyarılır; 1e−12'lik yapay değişiklik yakalanır | Geçti | `test-project.R` |
+| 2026-11-03 | 5 | M12 betikler: dışa aktarılan R betikleri ayrı süreçte aynı sayıları verir (M2–M8) | Geçti | `test-script-export.R` |
+| 2026-11-03 | 5 | Tarayıcı (Firefox): HS1939 → DFA/güvenirlik/değişmezlik → rapor önizlemesi → indirilen .docx (python-docx) → CSV → proje dışa/içe aktarma → yeniden üretim; yüklenen CSV ile onaylı veri ekleme ↔ bağımsız R (lavaan, psych, semTools doğrudan) | 39/39 aynı | `test-logs/faz5/browser_crosscheck_output.txt` |
+| 2026-11-03 | 1–5 | Playwright uçtan uca testleri (Chromium): Faz 1–5 akışları gerçek motor ve Vite sunucusuyla | 5/5 geçti | `test-logs/faz5/e2e-playwright.txt` |
 
 ### §11.3 testlerini yerelde çalıştırma
 

@@ -3,7 +3,7 @@
 engine_core_packages <- c(
   "lavaan", "semTools", "psych", "GPArotation", "MASS",
   "plumber", "mirai", "nanonext", "officer", "flextable",
-  "jsonlite", "readxl", "digest"
+  "jsonlite", "readxl", "digest", "pbivnorm", "zip"
 )
 
 installed_version <- function(pkg) {

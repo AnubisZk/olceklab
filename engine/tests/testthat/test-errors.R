@@ -53,10 +53,7 @@ test_that("404 ve 500 işleyicileri standart biçimi kullanır", {
   expect_identical(b500$error$detail, "deneme hatası")
 })
 
-test_that("henüz uygulanmamış uç noktalar Faz 5'e ait ve benzersiz; Faz 2–4 uç noktaları listede yok", {
-  expect_equal(nrow(planned_endpoints), 1L)
-  expect_false(any(c("/analyses/efa", "/analyses/cfa", "/analyses/cfa/compare", "/analyses/reliability", "/analyses/invariance", "/analyses/invariance/score-tests") %in% planned_endpoints$path))
-  expect_false(any(duplicated(paste(planned_endpoints$method, planned_endpoints$path))))
-  expect_true(all(planned_endpoints$phase %in% 5))
-  expect_true(all(planned_endpoints$method %in% c("GET", "POST")))
+test_that("Faz 5 itibarıyla uygulanmamış (501) uç nokta yok; kayıt işlevi boş listeyle çalışır", {
+  expect_equal(nrow(planned_endpoints), 0L)
+  expect_identical(names(planned_endpoints), c("method", "path", "module", "phase"))
 })

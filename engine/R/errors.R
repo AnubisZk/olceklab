@@ -30,6 +30,8 @@ api_stop <- function(code, message_tr, status = 400L, detail = NULL) {
 }
 
 engine_error_handler <- function(req, res, err) {
+  # İkili yanıt veren uç noktalarda (docx, zip, csv) hata gövdesi yine JSON olarak serileştirilir.
+  res$serializer <- serializer_engine_json()
   if (inherits(err, "api_error")) {
     res$status <- err$status
     return(api_error_body(err$code, conditionMessage(err), err$detail))

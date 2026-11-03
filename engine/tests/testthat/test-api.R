@@ -20,14 +20,13 @@ test_that("GET /versions sunucunun gerçek R ve paket sürümlerini döndürür"
   expect_length(b$missing, 0L)
 })
 
-test_that("henüz uygulanmamış analiz uç noktaları 501 ve standart hata döndürür", {
-  for (path in c("/reports/docx")) {
-    r <- call_api(path, method = "POST")
-    expect_identical(httr2::resp_status(r), 501L, info = path)
-    b <- body_json(r)
-    expect_identical(b$error$code, "not_implemented", info = path)
-    expect_null(b$results)
-  }
+test_that("Faz 5 itibarıyla 501 dönen uç nokta kalmadı; rapor uç noktası boş istekte standart hata döndürür", {
+  expect_identical(nrow(planned_endpoints), 0L)
+  r <- call_api("/reports/docx", method = "POST")
+  expect_identical(httr2::resp_status(r), 422L)
+  b <- body_json(r)
+  expect_identical(b$error$code, "report_empty")
+  expect_null(b$results)
   r <- call_api("/jobs/abc123")
   expect_identical(httr2::resp_status(r), 404L)
   expect_identical(body_json(r)$error$code, "job_not_found")

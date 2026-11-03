@@ -81,3 +81,34 @@ export async function request<T>(baseUrl: string, path: string, opts: RequestOpt
 export function getJson<T>(baseUrl: string, path: string, signal?: AbortSignal): Promise<T> {
   return request<T>(baseUrl, path, { signal });
 }
+
+// İkili yanıtlar (docx, zip, csv): başarılıysa Blob; hata gövdesi JSON ise standart hata olarak çözülür.
+export async function requestBlob(baseUrl: string, path: string, opts: RequestOptions = {}): Promise<Blob> {
+  const url = new URL(`${baseUrl.replace(/\/$/, '')}${path}`);
+  for (const [k, v] of Object.entries(opts.query ?? {})) url.searchParams.set(k, v);
+  const headers: Record<string, string> = {};
+  let body: BodyInit | undefined;
+  if (opts.json !== undefined) { headers['Content-Type'] = 'application/json'; body = JSON.stringify(opts.json); }
+  let res: Response;
+  try {
+    res = await fetch(url.toString(), { method: opts.method ?? 'GET', headers, body, signal: opts.signal });
+  } catch (e) {
+    throw new ApiError('network_error', 'Sunucuya ulaşılamadı.', null, e instanceof Error ? e.message : String(e));
+  }
+  if (!res.ok) {
+    const text = await res.text();
+    let parsed: unknown = null;
+    try { parsed = JSON.parse(text); } catch { /* gövde JSON değil */ }
+    if (isApiErrorBody(parsed)) throw new ApiError(parsed.error.code, parsed.error.message_tr, res.status, parsed.error.detail ?? null);
+    throw new ApiError(`http_${res.status}`, `Sunucu ${res.status} durum koduyla yanıt verdi.`, res.status);
+  }
+  return res.blob();
+}
+
+export function saveBlob(blob: Blob, filename: string) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}

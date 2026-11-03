@@ -20,6 +20,7 @@ example_ds <- function(name, items = NULL, rules = list()) {
   out <- analysis_clean(ds$data, ds$config, rules, ds$hash)
   ds$clean <- out$clean
   ds$clean_rules <- rules
+  ds$clean_record <- out$record
   ds
 }
 

@@ -180,3 +180,23 @@ test_that("T4 ölçü türü: adımın eklediği kısıt DIF'li parametreyi kaps
   sp2 <- normalize_sim_spec(c(sim_spec(), list(recommend = list(power_step = "metric"))))
   expect_identical(sim_power_target(sp2, 2L, "ML")$step, "metric")  # açık seçim otomatiği ezer
 })
+
+test_that("tek gruplu simülasyonun sonuç kaydı kurulur (değişmezlik tablosu yok; kısmi ad eşleşmesi hatası olmaz)", {
+  body <- list(population = list(factors = list(list(name = "F1", items = c("y1", "y2", "y3"))), loadings = list(y1 = .7, y2 = .6, y3 = .65),
+                                 data_type = "continuous"), conditions = list(N = c(100, 200)), estimators = "ML", reps = 2, chunk_size = 2, seed = 9)
+  id <- sim_job_create(body); sim_job_run_sync(id)
+  rec <- sim_results_for(.olceklab$jobs[[id]]$dir, id)
+  ids <- vapply(rec$tables, `[[`, "", "id")
+  expect_false("T4" %in% ids)
+  expect_true(all(c("T1", "T3", "T5", "T7") %in% ids))
+  expect_null(rec$results$cells[[1]][["invariance"]])
+})
+
+test_that("DFA'dan popülasyon notları JSON'da her zaman dizidir (tek notta da)", {
+  b10 <- example_ds("bfi", items = c(paste0("A", 1:5), paste0("C", 1:5)))
+  mod <- list(factors = list(list(name = "A", items = paste0("A", 1:5)), list(name = "C", items = paste0("C", 1:5))))
+  rw <- analysis_cfa(b10$clean$data, b10$config, list(model = mod, estimator = "WLSMV"), b10$hash)
+  j <- jsonlite::parse_json(as.character(to_json(population_from_cfa(rw, b10$clean$data, b10$config))), simplifyVector = FALSE)
+  expect_length(j$notes_tr, 1L)
+  expect_true(is.list(j$notes_tr) && is.list(j$notes_en))
+})

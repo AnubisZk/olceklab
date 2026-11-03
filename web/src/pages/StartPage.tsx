@@ -6,6 +6,7 @@ import { useDataset } from '../state/DatasetContext';
 import { EngineStatus } from '../components/EngineStatus';
 import { ErrorBox } from '../components/ResultParts';
 import { PageHeader } from './PageHeader';
+import { ProjectImport } from './ProjectImport';
 
 export function StartPage() {
   const { t } = useTranslation();
@@ -21,12 +22,12 @@ export function StartPage() {
       <section className="card">
         <div className="actions">
           <button type="button" className="btn btn-primary" onClick={() => { ds.reset(); void navigate('/data'); }}>{t('start.newProject')}</button>
-          <button type="button" className="btn" disabled title={t('start.importPhase')}>{t('start.importProject')}</button>
+          <a className="btn" href="#imp-title">{t('start.importProject')}</a>
           <button type="button" className="btn" disabled={example.isPending} onClick={() => example.mutate()}>{t('start.tryExample')}</button>
         </div>
-        <p className="muted small">{t('start.importPhase')}</p>
         <ErrorBox error={example.error} />
       </section>
+      <ProjectImport />
       <EngineStatus />
     </>
   );

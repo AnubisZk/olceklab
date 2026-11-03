@@ -6,6 +6,7 @@ import { App } from '../src/App';
 import { initI18n, type Language } from '../src/i18n';
 import { ThemeProvider } from '../src/theme/ThemeContext';
 import { DatasetProvider } from '../src/state/DatasetContext';
+import { ReportProvider } from '../src/state/ReportContext';
 import type { ThemeName } from '../src/theme/tokens';
 
 export async function renderApp(path = '/', opts: { lng?: Language; theme?: ThemeName } = {}) {
@@ -16,10 +17,12 @@ export async function renderApp(path = '/', opts: { lng?: Language; theme?: Them
       <ThemeProvider initial={opts.theme ?? 'dark'}>
         <QueryClientProvider client={client}>
           <DatasetProvider>
+            <ReportProvider>
             <MemoryRouter initialEntries={[path]}>
               <App />
             </MemoryRouter>
-          </DatasetProvider>
+            </ReportProvider>
+            </DatasetProvider>
         </QueryClientProvider>
       </ThemeProvider>
     </I18nextProvider>,

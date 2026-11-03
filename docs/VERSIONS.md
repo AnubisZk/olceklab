@@ -1,6 +1,6 @@
 # Kullanılan sürümler
 
-Son güncelleme: 3 Kasım 2026 (Faz 2). Faz 2'de yeni paket eklenmedi.
+Son güncelleme: 3 Kasım 2026 (Faz 5). Faz 3–5'te yeni paket eklenmedi; `pbivnorm` ve `zip` (Faz 4'ten beri kullanılıyor) artık analiz kayıtlarındaki sürüm listesine de yazılıyor.
 
 ## 1. Testlerin gerçekten koştuğu ortam
 
@@ -56,7 +56,7 @@ lavaan, psych, semTools ve GPArotation, CRAN'ın GitHub aynasındaki sürüm eti
 | @types/react / @types/react-dom | 19.3.0 / 19.3.0 |
 | echarts | 6.1.0 (Faz 1) |
 | @tanstack/react-table | 8.21.3 (Faz 1; 9.x yayımlanmış, ancak kararlı v8 API'si seçildi) |
-| @playwright/test | 1.64.1 (Faz 1; tarayıcı bu ortamda indirilemedi, CI'da koşar) |
+| @playwright/test | 1.64.1. Faz 5'te uçtan uca testler bu ortamda önceden kurulu Chromium (build 1243) ile koştu; depodaki yapılandırma Playwright'ın kendi tarayıcısını (`npx playwright install chromium`) bekler |
 | @types/node | 24.19.2 (Faz 1, yalnızca testler için) |
 
 ### Yapay zekâ ağ geçidi (`ai-gateway/package-lock.json`)
@@ -82,3 +82,10 @@ Bu ortamda Docker daemon'ı yoktu ve Docker Hub ile Posit Package Manager erişi
 | ollama (isteğe bağlı) | `ollama/ollama:latest` | Faz 6'da model seçimiyle sabitlenecek |
 
 **Bilinen fark:** Bu ortamda R, OpenBLAS kullanıyor. `rocker/r-ver` imajının BLAS'ı farklı olabilir. §11.3 değerleri raporlanan basamakta karşılaştırılacağı için bunun sonucu değiştirmesi beklenmez, ama `/versions` uç noktası BLAS bilgisini her zaman döndürür ve analiz kaydına yazılacaktır (SPEC_REVIEW REP-2).
+
+### Doğrulama araçları (yalnızca testlerde)
+
+| Araç | Kullanım |
+|---|---|
+| LibreOffice (soffice, headless) | `test-report.R`: Word raporunun açılıp PDF'e dönüştürülebildiği denetlenir; yoksa test atlanır |
+| Firefox + geckodriver, Selenium, python-docx | `docs/test-logs/faz*/browser_flow.py`: gerçek tarayıcı akışları; indirilen .docx python-docx ile okunur |

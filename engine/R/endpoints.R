@@ -1,10 +1,9 @@
 # SPEC §8'deki API yüzeyi. Faz 4'te M1–M9, iş sistemi, /models/preview, /health, /versions ve /analyses/<id>/script çalışır;
 # diğerleri, ait oldukları faz gelene kadar 501 + standart hata biçimi döndürür.
 
-planned_endpoints <- data.frame(
-  method = "POST", path = "/reports/docx", module = "M10", phase = 5,
-  stringsAsFactors = FALSE
-)
+# Faz 5 itibarıyla bütün uç noktalar uygulanmıştır; Faz 6 (M11) yapay zekâ ağ geçidindedir.
+planned_endpoints <- data.frame(method = character(), path = character(), module = character(), phase = numeric(),
+                                stringsAsFactors = FALSE)
 
 register_planned_endpoints <- function(pr) {
   for (i in seq_len(nrow(planned_endpoints))) {

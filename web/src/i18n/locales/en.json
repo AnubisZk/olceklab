@@ -76,8 +76,7 @@
   "start": {
     "newProject": "New project",
     "importProject": "Import project",
-    "tryExample": "Try example data (bfi)",
-    "importPhase": "Project import is enabled in Phase 5."
+    "tryExample": "Try example data (bfi)"
   },
   "engine": {
     "title": "R analysis engine",
@@ -128,10 +127,15 @@
     "warnings": "Warnings",
     "downloadScript": "Download the R code for this analysis",
     "addToReport": "Add this result to the report",
-    "reportPhase": "The report is enabled in Phase 5.",
     "running": "Running in the R engine…",
     "needsClean": "Upload a file and run the cleaning step on the Data page first.",
-    "goToData": "Go to the Data page"
+    "goToData": "Go to the Data page",
+    "inReport": "In report ✓ (click to remove)",
+    "csvTable": "Table",
+    "csvRaw": "raw values (17 digits)",
+    "csvDownload": "Download CSV",
+    "downloadSvg": "Download SVG",
+    "downloadPng": "Download PNG"
   },
   "data": {
     "uploadTitle": "Upload a file",
@@ -467,5 +471,65 @@
     "package": "Download standalone R package (.zip)",
     "powerNote": "In the control (invariant) scenario the rejection rate is the Type I error; in DIF scenarios it is power. Each step is tested on its own (regardless of the previous step).",
     "powerStep": "Power step for the sample-size recommendation"
+  },
+  "report": {
+    "itemsTitle": "Results in the report",
+    "empty": "No results have been added yet. Use the “Add this result to the report” button on the analysis pages.",
+    "up": "Move up",
+    "down": "Move down",
+    "remove": "Remove from report",
+    "lang": "Report language",
+    "docTitle": "Report title",
+    "docTitlePlaceholder": "ÖlçekLab analysis report",
+    "preview": "Preview text",
+    "docx": "Create Word report (.docx)",
+    "previewTitle": "Preview (text produced by the R engine)",
+    "noAi": "The Methods and Results text comes from pre-written templates; numbers are values formatted by the R engine. This section does not use AI. Tables follow APA 7; each table has a source and version line.",
+    "projectTitle": "Project file (.olceklab.zip)",
+    "projectHelp": "Settings, result records (17 significant digits), R scripts, version information and the SHA-256 digest of the data. On import, analyses are re-run and results compared.",
+    "projectNeedsClean": "Run the cleaning step on the Data page first.",
+    "projectCount": "Records to include: {{count}} (cleaning and the analysis results on screen).",
+    "projectExample": "Example data are not included; they are reloaded by name on import.",
+    "includeData": "Include the data file",
+    "consent": "I explicitly consent to including the data file in the project file (personal data: KVKK).",
+    "exportProject": "Export project",
+    "exporting": "Preparing the project file…",
+    "modules": {
+      "data_clean": "Data cleaning",
+      "item_analysis": "Item analysis",
+      "suitability": "Suitability for factor analysis",
+      "factor_number": "Number of factors",
+      "efa": "Exploratory factor analysis",
+      "cfa": "Confirmatory factor analysis",
+      "cfa_compare": "Model comparison",
+      "reliability": "Reliability and validity",
+      "invariance": "Measurement invariance",
+      "invariance_scores": "Partial invariance: score tests",
+      "simulation": "Monte Carlo simulation"
+    }
+  },
+  "project": {
+    "importTitle": "Import a project",
+    "importHelp": "Choose an .olceklab.zip file. Package versions are compared; all analyses are re-run with the same data and results compared at 17 significant digits.",
+    "chooseFile": "Choose project file",
+    "working": "Running in the R engine…",
+    "dataset": "Data",
+    "dataIncluded": "The data file is in the project (added with consent).",
+    "dataExample": "Example data; will be reloaded by name.",
+    "dataNotIncluded": "The data file is not in the project. Upload the same file; its SHA-256 digest is checked.",
+    "versionWarnings": "Version warnings",
+    "uploadSame": "Upload the same data file and reproduce",
+    "reproduce": "Reproduce and compare",
+    "allIdentical": "All results are identical at 17 significant digits.",
+    "notAllIdentical": "Some results differ; see the details below.",
+    "analysis": "Analysis",
+    "status": "Status",
+    "comparison": "Comparison",
+    "continue": "Continue the session",
+    "st": {
+      "identical": "Identical",
+      "different": "Different",
+      "error": "Error"
+    }
   }
 }

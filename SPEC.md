@@ -529,7 +529,12 @@ Raporda iki satır yer alır: "üretim değerinden sapma" ve "sözde-gerçek de�
 | GET | `/simulations/{id}/results` | özet sonuçlar |
 | GET | `/simulations/{id}/package` | bağımsız R paketi (zip) |
 | POST | `/reports/docx` | M10 |
+| POST | `/reports/preview` | M10 önizleme: şablon metinler (italik parçalarıyla) ve tablo numaraları (v1.2) |
+| GET | `/analyses/{id}/tables/{tid}/csv` | M10 tablo CSV'si: `lang`, `values = formatted · raw` (v1.2) |
 | GET | `/analyses/{id}/script` | M12 R betiği |
+| POST | `/projects/export` | M12 proje dosyası (.olceklab.zip); veri yalnızca `include_data` + `data_consent` ile (v1.2) |
+| POST | `/projects/import` | M12 proje dosyasını oku: özet, sürüm uyarıları (v1.2) |
+| POST | `/projects/{id}/reproduce` | M12 yeniden üretim ve 17 basamaklı karşılaştırma (v1.2) |
 | GET | `/health` · `/versions` | sağlık ve sürüm bilgisi |
 
 - Bütün yanıtlar Bölüm 6.2'deki yapıdadır.

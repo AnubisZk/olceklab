@@ -1,5 +1,5 @@
 import { config } from '../config';
-import { request } from './client';
+import { request, requestBlob } from './client';
 import type {
   AnalysisRecord, CfaSettings, CleanResults, CleanRules, CompareSettings, DatasetOverview, EfaResults, EfaSettings,
   FactorNumberResults, FactorNumberSettings, InvarianceResults, InvarianceSettings, ModelPreview, ModelSpec, ReliabilitySettings,
@@ -66,3 +66,18 @@ export async function downloadSimPackage(id: string): Promise<Blob> {
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.blob();
 }
+
+// --- Faz 5: rapor (M10) ve proje dosyası (M12) ------------------------------------------
+export const reportPreview = (analysisIds: string[], lang: 'tr' | 'en') =>
+  post<import('./types').ReportPreview>('/reports/preview', { analysis_ids: analysisIds, lang });
+export const reportDocx = (analysisIds: string[], lang: 'tr' | 'en', title: string) =>
+  requestBlob(engine, '/reports/docx', { method: 'POST', json: { analysis_ids: analysisIds, lang, title } });
+export const tableCsv = (analysisId: string, tableId: string, lang: 'tr' | 'en', values: 'formatted' | 'raw') =>
+  requestBlob(engine, `/analyses/${analysisId}/tables/${tableId}/csv`, { query: { lang, values } });
+export const exportProject = (body: { dataset_id: string; analysis_ids: string[]; include_data: boolean; data_consent: boolean }) =>
+  requestBlob(engine, '/projects/export', { method: 'POST', json: body });
+export async function importProject(file: File): Promise<import('./types').ProjectSummary> {
+  return request(engine, '/projects/import', { method: 'POST', raw: await file.arrayBuffer() });
+}
+export const reproduceProject = (projectId: string, datasetId?: string) =>
+  post<import('./types').ProjectReproduction>(`/projects/${projectId}/reproduce`, datasetId ? { dataset_id: datasetId } : {});

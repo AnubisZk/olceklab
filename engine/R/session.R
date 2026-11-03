@@ -6,6 +6,7 @@
 .olceklab$analyses <- list()
 .olceklab$workers <- 0L
 .olceklab$jobs <- list()
+.olceklab$projects <- list()
 
 session_ttl_minutes <- function() {
   v <- suppressWarnings(as.numeric(Sys.getenv("SESSION_TTL_MINUTES", "60")))
@@ -36,10 +37,11 @@ dataset_update <- function(id, ds) {
   invisible(ds)
 }
 
-analysis_store <- function(record, dataset_id) {
+# request: analizi üreten özgün istek gövdesi (JSON metni); proje dosyasında yeniden üretim için saklanır (M12).
+analysis_store <- function(record, dataset_id, request = NULL) {
   .olceklab$analyses[[record$analysis_id]] <- list(
     dataset_id = dataset_id, module = record$module, r_script = record$r_script,
-    record = record, created = Sys.time()
+    record = record, created = Sys.time(), request = request
   )
   invisible(record$analysis_id)
 }
@@ -56,6 +58,8 @@ session_purge <- function(now = Sys.time(), ttl_minutes = session_ttl_minutes())
     difftime(now, .olceklab$datasets[[i]]$last_access, units = "mins") > ttl_minutes
   }, logical(1))]
   for (i in expired) .olceklab$datasets[[i]] <- NULL
+  pids <- names(.olceklab$projects)
+  for (i in pids) if (difftime(now, .olceklab$projects[[i]]$last_access, units = "mins") > ttl_minutes) .olceklab$projects[[i]] <- NULL
   if (length(expired)) {
     keep <- vapply(.olceklab$analyses, function(a) !(a$dataset_id %in% expired), logical(1))
     .olceklab$analyses <- .olceklab$analyses[keep]

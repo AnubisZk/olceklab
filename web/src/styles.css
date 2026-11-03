@@ -337,3 +337,19 @@ details > summary { cursor: pointer; font-weight: 600; margin-bottom: 8px; }
 .job-panel p { margin: 4px 0; }
 .job-panel progress { width: 100%; height: 10px; accent-color: var(--color-accent); }
 .cov-box + .cov-box { margin-top: 10px; }
+
+/* M10 rapor ve M12 proje */
+.report-list { margin: 0 0 12px; padding-left: 22px; }
+.report-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 4px 0; border-bottom: 1px solid var(--color-border); }
+.report-item-actions { margin-left: auto; display: inline-flex; gap: 6px; }
+.btn-small { padding: 2px 8px; font-size: 0.8rem; }
+.report-preview article { border-top: 1px solid var(--color-border); padding-top: 8px; margin-top: 12px; }
+.report-preview h3 { margin: 4px 0 6px; font-size: 1rem; }
+.report-preview h4 { margin: 10px 0 4px; font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.report-preview p { margin: 0 0 8px; line-height: 1.55; font-family: Georgia, 'Times New Roman', serif; }
+.project-summary, .project-result { border: 1px solid var(--color-border); padding: 10px 14px; margin-top: 12px; }
+.ok-line { color: var(--color-success); font-weight: 600; }
+.csv-actions { margin-top: -2px; }
+.figure-actions { justify-content: flex-end; margin: 4px 0 0; }
+.project-summary, .project-result, .report-list { overflow-wrap: anywhere; }
+.project-result { overflow-x: auto; }

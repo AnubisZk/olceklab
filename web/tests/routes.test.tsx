@@ -21,19 +21,31 @@ describe('SPEC §9 rotaları', () => {
     it(`${p.path} sayfası Türkçe başlığıyla açılır`, async () => {
       await renderApp(p.path);
       const title = (tr.pages as Record<string, { title: string }>)[p.key].title;
-      expect(await screen.findByRole('heading', { level: 1, name: title })).toBeInTheDocument();
+      // Grafikli sayfalar ayrı parçada yüklenir; yük altında ilk yükleme 1 sn'yi geçebilir.
+      expect(await screen.findByRole('heading', { level: 1, name: title }, { timeout: 8000 })).toBeInTheDocument();
     });
   }
 
-  it('henüz uygulanmamış sayfa analiz sonucu göstermez, faz bilgisini gösterir', async () => {
+  it('rapor sayfası boşken sonuç göstermez; Word ve önizleme düğmeleri devre dışıdır', async () => {
     await renderApp('/report');
-    expect(screen.getByText(/Faz 5 kapsamında etkinleşecek/)).toBeInTheDocument();
+    expect(await screen.findByText(tr.report.empty)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: tr.report.docx })).toBeDisabled();
+    expect(screen.getByRole('button', { name: tr.report.preview })).toBeDisabled();
     expect(screen.queryByRole('table')).not.toBeInTheDocument();
+  });
+
+  it('bütün sayfalar uygulanmıştır: hiçbir rotada faz yer tutucusu kalmadı', async () => {
+    for (const p of pages) {
+      const { unmount } = await renderApp(p.path);
+      await screen.findByRole('heading', { level: 1 }, { timeout: 8000 });
+      expect(screen.queryByText(/kapsamında etkinleşecek/)).not.toBeInTheDocument();
+      unmount();
+    }
   });
 
   it('simülasyon sayfası kalıcı SİMÜLASYON etiketini taşır (SPEC 9.9)', async () => {
     await renderApp('/simulation');
-    expect(screen.getByRole('note')).toHaveTextContent(tr.simulation.banner);
+    expect(await screen.findByRole('note')).toHaveTextContent(tr.simulation.banner);
   });
 
   it('bilinmeyen yol "Sayfa bulunamadı" gösterir', async () => {

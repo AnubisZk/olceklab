@@ -15,10 +15,10 @@ const RULES: (keyof CleanRules)[] = ['invalid_group', 'out_of_range', 'missing',
 
 interface RoleRow { role: Role; min: string; max: string; reverse: boolean; subscale: string }
 
-// Başlangıç değerleri R'nin döndürdüğü önerilerden alınır (örnek veri için hazır yapılandırma).
-function initialRows(o: DatasetOverview): Record<string, RoleRow> {
+// Başlangıç değerleri: kaydedilmiş roller varsa onlar (ör. içe aktarılan proje), yoksa R'nin döndürdüğü öneriler.
+function initialRows(o: DatasetOverview, saved?: RolesBody | null): Record<string, RoleRow> {
   const out: Record<string, RoleRow> = {};
-  const sc = o.suggested_config;
+  const sc = saved ?? o.suggested_config;
   for (const c of o.columns) {
     const it: ItemSetting | undefined = sc?.items?.[c.name];
     const role = sc?.roles?.[c.name] ?? c.suggested_role;
@@ -101,9 +101,10 @@ function DatasetSummary({ o }: { o: DatasetOverview }) {
 function RolesCard({ o }: { o: DatasetOverview }) {
   const { t } = useTranslation();
   const ds = useDataset();
-  const [rows, setRows] = useState<Record<string, RoleRow>>(() => initialRows(o));
-  const [validGroups, setValidGroups] = useState('');
-  useEffect(() => { setRows(initialRows(o)); setValidGroups(''); }, [o]);
+  const [rows, setRows] = useState<Record<string, RoleRow>>(() => initialRows(o, ds.roles));
+  const [validGroups, setValidGroups] = useState((ds.roles?.group_valid_values ?? []).join(', '));
+  // Yalnızca yeni veri setinde sıfırlanır.
+  useEffect(() => { setRows(initialRows(o, ds.roles)); setValidGroups((ds.roles?.group_valid_values ?? []).join(', ')); }, [o]);
   const save = useMutation({
     mutationFn: (body: RolesBody) => saveRoles(o.dataset_id, body).then(() => body),
     onSuccess: ds.setRoles,

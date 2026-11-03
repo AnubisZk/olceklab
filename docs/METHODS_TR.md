@@ -1,4 +1,4 @@
-# Yöntem notları (Faz 2–4: M5–M9)
+# Yöntem notları (Faz 2–5: M5–M10, M12)
 
 Bu notlar platformun hangi R çağrısını hangi ayarla yaptığını ve tablolarda neyin raporlandığını açıklar.
 Bütün sayılar R motorunda hesaplanır ve biçimlenir; ön yüz yalnızca gösterir.
@@ -157,3 +157,46 @@ aynı özeti üretir (ayrı süreçte test edilir); sürüm farkında betikler u
 Örnek kestirimleri gerçek değer kabul edildiği için sonuçlar iyimser olabilir (Hoenig ve Heisey, 2001); "duyarlılık
 kaydırması" bütün standardize yükleri verilen miktar kadar azaltır. Model ML/MLR ile kestirildiyse yalnızca sürekli veri
 üretilir (MC-7). İkinci düzey ve çapraz yüklü modellerden popülasyon kurulmaz.
+
+# Raporlama (M10, Faz 5)
+
+- `POST /reports/docx` (`analysis_ids`, `lang`, `title`) seçilen analiz kayıtlarından bir Word belgesi kurar (`officer` +
+  `flextable`). `POST /reports/preview` aynı metinleri ve tablo numaralarını önizleme için döndürür.
+- **Tablolar:** her tablo kaydın `rows_fmt` değerleriyle (R'nin biçimlediği metin) doldurulur; hiçbir sayı yeniden
+  hesaplanmaz ya da biçimlenmez. APA 7 düzeni: "Tablo N" (kalın), başlık (italik), `flextable::theme_apa`, sayı sütunları
+  sağa yaslı, altında "*Not.*" + kaydın notu (kaynak fonksiyon ve ayarlar) + sürüm satırı ve analiz kimliği. Tablolar rapor
+  boyunca ardışık numaralanır.
+- **Yöntem/Bulgular taslak metni:** modül başına önceden yazılmış şablon cümleleri (TR/EN). Sayılar tabloların biçimli
+  değerlerinden alınır; bir değer kayıtta yoksa o cümle yazılmaz. Bu bölüm **yapay zekâ kullanmaz**; test, şablon
+  metinlerdeki her sayının kayıtta bulunduğunu denetler. İstatistik simgeleri (χ, p, α, ω, κ, d) italik yazılır.
+- Simülasyon kayıtlarında SİMÜLASYON etiketi ve bir "Sınırlılıklar" paragrafı (popülasyon modeline bağlılık, ızgara
+  çözünürlüğü, Hoenig ve Heisey, 2001; sözde-gerçek değerler) her zaman eklenir.
+- **Kaynakça:** metinde anılan yöntem kaynakları ile R'nin ve kullanılan paketlerin kendi `citation()` kayıtları.
+- **Yazılım ve tekrarlanabilirlik bölümü:** R ve paket sürümleri, RNG türü, her analizin kimliği, tohumu ve veri özeti
+  (SHA-256).
+- **CSV:** `GET /analyses/{id}/tables/{tid}/csv?lang=tr|en&values=formatted|raw`. Biçimli dosya ekrandaki metindir
+  (TR'de `;` ayırıcı, UTF-8 BOM); ham dosya sayıları 17 anlamlı basamakla (`%.17g`, nokta ondalık) verir.
+- **Grafikler:** her grafiğin altında SVG ve PNG indirme düğmeleri vardır. SVG, ekrandaki çizimin kendisidir; PNG bu SVG'nin
+  2× ölçekle rasterleştirilmiş hâlidir. Çizimdeki bütün sayılar R'den gelir.
+
+# Tekrarlanabilirlik ve proje dosyası (M12, Faz 5)
+
+- Her analizin bağımsız R betiği (Faz 1'den beri): veri yolu yer tutucusu, paket sürümü, RNG türü ve tohum denetimi.
+- **Dışa aktarma** `POST /projects/export` (`dataset_id`, `analysis_ids`, `include_data`, `data_consent`) bir
+  `.olceklab.zip` verir:
+  - `manifest.json`: biçim sürümü, motor sürümleri, veri adı/kaynağı/SHA-256 özeti/boyutu, sütun rollerinin ve temizleme
+    kurallarının **özgün istek gövdeleri**, analizlerin sırası ve her birinin özgün istek gövdesi;
+  - `analyses/NN_modul.json`: tam sonuç kayıtları (17 anlamlı basamak); `scripts/NN_modul.R`: R betikleri;
+  - `versions.json`: R, paketler, BLAS/LAPACK, RNG; `BENIOKU.md`;
+  - `data/<dosya>`: yalnızca `include_data` **ve** `data_consent` ile (yoksa `422 consent_required`). Özgün dosya baytları
+    yalnızca bellekte tutulur; örnek veri setleri pakete eklenmez, adıyla yeniden yüklenir.
+- **İçe aktarma** `POST /projects/import` (zip baytları) manifest'i okur, veri dosyası varsa SHA-256 özetini denetler
+  (uyuşmazsa `422 hash_mismatch`) ve sürüm uyuşmazlıklarını (R, paketler, BLAS) uyarı olarak döndürür.
+- **Yeniden üretim** `POST /projects/{id}/reproduce`: veri projeden, örnek veriden ya da kullanıcının yeniden yüklediği
+  dosyadan (`dataset_id`; özet projedekiyle aynı olmalıdır) alınır; roller ve temizleme özgün isteklerle uygulanır; analizler
+  özgün istek gövdeleriyle aynı uç nokta fonksiyonlarıyla işçide yeniden çalıştırılır. Her kayıt, eskisiyle aynı JSON
+  serileştirmesinden (17 anlamlı basamak) geçirilip `results` ve tabloların ham ve biçimli değerleri yaprak yaprak
+  karşılaştırılır; sonuç "Aynı (n değer)" ya da "Farklı: k / n değer; en büyük sayısal fark …" olarak raporlanır. Kimlik,
+  zaman damgası ve betik karşılaştırılmaz. Yeniden üretilen oturum arayüze geri yüklenir; analizlere devam edilebilir.
+- Gizlilik: zip yalnızca işlem süresince geçici dizinde bulunur ve hemen silinir (test edilir); içe aktarılan proje bellekte
+  ve oturum süresiyle (SESSION_TTL_MINUTES) tutulur.

@@ -24,7 +24,7 @@ test('Faz 2 akışı gerçek R motoruyla çalışır; DFA, karşılaştırma ve 
 
   await page.getByRole('link', { name: /DFA/ }).click();
   await expect(page.getByTestId('model-syntax')).toContainText('visual =~ x1 + x2 + x3');
-  await page.getByLabel('Olabilirlik').selectOption('wishart');
+  await page.getByRole('combobox', { name: /^Olabilirlik/ }).selectOption('wishart');
   await page.getByLabel('Bollen–Stine bootstrap').check();
   await page.getByLabel('Bootstrap sayısı (B)').fill('100');
   const cfaResp = page.waitForResponse((r) => r.url().endsWith('/analyses/cfa'));
