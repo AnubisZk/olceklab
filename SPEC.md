@@ -1,5 +1,5 @@
 # ÖlçekLab — Ölçek Geliştirme ve Uyarlama Analiz Platformu
-## Codex için teknik şartname (v1.2, 3 Kasım 2026)
+## Codex için teknik şartname (v1.3, 3 Kasım 2026)
 
 > Çalışma adı: **ÖlçekLab**. Ad değiştirilebilir.
 > Bu belge, Codex'e (ya da başka bir kodlama ajanına) verilmek üzere yazılmıştır. Belgenin tamamını depo köküne `SPEC.md` olarak koy. Bölüm 0'ı ayrıca `AGENTS.md` olarak kaydet.
@@ -12,6 +12,7 @@
 | 1.0 | 2 Kasım 2026 | İlk sürüm. |
 | 1.1 | 2 Kasım 2026 | `SPEC_REVIEW.md`'deki 58 madde onaylanıp işlendi. Değişen her yer "(v1.1: KİMLİK)" ile işaretlidir; gerekçe ve kanıt için `SPEC_REVIEW.md` ve `review/verify/` klasörüne bakın. |
 | 1.2 | 3 Kasım 2026 | Belge sahibinin Faz 1 yanıtları işlendi (`docs/validation/CODEX_YANIT_FAZ1.md`): W-1, REL-1, CL-1 ve REP-1 kapandı. M1 kural sırası, §11.3 tablosu (yeni satırlar: çok gruplu SRMR, HTMT BK–CT, WLSMV dayanıklı indeksler), HTMT ve çok gruplu SRMR varsayılanları, semTools 0.5-9 ↔ 0.5-10 denkliği (V10). Değişen yerler "(v1.2)" ile işaretlidir. |
+| 1.3 | 3 Kasım 2026 | Faz 5 sonrası belge sahibinin kararları: yapay zekâ için genel, OpenAI uyumlu `api` sağlayıcısı (M11); çevrim içi modda ağ geçidinin ayrı bir Hugging Face Space olarak çalışması (§3.1); motor Space'i `app_port: 8000`; §14'e `api` sağlayıcı bilgileri eklendi. Değişen yerler "(v1.3)" ile işaretlidir. |
 
 **Açıklama bekleyen noktalar.** W-1, REL-1, CL-1 ve REP-1 3 Kasım 2026'da yanıtlandı (v1.2). Yalnızca şu madde belge sahibinin yanıtını bekliyor ve ⏳ ile işaretli:
 - Referans simülasyon paketi (REP-4; Faz 4'ten önce gerekir).
@@ -100,8 +101,8 @@ Bunlar Bölüm 13'te ileri sürüm olarak listelenmiştir.
 
 | Mod | Bileşenler | Not |
 |---|---|---|
-| Yerel (çevrimdışı) | `docker compose up` → `web` (5173), `engine` (8000), `ai-gateway` (8787), isteğe bağlı `ollama` (11434) | İnternet gerekmez. Simülasyon sınırları yalnızca makinenin gücüyle sınırlıdır. Yazı tipleri ve kütüphaneler pakete gömülüdür (v1.1: ARCH-3). |
-| Çevrim içi | `web` → Netlify; `engine` → Hugging Face Spaces (Docker SDK, `app_port: 7860`) | Simülasyon için tekrar sınırı uygulanır (Bölüm 7, M9). Yapay zekâ varsayılan olarak kapalıdır. Space yeniden başlayınca oturumlar silinir (v1.1: ARCH-7). |
+| Yerel (çevrimdışı) | `docker compose up` → `web` (5173), `engine` (8000), `ai-gateway` (8787), isteğe bağlı `ollama` (11434). Yerel modda `api` sağlayıcısı da seçilebilir; bu durumda yalnızca yapay zekâ istemleri internete çıkar (v1.3). | İnternet gerekmez. Simülasyon sınırları yalnızca makinenin gücüyle sınırlıdır. Yazı tipleri ve kütüphaneler pakete gömülüdür (v1.1: ARCH-3). |
+| Çevrim içi | `web` → Netlify; `engine` → Hugging Face Space `OsirisZk/olceklab-engine` (Docker SDK, `app_port: 8000`); isteğe bağlı `ai-gateway` → ayrı Hugging Face Space `OsirisZk/olceklab-ai` (v1.3) | Simülasyon için tekrar sınırı uygulanır (Bölüm 7, M9). Yapay zekâ varsayılan olarak kapalıdır; API anahtarı yalnızca ağ geçidi Space'inin gizli değişkenlerinde (Secrets) tutulur, tarayıcıya hiçbir zaman gönderilmez (v1.3). Space yeniden başlayınca oturumlar silinir (v1.1: ARCH-7). |
 | EVREN | `ai-gateway` → EVREN LLM API; isteğe bağlı olarak büyük simülasyonlar için EVREN hesaplama düğümü | Uç nokta ve kimlik bilgileri `.env` dosyasından okunur (Bölüm 7, M11 ve Bölüm 14). |
 
 ---
@@ -462,6 +463,7 @@ Raporda iki satır yer alır: "üretim değerinden sapma" ve "sözde-gerçek de�
 **Sağlayıcılar** (`AI_PROVIDER`):
 - `none`: varsayılan.
 - `local`: tamamen çevrimdışı çalışır. Ollama ya da llama.cpp sunucusu kullanılır (OpenAI uyumlu `/v1/chat/completions`). Model adı `.env` dosyasından okunur; tanımlı değilse ağ geçidi başlamaz. Yerel modda internet bağlantısı olmadan çalışmalıdır.
+- `api` (v1.3): OpenAI uyumlu `/v1/chat/completions` sunan herhangi bir bulut API'si. Adres, anahtar ve model adı yalnızca ortam değişkenlerinden okunur (`AI_API_BASE_URL`, `AI_API_KEY`, `AI_API_MODEL`); varsayılan değer yoktur, eksikse ağ geçidi başlamaz. `local` ile aynı istemci kullanılır, yalnızca `Authorization: Bearer` başlığı eklenir. Hangi sağlayıcı ve modelin kullanılacağına belge sahibi karar verir (Bölüm 14). Çevrim içi modda kötüye kullanımı önlemek için ağ geçidi istek sınırı uygular (`AI_RATE_LIMIT_PER_MINUTE`, `AI_MAX_OUTPUT_TOKENS`).
 - `evren`: EVREN platformunun LLM API'si. Uç nokta, kimlik doğrulama başlığı ve model adı `.env` dosyasından okunur (`EVREN_BASE_URL`, `EVREN_API_KEY`, `EVREN_MODEL`). API OpenAI uyumluysa `local` istemcisi yeniden kullanılır; değilse `providers/evren.ts` içinde EVREN belgelerine göre ayrı bir bağdaştırıcı yazılır. **Bu ayrıntılar belgelenmeden varsayılmaz** (Bölüm 14).
 
 **Görevleri:**
@@ -655,6 +657,7 @@ Faktör adları: BK = M4, M5, M6, M8; FM = M1, M2, M3; KD = M9, M11; CT = M10, M
 ## 14. Zafer'in doldurması gereken bilgiler (Codex bunları varsaymamalı)
 
 1. **EVREN LLM API:** temel adres, kimlik doğrulama yöntemi (başlık adı/biçimi), kullanılabilir model adları, OpenAI uyumlu olup olmadığı, istek ve token sınırları.
+1b. **`api` sağlayıcısı (v1.3):** sağlayıcı ve model adı, OpenAI uyumlu temel adres, API anahtarı (yalnızca Space Secrets'a girilir; depoya, sohbete ya da koda yazılmaz), aylık bütçe/istek sınırı.
 2. **EVREN hesaplama/iş API'si** (ileride simülasyon için): iş gönderme biçimi, Docker imajı desteği, kota.
 3. **Yerel model:** Ollama ile kullanılacak model adı (Türkçe yanıt kalitesi iyi bir model seçilmeli) ve donanım (ör. RTX 5060 masaüstü).
 4. **Alan adı ve barındırma:** Netlify sitesi adı; Hugging Face Space adı (ör. `OsirisZk/olceklab-engine`).

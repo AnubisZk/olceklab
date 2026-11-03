@@ -1,0 +1,44 @@
+# syntax=docker/dockerfile:1
+# ÖlçekLab R analiz motoru. Yerel (8000) ve Hugging Face Space (7860) için aynı imaj;
+# bağlantı noktası PORT ortam değişkeninden okunur.
+FROM rocker/r-ver:4.4.3
+
+# Türkçe metinler için UTF-8 yerel ayarı zorunlu (engine/R/00_locale.R).
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+
+# Sistem kitaplıkları: officer/flextable (xml2, systemfonts, gdtools), httpuv, nanonext, httr2
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      libxml2-dev libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libfribidi-dev \
+      libpng-dev libjpeg-dev libtiff-dev libcairo2-dev libcurl4-openssl-dev libssl-dev \
+      zlib1g-dev libsodium-dev cmake \
+ && rm -rf /var/lib/apt/lists/*
+
+# Paketler renv.lock'taki sürümlerle, tarihli Posit Package Manager anlık görüntüsünden kurulur.
+ARG PPM_DATE=2026-10-31
+ENV RENV_CONFIG_PAK_ENABLED=FALSE
+WORKDIR /app
+COPY renv.lock ./renv.lock
+RUN CODENAME="$(. /etc/os-release && echo "$VERSION_CODENAME")" \
+ && REPO="https://packagemanager.posit.co/cran/__linux__/${CODENAME}/${PPM_DATE}" \
+ && Rscript -e "install.packages('renv', repos = '${REPO}')" \
+ && Rscript -e "options(renv.config.repos.override = '${REPO}'); renv::restore(lockfile = 'renv.lock', library = .libPaths()[1], prompt = FALSE)" \
+ && Rscript -e "stopifnot(as.character(packageVersion('lavaan')) == '0.7.2')"
+
+COPY plumber.R run.R healthcheck.R ./
+COPY R ./R
+COPY tests ./tests
+
+# Hugging Face Spaces 1000 numaralı kullanıcıyı bekler.
+RUN useradd -m -u 1000 olceklab
+USER olceklab
+
+ENV PORT=8000 HOST=0.0.0.0 OLCEKLAB_ENGINE_DIR=/app
+# --- Hugging Face Space (çevrim içi mod) ayarları ---
+# Ön yüzün adresi; başka bir alan adı kullanılırsa Space ayarlarından ALLOWED_ORIGINS değişkeniyle değiştirilebilir.
+ENV ALLOWED_ORIGINS=https://olceklab.netlify.app \
+    ONLINE_LIMITS=true ONLINE_MAX_REPLICATIONS_X_CONDITIONS=2000 ONLINE_MAX_WORKERS=2 ONLINE_JOB_TIMEOUT_SECONDS=3600 \
+    ENGINE_WORKERS=2 JOBS_DIR=/tmp/olceklab-jobs
+EXPOSE 8000
+HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=5 CMD ["Rscript", "/app/healthcheck.R"]
+CMD ["Rscript", "/app/run.R"]
