@@ -1,0 +1,262 @@
+✔ | F W  S  OK | Context
+
+⠏ |          0 | api-analyses                                                   
+⠋ |          1 | api-analyses                                                   
+⠴ |          6 | api-analyses                                                   
+⠦ |          7 | api-analyses                                                   
+⠇ |          9 | api-analyses                                                   
+⠼ |         15 | api-analyses                                                   
+⠦ |         17 | api-analyses                                                   
+⠹ |         23 | api-analyses                                                   
+⠦ |         27 | api-analyses                                                   
+⠧ |         28 | api-analyses                                                   
+⠋ |         31 | api-analyses                                                   
+⠹ |         33 | api-analyses                                                   
+⠴ |         36 | api-analyses                                                   
+⠋ |         41 | api-analyses                                                   
+⠹ |         43 | api-analyses                                                   
+⠧ |         48 | api-analyses                                                   
+⠙ |         52 | api-analyses                                                   
+✔ |         53 | api-analyses [43.3s]
+
+⠏ |          0 | api-simulation                                                 
+⠋ |          1 | api-simulation                                                 
+⠴ |          6 | api-simulation                                                 
+⠦ |          7 | api-simulation                                                 
+⠧ |          8 | api-simulation                                                 
+⠋ |         11 | api-simulation                                                 
+⠹ |         13 | api-simulation                                                 
+⠸ |         14 | api-simulation                                                 
+⠹ |         23 | api-simulation                                                 
+⠧ |         28 | api-simulation                                                 
+✔ |         28 | api-simulation [28.2s]
+
+⠏ |          0 | api                                                            
+⠋ |          1 | api                                                            
+⠼ |          5 | api                                                            
+⠙ |         12 | api                                                            
+⠴ |         16 | api                                                            
+⠇ |         19 | api                                                            
+⠋ |         21 | api                                                            
+✔ |         23 | api [2.8s]
+
+⠏ |          0 | bidekcet-harness                                               
+⠋ |          1 | bidekcet-harness                                               
+⠹ |          3 | bidekcet-harness                                               
+⠼ |         65 | bidekcet-harness                                               
+⠴ |         86 | bidekcet-harness                                               
+⠦ |         87 | bidekcet-harness                                               
+⠧ |         88 | bidekcet-harness                                               
+✔ |         88 | bidekcet-harness [19.0s]
+
+⠏ |          0 | cfa-compare                                                    
+⠋ |          1 | cfa-compare                                                    
+⠦ |         17 | cfa-compare                                                    
+⠧ |         18 | cfa-compare                                                    
+⠏ |         20 | cfa-compare                                                    
+⠴ |         26 | cfa-compare                                                    
+⠇ |         29 | cfa-compare                                                    
+⠴ |         36 | cfa-compare                                                    
+✔ |         41 | cfa-compare [7.8s]
+
+⠏ |          0 | cfa                                                            
+⠋ |          1 | cfa                                                            
+⠹ |         13 | cfa                                                            
+⠋ |         21 | cfa                                                            
+⠸ |         24 | cfa                                                            
+⠧ |         28 | cfa                                                            
+⠼ |         35 | cfa                                                            
+⠹ |         43 | cfa                                                            
+⠙ |         52 | cfa                                                            
+⠼ |         55 | cfa                                                            
+⠋ |         61 | cfa                                                            
+⠸ |         64 | cfa                                                            
+⠼ |         65 | cfa                                                            
+⠧ |         68 | cfa                                                            
+⠼ |         75 | cfa                                                            
+✔ |         79 | cfa [13.7s]
+
+⠏ |          0 | cors                                                           
+✔ |          2 | cors
+
+⠏ |          0 | data-clean                                                     
+⠋ |         31 | data-clean                                                     
+⠋ |         41 | data-clean                                                     
+⠸ |         64 | data-clean                                                     
+⠹ |         73 | data-clean                                                     
+✔ |         73 | data-clean
+
+⠏ |          0 | efa                                                            
+⠋ |          1 | efa                                                            
+⠴ |         16 | efa                                                            
+⠇ |         19 | efa                                                            
+⠙ |         22 | efa                                                            
+⠼ |         25 | efa                                                            
+⠧ |         28 | efa                                                            
+⠏ |         30 | efa                                                            
+⠸ |         34 | efa                                                            
+⠼ |         35 | efa                                                            
+⠹ |         43 | efa                                                            
+⠴ |         46 | efa                                                            Error in if (s < eps) break : missing value where TRUE/FALSE needed
+
+⠼ |         55 | efa                                                            
+✔ |         60 | efa [7.5s]
+
+⠏ |          0 | errors                                                         
+⠼ |         25 | errors                                                         
+✔ |         25 | errors
+
+⠏ |          0 | factor-number                                                  
+⠋ |          1 | factor-number                                                  
+⠹ |          3 | factor-number                                                  
+⠸ |          4 | factor-number                                                  
+⠼ |          5 | factor-number                                                  
+⠴ |          6 | factor-number                                                  
+⠧ |          8 | factor-number                                                  
+⠙ |         12 | factor-number                                                  
+⠼ |         15 | factor-number                                                  
+⠧ |         18 | factor-number                                                  
+⠋ |         21 | factor-number                                                  
+⠸ |         24 | factor-number                                                  
+⠼ |         25 | factor-number                                                  
+⠧ |         28 | factor-number                                                  
+⠇ |         29 | factor-number                                                  
+⠼ |         35 | factor-number                                                  
+⠧ |         38 | factor-number                                                  
+⠋ |         41 | factor-number                                                  
+✔ |         50 | factor-number [29.2s]
+
+⠏ |          0 | format                                                         
+✔ |         30 | format
+
+⠏ |          0 | invariance                                                     
+⠋ |          1 | invariance                                                     
+⠹ |         13 | invariance                                                     
+⠦ |         27 | invariance                                                     
+⠸ |         34 | invariance                                                     
+⠼ |         35 | invariance                                                     
+⠏ |         40 | invariance                                                     
+⠹ |         43 | invariance                                                     
+⠏ |         50 | invariance                                                     
+⠙ |         52 | invariance                                                     
+⠼ |         55 | invariance                                                     
+⠴ |         56 | invariance                                                     
+⠦ |         57 | invariance                                                     
+⠧ |         58 | invariance                                                     
+⠴ |         66 | invariance                                                     
+⠏ |         70 | invariance                                                     
+✔ |         75 | invariance [26.0s]
+
+⠏ |          0 | item-analysis                                                  
+⠋ |          1 | item-analysis                                                  
+⠴ |          6 | item-analysis                                                  
+⠹ |         13 | item-analysis                                                  
+⠹ |         23 | item-analysis                                                  
+⠦ |         37 | item-analysis                                                  
+⠙ |         42 | item-analysis                                                  
+✔ |         45 | item-analysis [1.4s]
+
+⠏ |          0 | json                                                           
+⠹ |         13 | json                                                           
+✔ |         18 | json
+
+⠏ |          0 | model                                                          
+⠋ |         21 | model                                                          
+✔ |         29 | model
+
+⠏ |          0 | packages                                                       
+⠇ |          9 | packages                                                       
+⠏ |         10 | packages                                                       
+⠸ |         14 | packages                                                       
+✔ |         15 | packages
+
+⠏ |          0 | private-bidekcet                                               
+✔ |      2   0 | private-bidekcet
+
+⠏ |          0 | reliability                                                    
+⠋ |          1 | reliability                                                    
+⠼ |         15 | reliability                                                    
+⠹ |         33 | reliability                                                    
+⠼ |         35 | reliability                                                    
+⠋ |         41 | reliability                                                    
+⠙ |         42 | reliability                                                    
+⠹ |         43 | reliability                                                    
+⠸ |         44 | reliability                                                    
+⠼ |         45 | reliability                                                    
+⠴ |         46 | reliability                                                    
+⠙ |         52 | reliability                                                    
+⠼ |         55 | reliability                                                    
+⠦ |         57 | reliability                                                    
+⠏ |         60 | reliability                                                    
+✔ |         60 | reliability [6.1s]
+
+⠏ |          0 | script-export                                                  
+⠋ |          1 | script-export                                                  
+⠼ |          5 | script-export                                                  
+⠴ |          6 | script-export                                                  
+⠧ |          8 | script-export                                                  
+⠏ |         10 | script-export                                                  
+⠹ |         13 | script-export                                                  
+⠴ |         16 | script-export                                                  
+⠧ |         18 | script-export                                                  
+⠹ |         23 | script-export                                                  
+⠼ |         25 | script-export                                                  
+⠇ |         29 | script-export                                                  
+⠹ |         33 | script-export                                                  
+⠴ |         36 | script-export                                                  
+⠧ |         38 | script-export                                                  
+✔ |         38 | script-export [37.3s]
+
+⠏ |          0 | session                                                        
+⠦ |          7 | session                                                        
+✔ |          8 | session
+
+⠏ |          0 | simulation-acceptance                                          
+⠋ |          1 | simulation-acceptance                                          
+⠙ |          2 | simulation-acceptance                                          
+⠹ |          3 | simulation-acceptance                                          
+  metric: Δχ² I. tip hata = 0.051 (MCSE 0.0070, geçerli R = 1000)
+  scalar: Δχ² I. tip hata = 0.040 (MCSE 0.0062, geçerli R = 1000)
+✔ |          9 | simulation-acceptance [234.3s]
+
+⠏ |          0 | simulation                                                     
+⠇ |          9 | simulation                                                     
+⠏ |         10 | simulation                                                     
+⠙ |         12 | simulation                                                     
+⠦ |         17 | simulation                                                     
+⠏ |         20 | simulation                                                     
+⠹ |         23 | simulation                                                     
+⠼ |         25 | simulation                                                     
+⠴ |         26 | simulation                                                     
+⠧ |         28 | simulation                                                     
+⠏ |         30 | simulation                                                     
+⠙ |         32 | simulation                                                     
+⠹ |         33 | simulation                                                     
+⠦ |         37 | simulation                                                     
+⠴ |         66 | simulation                                                     
+✔ |         69 | simulation [44.9s]
+
+⠏ |          0 | source-files                                                   
+⠸ |         24 | source-files                                                   
+⠹ |         43 | source-files                                                   
+⠏ |         60 | source-files                                                   
+✔ |         60 | source-files
+
+⠏ |          0 | suitability                                                    
+⠼ |          5 | suitability                                                    
+⠇ |          9 | suitability                                                    
+✔ |         14 | suitability [2.4s]
+
+⠏ |          0 | versions                                                       
+⠦ |          7 | versions                                                       
+✔ |          8 | versions
+
+══ Results ═════════════════════════════════════════════════════════════════════
+Duration: 506.0 s
+
+── Skipped tests (2) ───────────────────────────────────────────────────────────
+• BIDEKCET_DATA_DIR tanımlı değil; KVKK gereği veri depoda değil (SPEC §11.3)
+  (2): 'test-private-bidekcet.R:22:3', 'test-private-bidekcet.R:69:3'
+
+[ FAIL 0 | WARN 0 | SKIP 2 | PASS 1000 ]
+EXIT=0

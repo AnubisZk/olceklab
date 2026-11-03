@@ -9,7 +9,7 @@ sim_export_functions <- c(
   "count_leading", "quiet", "collect_conditions", "online_limits", "sim_spec_defaults", "normalize_sim_spec",
   "sim_chunks", "sim_chunk_file", "sim_condition", "sim_pa_ref_for", "sim_run_chunk")
 sim_export_truth <- c("sim_pop_ordinal_moments", "sim_alpha_pop", "sim_true_values")
-sim_export_summary <- c("sim_rate", "sim_param_summary", "sim_summarise_cell", "sim_criteria_met", "sim_recommend", "sim_summary")
+sim_export_summary <- c("sim_rate", "sim_param_summary", "sim_summarise_cell", "sim_step_kind", "sim_power_target", "sim_criteria_met", "sim_recommend", "sim_summary")
 
 embed_objects <- function(names) {
   paste(vapply(names, function(n) {

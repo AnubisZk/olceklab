@@ -158,6 +158,40 @@ sim_summarise_cell <- function(reps, est, truth, opts) {
 }
 
 # Örneklem büyüklüğü önerisi (MC-11): ölçütlerin hem o N'de hem daha büyük bütün ızgara N'lerinde sağlandığı en küçük N.
+# Değişmezlik adımında reddetme oranının anlamı (T4): adımın eklediği kısıt ve senaryodaki DIF türüne göre.
+#   ML/MLR: metrik = yükler, skaler = + kesişimler; WLSMV: metrik = eşikler + yükler, skaler = + kesişimler.
+#   Sıralı veride eşik kayması ML/MLR analizinde ortalama farkı olarak skaler adımda görünür; kesikli puanların
+#   kovaryansı da değiştiği için metrik adım tam bir I. tip hata durumu değildir ("karışık").
+sim_step_kind <- function(scenario, step, est, data_type) {
+  if (isTRUE(scenario$control)) return("type_i")
+  added <- if (est == "WLSMV") list(metric = c("thresholds", "loadings"), scalar = "intercepts") else list(metric = "loadings", scalar = "intercepts")
+  order <- names(added)
+  hit <- character(); approx <- FALSE
+  for (e in scenario$effects) {
+    if (e$type == "loading") hit <- c(hit, "loadings")
+    else if (e$type == "intercept") hit <- c(hit, "intercepts")
+    else if (est == "WLSMV") hit <- c(hit, "thresholds")
+    else { hit <- c(hit, "intercepts"); approx <- TRUE }
+  }
+  if (any(added[[step]] %in% hit)) return("power")
+  before <- unlist(added[seq_len(match(step, order) - 1L)])
+  if (any(before %in% hit) || approx) return("mixed")
+  "type_i"
+}
+
+# Önerideki güç ölçütünün adımı: "auto" iken DIF'li parametreyi sınayan ilk adım (sim_step_kind = "power").
+sim_power_target <- function(spec, sc, est) {
+  d <- spec$pop$dif[[sc]]
+  if (isTRUE(d$control) || !isTRUE(spec$analyses$invariance)) return(NULL)
+  ps <- spec$recommend$power_step
+  if (identical(ps, "auto")) {
+    k <- vapply(c("metric", "scalar"), function(st) sim_step_kind(d, st, est, spec$pop$data_type), "")
+    ps <- names(k)[k == "power"][1]
+    if (is.na(ps)) return(NULL)
+  }
+  list(step = ps)
+}
+
 sim_criteria_met <- function(cell, crit, power_target) {
   ok <- c(admissible = isTRUE(cell$admissible_rate >= crit$admissible))
   if (!is.null(cell$params)) {
@@ -198,8 +232,8 @@ sim_summary <- function(spec, reps) {
   for (ra in seq_along(spec$ratios)) for (sc in spec$scenarios) for (est in spec$estimators) {
     cs <- Filter(function(c) c$ratio == ra && c$scenario == sc && c$estimator == est, cells)
     cs <- cs[order(vapply(cs, `[[`, 0L, "N"))]
-    pt <- if (isTRUE(spec$pop$dif[[sc]]$control)) NULL else list(step = spec$recommend$power_step)
-    recs[[length(recs) + 1L]] <- list(ratio = ra, scenario = sc, estimator = est,
+    pt <- sim_power_target(spec, sc, est)
+    recs[[length(recs) + 1L]] <- list(ratio = ra, scenario = sc, estimator = est, power_step = if (is.null(pt)) NA_character_ else pt$step,
                                       N = sim_recommend(cs, vapply(cs, `[[`, 0L, "N"), spec$recommend, pt),
                                       criteria = lapply(cs, function(c) as.list(sim_criteria_met(c, spec$recommend, pt))))
   }
@@ -258,15 +292,20 @@ sim_results_record <- function(spec, sm, job_id) {
     t3$rows_fmt$en$source_tr <- ifelse(pr$source == "pseudo_true", "pseudo-true", "generating")
     tables[[length(tables) + 1L]] <- t3
   }
-  # T4 değişmezlik (MC-8)
-  iv <- do.call(rbind, lapply(sm$cells, function(c) if (is.null(c$invariance)) NULL else cbind(base_row(c)[rep(1, nrow(c$invariance)), ], c$invariance,
-    kind_tr = if (ctl[c$scenario]) "I. tip hata" else "güç", kind_en = if (ctl[c$scenario]) "Type I error" else "power", stringsAsFactors = FALSE)))
+  # T4 değişmezlik (MC-8). Ölçü türü adım ve senaryoya göre belirlenir (sim_step_kind).
+  kind_lab <- list(type_i = c(tr = "I. tip hata", en = "Type I error"), power = c(tr = "güç", en = "power"),
+                   mixed = c(tr = "karışık", en = "mixed"))
+  iv <- do.call(rbind, lapply(sm$cells, function(c) if (is.null(c$invariance)) NULL else {
+    k <- vapply(c$invariance$step, function(st) sim_step_kind(spec$pop$dif[[c$scenario]], st, c$estimator, spec$pop$data_type), "")
+    cbind(base_row(c)[rep(1, nrow(c$invariance)), ], c$invariance, kind = k,
+          kind_tr = vapply(k, function(x) kind_lab[[x]][["tr"]], ""), kind_en = vapply(k, function(x) kind_lab[[x]][["en"]], ""), stringsAsFactors = FALSE)
+  }))
   if (!is.null(iv)) {
     iv$step_tr <- c(metric = "metrik", scalar = "skaler")[iv$step]
-    n4 <- note(sprintf("Reddetme oranı: kontrol senaryosunda I. tip hata, DIF senaryolarında güç. Her adım ayrı: o adımın kararı; ardışık: önceki adımlar Δχ² ile reddedilmediğinde o adımın reddi. Ölçütler: Δχ² p < %s; ΔCFI < %s; ΔRMSEA > %s; ΔSRMR > %s (metrik) / %s (skaler). MCSE = √(p(1 − p)/R).",
+    n4 <- note(sprintf("Reddetme oranı: iki model de popülasyonda doğruysa I. tip hata; adımın eklediği kısıt DIF'li parametreyi kapsıyorsa güç; karışık: karşılaştırılan modeller popülasyonda tam doğru değildir (DIF daha önceki bir adımda ya da sıralı veride eşik DIF'i ML/MLR ile analiz edilmiş). Her adım ayrı: o adımın kararı; ardışık: önceki adımlar Δχ² ile reddedilmediğinde o adımın reddi. Ölçütler: Δχ² p < %s; ΔCFI < %s; ΔRMSEA > %s; ΔSRMR > %s (metrik) / %s (skaler). MCSE = √(p(1 − p)/R).",
                        fmt_num(spec$criteria$alpha, 2, "tr", TRUE), fmt_num(spec$criteria$cfi, 3, "tr", TRUE), fmt_num(spec$criteria$rmsea, 3, "tr", TRUE),
                        fmt_num(spec$criteria$srmr_load, 3, "tr", TRUE), fmt_num(spec$criteria$srmr_int, 3, "tr", TRUE)),
-               sprintf("Rejection rate: Type I error in the control scenario, power in DIF scenarios. Each step separately: that step's decision; sequential: rejection at that step when earlier steps were not rejected by Δχ². Criteria: Δχ² p < %s; ΔCFI < %s; ΔRMSEA > %s; ΔSRMR > %s (metric) / %s (scalar). MCSE = √(p(1 − p)/R).",
+               sprintf("Rejection rate: Type I error when both models hold in the population; power when the step's new constraint covers the DIF parameter; mixed: the compared models do not hold exactly in the population (DIF in an earlier step, or threshold DIF in ordinal data analysed with ML/MLR). Each step separately: that step's decision; sequential: rejection at that step when earlier steps were not rejected by Δχ². Criteria: Δχ² p < %s; ΔCFI < %s; ΔRMSEA > %s; ΔSRMR > %s (metric) / %s (scalar). MCSE = √(p(1 − p)/R).",
                        fmt_num(spec$criteria$alpha, 2, "en", TRUE), fmt_num(spec$criteria$cfi, 3, "en", TRUE), fmt_num(spec$criteria$rmsea, 3, "en", TRUE),
                        fmt_num(spec$criteria$srmr_load, 3, "en", TRUE), fmt_num(spec$criteria$srmr_int, 3, "en", TRUE)))
     t4 <- make_table("T4", "Ölçme değişmezliği: I. tip hata ve güç", "Measurement invariance: Type I error and power",
@@ -304,19 +343,26 @@ sim_results_record <- function(spec, sm, job_id) {
     tables[[length(tables) + 1L]] <- t6
   }
   # T7 örneklem büyüklüğü önerisi (MC-11)
+  step_lab <- c(metric = "metrik", scalar = "skaler")
   rc <- do.call(rbind, lapply(sm$recommendations, function(r) data.frame(ratio = sim_ratio_label(spec, r$ratio), scenario = scen[r$scenario], estimator = r$estimator,
+                                                                         power_step = if (is.na(r$power_step)) FMT_MISSING else unname(step_lab[r$power_step]),
+                                                                         power_step_en = if (is.na(r$power_step)) FMT_MISSING else r$power_step,
                                                                          N = r$N, stringsAsFactors = FALSE)))
+  ps_tr <- if (identical(spec$recommend$power_step, "auto")) "DIF'li parametreyi sınayan ilk" else step_lab[[spec$recommend$power_step]]
+  ps_en <- if (identical(spec$recommend$power_step, "auto")) "first step that tests the DIF parameter (the" else paste("the", spec$recommend$power_step)
   n7 <- note(sprintf("Önerilen N: seçilen bütün ölçütlerin hem o N'de hem de ızgaradaki daha büyük bütün N'lerde sağlandığı en küçük N (SPEC_REVIEW MC-11). Ölçütler (Muthén ve Muthén, 2002): |parametre yanlılığı| ≤ %%%s, |SH yanlılığı| ≤ %%%s, kapsama %s–%s; uygun çözüm ≥ %s; DIF senaryolarında %s adımında Δχ² gücü ≥ %s. Öneri ızgara çözünürlüğüyle sınırlıdır.",
                      fmt_num(100 * spec$recommend$param_bias, 0, "tr"), fmt_num(100 * spec$recommend$se_bias, 0, "tr"),
                      fmt_num(spec$recommend$coverage[1], 2, "tr", TRUE), fmt_num(spec$recommend$coverage[2], 2, "tr", TRUE),
-                     fmt_num(spec$recommend$admissible, 2, "tr", TRUE), spec$recommend$power_step, fmt_num(spec$recommend$power, 2, "tr", TRUE)),
-             sprintf("Recommended N: the smallest N at which all selected criteria hold at that N and at every larger N in the grid (SPEC_REVIEW MC-11). Criteria (Muthén & Muthén, 2002): |parameter bias| ≤ %s%%, |SE bias| ≤ %s%%, coverage %s–%s; admissible ≥ %s; in DIF scenarios Δχ² power ≥ %s at the %s step. The recommendation is limited by the grid resolution.",
+                     fmt_num(spec$recommend$admissible, 2, "tr", TRUE), ps_tr, fmt_num(spec$recommend$power, 2, "tr", TRUE)),
+             sprintf("Recommended N: the smallest N at which all selected criteria hold at that N and at every larger N in the grid (SPEC_REVIEW MC-11). Criteria (Muthén & Muthén, 2002): |parameter bias| ≤ %s%%, |SE bias| ≤ %s%%, coverage %s–%s; admissible ≥ %s; in DIF scenarios Δχ² power ≥ %s at %s step). The recommendation is limited by the grid resolution.",
                      fmt_num(100 * spec$recommend$param_bias, 0, "en"), fmt_num(100 * spec$recommend$se_bias, 0, "en"),
                      fmt_num(spec$recommend$coverage[1], 2, "en", TRUE), fmt_num(spec$recommend$coverage[2], 2, "en", TRUE),
-                     fmt_num(spec$recommend$admissible, 2, "en", TRUE), fmt_num(spec$recommend$power, 2, "en", TRUE), spec$recommend$power_step))
+                     fmt_num(spec$recommend$admissible, 2, "en", TRUE), fmt_num(spec$recommend$power, 2, "en", TRUE), ps_en))
   t7 <- make_table("T7", "Örneklem büyüklüğü önerisi", "Sample-size recommendation",
-    list(tbl_col("ratio", "Grup oranı", "Group ratio"), tbl_col("scenario", "Senaryo", "Scenario"), tbl_col("estimator", "Kestirici", "Estimator"), tbl_col("N", "Önerilen N", "Recommended N", "int")),
+    list(tbl_col("ratio", "Grup oranı", "Group ratio"), tbl_col("scenario", "Senaryo", "Scenario"), tbl_col("estimator", "Kestirici", "Estimator"),
+         tbl_col("power_step", "Güç adımı", "Power step"), tbl_col("N", "Önerilen N", "Recommended N", "int")),
     rc, note_tr = n7$tr, note_en = n7$en)
+  t7$rows_fmt$en$power_step <- rc$power_step_en
   for (lang in c("tr", "en")) t7$rows_fmt[[lang]]$N[is.na(rc$N)] <- if (lang == "tr") "ızgarada yok" else "not in grid"
   tables[[length(tables) + 1L]] <- t7
 
@@ -327,21 +373,35 @@ sim_results_record <- function(spec, sm, job_id) {
     for (est in spec$estimators) for (sc in unique(iv$scenario)) for (st in unique(iv$step)) for (ra in unique(iv$ratio)) {
       x <- iv[iv$estimator == est & iv$scenario == sc & iv$step == st & iv$ratio == ra, ]
       x <- x[order(x$N), ]
-      series[[length(series) + 1L]] <- list(name = sprintf("%s · %s · %s · %s", sc, est, st, ra), scenario = sc, estimator = est, step = st, ratio = ra,
+      st_tr <- c(metric = "metrik", scalar = "skaler")[[st]]
+      series[[length(series) + 1L]] <- list(name = sprintf("%s · %s · %s · %s", sc, est, st, ra), name_tr = sprintf("%s · %s · %s · %s", sc, est, st_tr, ra),
+                                            name_en = sprintf("%s · %s · %s · %s", sc, est, st, ra), scenario = sc, estimator = est, step = st, ratio = ra,
                                             N = I(x$N), rate = I(x$reject_chisq), labels_tr = I(fmt_pct(x$reject_chisq, "tr", 1L)), labels_en = I(fmt_pct(x$reject_chisq, "en", 1L)))
     }
-    figs[[length(figs) + 1L]] <- list(id = "F1", type = "power_curve", data = list(series = series, Ns = I(spec$Ns), target = spec$recommend$power, alpha = spec$criteria$alpha))
+    ticks <- seq(0, 1, by = 0.2)
+    figs[[length(figs) + 1L]] <- list(id = "F1", type = "power_curve", data = list(series = series, Ns = I(spec$Ns), target = spec$recommend$power, alpha = spec$criteria$alpha,
+      y_ticks = I(ticks), y_labels_tr = I(fmt_pct(ticks, "tr", 0L)), y_labels_en = I(fmt_pct(ticks, "en", 0L)),
+      target_label_tr = sprintf("güç hedefi %s", fmt_pct(spec$recommend$power, "tr", 0L)), target_label_en = sprintf("power target %s", fmt_pct(spec$recommend$power, "en", 0L))))
   }
   if (!is.null(pr)) {
     e1 <- spec$estimators[1]
     sub <- pr[pr$estimator == e1, ]
-    val <- ifelse(is.na(sub$rel_bias), sub$std_bias, sub$rel_bias)
+    # Gerçek değeri 0 olan parametrede göreli yanlılık tanımsızdır; o hücrede standartlaştırılmış yanlılık gösterilir ve * ile işaretlenir.
+    is_std <- is.na(sub$rel_bias) & !is.na(sub$std_bias)
+    val <- ifelse(is_std, sub$std_bias, sub$rel_bias)
     conds <- unique(sub$cond); params <- unique(sub$name)
+    hm_label <- function(p, ci, lang) {
+      k <- which(sub$name == p & sub$cond == ci)
+      if (!length(k)) return(fmt_pct(NA, lang, 1L))
+      paste0(fmt_pct(val[k[1]], lang, 1L), if (is_std[k[1]]) "*" else "")
+    }
     figs[[length(figs) + 1L]] <- list(id = "F2", type = "bias_heatmap", data = list(estimator = e1, params = I(params),
       conditions = I(vapply(conds, function(ci) { g <- spec$grid[spec$grid$index == ci, ]; sprintf("N=%d · %s · %s", g$N, sim_ratio_label(spec, g$ratio), scen[g$scenario]) }, "")),
       values = lapply(params, function(p) I(vapply(conds, function(ci) { v <- val[sub$name == p & sub$cond == ci]; if (length(v)) v else NA_real_ }, 0))),
-      labels_tr = lapply(params, function(p) I(vapply(conds, function(ci) { v <- val[sub$name == p & sub$cond == ci]; fmt_pct(if (length(v)) v else NA, "tr", 1L) }, ""))),
-      labels_en = lapply(params, function(p) I(vapply(conds, function(ci) { v <- val[sub$name == p & sub$cond == ci]; fmt_pct(if (length(v)) v else NA, "en", 1L) }, "")))))
+      labels_tr = lapply(params, function(p) I(vapply(conds, function(ci) hm_label(p, ci, "tr"), ""))),
+      labels_en = lapply(params, function(p) I(vapply(conds, function(ci) hm_label(p, ci, "en"), ""))),
+      note_tr = paste(c("Hücreler göreli yanlılıktır: (ortalama − gerçek) / gerçek.", if (any(is_std)) "* Gerçek değeri 0 olan parametre: standartlaştırılmış yanlılık, (ortalama − gerçek) / ampirik SS.", SIM_LABEL_TR), collapse = " "),
+      note_en = paste(c("Cells show relative bias: (mean − true) / true.", if (any(is_std)) "* Parameter with true value 0: standardized bias, (mean − true) / empirical SD.", SIM_LABEL_EN), collapse = " ")))
   }
   make_record(
     module = "simulation", dataset_hash = "synthetic",

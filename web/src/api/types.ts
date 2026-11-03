@@ -235,3 +235,23 @@ export interface ScoreTestResults {
   step: string;
   tests: { parameter: string; groups: string; free: string; x2: number }[];
 }
+
+// --- Faz 4: simülasyon -------------------------------------------------------------
+export interface JobText { progress: string; elapsed: string; eta: string }
+export interface JobStatus {
+  job_id: string;
+  status: 'queued' | 'running' | 'cancelled' | 'done' | 'failed' | 'timeout';
+  chunks_done: number; chunks_total: number; reps_done: number; reps_total: number; progress: number;
+  error?: string | null;
+  text: Record<Lang, JobText>;
+}
+export interface SimEstimate { estimated_seconds_upper: number; text: Record<Lang, string>; note_tr: string; note_en: string }
+export interface PowerCurveData {
+  series: { name: string; name_tr: string; name_en: string; scenario: string; estimator: string; step: string; ratio: string; N: number[]; rate: number[]; labels_tr: string[]; labels_en: string[] }[];
+  Ns: number[]; target: number; alpha: number;
+  y_ticks: number[]; y_labels_tr: string[]; y_labels_en: string[]; target_label_tr: string; target_label_en: string;
+}
+export interface BiasHeatmapData {
+  estimator: string; params: string[]; conditions: string[];
+  values: (number | null)[][]; labels_tr: string[][]; labels_en: string[][]; note_tr: string; note_en: string;
+}

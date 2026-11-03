@@ -30,7 +30,8 @@ normalize_sim_spec <- function(body) {
     rr <- cd$ratios
     if (is.null(rr) || !length(rr)) list(rep(1 / G, G)) else lapply(rr, function(r) as.numeric(unlist(r)))
   }
-  for (r in ratios) if (length(r) != G || any(is.na(r)) || any(r <= 0) || abs(sum(r) - 1) > 1e-6) api_stop("invalid_simulation", sprintf("Her grup oranı %d pozitif değerden oluşmalı ve toplamı 1 olmalıdır.", G), 422L)
+  for (r in ratios) if (length(r) != G || any(is.na(r)) || any(r <= 0)) api_stop("invalid_simulation", sprintf("Her grup oranı %d pozitif değerden oluşmalıdır (ör. 70/30 ya da ,7/,3).", G), 422L)
+  ratios <- lapply(ratios, function(r) r / sum(r))  # 70/30 ve ,7/,3 aynı orandır
   scen_names <- vapply(pop$dif, `[[`, "", "name")
   sc <- if (is.null(cd$scenarios)) scen_names else as.character(unlist(cd$scenarios))
   if (!length(sc) || any(!(sc %in% scen_names))) api_stop("invalid_simulation", "Bilinmeyen senaryo adı.", 422L)
@@ -55,7 +56,7 @@ normalize_sim_spec <- function(body) {
   cov <- if (is.null(rc$coverage)) c(0.91, 0.98) else as.numeric(unlist(rc$coverage))
   rec <- list(admissible = setting_number(rc, "admissible", 0.95, 0, 1), param_bias = setting_number(rc, "param_bias", 0.10, 0, 1),
               se_bias = setting_number(rc, "se_bias", 0.10, 0, 1), coverage = cov, power = setting_number(rc, "power", 0.80, 0, 1),
-              power_step = setting_choice(rc, "power_step", c("scalar", "metric")), rel_cut = setting_number(rc, "rel_cut", 0.10, 0, 1))
+              power_step = setting_choice(rc, "power_step", c("auto", "scalar", "metric")), rel_cut = setting_number(rc, "rel_cut", 0.10, 0, 1))
   grid <- expand.grid(scenario = sc_idx, ratio = seq_along(ratios), N = Ns, KEEP.OUT.ATTRS = FALSE)[, c("N", "ratio", "scenario")]
   grid$index <- seq_len(nrow(grid))
   lim <- online_limits()
@@ -137,11 +138,14 @@ sim_job_status <- function(id) {
     .olceklab$jobs[[id]]$status <- "done"; j$status <- "done"
   }
   rate <- if (done_reps > 0 && j$seconds > 0) j$seconds / done_reps else NA_real_
+  eta <- if (is.na(rate)) NULL else rate * (j$total_reps - done_reps) / j$workers
   list(job_id = id, status = j$status, chunks_done = length(done), chunks_total = length(j$chunks),
        reps_done = done_reps, reps_total = j$total_reps, progress = done_reps / j$total_reps,
-       in_flight = length(j$in_flight), elapsed_seconds = elapsed,
-       eta_seconds = if (is.na(rate)) NULL else rate * (j$total_reps - done_reps) / j$workers,
-       error = j$error)
+       in_flight = length(j$in_flight), elapsed_seconds = elapsed, eta_seconds = eta, error = j$error,
+       text = lapply(c(tr = "tr", en = "en"), function(lang) list(
+         progress = sprintf(if (lang == "tr") "%s / %s tekrar (%s)" else "%s / %s replications (%s)",
+                            fmt_int(done_reps, lang), fmt_int(j$total_reps, lang), fmt_pct(done_reps / j$total_reps, lang, 0L)),
+         elapsed = fmt_duration(elapsed, lang), eta = if (is.null(eta)) FMT_MISSING else fmt_duration(eta, lang))))
 }
 
 # Ana süreçte zamanlayıcı: en fazla `workers` parça aynı anda işçide çalışır.
@@ -236,7 +240,7 @@ sim_results_for <- function(dir, job_id) {
 }
 
 # Çalıştırmadan önce süre tahmini: en büyük N'li koşulda iki tekrar ölçülür (9.9: "birkaç tekrarla ölçülür").
-sim_estimate <- function(body) {
+sim_estimate <- function(body, workers = .olceklab$workers) {
   spec <- normalize_sim_spec(body)
   g <- spec$grid[which.max(spec$grid$N), ]
   cond <- sim_condition(spec, g$index)
@@ -246,9 +250,13 @@ sim_estimate <- function(body) {
   for (r in 1:2) sim_replicate(spec$pop, cond, r, spec$seed, spec$estimators, spec$analyses, spec$criteria, ref)
   per <- as.numeric(difftime(Sys.time(), t0, units = "secs")) / 2
   lim <- online_limits()
-  w <- if (lim$enabled) min(lim$max_workers, max(1L, .olceklab$workers)) else max(1L, .olceklab$workers)
+  w <- if (lim$enabled) min(lim$max_workers, max(1L, workers)) else max(1L, workers)
+  total <- per * spec$reps * nrow(spec$grid) / w
   list(seconds_per_rep_upper = per, conditions = nrow(spec$grid), reps = spec$reps, workers = w,
-       estimated_seconds_upper = per * spec$reps * nrow(spec$grid) / w,
+       estimated_seconds_upper = total,
+       text = list(tr = sprintf("En fazla yaklaşık %s (%s koşul × %s tekrar, %s işçi)", fmt_duration(total, "tr"), fmt_int(nrow(spec$grid), "tr"), fmt_int(spec$reps, "tr"), fmt_int(w, "tr")),
+                   en = sprintf("At most about %s (%s condition%s × %s replication%s, %s worker%s)", fmt_duration(total, "en"), fmt_int(nrow(spec$grid), "en"), if (nrow(spec$grid) == 1L) "" else "s",
+                                fmt_int(spec$reps, "en"), if (spec$reps == 1L) "" else "s", fmt_int(w, "en"), if (w == 1L) "" else "s")),
        note_tr = "Tahmin en büyük N'li koşulda iki tekrarla ölçülmüştür; küçük N'li koşullar daha hızlıdır, bu yüzden üst sınırdır.",
        note_en = "Estimated from two replications of the largest-N condition; smaller conditions are faster, so this is an upper bound.")
 }

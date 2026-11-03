@@ -1,0 +1,13 @@
+
+ RUN  v5.1.0 /home/claude/olceklab/web
+
+Not implemented: navigation to another Document
+
+ Test Files  9 passed (9)
+      Tests  89 passed (89)
+   Start at  03:05:41
+   Duration  26.58s (tests 67%, environment 22%, import 5%, setup 4%, transform 2%)
+
+    Isolate  9 workers spawned · ~798ms startup each (spawn + environment, per file)
+             at least ~6.39s faster with isolate: false — reuses workers across files instead of one per file
+

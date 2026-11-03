@@ -1,0 +1,8 @@
+{
+  "factors": [{"name": "F1", "items": ["y1", "y2", "y3"]}, {"name": "F2", "items": ["y4", "y5", "y6"]}],
+  "loadings": {"y1": 0.7, "y2": 0.6, "y3": 0.65, "y4": 0.7, "y5": 0.6, "y6": 0.7},
+  "factor_cor": [{"a": "F1", "b": "F2", "r": 0.4}],
+  "data_type": "continuous",
+  "groups": [{"name": "A"}, {"name": "B", "latent_means": {"F1": 0.3}}],
+  "dif": [{"name": "y1 kesişim DIF", "group": "B", "effects": [{"item": "y1", "type": "intercept", "size": 0.4}]}]
+}

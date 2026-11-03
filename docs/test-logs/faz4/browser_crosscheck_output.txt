@@ -1,0 +1,386 @@
+                                           olcut
+      koşul 1 (N=200, kontrol) uygun çözüm oranı
+        koşul 1 (N=200, kontrol) F1=~y1 ortalama
+        koşul 1 (N=200, kontrol) F1=~y1 yanlılık
+ koşul 1 (N=200, kontrol) F1=~y1 göreli yanlılık
+         koşul 1 (N=200, kontrol) F1=~y1 kapsama
+        koşul 1 (N=200, kontrol) F1=~y3 ortalama
+        koşul 1 (N=200, kontrol) F1=~y3 yanlılık
+ koşul 1 (N=200, kontrol) F1=~y3 göreli yanlılık
+         koşul 1 (N=200, kontrol) F1=~y3 kapsama
+        koşul 1 (N=200, kontrol) F2=~y5 ortalama
+        koşul 1 (N=200, kontrol) F2=~y5 yanlılık
+ koşul 1 (N=200, kontrol) F2=~y5 göreli yanlılık
+         koşul 1 (N=200, kontrol) F2=~y5 kapsama
+        koşul 1 (N=200, kontrol) F1~~F2 ortalama
+        koşul 1 (N=200, kontrol) F1~~F2 yanlılık
+ koşul 1 (N=200, kontrol) F1~~F2 göreli yanlılık
+         koşul 1 (N=200, kontrol) F1~~F2 kapsama
+       koşul 1 (N=200, kontrol) metric ölçü türü
+       koşul 1 (N=200, kontrol) metric geçerli R
+    koşul 1 (N=200, kontrol) metric Δχ² reddetme
+       koşul 1 (N=200, kontrol) scalar ölçü türü
+       koşul 1 (N=200, kontrol) scalar geçerli R
+    koşul 1 (N=200, kontrol) scalar Δχ² reddetme
+            koşul 1 (N=200, kontrol) F1 α gerçek
+          koşul 1 (N=200, kontrol) F1 α ortalama
+            koşul 1 (N=200, kontrol) F1 ω gerçek
+          koşul 1 (N=200, kontrol) F1 ω ortalama
+            koşul 1 (N=200, kontrol) F2 α gerçek
+          koşul 1 (N=200, kontrol) F2 α ortalama
+            koşul 1 (N=200, kontrol) F2 ω gerçek
+          koşul 1 (N=200, kontrol) F2 ω ortalama
+          koşul 2 (N=200, DIF) uygun çözüm oranı
+            koşul 2 (N=200, DIF) F1=~y1 ortalama
+            koşul 2 (N=200, DIF) F1=~y1 yanlılık
+     koşul 2 (N=200, DIF) F1=~y1 göreli yanlılık
+             koşul 2 (N=200, DIF) F1=~y1 kapsama
+            koşul 2 (N=200, DIF) F1=~y3 ortalama
+            koşul 2 (N=200, DIF) F1=~y3 yanlılık
+     koşul 2 (N=200, DIF) F1=~y3 göreli yanlılık
+             koşul 2 (N=200, DIF) F1=~y3 kapsama
+            koşul 2 (N=200, DIF) F2=~y5 ortalama
+            koşul 2 (N=200, DIF) F2=~y5 yanlılık
+     koşul 2 (N=200, DIF) F2=~y5 göreli yanlılık
+             koşul 2 (N=200, DIF) F2=~y5 kapsama
+            koşul 2 (N=200, DIF) F1~~F2 ortalama
+            koşul 2 (N=200, DIF) F1~~F2 yanlılık
+     koşul 2 (N=200, DIF) F1~~F2 göreli yanlılık
+             koşul 2 (N=200, DIF) F1~~F2 kapsama
+           koşul 2 (N=200, DIF) metric ölçü türü
+           koşul 2 (N=200, DIF) metric geçerli R
+        koşul 2 (N=200, DIF) metric Δχ² reddetme
+           koşul 2 (N=200, DIF) scalar ölçü türü
+           koşul 2 (N=200, DIF) scalar geçerli R
+        koşul 2 (N=200, DIF) scalar Δχ² reddetme
+                koşul 2 (N=200, DIF) F1 α gerçek
+              koşul 2 (N=200, DIF) F1 α ortalama
+                koşul 2 (N=200, DIF) F1 ω gerçek
+              koşul 2 (N=200, DIF) F1 ω ortalama
+                koşul 2 (N=200, DIF) F2 α gerçek
+              koşul 2 (N=200, DIF) F2 α ortalama
+                koşul 2 (N=200, DIF) F2 ω gerçek
+              koşul 2 (N=200, DIF) F2 ω ortalama
+      koşul 3 (N=400, kontrol) uygun çözüm oranı
+        koşul 3 (N=400, kontrol) F1=~y1 ortalama
+        koşul 3 (N=400, kontrol) F1=~y1 yanlılık
+ koşul 3 (N=400, kontrol) F1=~y1 göreli yanlılık
+         koşul 3 (N=400, kontrol) F1=~y1 kapsama
+        koşul 3 (N=400, kontrol) F1=~y3 ortalama
+        koşul 3 (N=400, kontrol) F1=~y3 yanlılık
+ koşul 3 (N=400, kontrol) F1=~y3 göreli yanlılık
+         koşul 3 (N=400, kontrol) F1=~y3 kapsama
+        koşul 3 (N=400, kontrol) F2=~y5 ortalama
+        koşul 3 (N=400, kontrol) F2=~y5 yanlılık
+ koşul 3 (N=400, kontrol) F2=~y5 göreli yanlılık
+         koşul 3 (N=400, kontrol) F2=~y5 kapsama
+        koşul 3 (N=400, kontrol) F1~~F2 ortalama
+        koşul 3 (N=400, kontrol) F1~~F2 yanlılık
+ koşul 3 (N=400, kontrol) F1~~F2 göreli yanlılık
+         koşul 3 (N=400, kontrol) F1~~F2 kapsama
+       koşul 3 (N=400, kontrol) metric ölçü türü
+       koşul 3 (N=400, kontrol) metric geçerli R
+    koşul 3 (N=400, kontrol) metric Δχ² reddetme
+       koşul 3 (N=400, kontrol) scalar ölçü türü
+       koşul 3 (N=400, kontrol) scalar geçerli R
+    koşul 3 (N=400, kontrol) scalar Δχ² reddetme
+            koşul 3 (N=400, kontrol) F1 α gerçek
+          koşul 3 (N=400, kontrol) F1 α ortalama
+            koşul 3 (N=400, kontrol) F1 ω gerçek
+          koşul 3 (N=400, kontrol) F1 ω ortalama
+            koşul 3 (N=400, kontrol) F2 α gerçek
+          koşul 3 (N=400, kontrol) F2 α ortalama
+            koşul 3 (N=400, kontrol) F2 ω gerçek
+          koşul 3 (N=400, kontrol) F2 ω ortalama
+          koşul 4 (N=400, DIF) uygun çözüm oranı
+            koşul 4 (N=400, DIF) F1=~y1 ortalama
+            koşul 4 (N=400, DIF) F1=~y1 yanlılık
+     koşul 4 (N=400, DIF) F1=~y1 göreli yanlılık
+             koşul 4 (N=400, DIF) F1=~y1 kapsama
+            koşul 4 (N=400, DIF) F1=~y3 ortalama
+            koşul 4 (N=400, DIF) F1=~y3 yanlılık
+     koşul 4 (N=400, DIF) F1=~y3 göreli yanlılık
+             koşul 4 (N=400, DIF) F1=~y3 kapsama
+            koşul 4 (N=400, DIF) F2=~y5 ortalama
+            koşul 4 (N=400, DIF) F2=~y5 yanlılık
+     koşul 4 (N=400, DIF) F2=~y5 göreli yanlılık
+             koşul 4 (N=400, DIF) F2=~y5 kapsama
+            koşul 4 (N=400, DIF) F1~~F2 ortalama
+            koşul 4 (N=400, DIF) F1~~F2 yanlılık
+     koşul 4 (N=400, DIF) F1~~F2 göreli yanlılık
+             koşul 4 (N=400, DIF) F1~~F2 kapsama
+           koşul 4 (N=400, DIF) metric ölçü türü
+           koşul 4 (N=400, DIF) metric geçerli R
+        koşul 4 (N=400, DIF) metric Δχ² reddetme
+           koşul 4 (N=400, DIF) scalar ölçü türü
+           koşul 4 (N=400, DIF) scalar geçerli R
+        koşul 4 (N=400, DIF) scalar Δχ² reddetme
+                koşul 4 (N=400, DIF) F1 α gerçek
+              koşul 4 (N=400, DIF) F1 α ortalama
+                koşul 4 (N=400, DIF) F1 ω gerçek
+              koşul 4 (N=400, DIF) F1 ω ortalama
+                koşul 4 (N=400, DIF) F2 α gerçek
+              koşul 4 (N=400, DIF) F2 α ortalama
+                koşul 4 (N=400, DIF) F2 ω gerçek
+              koşul 4 (N=400, DIF) F2 ω ortalama
+             iptalden sonra yeni parça başlamadı
+                               tamamlanan tekrar
+                                 paket dosyaları
+                                                                                                                                                                                                                            arayuz
+                                                                                                                                                                                                                             %99,0
+                                                                                                                                                                                                                             0,693
+                                                                                                                                                                                                                           −0,0071
+                                                                                                                                                                                                                             −%1,0
+                                                                                                                                                                                                                             %92,9
+                                                                                                                                                                                                                             0,632
+                                                                                                                                                                                                                           −0,0178
+                                                                                                                                                                                                                             −%2,7
+                                                                                                                                                                                                                             %92,9
+                                                                                                                                                                                                                             0,586
+                                                                                                                                                                                                                           −0,0136
+                                                                                                                                                                                                                             −%2,3
+                                                                                                                                                                                                                             %96,0
+                                                                                                                                                                                                                             0,417
+                                                                                                                                                                                                                            0,0169
+                                                                                                                                                                                                                              %4,2
+                                                                                                                                                                                                                             %91,9
+                                                                                                                                                                                                                       I. tip hata
+                                                                                                                                                                                                                                98
+                                                                                                                                                                                                                              %8,2
+                                                                                                                                                                                                                       I. tip hata
+                                                                                                                                                                                                                                98
+                                                                                                                                                                                                                              %7,1
+                                                                                                                                                                                                                              ,686
+                                                                                                                                                                                                                              ,677
+                                                                                                                                                                                                                              ,688
+                                                                                                                                                                                                                              ,684
+                                                                                                                                                                                                                              ,705
+                                                                                                                                                                                                                              ,693
+                                                                                                                                                                                                                              ,707
+                                                                                                                                                                                                                              ,702
+                                                                                                                                                                                                                             %98,0
+                                                                                                                                                                                                                             0,708
+                                                                                                                                                                                                                            0,0083
+                                                                                                                                                                                                                              %1,2
+                                                                                                                                                                                                                             %95,9
+                                                                                                                                                                                                                             0,637
+                                                                                                                                                                                                                           −0,0134
+                                                                                                                                                                                                                             −%2,1
+                                                                                                                                                                                                                             %93,9
+                                                                                                                                                                                                                             0,591
+                                                                                                                                                                                                                           −0,0087
+                                                                                                                                                                                                                             −%1,4
+                                                                                                                                                                                                                             %94,9
+                                                                                                                                                                                                                             0,413
+                                                                                                                                                                                                                            0,0127
+                                                                                                                                                                                                                              %3,2
+                                                                                                                                                                                                                             %96,9
+                                                                                                                                                                                                                       I. tip hata
+                                                                                                                                                                                                                                96
+                                                                                                                                                                                                                              %9,4
+                                                                                                                                                                                                                               güç
+                                                                                                                                                                                                                                96
+                                                                                                                                                                                                                             %60,4
+                                                                                                                                                                                                                              ,686
+                                                                                                                                                                                                                              ,672
+                                                                                                                                                                                                                              ,688
+                                                                                                                                                                                                                              ,682
+                                                                                                                                                                                                                              ,705
+                                                                                                                                                                                                                              ,702
+                                                                                                                                                                                                                              ,707
+                                                                                                                                                                                                                              ,710
+                                                                                                                                                                                                                            %100,0
+                                                                                                                                                                                                                             0,703
+                                                                                                                                                                                                                            0,0027
+                                                                                                                                                                                                                              %0,4
+                                                                                                                                                                                                                             %96,0
+                                                                                                                                                                                                                             0,647
+                                                                                                                                                                                                                           −0,0030
+                                                                                                                                                                                                                             −%0,5
+                                                                                                                                                                                                                             %97,0
+                                                                                                                                                                                                                             0,597
+                                                                                                                                                                                                                           −0,0031
+                                                                                                                                                                                                                             −%0,5
+                                                                                                                                                                                                                             %99,0
+                                                                                                                                                                                                                             0,409
+                                                                                                                                                                                                                            0,0087
+                                                                                                                                                                                                                              %2,2
+                                                                                                                                                                                                                             %91,0
+                                                                                                                                                                                                                       I. tip hata
+                                                                                                                                                                                                                               100
+                                                                                                                                                                                                                              %6,0
+                                                                                                                                                                                                                       I. tip hata
+                                                                                                                                                                                                                               100
+                                                                                                                                                                                                                              %7,0
+                                                                                                                                                                                                                              ,686
+                                                                                                                                                                                                                              ,686
+                                                                                                                                                                                                                              ,688
+                                                                                                                                                                                                                              ,690
+                                                                                                                                                                                                                              ,705
+                                                                                                                                                                                                                              ,701
+                                                                                                                                                                                                                              ,707
+                                                                                                                                                                                                                              ,707
+                                                                                                                                                                                                                            %100,0
+                                                                                                                                                                                                                             0,699
+                                                                                                                                                                                                                           −0,0006
+                                                                                                                                                                                                                             −%0,1
+                                                                                                                                                                                                                             %94,0
+                                                                                                                                                                                                                             0,647
+                                                                                                                                                                                                                           −0,0033
+                                                                                                                                                                                                                             −%0,5
+                                                                                                                                                                                                                             %87,0
+                                                                                                                                                                                                                             0,600
+                                                                                                                                                                                                                            0,0003
+                                                                                                                                                                                                                              %0,0
+                                                                                                                                                                                                                             %92,0
+                                                                                                                                                                                                                             0,409
+                                                                                                                                                                                                                            0,0086
+                                                                                                                                                                                                                              %2,1
+                                                                                                                                                                                                                             %95,0
+                                                                                                                                                                                                                       I. tip hata
+                                                                                                                                                                                                                               100
+                                                                                                                                                                                                                              %2,0
+                                                                                                                                                                                                                               güç
+                                                                                                                                                                                                                               100
+                                                                                                                                                                                                                             %90,0
+                                                                                                                                                                                                                              ,686
+                                                                                                                                                                                                                              ,683
+                                                                                                                                                                                                                              ,688
+                                                                                                                                                                                                                              ,688
+                                                                                                                                                                                                                              ,705
+                                                                                                                                                                                                                              ,704
+                                                                                                                                                                                                                              ,707
+                                                                                                                                                                                                                              ,709
+                                                                                                                                                                                                             40 / 400 tekrar (%10)
+                                                                                                                                                                                                           400 / 400 tekrar (%100)
+ olceklab_simulasyon/,olceklab_simulasyon/02_simulasyon.R,olceklab_simulasyon/03_gercek_degerler.R,olceklab_simulasyon/04_calistir.sh,olceklab_simulasyon/05_ozet.R,olceklab_simulasyon/BENIOKU.md,olceklab_simulasyon/params.json
+                                                                                                                                                                                                                        bagimsiz_R sonuc
+                                                                                                                                                                                                                             %99,0  AYNI
+                                                                                                                                                                                                                             0,693  AYNI
+                                                                                                                                                                                                                           −0,0071  AYNI
+                                                                                                                                                                                                                             −%1,0  AYNI
+                                                                                                                                                                                                                             %92,9  AYNI
+                                                                                                                                                                                                                             0,632  AYNI
+                                                                                                                                                                                                                           −0,0178  AYNI
+                                                                                                                                                                                                                             −%2,7  AYNI
+                                                                                                                                                                                                                             %92,9  AYNI
+                                                                                                                                                                                                                             0,586  AYNI
+                                                                                                                                                                                                                           −0,0136  AYNI
+                                                                                                                                                                                                                             −%2,3  AYNI
+                                                                                                                                                                                                                             %96,0  AYNI
+                                                                                                                                                                                                                             0,417  AYNI
+                                                                                                                                                                                                                            0,0169  AYNI
+                                                                                                                                                                                                                              %4,2  AYNI
+                                                                                                                                                                                                                             %91,9  AYNI
+                                                                                                                                                                                                                       I. tip hata  AYNI
+                                                                                                                                                                                                                                98  AYNI
+                                                                                                                                                                                                                              %8,2  AYNI
+                                                                                                                                                                                                                       I. tip hata  AYNI
+                                                                                                                                                                                                                                98  AYNI
+                                                                                                                                                                                                                              %7,1  AYNI
+                                                                                                                                                                                                                              ,686  AYNI
+                                                                                                                                                                                                                              ,677  AYNI
+                                                                                                                                                                                                                              ,688  AYNI
+                                                                                                                                                                                                                              ,684  AYNI
+                                                                                                                                                                                                                              ,705  AYNI
+                                                                                                                                                                                                                              ,693  AYNI
+                                                                                                                                                                                                                              ,707  AYNI
+                                                                                                                                                                                                                              ,702  AYNI
+                                                                                                                                                                                                                             %98,0  AYNI
+                                                                                                                                                                                                                             0,708  AYNI
+                                                                                                                                                                                                                            0,0083  AYNI
+                                                                                                                                                                                                                              %1,2  AYNI
+                                                                                                                                                                                                                             %95,9  AYNI
+                                                                                                                                                                                                                             0,637  AYNI
+                                                                                                                                                                                                                           −0,0134  AYNI
+                                                                                                                                                                                                                             −%2,1  AYNI
+                                                                                                                                                                                                                             %93,9  AYNI
+                                                                                                                                                                                                                             0,591  AYNI
+                                                                                                                                                                                                                           −0,0087  AYNI
+                                                                                                                                                                                                                             −%1,4  AYNI
+                                                                                                                                                                                                                             %94,9  AYNI
+                                                                                                                                                                                                                             0,413  AYNI
+                                                                                                                                                                                                                            0,0127  AYNI
+                                                                                                                                                                                                                              %3,2  AYNI
+                                                                                                                                                                                                                             %96,9  AYNI
+                                                                                                                                                                                                                       I. tip hata  AYNI
+                                                                                                                                                                                                                                96  AYNI
+                                                                                                                                                                                                                              %9,4  AYNI
+                                                                                                                                                                                                                               güç  AYNI
+                                                                                                                                                                                                                                96  AYNI
+                                                                                                                                                                                                                             %60,4  AYNI
+                                                                                                                                                                                                                              ,686  AYNI
+                                                                                                                                                                                                                              ,672  AYNI
+                                                                                                                                                                                                                              ,688  AYNI
+                                                                                                                                                                                                                              ,682  AYNI
+                                                                                                                                                                                                                              ,705  AYNI
+                                                                                                                                                                                                                              ,702  AYNI
+                                                                                                                                                                                                                              ,707  AYNI
+                                                                                                                                                                                                                              ,710  AYNI
+                                                                                                                                                                                                                            %100,0  AYNI
+                                                                                                                                                                                                                             0,703  AYNI
+                                                                                                                                                                                                                            0,0027  AYNI
+                                                                                                                                                                                                                              %0,4  AYNI
+                                                                                                                                                                                                                             %96,0  AYNI
+                                                                                                                                                                                                                             0,647  AYNI
+                                                                                                                                                                                                                           −0,0030  AYNI
+                                                                                                                                                                                                                             −%0,5  AYNI
+                                                                                                                                                                                                                             %97,0  AYNI
+                                                                                                                                                                                                                             0,597  AYNI
+                                                                                                                                                                                                                           −0,0031  AYNI
+                                                                                                                                                                                                                             −%0,5  AYNI
+                                                                                                                                                                                                                             %99,0  AYNI
+                                                                                                                                                                                                                             0,409  AYNI
+                                                                                                                                                                                                                            0,0087  AYNI
+                                                                                                                                                                                                                              %2,2  AYNI
+                                                                                                                                                                                                                             %91,0  AYNI
+                                                                                                                                                                                                                       I. tip hata  AYNI
+                                                                                                                                                                                                                               100  AYNI
+                                                                                                                                                                                                                              %6,0  AYNI
+                                                                                                                                                                                                                       I. tip hata  AYNI
+                                                                                                                                                                                                                               100  AYNI
+                                                                                                                                                                                                                              %7,0  AYNI
+                                                                                                                                                                                                                              ,686  AYNI
+                                                                                                                                                                                                                              ,686  AYNI
+                                                                                                                                                                                                                              ,688  AYNI
+                                                                                                                                                                                                                              ,690  AYNI
+                                                                                                                                                                                                                              ,705  AYNI
+                                                                                                                                                                                                                              ,701  AYNI
+                                                                                                                                                                                                                              ,707  AYNI
+                                                                                                                                                                                                                              ,707  AYNI
+                                                                                                                                                                                                                            %100,0  AYNI
+                                                                                                                                                                                                                             0,699  AYNI
+                                                                                                                                                                                                                           −0,0006  AYNI
+                                                                                                                                                                                                                             −%0,1  AYNI
+                                                                                                                                                                                                                             %94,0  AYNI
+                                                                                                                                                                                                                             0,647  AYNI
+                                                                                                                                                                                                                           −0,0033  AYNI
+                                                                                                                                                                                                                             −%0,5  AYNI
+                                                                                                                                                                                                                             %87,0  AYNI
+                                                                                                                                                                                                                             0,600  AYNI
+                                                                                                                                                                                                                            0,0003  AYNI
+                                                                                                                                                                                                                              %0,0  AYNI
+                                                                                                                                                                                                                             %92,0  AYNI
+                                                                                                                                                                                                                             0,409  AYNI
+                                                                                                                                                                                                                            0,0086  AYNI
+                                                                                                                                                                                                                              %2,1  AYNI
+                                                                                                                                                                                                                             %95,0  AYNI
+                                                                                                                                                                                                                       I. tip hata  AYNI
+                                                                                                                                                                                                                               100  AYNI
+                                                                                                                                                                                                                              %2,0  AYNI
+                                                                                                                                                                                                                               güç  AYNI
+                                                                                                                                                                                                                               100  AYNI
+                                                                                                                                                                                                                             %90,0  AYNI
+                                                                                                                                                                                                                              ,686  AYNI
+                                                                                                                                                                                                                              ,683  AYNI
+                                                                                                                                                                                                                              ,688  AYNI
+                                                                                                                                                                                                                              ,688  AYNI
+                                                                                                                                                                                                                              ,705  AYNI
+                                                                                                                                                                                                                              ,704  AYNI
+                                                                                                                                                                                                                              ,707  AYNI
+                                                                                                                                                                                                                              ,709  AYNI
+                                                                                                                                                                                                             40 / 400 tekrar (%10)  AYNI
+                                                                                                                                                                                                           400 / 400 tekrar (%100)  AYNI
+ olceklab_simulasyon/,olceklab_simulasyon/02_simulasyon.R,olceklab_simulasyon/03_gercek_degerler.R,olceklab_simulasyon/04_calistir.sh,olceklab_simulasyon/05_ozet.R,olceklab_simulasyon/BENIOKU.md,olceklab_simulasyon/params.json  AYNI
+
+127/127 AYNI; grafik sayısı: 2; SİMÜLASYON etiketi sayısı: 2; mobil yatay kaydırma: FALSE

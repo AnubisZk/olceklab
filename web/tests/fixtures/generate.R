@@ -60,3 +60,26 @@ invs <- analysis_invariance_scores(hcl$clean$data, hcfg, list(model = m3, step =
 invs$r_script <- build_r_script("invariance_scores", hd, invs$settings, invs$seed, invs$results)
 write_fx(invs, "holz_scores.json")
 cat("Faz 3 fikstürleri yazıldı\n")
+
+# --- Faz 4 fikstürleri (simülasyon; küçük ama gerçek bir çalıştırma) ------------------
+Sys.setenv(JOBS_DIR = tempfile("fx-jobs-"))
+.olceklab$workers <- 1L
+sim_fx_body <- list(population = list(
+  factors = list(list(name = "visual", items = c("x1", "x2", "x3")), list(name = "textual", items = c("x4", "x5", "x6"))),
+  loadings = list(x1 = .7, x2 = .6, x3 = .65, x4 = .7, x5 = .6, x6 = .7), factor_cor = list(list(a = "visual", b = "textual", r = .4)),
+  data_type = "ordinal", category_props = c(.1, .2, .4, .2, .1),
+  groups = list(list(name = "Pasteur"), list(name = "Grant-White")),
+  dif = list(list(name = "x1 eşik DIF", group = "Grant-White", effects = list(list(item = "x1", type = "threshold", size = .5))))),
+  conditions = list(N = c(200, 400)), estimators = list("ML"), reps = 20L, chunk_size = 10L, seed = 20261030L,
+  analyses = list(cfa = TRUE, invariance = TRUE, reliability = TRUE))
+write_fx(sim_estimate(sim_fx_body), "sim_estimate.json")
+sid <- sim_job_create(sim_fx_body)
+.olceklab$jobs[[sid]]$status <- "running"
+ch1 <- sim_run_chunk(.olceklab$jobs[[sid]]$dir, .olceklab$jobs[[sid]]$chunks[[1]])
+.olceklab$jobs[[sid]]$seconds <- ch1$seconds  # gerçek ölçülen süre
+write_fx(sim_job_status(sid), "sim_job_running.json")
+write_fx(sim_job_run_sync(sid), "sim_job_done.json")
+write_fx(sim_results_for(.olceklab$jobs[[sid]]$dir, sid), "sim_results.json")
+hcfa_rec <- analysis_cfa(hcl$clean$data, hcfg, list(model = m3), hd$hash)
+write_fx(population_from_cfa(hcfa_rec, hcl$clean$data, hcfg, shift = 0.05), "holz_population.json")
+cat("Faz 4 fikstürleri yazıldı\n")

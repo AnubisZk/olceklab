@@ -33,7 +33,14 @@ Her referans karşılaştırmasının sonucu, tarihi ve ortamı burada tutulur.
 | 2026-11-03 | 3 | Gizil ortalamalar: κ skaler modelle aynı; d (Hancock birleşik SS) elle hesapla aynı; gizil ortalama modeli skalerle eşdeğer (χ² farkı ≤ 1e-6 denetimi motorda) | Geçti | `test-invariance.R` |
 | 2026-11-03 | 3 | Skor testleri: lavTestScore ile aynı χ²; parTable ile okunur parametre adları | Birebir | `test-invariance.R` |
 | 2026-11-03 | 3 | Tarayıcı (HS1939, okul): tam ve kısmi zincir, gizil ortalamalar, skor testi ↔ bağımsız R | 38/38 aynı | `test-logs/faz3/browser_crosscheck_output.txt` |
-| — | 4 | §11.4 referans simülasyon | henüz yok (paket bekleniyor) | — |
+| 2026-11-03 | 4 | M9 kabul (SPEC §7 M9, MC-8): kontrol senaryosu, sürekli-normal veri, ML, N = 600, 1000 tekrar (2 mirai işçisi): Δχ² I. tip hata metrik ,051 (MCSE ,0070), skaler ,040 (MCSE ,0062) | ,03–,07 aralığında | `test-simulation-acceptance.R` (`test-logs/faz4/engine-testthat.txt`) |
+| 2026-11-03 | 4 | Aynı tohum ve sürümle iki çalıştırma; kesilip sürdürülen iş ↔ kesintisiz iş; paralel parça ↔ sıralı parça | Tekrar kayıtları birebir aynı (`identical`) | `test-simulation.R`, `test-simulation-acceptance.R` |
+| 2026-11-03 | 4 | Ortak rastgele sayılar: aynı tekrar bütün kestiricilerde aynı veriyle | Geçti | `test-simulation.R` |
+| 2026-11-03 | 4 | Gerçek değerler: sürekli veride üretim parametresi; sıralı veride kesin popülasyon momentleri (pbivnorm) ↔ mvtnorm ve büyük örneklem | Geçti | `test-simulation.R` |
+| 2026-11-03 | 4 | Bağımsız R paketi ayrı süreçte (Rscript) aynı tekrarları ve aynı özeti üretir | Birebir aynı | `test-simulation.R` |
+| 2026-11-03 | 4 | HTTP iş sistemi (2 işçi): başlat → iptal → sürdür → sonuçlar (yerel eşzamanlı çalıştırmayla aynı) → paket (zip) | Geçti | `test-api-simulation.R` |
+| 2026-11-03 | 4 | Tarayıcı (Firefox): popülasyon JSON'u → süre tahmini → iş → iptal → sürdür → sonuçlar ↔ belgelenen algoritmanın **bağımsız yeniden yazımı** (MASS + lavaan, motor kodu kullanılmadan; tohum kuralı, uygun çözüm oranı, yük ortalaması/yanlılık/kapsama, Δχ² reddetme oranı, ölçü türü, α/ω gerçek ve ortalama) | 127/127 aynı | `test-logs/faz4/browser_crosscheck_output.txt` |
+| — | 4 | §11.4 referans simülasyon | henüz yok (REP-4: paket bekleniyor) | — |
 
 ### §11.3 testlerini yerelde çalıştırma
 

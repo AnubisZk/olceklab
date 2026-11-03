@@ -26,6 +26,8 @@ test_that("süre tahmini işçide ölçülür", {
   e <- body_json(api("/simulations/estimate", "POST", json = sim_body))
   expect_gt(e$seconds_per_rep_upper, 0)
   expect_identical(e$conditions, 4L)
+  expect_identical(e$workers, 2L)  # ölçüm işçide yapılır ama işçi sayısı ana süreçten gelir
+  expect_match(e$text$tr, "2 işçi", fixed = TRUE)
   expect_match(e$note_tr, "üst sınırdır", fixed = TRUE)
 })
 

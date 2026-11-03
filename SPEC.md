@@ -521,6 +521,8 @@ Raporda iki satır yer alır: "üretim değerinden sapma" ve "sözde-gerçek de�
 | POST | `/analyses/invariance` | M8 |
 | POST | `/analyses/invariance/score-tests` | M8 skor testleri |
 | POST | `/models/preview` | Model kurucu önizlemesi: lavaan sözdizimi, yapı ve uyarılar; model verilmezse M1 alt boyutlarından varsayılan model (v1.2) |
+| POST | `/simulations/estimate` | M9 süre tahmini: en büyük N'li koşulda iki tekrar ölçülür; üst sınırdır (v1.2) |
+| POST | `/simulations/population/from-cfa` | M9 popülasyon tanımını bir DFA sonucundan kur (`analysis_id`, `shift`); yalnızca özet parametreler (v1.2) |
 | POST | `/simulations` | M9 işi başlat → `job_id` |
 | GET | `/jobs/{id}` | durum, ilerleme, tahmini süre |
 | POST | `/jobs/{id}/cancel` · `/jobs/{id}/resume` | iş denetimi |

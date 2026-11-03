@@ -38,6 +38,9 @@ test_that("p değeri kuralları", {
 test_that("yüzde işareti Türkçede başta, İngilizcede sonda", {
   expect_identical(fmt_pct(0.125, "tr"), "%12,5")
   expect_identical(fmt_pct(0.125, "en"), "12.5%")
+  expect_identical(fmt_pct(-0.01, "tr"), "\u2212%1,0")
+  expect_identical(fmt_pct(-0.01, "en"), "\u22121.0%")
+  expect_identical(fmt_pct(NA, "tr"), FMT_MISSING)
 })
 
 test_that("make_table iki dilde biçimli satır üretir, ham değeri korur", {
@@ -49,4 +52,11 @@ test_that("make_table iki dilde biçimli satır üretir, ham değeri korur", {
   expect_identical(t$rows_fmt$en$a, ".123")
   expect_identical(t$columns[[1]]$type, "number")
   expect_error(make_table("T", "", "", list(tbl_col("yok", "", "")), data.frame(a = 1)), "olmayan")
+})
+
+test_that("süre biçimi R'de üretilir", {
+  expect_identical(fmt_duration(3725, "tr"), "1 sa 2 dk 5 sn")
+  expect_identical(fmt_duration(65, "en"), "1 min 5 s")
+  expect_identical(fmt_duration(4.4, "tr"), "4 sn")
+  expect_identical(fmt_duration(NA), FMT_MISSING)
 })

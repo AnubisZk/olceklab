@@ -137,8 +137,12 @@ population_from_cfa <- function(rec, data, config, shift = 0) {
       I(pr)
     })
   }
-  list(population = out, notes = c(
-    "Popülasyon, örnek kestirimlerini gerçek değer kabul eder; bu nedenle sonuçlar iyimser olabilir (Hoenig ve Heisey, 2001).",
-    if (shift > 0) sprintf("Duyarlılık: bütün standardize yükler %s azaltıldı.", format(shift)) else NULL,
-    if (est %in% c("ML", "MLR")) "Model ML/MLR ile kestirildiği için yalnızca sürekli veri üretilir (SPEC_REVIEW MC-7)." else NULL))
+  ml <- est %in% c("ML", "MLR")
+  list(population = out,
+       notes_tr = c("Popülasyon, örnek kestirimlerini gerçek değer kabul eder; bu nedenle sonuçlar iyimser olabilir (Hoenig ve Heisey, 2001).",
+                    if (shift > 0) sprintf("Duyarlılık: bütün standardize yükler %s azaltıldı.", fmt_num(shift, 2L, "tr", bounded = TRUE)) else NULL,
+                    if (ml) "Model ML/MLR ile kestirildiği için yalnızca sürekli veri üretilir (SPEC_REVIEW MC-7)." else NULL),
+       notes_en = c("The population treats sample estimates as true values, so results may be optimistic (Hoenig & Heisey, 2001).",
+                    if (shift > 0) sprintf("Sensitivity: all standardized loadings reduced by %s.", fmt_num(shift, 2L, "en", bounded = TRUE)) else NULL,
+                    if (ml) "The model was estimated with ML/MLR, so only continuous data are generated (SPEC_REVIEW MC-7)." else NULL))
 }

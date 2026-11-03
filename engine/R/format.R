@@ -51,7 +51,9 @@ fmt_p <- function(p, lang = "tr", digits = 3L) {
 fmt_pct <- function(prop, lang = "tr", digits = 1L) {
   lang <- match.arg(lang, c("tr", "en"))
   num <- fmt_num(100 * suppressWarnings(as.numeric(prop)), digits, lang)
-  ifelse(num == FMT_MISSING, num, if (lang == "tr") paste0("%", num) else paste0(num, "%"))
+  # Türkçede yüzde işareti sayıdan önce gelir; eksi işareti en başta kalır: −%1,0 (EN: −1.0%).
+  tr_pct <- ifelse(startsWith(num, "\u2212"), paste0("\u2212%", substring(num, 2L)), paste0("%", num))
+  ifelse(num == FMT_MISSING, num, if (lang == "tr") tr_pct else paste0(num, "%"))
 }
 
 # --- Tablolar (SPEC §6.2) ---------------------------------------------------
@@ -142,4 +144,14 @@ make_kv_table <- function(id, title_tr, title_en, rows,
             lapply(value_cols, function(c) c[c("key", "label_tr", "label_en", "type")]))
   list(id = id, title_tr = title_tr, title_en = title_en, columns = cols, rows = raw,
        rows_fmt = list(tr = fmt_rows("tr"), en = fmt_rows("en")), note_tr = note_tr, note_en = note_en)
+}
+
+# Süre: TR "1 sa 2 dk 5 sn", EN "1 h 2 min 5 s". Tahmin ve ilerleme metinleri için.
+fmt_duration <- function(seconds, lang = "tr") {
+  if (is.null(seconds) || !length(seconds) || is.na(seconds)) return(FMT_MISSING)
+  s <- max(0, round(seconds))
+  h <- s %/% 3600; m <- (s %% 3600) %/% 60; sec <- s %% 60
+  u <- if (lang == "tr") c("sa", "dk", "sn") else c("h", "min", "s")
+  parts <- c(if (h > 0) paste(fmt_int(h, lang), u[1]), if (h > 0 || m > 0) paste(fmt_int(m, lang), u[2]), paste(fmt_int(sec, lang), u[3]))
+  paste(parts, collapse = " ")
 }

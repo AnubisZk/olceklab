@@ -168,7 +168,8 @@ function(req) {
 #* M9: süre tahmini (en büyük N'li koşulda iki tekrar)
 #* @post /simulations/estimate
 #* @parser json list(simplifyVector = FALSE)
-function(req, res) run_in_worker(res, "sim_estimate", list(body = req$body))
+# İşçi sayısı ana süreçte okunur: tahmin işçide ölçülür ama işi ana süreçteki zamanlayıcı dağıtır.
+function(req, res) run_in_worker(res, "sim_estimate", list(body = req$body, workers = .olceklab$workers))
 
 #* M9: simülasyon işi başlat → job_id
 #* @post /simulations

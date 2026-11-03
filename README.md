@@ -7,7 +7,9 @@
 - Kodlama kuralları: [`AGENTS.md`](AGENTS.md)
 - Sürümler: [`docs/VERSIONS.md`](docs/VERSIONS.md)
 
-**Durum:** Faz 3 tamamlandı: veri yükleme ve temizleme (M1), madde analizi (M2), uygunluk (M3), faktör sayısı ve paralel analiz (M4), açımlayıcı faktör analizi (M5), doğrulayıcı faktör analizi ve model karşılaştırma (M6), güvenirlik ve geçerlik (M7), ölçme değişmezliği, kısmi değişmezlik sihirbazı ve gizil ortalamalar (M8). Diğer analiz uç noktaları ait oldukları faza kadar `501` döndürür.
+**Durum:** Faz 4 tamamlandı: veri yükleme ve temizleme (M1), madde analizi (M2), uygunluk (M3), faktör sayısı ve paralel analiz (M4), açımlayıcı faktör analizi (M5), doğrulayıcı faktör analizi ve model karşılaştırma (M6), güvenirlik ve geçerlik (M7), ölçme değişmezliği, kısmi değişmezlik sihirbazı ve gizil ortalamalar (M8), Monte Carlo simülasyonu: iş sistemi, kes/sürdür, güç ve yanlılık özetleri, örneklem önerisi ve bağımsız R paketi (M9). Diğer analiz uç noktaları ait oldukları faza kadar `501` döndürür.
+
+Simülasyon iş dosyaları `JOBS_DIR` altında tutulur (yalnızca sentetik veriden türetilmiş parçalar ve özetler). Çevrim içi kurulumda `ONLINE_LIMITS=true` ile tekrar × koşul, işçi ve süre sınırları açılır (`.env.example`).
 
 Doğrulama kayıtları: [`docs/VALIDATION.md`](docs/VALIDATION.md).
 

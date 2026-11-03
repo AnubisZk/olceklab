@@ -1,4 +1,4 @@
-# Yöntem notları (Faz 2: M5–M7)
+# Yöntem notları (Faz 2–4: M5–M9)
 
 Bu notlar platformun hangi R çağrısını hangi ayarla yaptığını ve tablolarda neyin raporlandığını açıklar.
 Bütün sayılar R motorunda hesaplanır ve biçimlenir; ön yüz yalnızca gösterir.
@@ -81,3 +81,79 @@ Pay (gerçek puan varyansı) iki seçenekte de aynıdır ve modelden gelir. Fark
   etiketlenir ve `d := κ / sqrt(((n₁ − 1) · 1 + (n₂ − 1) · ψ) / (n₁ + n₂ − 2))` (Hancock, 2001) ya da `d := κ / 1`
   (referans grup SS'si) tanımlanır. SH ve güven aralığı lavaan'ın delta yönteminden gelir. Motor iki modelin χ²'sinin
   aynı olduğunu denetler.
+
+# Monte Carlo simülasyonu (M9, Faz 4)
+
+> Her simülasyon tablosu, şekli ve paketi şu etiketi taşır: **SİMÜLASYON — sentetik veri; ölçeğin geçerliğine kanıt değildir.**
+> Simülasyon bir tasarım aracıdır (örneklem büyüklüğü, kestirici seçimi, DIF'e duyarlılık); gerçek verinin yerini tutmaz.
+
+## Popülasyon ve veri üretimi
+
+- Tanım: faktörler ve maddeleri (basit yapı), standardize yükler Λ, faktör korelasyonları Ψ, veri türü (sürekli/sıralı),
+  sıralı veride kategori oranları (ortak ya da madde başına), gruplar (ilki referans; diğerlerinde gizil ortalama α_g ve
+  isteğe bağlı gizil varyans) ve DIF senaryoları (eşik/kesişim kayması ya da yük farkı). Kontrol (değişmez) senaryosu her
+  zaman birinci senaryodur. Tanım R'de doğrulanır (`normalize_population`); geçersiz tanım `422 invalid_population` döndürür.
+- Gizil yanıt yaklaşımı: η ~ N(α_g, Ψ_g) (`MASS::mvrnorm`), y* = Λ_g η + ε, ε ~ N(0, Θ), Θ = I − diag(ΛΨΛ′) (referans
+  grupta var(y*) = 1). Sıralı veride y*, referans grubun kategori oranlarından Φ⁻¹ ile türetilen eşiklerde kesilir. Eşik/kesişim
+  DIF'i odak gruptaki eşikleri (kesişimi) SD(y*) = 1 biriminde kaydırır; yük DIF'inde Θ sabit kalır.
+- Grup büyüklükleri: n₁ = round(N · oran₁), son grup N − Σ. Oranlar R'de normalleştirilir (70/30 ≡ ,7/,3).
+- **RNG ve tohum kuralı:** her tekrardan önce `RNGkind("Mersenne-Twister", "Inversion", "Rejection")` ve
+  `set.seed(seed + 10000 · koşul + tekrar)`. Tüketim sırası sabittir: gruplar sırayla; her grupta önce η, sonra ε (n × p).
+  Paralel analiz referansı koşul başına tekrar = 0 tohumuyla üretilir. Böylece sonuç, parça büyüklüğünden, işçi sayısından
+  ve işin kesilip sürdürülmesinden bağımsızdır (testle doğrulanır).
+- Koşul ızgarası: N × oran × senaryo; senaryo en hızlı değişir. Koşul indeksi tohuma girer; `params.json` her koşulun ilk ve
+  son tohumunu yazar.
+
+## Her tekrarda yapılan analizler
+
+- **Ortak rastgele sayılar (MC-6):** aynı tekrar seçilen bütün kestiricilerle (ML, MLR, WLSMV) aynı veri üzerinde analiz edilir.
+- **DFA:** referans grupta `lavaan::cfa(std.lv = TRUE)`; WLSMV'de `ordered`. Hata türleri ayrı sayılır (MC-9): yakınsamama,
+  uygunsuz çözüm (`post.check` başarısız), grupta boş kategori (WLSMV), diğer. Hatalı tekrarlar atılmaz; birincil özetler
+  uygun çözümlerden, duyarlılık özetleri yakınsayan çözümlerden hesaplanır.
+- **Ölçme değişmezliği:** biçimsel → metrik → skaler (M8 ile aynı çağrılar; WLSMV'de `measEq.syntax`, theta,
+  Wu–Estabrook). Δχ² `lavTestLRT` (ML standart, MLR Satorra–Bentler 2001 → negatifse 2010, WLSMV Satorra 2000); ΔCFI, ΔRMSEA,
+  ΔSRMR (Bentler ortalamasız) ayrı ölçütlerdir. Her adım ayrı sınanır; ayrıca "ardışık" oran (önceki adımlar Δχ² ile
+  reddedilmediyse reddetme) verilir.
+- **Güvenirlik:** α (`psych::alpha`) ve ω (`semTools::compRelSEM`, `obs.var = TRUE`).
+- **Paralel analiz (isteğe bağlı):** koşul başına bir kez üretilen referans özdeğerlerle (varsayılan; MC-12) ya da her tekrarda
+  `psych::fa.parallel` ile.
+
+## Gerçek değerler ve özetler
+
+- Sürekli veride gerçek değer üretim parametresidir. Sıralı veri ML/MLR ile analiz edilirse kesikli puanların kesin popülasyon
+  kovaryansı (`pbivnorm` ile iki değişkenli normal olasılıklar) hesaplanır ve model bu matrise uydurularak **sözde-gerçek**
+  değerler elde edilir; WLSMV'de gerçek değerler y* ölçeğindeki üretim parametreleri ve eşiklerdir. Tablolarda kaynak
+  ("üretim" / "sözde-gerçek") ayrı sütundadır. Popülasyon α'sı aynı popülasyon matrisinden hesaplanır.
+- Yanlılık = ortalama − gerçek; göreli yanlılık = yanlılık / gerçek (|gerçek| ≥ ,10 ise); standartlaştırılmış yanlılık =
+  yanlılık / ampirik SS; SH göreli yanlılığı = (ortalama SH − ampirik SS) / ampirik SS; kapsama = %95 GA'nın gerçek değeri
+  içerme oranı; RMSE. Monte Carlo standart hataları: yanlılık için SS/√R, oranlar için √(p(1 − p)/R).
+- **Örneklem önerisi (MC-11):** ölçütlerin (uygun çözüm oranı ≥ ,95; |göreli yanlılık| ≤ ,10; |SH göreli yanlılığı| ≤ ,10;
+  kapsama ,91–,98; DIF senaryosunda seçilen adımda güç ≥ ,80) o N'de **ve ızgaradaki bütün daha büyük N'lerde** sağlandığı en
+  küçük N. Hiçbir N'de sağlanmazsa "ızgarada yok" yazılır.
+- Şekiller: güç eğrisi (her senaryo × kestirici × adım × oran için Δχ² reddetme oranı; kontrol senaryosunda I. tip hata) ve
+  göreli yanlılık ısı haritası (gerçek değeri 0 olan parametrede standartlaştırılmış yanlılık, * ile işaretli).
+
+## İş sistemi
+
+- `POST /simulations` işi oluşturur; tekrarlar parçalara bölünür ve `mirai` işçilerinde çalışır (en fazla işçi sayısı kadar
+  parça aynı anda). Her parça kendi `.rds` dosyasına atomik olarak yazılır. `POST /jobs/{id}/cancel` yeni parça başlatmaz;
+  `POST /jobs/{id}/resume` yalnızca eksik parçaları çalıştırır. `GET /jobs/{id}` ilerlemeyi, geçen ve kalan süreyi R'de
+  biçimlenmiş metinle verir.
+- `POST /simulations/estimate`: en büyük N'li koşulda iki tekrar ölçülür ve işçi sayısına bölünür; **üst sınırdır**.
+- Çevrim içi mod (`ONLINE_LIMITS=true`): tekrar × koşul (`ONLINE_MAX_REPLICATIONS_X_CONDITIONS`), işçi
+  (`ONLINE_MAX_WORKERS`) ve süre (`ONLINE_JOB_TIMEOUT_SECONDS`) sınırları uygulanır; aşılırsa bağımsız paket önerilir.
+- İş dosyaları yalnızca sentetik veriden türetilmiş özetleri içerir (`JOBS_DIR`); yüklenen veri diske yazılmaz.
+  "DFA sonucundan kur" yalnızca özet parametreleri (standardize yükler, faktör korelasyonları, kategori oranları) taşır.
+
+## Bağımsız R paketi
+
+`GET /simulations/{id}/package` bir .zip verir: `params.json` (tanım, RNG, tohum kuralı, koşullar, kestirilen nicelikler),
+`02_simulasyon.R` (motorun fonksiyonlarının birebir kopyası; kesilirse eksik parçalardan devam eder), `03_gercek_degerler.R`,
+`05_ozet.R`, `04_calistir.sh` (`CEKIRDEK=4 sh 04_calistir.sh`) ve `BENIOKU.md`. Paket aynı sürümlerle aynı tekrarları ve
+aynı özeti üretir (ayrı süreçte test edilir); sürüm farkında betikler uyarı verir.
+
+## DFA sonucundan popülasyon
+
+Örnek kestirimleri gerçek değer kabul edildiği için sonuçlar iyimser olabilir (Hoenig ve Heisey, 2001); "duyarlılık
+kaydırması" bütün standardize yükleri verilen miktar kadar azaltır. Model ML/MLR ile kestirildiyse yalnızca sürekli veri
+üretilir (MC-7). İkinci düzey ve çapraz yüklü modellerden popülasyon kurulmaz.

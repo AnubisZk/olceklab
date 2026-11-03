@@ -51,3 +51,18 @@ export const runInvariance = (id: string, settings: InvarianceSettings) =>
   post<AnalysisRecord<InvarianceResults>>('/analyses/invariance', { dataset_id: id, settings });
 export const runInvarianceScores = (id: string, settings: InvarianceSettings & { step: string }) =>
   post<AnalysisRecord<ScoreTestResults>>('/analyses/invariance/score-tests', { dataset_id: id, settings });
+
+// --- Faz 4: simülasyon ---------------------------------------------------------------
+export const estimateSimulation = (body: unknown) => post<import('./types').SimEstimate>('/simulations/estimate', body);
+export const startSimulation = (body: unknown) => post<import('./types').JobStatus>('/simulations', body);
+export const getJob = (id: string) => request<import('./types').JobStatus>(engine, `/jobs/${id}`);
+export const cancelJob = (id: string) => request<import('./types').JobStatus>(engine, `/jobs/${id}/cancel`, { method: 'POST' });
+export const resumeJob = (id: string) => request<import('./types').JobStatus>(engine, `/jobs/${id}/resume`, { method: 'POST' });
+export const getSimResults = (id: string) => request<AnalysisRecord>(engine, `/simulations/${id}/results`);
+export const populationFromCfa = (analysisId: string, shift: number) =>
+  post<{ population: Record<string, unknown>; notes_tr: string[]; notes_en: string[] }>('/simulations/population/from-cfa', { analysis_id: analysisId, shift });
+export async function downloadSimPackage(id: string): Promise<Blob> {
+  const res = await fetch(`${engine.replace(/\/$/, '')}/simulations/${id}/package`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.blob();
+}
