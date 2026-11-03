@@ -1,0 +1,10 @@
+✔ Space paketi kök düzenini, kaynak baytlarını ve sentetik fikstürleri korur (451.7152ms)
+✔ yerel ve HF Dockerfile yalnızca çevrim içi ayarlar bakımından farklıdır (0.3193ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 518.3837

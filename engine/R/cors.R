@@ -7,6 +7,9 @@ allowed_origins <- function() {
 
 apply_cors <- function(req, res) {
   origin <- req$HTTP_ORIGIN
+  if (!is.null(origin) && !(origin %in% allowed_origins())) {
+    api_stop("origin_not_allowed", "Bu kaynaktan gelen isteğe izin verilmiyor.", 403L)
+  }
   if (!is.null(origin) && origin %in% allowed_origins()) {
     res$setHeader("Access-Control-Allow-Origin", origin)
     res$setHeader("Vary", "Origin")

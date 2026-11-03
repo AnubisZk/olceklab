@@ -46,7 +46,7 @@ services:
       args:
         VITE_ENGINE_URL: ${VITE_ENGINE_URL:-http://localhost:8000}
         VITE_AI_GATEWAY_URL: ${VITE_AI_GATEWAY_URL:-http://localhost:8787}
-        VITE_DEPLOY_MODE: local
+        VITE_DEPLOY_MODE: ${VITE_DEPLOY_MODE:-local}
     ports:
       - "5173:5173"
     depends_on:

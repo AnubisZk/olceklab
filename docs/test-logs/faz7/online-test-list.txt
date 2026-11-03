@@ -1,0 +1,4 @@
+Listing tests:
+  [chromium] › release.spec.ts:12:1 › çevrim içi motor: sürümler, CORS ve 2000 tekrar × koşul sınırı
+  [chromium] › release.spec.ts:45:1 › canlı akış: temizleme → paralel analiz → DFA → N=300, 20 tekrar → Word
+Total: 2 tests in 1 file

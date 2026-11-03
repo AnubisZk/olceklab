@@ -1,37 +1,34 @@
 name: CI
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
 
 jobs:
   engine:
-    name: R motoru (testthat)
+    name: R motoru (HF Docker imajında testthat)
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: engine
-    env:
-      LANG: C.UTF-8
-      LC_ALL: C.UTF-8
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          r-version: "4.4.3"
-          use-public-rspm: true
-      - name: Paketleri renv.lock'tan kur
-        run: |
-          Rscript -e "install.packages('renv')"
-          Rscript -e "renv::restore(lockfile = 'renv.lock', library = .libPaths()[1], prompt = FALSE)"
+      - name: Yayınlanacak motor imajını derle
+        run: docker build --progress=plain -f deploy/hf-space/Dockerfile -t olceklab-engine:test engine
       - name: testthat
-        run: Rscript tests/testthat.R
+        # Genel testler yerel modu bekler; çevrim içi sınır testleri kendi ortamını kurar.
+        run: docker run --name engine-tests -e ONLINE_LIMITS=false olceklab-engine:test Rscript tests/testthat.R
+      - name: Test raporunu kapsayıcıdan al
+        if: always()
+        run: docker cp engine-tests:/app/test-results engine/test-results
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: testthat-results
           path: engine/test-results/
+      - name: Test kapsayıcısını kaldır
+        if: always()
+        run: docker rm -f engine-tests
 
   web:
     name: Ön yüz (vitest, Node ${{ matrix.node }})
@@ -53,6 +50,8 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
+      - name: Dağıtım paketleme testleri
+        run: node --test ../deploy/prepare-release.test.mjs
 
   ai-gateway:
     name: Yapay zekâ ağ geçidi (vitest, Node ${{ matrix.node }})
@@ -95,6 +94,13 @@ jobs:
           npm ci
           npx playwright install --with-deps chromium
           E2E_BASE_URL=http://localhost:5173 npx playwright test
+      - name: Çevrim içi modda yeniden başlat
+        run: |
+          docker compose down
+          ONLINE_LIMITS=true VITE_DEPLOY_MODE=online docker compose up --build --detach --wait --wait-timeout 900
+      - name: Çevrim içi duman testi (CORS, sınırlar ve rapor akışı)
+        working-directory: web
+        run: E2E_BASE_URL=http://localhost:5173 ENGINE_URL=http://localhost:8000 npx playwright test --config playwright.online.config.ts
       - uses: actions/upload-artifact@v4
         if: always()
         with:

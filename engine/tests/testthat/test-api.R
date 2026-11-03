@@ -42,9 +42,17 @@ test_that("CORS yalnızca izin verilen kaynağa açık", {
   ok <- call_api("/health", origin = "http://localhost:5173")
   expect_identical(httr2::resp_header(ok, "Access-Control-Allow-Origin"), "http://localhost:5173")
   bad <- call_api("/health", origin = "http://evil.example")
+  expect_identical(httr2::resp_status(bad), 403L)
+  expect_identical(body_json(bad)$error$code, "origin_not_allowed")
   expect_null(httr2::resp_header(bad, "Access-Control-Allow-Origin"))
   pre <- call_api("/analyses/efa", method = "OPTIONS", origin = "http://localhost:5173")
   expect_identical(httr2::resp_status(pre), 204L)
+  denied_pre <- call_api("/analyses/efa", method = "OPTIONS", origin = "http://evil.example")
+  expect_identical(httr2::resp_status(denied_pre), 403L)
+  # Basit POST istekleri ön kontrol yapmadan gönderilebilir; işleme alınmamalıdır.
+  denied_post <- call_api("/datasets/examples/holzinger", method = "POST", origin = "http://evil.example")
+  expect_identical(httr2::resp_status(denied_post), 403L)
+  expect_identical(body_json(denied_post)$error$code, "origin_not_allowed")
 })
 
 test_that("hata durumları doğru HTTP kodlarıyla döner", {

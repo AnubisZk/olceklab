@@ -1,0 +1,13 @@
+
+> olceklab-ai-gateway@0.0.0 test
+> vitest run
+
+
+ RUN  v5.1.0 C:/Users/PC/Documents/Codex/2026-11-03/files-mentioned-by-the-user-handoff/outputs/olceklab/ai-gateway
+
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  09:57:30
+   Duration  699ms (import 52%, tests 30%, transform 17%, worker 1%)
+

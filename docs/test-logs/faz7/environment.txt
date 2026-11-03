@@ -1,0 +1,9 @@
+Date: 2026-11-03 (Europe/Istanbul)
+Platform: Windows
+Node: v24.22.1
+Portable npm: 11.19.1
+Docker: not installed / unavailable
+Rscript: not installed / unavailable
+WSL: not installed
+User decision: prepare release files and document remaining checks; do not install Docker.
+Docker image build, R tests and live Playwright: NOT RUN

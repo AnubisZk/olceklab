@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-# ÖlçekLab R analiz motoru. Yerel (8000) ve Hugging Face Space (7860) için aynı imaj;
+# ÖlçekLab R analiz motoru. Yerel ve Hugging Face Space için bağlantı noktası 8000;
 # bağlantı noktası PORT ortam değişkeninden okunur.
 FROM rocker/r-ver:4.4.3
 
@@ -30,7 +30,9 @@ COPY R ./R
 COPY tests ./tests
 
 # Hugging Face Spaces 1000 numaralı kullanıcıyı bekler.
-RUN useradd -m -u 1000 olceklab
+RUN useradd -m -u 1000 olceklab \
+ && mkdir -p /app/test-results \
+ && chown olceklab:olceklab /app/test-results
 USER olceklab
 
 ENV PORT=8000 HOST=0.0.0.0 OLCEKLAB_ENGINE_DIR=/app

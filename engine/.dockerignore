@@ -2,4 +2,7 @@ test-results
 renv/library
 tests/private/data
 tests/private/bidekcet.json
+tests/private/bidekcet_sonuc.csv
+.env
+.env.*
 *.log

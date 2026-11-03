@@ -1,5 +1,7 @@
 # ÖlçekLab Kurulum ve Yayına Alma
 
+> 3 Kasım 2026, Codex devam çalışması: yayın paketleri hazırlanabilir; Docker/R ve canlı kabul testleri bu Windows ortamında henüz koşmadı. Güncel durum ve komutlar: [Faz 7a yayın kontrol listesi](RELEASE_7A_TR.md). Aşağıdaki hedef adresler henüz doğrulanmış canlı yayın değildir.
+
 Bu belge ÖlçekLab'i iki parça olarak yayına almayı anlatır:
 
 | Parça | Nerede çalışır | Adres |
@@ -93,7 +95,7 @@ docker compose up --build engine web
 
 - Tarayıcıda http://localhost:5173 adresini açın. Motor http://localhost:8000 adresinde çalışır.
 - İlk derleme R paketlerini kurduğu için uzun sürer. Sonraki açılışlarda yalnızca `docker compose up engine web` yeterlidir.
-- `ai-gateway` ve `ollama` servisleri yapay zekâ modülü içindir. Bu modül henüz tamamlanmadığı için (Faz 6) yukarıdaki komut onları başlatmaz.
+- `web` bağımlılığı nedeniyle `ai-gateway` de başlar; varsayılan `AI_PROVIDER=none` modunda dış istek göndermez. `ollama`, `ai-local` profili açılmadığı sürece başlamaz.
 
 ---
 
@@ -138,7 +140,7 @@ BIDEKCET_DATA_DIR=/ham/veri/klasoru LANG=C.UTF-8 Rscript tests/private/run_bidek
 
 | Test | Ortam | Sonuç |
 |---|---|---|
-| R motoru birim testleri (testthat) | R 4.5.3, yerel | 1134 başarılı, 3 atlandı, 1 başarısız: `test-versions.R` kurulu sürümleri `renv.lock` ile karşılaştırır. Yerel ortamda R 4.5.3 / semTools 0.5.9, kilit dosyasında R 4.4.3 / semTools 0.5-10 olduğu için bu test başarısız olur. Docker imajı kilitli sürümleri kurduğu için orada bu fark oluşmaz. |
+| R motoru birim testleri (testthat) | Önceki ortam: R 4.5.3, yerel | Devir notundaki sonuç: 1134 başarılı, 3 atlandı, 1 başarısız (`test-versions.R`: R ve semTools sürüm farkı). Docker kilitli sürümleri kurmayı hedefler; imaj içinde testler geçmeden sürüm eşleşmesi doğrulanmış sayılmaz. |
 | Web birim testleri (vitest) | Node 24 | 96/96 başarılı |
 | Uçtan uca testler (Playwright, Faz 1–5 akışları) | Yerel motor + yerel arayüz | 5/5 başarılı |
 | BİDEKÇET gerçek veri testi | Yerel, ham veri | 58/58 değer makaledekiyle aynı |
