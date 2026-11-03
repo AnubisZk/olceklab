@@ -1,0 +1,2082 @@
+﻿2026-11-03T18:55:36.0936734Z Current runner version: '2.338.2'
+2026-11-03T18:55:36.0958635Z ##[group]Runner Image Provisioner
+2026-11-03T18:55:36.0959302Z Hosted Compute Agent
+2026-11-03T18:55:36.0959834Z Version: 20261021.618
+2026-11-03T18:55:36.0960362Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-03T18:55:36.0960957Z Build Date: 2026-10-21T00:45:21Z
+2026-11-03T18:55:36.0961638Z Worker ID: {cb0a8be2-cc79-45d2-8839-548e3bb271e1}
+2026-11-03T18:55:36.0962228Z Region: eastus
+2026-11-03T18:55:36.0962699Z Cloud: Azure
+2026-11-03T18:55:36.0963306Z ##[endgroup]
+2026-11-03T18:55:36.0964671Z ##[group]Operating System
+2026-11-03T18:55:36.0965561Z Ubuntu
+2026-11-03T18:55:36.0966000Z 26.04.1
+2026-11-03T18:55:36.0966408Z LTS
+2026-11-03T18:55:36.0966899Z ##[endgroup]
+2026-11-03T18:55:36.0967366Z ##[group]Runner Image
+2026-11-03T18:55:36.0967959Z Image: ubuntu-26.04
+2026-11-03T18:55:36.0968424Z Version: 20261025.179.1
+2026-11-03T18:55:36.0969505Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261025.179/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-03T18:55:36.0970767Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261025.179
+2026-11-03T18:55:36.0971574Z ##[endgroup]
+2026-11-03T18:55:36.0972543Z ##[group]GITHUB_TOKEN Permissions
+2026-11-03T18:55:36.0974668Z Contents: read
+2026-11-03T18:55:36.0975432Z Metadata: read
+2026-11-03T18:55:36.0975918Z Packages: read
+2026-11-03T18:55:36.0976453Z ##[endgroup]
+2026-11-03T18:55:36.0978145Z Secret source: Actions
+2026-11-03T18:55:36.0978973Z Cache mode: write
+2026-11-03T18:55:36.0979798Z Prepare workflow directory
+2026-11-03T18:55:36.1240983Z Prepare all required actions
+2026-11-03T18:55:36.1278902Z Getting action download info
+2026-11-03T18:55:36.2814339Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-03T18:55:36.3766344Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-03T18:55:36.5858152Z Complete job name: R motoru (HF Docker imajında testthat)
+2026-11-03T18:55:36.6563474Z ##[group]Run actions/checkout@v4
+2026-11-03T18:55:36.6564131Z with:
+2026-11-03T18:55:36.6564491Z   repository: AnubisZk/olceklab
+2026-11-03T18:55:36.6567592Z   token: ***
+2026-11-03T18:55:36.6567946Z   ssh-strict: true
+2026-11-03T18:55:36.6568300Z   ssh-user: git
+2026-11-03T18:55:36.6568665Z   persist-credentials: true
+2026-11-03T18:55:36.6569056Z   clean: true
+2026-11-03T18:55:36.6569418Z   sparse-checkout-cone-mode: true
+2026-11-03T18:55:36.6569832Z   fetch-depth: 1
+2026-11-03T18:55:36.6570174Z   fetch-tags: false
+2026-11-03T18:55:36.6570527Z   show-progress: true
+2026-11-03T18:55:36.6570880Z   lfs: false
+2026-11-03T18:55:36.6571210Z   submodules: false
+2026-11-03T18:55:36.6571567Z   set-safe-directory: true
+2026-11-03T18:55:36.6571962Z   allow-unsafe-pr-checkout: false
+2026-11-03T18:55:36.6572525Z ##[endgroup]
+2026-11-03T18:55:36.8706942Z Syncing repository: AnubisZk/olceklab
+2026-11-03T18:55:36.8709181Z ##[group]Getting Git version info
+2026-11-03T18:55:36.8709937Z Working directory is '/home/runner/work/olceklab/olceklab'
+2026-11-03T18:55:36.8710892Z [command]/usr/bin/git version
+2026-11-03T18:55:36.8730249Z git version 2.56.0
+2026-11-03T18:55:36.8759892Z ##[endgroup]
+2026-11-03T18:55:36.8765727Z Temporarily overriding HOME='/home/runner/work/_temp/d997a740-fb46-422f-8d2e-79893faea619' before making global git config changes
+2026-11-03T18:55:36.8767715Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-03T18:55:36.8769280Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/olceklab/olceklab
+2026-11-03T18:55:36.8820717Z Deleting the contents of '/home/runner/work/olceklab/olceklab'
+2026-11-03T18:55:36.8823746Z ##[group]Initializing the repository
+2026-11-03T18:55:36.8827230Z [command]/usr/bin/git init /home/runner/work/olceklab/olceklab
+2026-11-03T18:55:36.8911510Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-03T18:55:36.8912986Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-03T18:55:36.8914887Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-03T18:55:36.8916096Z hint: call:
+2026-11-03T18:55:36.8916763Z hint:
+2026-11-03T18:55:36.8917590Z hint: 	git config --global init.defaultBranch <name>
+2026-11-03T18:55:36.8918581Z hint:
+2026-11-03T18:55:36.8919531Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-03T18:55:36.8921003Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-03T18:55:36.8922180Z hint:
+2026-11-03T18:55:36.8922857Z hint: 	git branch -m <name>
+2026-11-03T18:55:36.8923627Z hint:
+2026-11-03T18:55:36.8924555Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-03T18:55:36.8926097Z Initialized empty Git repository in /home/runner/work/olceklab/olceklab/.git/
+2026-11-03T18:55:36.8929658Z [command]/usr/bin/git remote add origin https://github.com/AnubisZk/olceklab
+2026-11-03T18:55:36.8973075Z ##[endgroup]
+2026-11-03T18:55:36.8974131Z ##[group]Disabling automatic garbage collection
+2026-11-03T18:55:36.8975646Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-03T18:55:36.9003672Z ##[endgroup]
+2026-11-03T18:55:36.9004687Z ##[group]Setting up auth
+2026-11-03T18:55:36.9008570Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-03T18:55:36.9037906Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-03T18:55:36.9500164Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-03T18:55:36.9528513Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-03T18:55:36.9766486Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T18:55:36.9796088Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T18:55:37.0026590Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-03T18:55:37.0061744Z ##[endgroup]
+2026-11-03T18:55:37.0062529Z ##[group]Fetching the repository
+2026-11-03T18:55:37.0069155Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +b0257c21052a1ed159e3137795fce352795e74e6:refs/remotes/origin/main
+2026-11-03T18:55:40.7305351Z From https://github.com/AnubisZk/olceklab
+2026-11-03T18:55:40.7306988Z  * [new ref]         b0257c21052a1ed159e3137795fce352795e74e6 -> origin/main
+2026-11-03T18:55:40.7310229Z ##[endgroup]
+2026-11-03T18:55:40.7311448Z ##[group]Determining the checkout info
+2026-11-03T18:55:40.7312691Z ##[endgroup]
+2026-11-03T18:55:40.7316124Z [command]/usr/bin/git sparse-checkout disable
+2026-11-03T18:55:40.7359974Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-03T18:55:40.7386285Z ##[group]Checking out the ref
+2026-11-03T18:55:40.7389714Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-03T18:55:40.7843084Z Switched to a new branch 'main'
+2026-11-03T18:55:40.7846713Z branch 'main' set up to track 'origin/main'.
+2026-11-03T18:55:40.7855684Z ##[endgroup]
+2026-11-03T18:55:40.7894651Z [command]/usr/bin/git log -1 --format=%H
+2026-11-03T18:55:40.7915984Z b0257c21052a1ed159e3137795fce352795e74e6
+2026-11-03T18:55:40.8414259Z ##[group]Run docker build --progress=plain -f deploy/hf-space/Dockerfile -t olceklab-engine:test engine
+2026-11-03T18:55:40.8416947Z [36;1mdocker build --progress=plain -f deploy/hf-space/Dockerfile -t olceklab-engine:test engine[0m
+2026-11-03T18:55:40.8449250Z shell: /usr/bin/bash -e {0}
+2026-11-03T18:55:40.8450181Z ##[endgroup]
+2026-11-03T18:55:41.4327677Z #0 building with "default" instance using docker driver
+2026-11-03T18:55:41.4328036Z 
+2026-11-03T18:55:41.4328149Z #1 [internal] load build definition from Dockerfile
+2026-11-03T18:55:41.4328431Z #1 transferring dockerfile: 2.27kB done
+2026-11-03T18:55:41.4328646Z #1 DONE 0.0s
+2026-11-03T18:55:41.4328743Z 
+2026-11-03T18:55:41.4328894Z #2 [auth] docker/dockerfile:pull token for registry-1.docker.io
+2026-11-03T18:55:41.4329184Z #2 DONE 0.0s
+2026-11-03T18:55:41.4329290Z 
+2026-11-03T18:55:41.4329547Z #3 resolve image config for docker-image://docker.io/docker/dockerfile:1
+2026-11-03T18:55:41.6573827Z #3 DONE 0.4s
+2026-11-03T18:55:41.8249325Z 
+2026-11-03T18:55:41.8249885Z #4 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+2026-11-03T18:55:41.8250567Z #4 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e done
+2026-11-03T18:55:41.8280306Z #4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 14.28MB / 14.28MB 0.1s done
+2026-11-03T18:55:41.9689779Z #4 extracting sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 0.1s done
+2026-11-03T18:55:41.9690829Z #4 DONE 0.3s
+2026-11-03T18:55:42.2056704Z 
+2026-11-03T18:55:42.2057451Z #5 [auth] rocker/r-ver:pull token for registry-1.docker.io
+2026-11-03T18:55:42.2057979Z #5 DONE 0.0s
+2026-11-03T18:55:42.2058125Z 
+2026-11-03T18:55:42.2058325Z #6 [internal] load metadata for docker.io/rocker/r-ver:4.4.3
+2026-11-03T18:55:42.4568531Z #6 DONE 0.4s
+2026-11-03T18:55:42.6163631Z 
+2026-11-03T18:55:42.6163993Z #7 [internal] load .dockerignore
+2026-11-03T18:55:42.6164387Z #7 transferring context: 164B done
+2026-11-03T18:55:42.6164600Z #7 DONE 0.0s
+2026-11-03T18:55:44.0352310Z 
+2026-11-03T18:55:44.0353289Z #8 [internal] load build context
+2026-11-03T18:55:44.0357212Z #8 transferring context: 790.41kB 0.0s done
+2026-11-03T18:55:44.0357688Z #8 DONE 0.0s
+2026-11-03T18:55:44.0362170Z 
+2026-11-03T18:55:44.0362746Z #9 [1/9] FROM docker.io/rocker/r-ver:4.4.3@sha256:3dae5d2eeddf74f10e0a81fb6b7ae350295e288000304f438b844b2c1e00fe2c
+2026-11-03T18:55:44.0363988Z #9 resolve docker.io/rocker/r-ver:4.4.3@sha256:3dae5d2eeddf74f10e0a81fb6b7ae350295e288000304f438b844b2c1e00fe2c done
+2026-11-03T18:55:44.0365203Z #9 sha256:106a75adfcccb47261a47006dd05e12da366f87c0701f14fd4b962a551573630 20.04kB / 20.04kB 0.0s done
+2026-11-03T18:55:44.0366163Z #9 sha256:b07c49f235d7067fe32cc1f4a0f7a36ce89a8b094159f6407318d4737655311c 1.50kB / 1.50kB 0.0s done
+2026-11-03T18:55:44.0367017Z #9 sha256:f41a2914e4473b3f5ab5b86315cc1aaf73b6a41006f4dd09b5c37a6d4121a9c7 2.83kB / 2.83kB 0.0s done
+2026-11-03T18:55:44.0367996Z #9 sha256:ec0a17f51b37339ca6ab47ecbd14bde185e2debc5ba0a9e472a5b612599b4389 1.86kB / 1.86kB 0.0s done
+2026-11-03T18:55:44.0368898Z #9 sha256:fa0cc4e662f1cf70175a0ca3b050b366a2b6cfe79ea628db052d5ebd3b9e89b7 26.21MB / 28.49MB 0.2s
+2026-11-03T18:55:44.1845501Z #9 sha256:fa0cc4e662f1cf70175a0ca3b050b366a2b6cfe79ea628db052d5ebd3b9e89b7 28.49MB / 28.49MB 0.3s
+2026-11-03T18:55:44.1846198Z #9 sha256:eb4267025620b07d678b3b7b4a38148ef6daae2b5a72576b0e9b6c5af4f1e783 33.55MB / 307.98MB 0.2s
+2026-11-03T18:55:44.1846859Z #9 sha256:01d7766a2e4a62b74e0bebf2cd12c47e675e9221174f6570854203e84ffe68b0 29.73MB / 29.73MB 0.2s
+2026-11-03T18:55:44.3237678Z #9 sha256:eb4267025620b07d678b3b7b4a38148ef6daae2b5a72576b0e9b6c5af4f1e783 95.42MB / 307.98MB 0.3s
+2026-11-03T18:55:44.3238582Z #9 sha256:01d7766a2e4a62b74e0bebf2cd12c47e675e9221174f6570854203e84ffe68b0 29.73MB / 29.73MB 0.4s done
+2026-11-03T18:55:44.5001352Z #9 sha256:fa0cc4e662f1cf70175a0ca3b050b366a2b6cfe79ea628db052d5ebd3b9e89b7 28.49MB / 28.49MB 0.4s done
+2026-11-03T18:55:44.5026632Z #9 sha256:eb4267025620b07d678b3b7b4a38148ef6daae2b5a72576b0e9b6c5af4f1e783 142.61MB / 307.98MB 0.5s
+2026-11-03T18:55:44.5051620Z #9 extracting sha256:01d7766a2e4a62b74e0bebf2cd12c47e675e9221174f6570854203e84ffe68b0
+2026-11-03T18:55:44.5052773Z #9 sha256:eb4267025620b07d678b3b7b4a38148ef6daae2b5a72576b0e9b6c5af4f1e783 197.13MB / 307.98MB 0.6s
+2026-11-03T18:55:44.6499471Z #9 sha256:eb4267025620b07d678b3b7b4a38148ef6daae2b5a72576b0e9b6c5af4f1e783 250.61MB / 307.98MB 0.8s
+2026-11-03T18:55:44.8000364Z #9 sha256:eb4267025620b07d678b3b7b4a38148ef6daae2b5a72576b0e9b6c5af4f1e783 307.98MB / 307.98MB 0.9s
+2026-11-03T18:55:45.8498157Z #9 extracting sha256:01d7766a2e4a62b74e0bebf2cd12c47e675e9221174f6570854203e84ffe68b0 1.5s done
+2026-11-03T18:55:45.8498840Z #9 extracting sha256:ec0a17f51b37339ca6ab47ecbd14bde185e2debc5ba0a9e472a5b612599b4389
+2026-11-03T18:55:46.4873164Z #9 sha256:eb4267025620b07d678b3b7b4a38148ef6daae2b5a72576b0e9b6c5af4f1e783 307.98MB / 307.98MB 2.4s done
+2026-11-03T18:55:46.4874041Z #9 extracting sha256:ec0a17f51b37339ca6ab47ecbd14bde185e2debc5ba0a9e472a5b612599b4389 0.5s done
+2026-11-03T18:55:46.4874696Z #9 extracting sha256:eb4267025620b07d678b3b7b4a38148ef6daae2b5a72576b0e9b6c5af4f1e783
+2026-11-03T18:55:49.6662580Z #9 extracting sha256:eb4267025620b07d678b3b7b4a38148ef6daae2b5a72576b0e9b6c5af4f1e783 3.3s done
+2026-11-03T18:55:49.6663122Z #9 DONE 5.8s
+2026-11-03T18:55:49.8363950Z 
+2026-11-03T18:55:49.8365178Z #9 [1/9] FROM docker.io/rocker/r-ver:4.4.3@sha256:3dae5d2eeddf74f10e0a81fb6b7ae350295e288000304f438b844b2c1e00fe2c
+2026-11-03T18:55:49.8365846Z #9 extracting sha256:f41a2914e4473b3f5ab5b86315cc1aaf73b6a41006f4dd09b5c37a6d4121a9c7 done
+2026-11-03T18:55:49.8366345Z #9 extracting sha256:b07c49f235d7067fe32cc1f4a0f7a36ce89a8b094159f6407318d4737655311c 0.0s done
+2026-11-03T18:55:49.8366963Z #9 extracting sha256:fa0cc4e662f1cf70175a0ca3b050b366a2b6cfe79ea628db052d5ebd3b9e89b7
+2026-11-03T18:55:50.0140466Z #9 extracting sha256:fa0cc4e662f1cf70175a0ca3b050b366a2b6cfe79ea628db052d5ebd3b9e89b7 0.3s done
+2026-11-03T18:55:50.0141019Z #9 DONE 6.2s
+2026-11-03T18:55:50.1729418Z 
+2026-11-03T18:55:50.1730195Z #9 [1/9] FROM docker.io/rocker/r-ver:4.4.3@sha256:3dae5d2eeddf74f10e0a81fb6b7ae350295e288000304f438b844b2c1e00fe2c
+2026-11-03T18:55:50.1730769Z #9 extracting sha256:106a75adfcccb47261a47006dd05e12da366f87c0701f14fd4b962a551573630 done
+2026-11-03T18:55:50.1731147Z #9 DONE 6.2s
+2026-11-03T18:55:50.1731243Z 
+2026-11-03T18:55:50.1732040Z #10 [2/9] RUN apt-get update  && apt-get install -y --no-install-recommends       libxml2-dev libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libfribidi-dev       libpng-dev libjpeg-dev libtiff-dev libcairo2-dev libcurl4-openssl-dev libssl-dev       zlib1g-dev libsodium-dev cmake  && rm -rf /var/lib/apt/lists/*
+2026-11-03T18:55:50.3605067Z #10 0.338 Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-11-03T18:55:50.4611334Z #10 0.432 Get:2 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+2026-11-03T18:55:50.4612043Z #10 0.439 Get:3 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2132 kB]
+2026-11-03T18:55:50.7008886Z #10 0.520 Get:4 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1552 kB]
+2026-11-03T18:55:50.7009561Z #10 0.527 Get:5 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [55.6 kB]
+2026-11-03T18:55:50.7010075Z #10 0.528 Get:6 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1422 kB]
+2026-11-03T18:55:51.0227657Z #10 1.000 Get:7 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-11-03T18:55:51.1625685Z #10 1.140 Get:8 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-11-03T18:55:51.3032772Z #10 1.281 Get:9 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+2026-11-03T18:55:51.6293813Z #10 1.607 Get:10 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+2026-11-03T18:55:51.7881698Z #10 1.615 Get:11 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+2026-11-03T18:55:51.9889227Z #10 1.966 Get:12 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+2026-11-03T18:55:52.1763233Z #10 1.968 Get:13 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1741 kB]
+2026-11-03T18:55:52.1829567Z #10 1.977 Get:14 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2240 kB]
+2026-11-03T18:55:52.1830599Z #10 1.991 Get:15 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [61.7 kB]
+2026-11-03T18:55:52.1831315Z #10 1.991 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [2172 kB]
+2026-11-03T18:55:52.1832124Z #10 2.002 Get:17 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [49.0 kB]
+2026-11-03T18:55:52.1832924Z #10 2.003 Get:18 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [669 B]
+2026-11-03T18:55:52.1833391Z #10 2.003 Get:19 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [36.0 kB]
+2026-11-03T18:55:52.7094075Z #10 2.687 Fetched 33.7 MB in 3s (13.2 MB/s)
+2026-11-03T18:55:53.3248622Z #10 2.687 Reading package lists...
+2026-11-03T18:55:53.9645528Z #10 3.319 Reading package lists...
+2026-11-03T18:55:54.1282742Z #10 3.954 Building dependency tree...
+2026-11-03T18:55:54.2789647Z #10 4.106 Reading state information...
+2026-11-03T18:55:54.2790182Z #10 4.256 The following additional packages will be installed:
+2026-11-03T18:55:54.4317552Z #10 4.257   bsdutils cmake-data gir1.2-freedesktop gir1.2-freedesktop-dev
+2026-11-03T18:55:54.4318249Z #10 4.257   gir1.2-glib-2.0 gir1.2-glib-2.0-dev gir1.2-harfbuzz-0.0 icu-devtools
+2026-11-03T18:55:54.4318898Z #10 4.257   libarchive13t64 libblkid-dev libblkid1 libbrotli-dev libbrotli1 libbz2-1.0
+2026-11-03T18:55:54.4319572Z #10 4.257   libbz2-dev libcairo-gobject2 libcairo-script-interpreter2 libcurl4t64
+2026-11-03T18:55:54.4320214Z #10 4.257   libdeflate-dev libexpat1 libexpat1-dev libffi-dev libfontconfig-dev
+2026-11-03T18:55:54.4320873Z #10 4.257   libfreetype6 libgirepository-2.0-0 libglib2.0-0t64 libglib2.0-bin
+2026-11-03T18:55:54.4321501Z #10 4.257   libglib2.0-data libglib2.0-dev libglib2.0-dev-bin libgraphite2-3
+2026-11-03T18:55:54.4322199Z #10 4.257   libgraphite2-dev libharfbuzz-cairo0 libharfbuzz-gobject0 libharfbuzz-icu0
+2026-11-03T18:55:54.4322896Z #10 4.257   libharfbuzz-subset0 libice-dev libicu-dev libjbig-dev libjpeg8-dev
+2026-11-03T18:55:54.4323587Z #10 4.257   libjsoncpp25 liblerc-dev liblzma-dev liblzma-doc liblzma5 liblzo2-2
+2026-11-03T18:55:54.4324282Z #10 4.257   libmount-dev libmount1 libpcre2-16-0 libpcre2-32-0 libpcre2-8-0 libpcre2-dev
+2026-11-03T18:55:54.4325104Z #10 4.257   libpcre2-posix3 libpixman-1-dev libpkgconf3 libpng16-16t64
+2026-11-03T18:55:54.4325722Z #10 4.257   libpthread-stubs0-dev libpython3-stdlib libpython3.12-minimal
+2026-11-03T18:55:54.4326402Z #10 4.257   libpython3.12-stdlib librhash0 libselinux1-dev libsepol-dev libsharpyuv-dev
+2026-11-03T18:55:54.4327120Z #10 4.257   libsm-dev libsmartcols1 libsodium23 libsqlite3-0 libssl3t64 libtiff-doc
+2026-11-03T18:55:54.4327787Z #10 4.257   libtiff-opengl libtiff-tools libtiff6 libtiffxx6 libuuid1 libuv1t64
+2026-11-03T18:55:54.4328431Z #10 4.257   libwebp-dev libwebpdecoder3 libwebpdemux2 libwebpmux3 libx11-6 libx11-data
+2026-11-03T18:55:54.4329093Z #10 4.257   libx11-dev libx11-xcb1 libxau-dev libxcb-render0-dev libxcb-shm0-dev
+2026-11-03T18:55:54.4329733Z #10 4.258   libxcb1-dev libxdmcp-dev libxext-dev libxml2 libxrender-dev libzstd-dev
+2026-11-03T18:55:54.4330350Z #10 4.258   media-types mount netbase openssl pkgconf pkgconf-bin python3
+2026-11-03T18:55:54.4330983Z #10 4.258   python3-minimal python3-packaging python3.12 python3.12-minimal util-linux
+2026-11-03T18:55:54.4331662Z #10 4.258   uuid-dev x11proto-core-dev x11proto-dev xorg-sgml-doctools xtrans-dev zlib1g
+2026-11-03T18:55:54.4332175Z #10 4.259 Suggested packages:
+2026-11-03T18:55:54.4332621Z #10 4.259   cmake-doc cmake-format elpa-cmake-mode ninja-build lrzip libcairo2-doc
+2026-11-03T18:55:54.4333644Z #10 4.259   libcurl4-doc libidn-dev libkrb5-dev libldap2-dev librtmp-dev libssh2-1-dev
+2026-11-03T18:55:54.4334368Z #10 4.259   freetype2-doc low-memory-monitor libglib2.0-doc libgdk-pixbuf2.0-bin
+2026-11-03T18:55:54.4335221Z #10 4.259   libxml2-utils libgraphite2-utils libice-doc icu-doc cryptsetup-bin libsm-doc
+2026-11-03T18:55:54.4335932Z #10 4.259   libssl-doc libx11-doc libxcb-doc libxext-doc nfs-common python3-doc
+2026-11-03T18:55:54.4337090Z #10 4.259   python3-tk python3-venv python3.12-venv python3.12-doc binfmt-support
+2026-11-03T18:55:54.4337702Z #10 4.259   dosfstools kbd util-linux-extra util-linux-locales
+2026-11-03T18:55:54.4338125Z #10 4.259 Recommended packages:
+2026-11-03T18:55:54.4338694Z #10 4.259   bsdextrautils bzip2-doc xdg-user-dirs libpng-tools uuid-runtime
+2026-11-03T18:55:54.4365752Z #10 4.414 The following NEW packages will be installed:
+2026-11-03T18:55:54.5512128Z #10 4.414   cmake cmake-data gir1.2-freedesktop gir1.2-freedesktop-dev gir1.2-glib-2.0
+2026-11-03T18:55:54.5512849Z #10 4.414   gir1.2-glib-2.0-dev gir1.2-harfbuzz-0.0 icu-devtools libarchive13t64
+2026-11-03T18:55:54.5513230Z #10 4.414   libblkid-dev libbrotli-dev libbz2-dev libcairo-gobject2
+2026-11-03T18:55:54.5513587Z #10 4.414   libcairo-script-interpreter2 libcairo2-dev libcurl4-openssl-dev
+2026-11-03T18:55:54.5514010Z #10 4.414   libdeflate-dev libexpat1-dev libffi-dev libfontconfig-dev libfontconfig1-dev
+2026-11-03T18:55:54.5514463Z #10 4.414   libfreetype-dev libfribidi-dev libgirepository-2.0-0 libglib2.0-bin
+2026-11-03T18:55:54.5515189Z #10 4.414   libglib2.0-dev libglib2.0-dev-bin libgraphite2-dev libharfbuzz-cairo0
+2026-11-03T18:55:54.5515617Z #10 4.414   libharfbuzz-dev libharfbuzz-gobject0 libharfbuzz-icu0 libharfbuzz-subset0
+2026-11-03T18:55:54.5516101Z #10 4.414   libice-dev libicu-dev libjbig-dev libjpeg-dev libjpeg8-dev libjsoncpp25
+2026-11-03T18:55:54.5516505Z #10 4.414   liblerc-dev liblzma-dev liblzo2-2 libmount-dev libpcre2-dev libpixman-1-dev
+2026-11-03T18:55:54.5516896Z #10 4.415   libpkgconf3 libpng-dev libpthread-stubs0-dev libpython3-stdlib
+2026-11-03T18:55:54.5517273Z #10 4.415   libpython3.12-minimal libpython3.12-stdlib librhash0 libselinux1-dev
+2026-11-03T18:55:54.5517645Z #10 4.415   libsepol-dev libsharpyuv-dev libsm-dev libsodium-dev libsodium23
+2026-11-03T18:55:54.5518032Z #10 4.415   libsqlite3-0 libssl-dev libtiff-dev libuv1t64 libwebp-dev libwebpdecoder3
+2026-11-03T18:55:54.5518462Z #10 4.415   libwebpdemux2 libwebpmux3 libx11-dev libxau-dev libxcb-render0-dev
+2026-11-03T18:55:54.5518992Z #10 4.415   libxcb-shm0-dev libxcb1-dev libxdmcp-dev libxext-dev libxml2-dev
+2026-11-03T18:55:54.5519379Z #10 4.415   libxrender-dev libzstd-dev media-types netbase pkgconf pkgconf-bin python3
+2026-11-03T18:55:54.5519789Z #10 4.415   python3-minimal python3-packaging python3.12 python3.12-minimal uuid-dev
+2026-11-03T18:55:54.5520184Z #10 4.415   x11proto-core-dev x11proto-dev xorg-sgml-doctools xtrans-dev zlib1g-dev
+2026-11-03T18:55:54.5520548Z #10 4.416 The following packages will be upgraded:
+2026-11-03T18:55:54.5521077Z #10 4.416   bsdutils libblkid1 libbrotli1 libbz2-1.0 libcurl4t64 libexpat1 libfreetype6
+2026-11-03T18:55:54.5521652Z #10 4.416   libglib2.0-0t64 libglib2.0-data libgraphite2-3 liblzma-doc liblzma5
+2026-11-03T18:55:54.5522079Z #10 4.416   libmount1 libpcre2-16-0 libpcre2-32-0 libpcre2-8-0 libpcre2-posix3
+2026-11-03T18:55:54.5522444Z #10 4.416   libpng16-16t64 libsmartcols1 libssl3t64 libtiff-doc libtiff-opengl
+2026-11-03T18:55:54.5522840Z #10 4.416   libtiff-tools libtiff6 libtiffxx6 libuuid1 libx11-6 libx11-data libx11-xcb1
+2026-11-03T18:55:54.5523176Z #10 4.416   libxml2 mount openssl util-linux zlib1g
+2026-11-03T18:55:54.5523470Z #10 4.474 34 upgraded, 91 newly installed, 0 to remove and 60 not upgraded.
+2026-11-03T18:55:54.5523757Z #10 4.474 Need to get 60.2 MB of archives.
+2026-11-03T18:55:54.5524039Z #10 4.474 After this operation, 203 MB of additional disk space will be used.
+2026-11-03T18:55:54.5524842Z #10 4.474 Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 bsdutils amd64 1:2.39.3-9ubuntu6.6 [96.4 kB]
+2026-11-03T18:55:54.5525427Z #10 4.529 Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 util-linux amd64 2.39.3-9ubuntu6.6 [1128 kB]
+2026-11-03T18:55:54.6605020Z #10 4.584 Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 mount amd64 2.39.3-9ubuntu6.6 [118 kB]
+2026-11-03T18:55:54.6605722Z #10 4.585 Get:4 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libssl3t64 amd64 3.0.13-0ubuntu3.16 [1945 kB]
+2026-11-03T18:55:54.6606590Z #10 4.604 Get:5 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-minimal amd64 3.12.3-1ubuntu0.17 [839 kB]
+2026-11-03T18:55:54.6607193Z #10 4.607 Get:6 http://security.ubuntu.com/ubuntu noble-security/main amd64 libpcre2-8-0 amd64 10.42-4ubuntu2.2 [229 kB]
+2026-11-03T18:55:54.6607759Z #10 4.609 Get:7 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libexpat1 amd64 2.6.1-2ubuntu0.6 [98.9 kB]
+2026-11-03T18:55:54.6608332Z #10 4.610 Get:8 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 zlib1g amd64 1:1.3.dfsg-3.1ubuntu2.3 [63.2 kB]
+2026-11-03T18:55:54.6608934Z #10 4.611 Get:9 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12-minimal amd64 3.12.3-1ubuntu0.17 [2335 kB]
+2026-11-03T18:55:54.6609513Z #10 4.624 Get:10 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-minimal amd64 3.12.3-0ubuntu2.1 [27.4 kB]
+2026-11-03T18:55:54.6610027Z #10 4.624 Get:11 http://archive.ubuntu.com/ubuntu noble/main amd64 media-types all 10.1.0 [27.5 kB]
+2026-11-03T18:55:54.6610462Z #10 4.625 Get:12 http://archive.ubuntu.com/ubuntu noble/main amd64 netbase all 6.4 [13.1 kB]
+2026-11-03T18:55:54.6610951Z #10 4.625 Get:13 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libbz2-1.0 amd64 1.0.8-5.1ubuntu0.1 [34.6 kB]
+2026-11-03T18:55:54.6611518Z #10 4.626 Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 liblzma5 amd64 5.6.1+really5.4.5-1ubuntu0.4 [128 kB]
+2026-11-03T18:55:54.6612092Z #10 4.627 Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsqlite3-0 amd64 3.45.1-1ubuntu2.8 [702 kB]
+2026-11-03T18:55:54.6612661Z #10 4.638 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-stdlib amd64 3.12.3-1ubuntu0.17 [2071 kB]
+2026-11-03T18:55:54.7937048Z #10 4.649 Get:17 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12 amd64 3.12.3-1ubuntu0.17 [651 kB]
+2026-11-03T18:55:54.7938204Z #10 4.653 Get:18 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3-stdlib amd64 3.12.3-0ubuntu2.1 [10.1 kB]
+2026-11-03T18:55:54.7939125Z #10 4.653 Get:19 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3 amd64 3.12.3-0ubuntu2.1 [23.0 kB]
+2026-11-03T18:55:54.7939983Z #10 4.654 Get:20 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libblkid1 amd64 2.39.3-9ubuntu6.6 [124 kB]
+2026-11-03T18:55:54.7940632Z #10 4.655 Get:21 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libmount1 amd64 2.39.3-9ubuntu6.6 [134 kB]
+2026-11-03T18:55:54.7941197Z #10 4.655 Get:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsmartcols1 amd64 2.39.3-9ubuntu6.6 [66.3 kB]
+2026-11-03T18:55:54.7941894Z #10 4.656 Get:23 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libuuid1 amd64 2.39.3-9ubuntu6.6 [36.6 kB]
+2026-11-03T18:55:54.7942820Z #10 4.656 Get:24 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-0t64 amd64 2.80.0-6ubuntu3.10 [1548 kB]
+2026-11-03T18:55:54.7943643Z #10 4.664 Get:25 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gir1.2-glib-2.0 amd64 2.80.0-6ubuntu3.10 [183 kB]
+2026-11-03T18:55:54.7944474Z #10 4.665 Get:26 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-data all 2.80.0-6ubuntu3.10 [50.2 kB]
+2026-11-03T18:55:54.7945403Z #10 4.678 Get:27 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libxml2 amd64 2.9.14+dfsg-1.3ubuntu3.10 [764 kB]
+2026-11-03T18:55:54.7945963Z #10 4.682 Get:28 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 openssl amd64 3.0.13-0ubuntu3.16 [1004 kB]
+2026-11-03T18:55:54.7946737Z #10 4.687 Get:29 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpng16-16t64 amd64 1.6.43-5ubuntu0.7 [189 kB]
+2026-11-03T18:55:54.7947293Z #10 4.688 Get:30 http://archive.ubuntu.com/ubuntu noble/main amd64 libuv1t64 amd64 1.48.0-1.1build1 [97.3 kB]
+2026-11-03T18:55:54.7947816Z #10 4.689 Get:31 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libx11-6 amd64 2:1.8.7-1ubuntu0.1 [653 kB]
+2026-11-03T18:55:54.7948485Z #10 4.692 Get:32 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libx11-xcb1 amd64 2:1.8.7-1ubuntu0.1 [7796 B]
+2026-11-03T18:55:54.7949168Z #10 4.693 Get:33 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libx11-data all 2:1.8.7-1ubuntu0.1 [116 kB]
+2026-11-03T18:55:54.7949708Z #10 4.693 Get:34 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libarchive13t64 amd64 3.7.2-2ubuntu0.9 [383 kB]
+2026-11-03T18:55:54.7950247Z #10 4.696 Get:35 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libbrotli1 amd64 1.1.0-2ubuntu0.1 [331 kB]
+2026-11-03T18:55:54.7950784Z #10 4.697 Get:36 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl4t64 amd64 8.5.0-2ubuntu10.16 [344 kB]
+2026-11-03T18:55:54.7951307Z #10 4.705 Get:37 http://archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
+2026-11-03T18:55:54.7951798Z #10 4.705 Get:38 http://archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
+2026-11-03T18:55:54.7952278Z #10 4.706 Get:39 http://archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
+2026-11-03T18:55:54.7952754Z #10 4.718 Get:40 http://archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
+2026-11-03T18:55:54.7953243Z #10 4.771 Get:41 http://archive.ubuntu.com/ubuntu noble/main amd64 libcairo-gobject2 amd64 1.18.0-3build1 [127 kB]
+2026-11-03T18:55:54.9012911Z #10 4.771 Get:42 http://archive.ubuntu.com/ubuntu noble/main amd64 gir1.2-freedesktop amd64 1.80.1-1 [49.7 kB]
+2026-11-03T18:55:54.9013836Z #10 4.772 Get:43 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gir1.2-glib-2.0-dev amd64 2.80.0-6ubuntu3.10 [848 kB]
+2026-11-03T18:55:54.9014844Z #10 4.776 Get:44 http://archive.ubuntu.com/ubuntu noble/main amd64 gir1.2-freedesktop-dev amd64 1.80.1-1 [28.8 kB]
+2026-11-03T18:55:54.9015749Z #10 4.777 Get:45 http://archive.ubuntu.com/ubuntu noble/main amd64 libharfbuzz-gobject0 amd64 8.3.0-2build2 [34.3 kB]
+2026-11-03T18:55:54.9016659Z #10 4.778 Get:46 http://archive.ubuntu.com/ubuntu noble/main amd64 gir1.2-harfbuzz-0.0 amd64 8.3.0-2build2 [44.5 kB]
+2026-11-03T18:55:54.9017536Z #10 4.778 Get:47 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 icu-devtools amd64 74.2-1ubuntu3.1 [212 kB]
+2026-11-03T18:55:54.9021165Z #10 4.778 Get:48 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libbrotli-dev amd64 1.1.0-2ubuntu0.1 [353 kB]
+2026-11-03T18:55:54.9022617Z #10 4.780 Get:49 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libbz2-dev amd64 1.0.8-5.1ubuntu0.1 [33.6 kB]
+2026-11-03T18:55:54.9023551Z #10 4.785 Get:50 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libfreetype6 amd64 2.13.2+dfsg-1ubuntu0.2 [403 kB]
+2026-11-03T18:55:54.9024405Z #10 4.798 Get:51 http://archive.ubuntu.com/ubuntu noble/main amd64 liblzo2-2 amd64 2.10-2build4 [54.1 kB]
+2026-11-03T18:55:54.9025527Z #10 4.799 Get:52 http://archive.ubuntu.com/ubuntu noble/main amd64 libcairo-script-interpreter2 amd64 1.18.0-3build1 [60.3 kB]
+2026-11-03T18:55:54.9026719Z #10 4.800 Get:53 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libexpat1-dev amd64 2.6.1-2ubuntu0.6 [147 kB]
+2026-11-03T18:55:54.9027758Z #10 4.801 Get:54 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 zlib1g-dev amd64 1:1.3.dfsg-3.1ubuntu2.3 [894 kB]
+2026-11-03T18:55:54.9028614Z #10 4.805 Get:55 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpng-dev amd64 1.6.43-5ubuntu0.7 [265 kB]
+2026-11-03T18:55:54.9029546Z #10 4.806 Get:56 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libfreetype-dev amd64 2.13.2+dfsg-1ubuntu0.2 [574 kB]
+2026-11-03T18:55:54.9030735Z #10 4.809 Get:57 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 uuid-dev amd64 2.39.3-9ubuntu6.6 [33.5 kB]
+2026-11-03T18:55:54.9031572Z #10 4.810 Get:58 http://archive.ubuntu.com/ubuntu noble/main amd64 libpkgconf3 amd64 1.8.1-2build1 [30.7 kB]
+2026-11-03T18:55:54.9032159Z #10 4.810 Get:59 http://archive.ubuntu.com/ubuntu noble/main amd64 pkgconf-bin amd64 1.8.1-2build1 [20.7 kB]
+2026-11-03T18:55:54.9033149Z #10 4.812 Get:60 http://archive.ubuntu.com/ubuntu noble/main amd64 pkgconf amd64 1.8.1-2build1 [16.8 kB]
+2026-11-03T18:55:54.9033967Z #10 4.825 Get:61 http://archive.ubuntu.com/ubuntu noble/main amd64 libfontconfig-dev amd64 2.15.0-1.1ubuntu2 [161 kB]
+2026-11-03T18:55:54.9034651Z #10 4.827 Get:62 http://archive.ubuntu.com/ubuntu noble/main amd64 libffi-dev amd64 3.4.6-1build1 [62.8 kB]
+2026-11-03T18:55:54.9035472Z #10 4.827 Get:63 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-bin amd64 2.80.0-6ubuntu3.10 [97.9 kB]
+2026-11-03T18:55:54.9036011Z #10 4.829 Get:64 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-packaging all 24.0-1 [41.1 kB]
+2026-11-03T18:55:54.9036649Z #10 4.829 Get:65 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-dev-bin amd64 2.80.0-6ubuntu3.10 [138 kB]
+2026-11-03T18:55:54.9037235Z #10 4.829 Get:66 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libblkid-dev amd64 2.39.3-9ubuntu6.6 [205 kB]
+2026-11-03T18:55:54.9037774Z #10 4.830 Get:67 http://archive.ubuntu.com/ubuntu noble/main amd64 libsepol-dev amd64 3.5-2build1 [384 kB]
+2026-11-03T18:55:54.9038327Z #10 4.832 Get:68 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libselinux1-dev amd64 3.5-2ubuntu2.1 [164 kB]
+2026-11-03T18:55:54.9038901Z #10 4.833 Get:69 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libmount-dev amd64 2.39.3-9ubuntu6.6 [14.9 kB]
+2026-11-03T18:55:54.9039484Z #10 4.839 Get:70 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgirepository-2.0-0 amd64 2.80.0-6ubuntu3.10 [73.5 kB]
+2026-11-03T18:55:54.9040074Z #10 4.852 Get:71 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-dev amd64 2.80.0-6ubuntu3.10 [1861 kB]
+2026-11-03T18:55:54.9040608Z #10 4.861 Get:72 http://archive.ubuntu.com/ubuntu noble/main amd64 libpixman-1-dev amd64 0.42.2-1build1 [296 kB]
+2026-11-03T18:55:54.9041111Z #10 4.863 Get:73 http://archive.ubuntu.com/ubuntu noble/main amd64 xorg-sgml-doctools all 1:1.11-1.1 [10.9 kB]
+2026-11-03T18:55:54.9041591Z #10 4.864 Get:74 http://archive.ubuntu.com/ubuntu noble/main amd64 x11proto-dev all 2023.2-1 [602 kB]
+2026-11-03T18:55:54.9042070Z #10 4.867 Get:75 http://archive.ubuntu.com/ubuntu noble/main amd64 x11proto-core-dev all 2023.2-1 [2444 B]
+2026-11-03T18:55:54.9042561Z #10 4.867 Get:76 http://archive.ubuntu.com/ubuntu noble/main amd64 libice-dev amd64 2:1.0.10-1build3 [51.0 kB]
+2026-11-03T18:55:54.9043049Z #10 4.867 Get:77 http://archive.ubuntu.com/ubuntu noble/main amd64 libsm-dev amd64 2:1.2.3-1build3 [17.8 kB]
+2026-11-03T18:55:54.9043528Z #10 4.868 Get:78 http://archive.ubuntu.com/ubuntu noble/main amd64 libxau-dev amd64 1:1.0.9-1build6 [9570 B]
+2026-11-03T18:55:54.9044018Z #10 4.868 Get:79 http://archive.ubuntu.com/ubuntu noble/main amd64 libxdmcp-dev amd64 1:1.1.3-0ubuntu6 [26.5 kB]
+2026-11-03T18:55:54.9044492Z #10 4.868 Get:80 http://archive.ubuntu.com/ubuntu noble/main amd64 xtrans-dev all 1.4.0-1 [68.9 kB]
+2026-11-03T18:55:54.9045246Z #10 4.879 Get:81 http://archive.ubuntu.com/ubuntu noble/main amd64 libpthread-stubs0-dev amd64 0.4-1build3 [4746 B]
+2026-11-03T18:55:55.0023407Z #10 4.880 Get:82 http://archive.ubuntu.com/ubuntu noble/main amd64 libxcb1-dev amd64 1.15-1ubuntu2 [85.8 kB]
+2026-11-03T18:55:55.0024612Z #10 4.880 Get:83 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libx11-dev amd64 2:1.8.7-1ubuntu0.1 [732 kB]
+2026-11-03T18:55:55.0025810Z #10 4.892 Get:84 http://archive.ubuntu.com/ubuntu noble/main amd64 libxcb-render0-dev amd64 1.15-1ubuntu2 [19.6 kB]
+2026-11-03T18:55:55.0027177Z #10 4.893 Get:85 http://archive.ubuntu.com/ubuntu noble/main amd64 libxcb-shm0-dev amd64 1.15-1ubuntu2 [8246 B]
+2026-11-03T18:55:55.0028277Z #10 4.893 Get:86 http://archive.ubuntu.com/ubuntu noble/main amd64 libxext-dev amd64 2:1.3.4-1build2 [83.5 kB]
+2026-11-03T18:55:55.0029338Z #10 4.893 Get:87 http://archive.ubuntu.com/ubuntu noble/main amd64 libxrender-dev amd64 1:0.9.10-1.1build1 [26.3 kB]
+2026-11-03T18:55:55.0030581Z #10 4.894 Get:88 http://archive.ubuntu.com/ubuntu noble/main amd64 libcairo2-dev amd64 1.18.0-3build1 [41.1 kB]
+2026-11-03T18:55:55.0032322Z #10 4.894 Get:89 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl4-openssl-dev amd64 8.5.0-2ubuntu10.16 [447 kB]
+2026-11-03T18:55:55.0033009Z #10 4.897 Get:90 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libdeflate-dev amd64 1.19-1build1.1 [50.9 kB]
+2026-11-03T18:55:55.0033930Z #10 4.905 Get:91 http://archive.ubuntu.com/ubuntu noble/main amd64 libfontconfig1-dev amd64 2.15.0-1.1ubuntu2 [1840 B]
+2026-11-03T18:55:55.0035241Z #10 4.906 Get:92 http://archive.ubuntu.com/ubuntu noble/main amd64 libfribidi-dev amd64 1.0.13-3build1 [64.8 kB]
+2026-11-03T18:55:55.0036339Z #10 4.906 Get:93 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgraphite2-3 amd64 1.3.14-2ubuntu0.24.04.1 [73.4 kB]
+2026-11-03T18:55:55.0036955Z #10 4.919 Get:94 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgraphite2-dev amd64 1.3.14-2ubuntu0.24.04.1 [14.7 kB]
+2026-11-03T18:55:55.0037572Z #10 4.919 Get:95 http://archive.ubuntu.com/ubuntu noble/main amd64 libharfbuzz-cairo0 amd64 8.3.0-2build2 [26.2 kB]
+2026-11-03T18:55:55.0038126Z #10 4.920 Get:96 http://archive.ubuntu.com/ubuntu noble/main amd64 libharfbuzz-icu0 amd64 8.3.0-2build2 [13.3 kB]
+2026-11-03T18:55:55.0038650Z #10 4.920 Get:97 http://archive.ubuntu.com/ubuntu noble/main amd64 libharfbuzz-subset0 amd64 8.3.0-2build2 [448 kB]
+2026-11-03T18:55:55.0039204Z #10 4.922 Get:98 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libicu-dev amd64 74.2-1ubuntu3.1 [11.9 MB]
+2026-11-03T18:55:55.0039728Z #10 4.980 Get:99 http://archive.ubuntu.com/ubuntu noble/main amd64 libharfbuzz-dev amd64 8.3.0-2build2 [142 kB]
+2026-11-03T18:55:55.1116879Z #10 4.981 Get:100 http://archive.ubuntu.com/ubuntu noble/main amd64 libjpeg8-dev amd64 8c-2ubuntu11 [1484 B]
+2026-11-03T18:55:55.1117786Z #10 4.981 Get:101 http://archive.ubuntu.com/ubuntu noble/main amd64 libjpeg-dev amd64 8c-2ubuntu11 [1482 B]
+2026-11-03T18:55:55.1118686Z #10 4.981 Get:102 http://archive.ubuntu.com/ubuntu noble/main amd64 liblerc-dev amd64 4.0.0+ds-4ubuntu2 [182 kB]
+2026-11-03T18:55:55.1119575Z #10 5.010 Get:103 http://archive.ubuntu.com/ubuntu noble/main amd64 libsharpyuv-dev amd64 1.3.2-0.4build3 [16.0 kB]
+2026-11-03T18:55:55.1120508Z #10 5.036 Get:104 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsodium23 amd64 1.0.18-1ubuntu0.24.04.1 [161 kB]
+2026-11-03T18:55:55.1121500Z #10 5.040 Get:105 http://security.ubuntu.com/ubuntu noble-security/main amd64 libpcre2-16-0 amd64 10.42-4ubuntu2.2 [212 kB]
+2026-11-03T18:55:55.1122517Z #10 5.074 Get:106 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsodium-dev amd64 1.0.18-1ubuntu0.24.04.1 [185 kB]
+2026-11-03T18:55:55.1123491Z #10 5.089 Get:107 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libssl-dev amd64 3.0.13-0ubuntu3.16 [2409 kB]
+2026-11-03T18:55:55.2302878Z #10 5.096 Get:108 http://security.ubuntu.com/ubuntu noble-security/main amd64 libpcre2-32-0 amd64 10.42-4ubuntu2.2 [199 kB]
+2026-11-03T18:55:55.2303660Z #10 5.129 Get:109 http://archive.ubuntu.com/ubuntu noble/main amd64 libjbig-dev amd64 2.1-6.1ubuntu2 [27.9 kB]
+2026-11-03T18:55:55.2304255Z #10 5.130 Get:110 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 liblzma-dev amd64 5.6.1+really5.4.5-1ubuntu0.4 [176 kB]
+2026-11-03T18:55:55.2305124Z #10 5.131 Get:111 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libzstd-dev amd64 1.5.5+dfsg2-2build1.1 [364 kB]
+2026-11-03T18:55:55.2305731Z #10 5.133 Get:112 http://archive.ubuntu.com/ubuntu noble/main amd64 libwebpdemux2 amd64 1.3.2-0.4build3 [12.4 kB]
+2026-11-03T18:55:55.2306569Z #10 5.162 Get:113 http://archive.ubuntu.com/ubuntu noble/main amd64 libwebpmux3 amd64 1.3.2-0.4build3 [25.7 kB]
+2026-11-03T18:55:55.2307335Z #10 5.164 Get:114 http://security.ubuntu.com/ubuntu noble-security/main amd64 libpcre2-posix3 amd64 10.42-4ubuntu2.2 [6680 B]
+2026-11-03T18:55:55.2308121Z #10 5.166 Get:115 http://security.ubuntu.com/ubuntu noble-security/main amd64 libpcre2-dev amd64 10.42-4ubuntu2.2 [737 kB]
+2026-11-03T18:55:55.2309068Z #10 5.178 Get:116 http://archive.ubuntu.com/ubuntu noble/main amd64 libwebpdecoder3 amd64 1.3.2-0.4build3 [114 kB]
+2026-11-03T18:55:55.2309759Z #10 5.208 Get:117 http://archive.ubuntu.com/ubuntu noble/main amd64 libwebp-dev amd64 1.3.2-0.4build3 [367 kB]
+2026-11-03T18:55:55.4084173Z #10 5.234 Get:118 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libtiff6 amd64 4.5.1+git230720-4ubuntu2.5 [200 kB]
+2026-11-03T18:55:55.4085016Z #10 5.241 Get:119 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libtiffxx6 amd64 4.5.1+git230720-4ubuntu2.5 [5642 B]
+2026-11-03T18:55:55.4085674Z #10 5.241 Get:120 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libtiff-dev amd64 4.5.1+git230720-4ubuntu2.5 [338 kB]
+2026-11-03T18:55:55.4086280Z #10 5.248 Get:121 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libtiff-doc all 4.5.1+git230720-4ubuntu2.5 [563 kB]
+2026-11-03T18:55:55.4086911Z #10 5.256 Get:122 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 libtiff-opengl amd64 4.5.1+git230720-4ubuntu2.5 [10.4 kB]
+2026-11-03T18:55:55.4087568Z #10 5.257 Get:123 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 libtiff-tools amd64 4.5.1+git230720-4ubuntu2.5 [204 kB]
+2026-11-03T18:55:55.4088176Z #10 5.258 Get:124 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libxml2-dev amd64 2.9.14+dfsg-1.3ubuntu3.10 [781 kB]
+2026-11-03T18:55:55.4088762Z #10 5.267 Get:125 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 liblzma-doc all 5.6.1+really5.4.5-1ubuntu0.4 [100 kB]
+2026-11-03T18:55:55.4089274Z #10 5.386 debconf: delaying package configuration, since apt-utils is not installed
+2026-11-03T18:55:55.5465720Z #10 5.413 Fetched 60.2 MB in 1s (71.8 MB/s)
+2026-11-03T18:55:55.6796060Z #10 5.524 (Reading database ... 
+2026-11-03T18:55:55.6796457Z (Reading database ... 5%
+2026-11-03T18:55:55.6796692Z (Reading database ... 10%
+2026-11-03T18:55:55.6796884Z (Reading database ... 15%
+2026-11-03T18:55:55.6797065Z (Reading database ... 20%
+2026-11-03T18:55:55.6797265Z (Reading database ... 25%
+2026-11-03T18:55:55.6797442Z (Reading database ... 30%
+2026-11-03T18:55:55.6797624Z (Reading database ... 35%
+2026-11-03T18:55:55.6797797Z (Reading database ... 40%
+2026-11-03T18:55:55.6797964Z (Reading database ... 45%
+2026-11-03T18:55:55.6798136Z (Reading database ... 50%
+2026-11-03T18:55:55.6798312Z (Reading database ... 55%
+2026-11-03T18:55:55.6798481Z (Reading database ... 60%
+2026-11-03T18:55:55.6798645Z (Reading database ... 65%
+2026-11-03T18:55:55.6798817Z (Reading database ... 70%
+2026-11-03T18:55:55.6798985Z (Reading database ... 75%
+2026-11-03T18:55:55.6799162Z (Reading database ... 80%
+2026-11-03T18:55:55.6799339Z (Reading database ... 85%
+2026-11-03T18:55:55.6799508Z (Reading database ... 90%
+2026-11-03T18:55:55.6799675Z (Reading database ... 95%
+2026-11-03T18:55:55.6799844Z (Reading database ... 100%
+2026-11-03T18:55:55.6800105Z (Reading database ... 12394 files and directories currently installed.)
+2026-11-03T18:55:55.6800488Z #10 5.536 Preparing to unpack .../bsdutils_1%3a2.39.3-9ubuntu6.6_amd64.deb ...
+2026-11-03T18:55:55.6800863Z #10 5.538 Unpacking bsdutils (1:2.39.3-9ubuntu6.6) over (1:2.39.3-9ubuntu6.4) ...
+2026-11-03T18:55:55.6801185Z #10 5.574 Setting up bsdutils (1:2.39.3-9ubuntu6.6) ...
+2026-11-03T18:55:55.8424546Z #10 5.656 (Reading database ... 
+2026-11-03T18:55:55.8425124Z (Reading database ... 5%
+2026-11-03T18:55:55.8425415Z (Reading database ... 10%
+2026-11-03T18:55:55.8425602Z (Reading database ... 15%
+2026-11-03T18:55:55.8425781Z (Reading database ... 20%
+2026-11-03T18:55:55.8425956Z (Reading database ... 25%
+2026-11-03T18:55:55.8426973Z (Reading database ... 30%
+2026-11-03T18:55:55.8427165Z (Reading database ... 35%
+2026-11-03T18:55:55.8427347Z (Reading database ... 40%
+2026-11-03T18:55:55.8427530Z (Reading database ... 45%
+2026-11-03T18:55:55.8427702Z (Reading database ... 50%
+2026-11-03T18:55:55.8427869Z (Reading database ... 55%
+2026-11-03T18:55:55.8428049Z (Reading database ... 60%
+2026-11-03T18:55:55.8428221Z (Reading database ... 65%
+2026-11-03T18:55:55.8428532Z (Reading database ... 70%
+2026-11-03T18:55:55.8428711Z (Reading database ... 75%
+2026-11-03T18:55:55.8428884Z (Reading database ... 80%
+2026-11-03T18:55:55.8429059Z (Reading database ... 85%
+2026-11-03T18:55:55.8429231Z (Reading database ... 90%
+2026-11-03T18:55:55.8429402Z (Reading database ... 95%
+2026-11-03T18:55:55.8429574Z (Reading database ... 100%
+2026-11-03T18:55:55.8429836Z (Reading database ... 12394 files and directories currently installed.)
+2026-11-03T18:55:55.8430225Z #10 5.666 Preparing to unpack .../util-linux_2.39.3-9ubuntu6.6_amd64.deb ...
+2026-11-03T18:55:55.8430599Z #10 5.669 Unpacking util-linux (2.39.3-9ubuntu6.6) over (2.39.3-9ubuntu6.4) ...
+2026-11-03T18:55:56.0876039Z #10 6.065 Setting up util-linux (2.39.3-9ubuntu6.6) ...
+2026-11-03T18:55:56.4757837Z #10 6.256 (Reading database ... 
+2026-11-03T18:55:56.4758137Z (Reading database ... 5%
+2026-11-03T18:55:56.4758350Z (Reading database ... 10%
+2026-11-03T18:55:56.4758546Z (Reading database ... 15%
+2026-11-03T18:55:56.4758768Z (Reading database ... 20%
+2026-11-03T18:55:56.4758946Z (Reading database ... 25%
+2026-11-03T18:55:56.4759120Z (Reading database ... 30%
+2026-11-03T18:55:56.4759296Z (Reading database ... 35%
+2026-11-03T18:55:56.4759474Z (Reading database ... 40%
+2026-11-03T18:55:56.4759655Z (Reading database ... 45%
+2026-11-03T18:55:56.4759827Z (Reading database ... 50%
+2026-11-03T18:55:56.4760000Z (Reading database ... 55%
+2026-11-03T18:55:56.4760174Z (Reading database ... 60%
+2026-11-03T18:55:56.4760351Z (Reading database ... 65%
+2026-11-03T18:55:56.4760536Z (Reading database ... 70%
+2026-11-03T18:55:56.4760720Z (Reading database ... 75%
+2026-11-03T18:55:56.4760891Z (Reading database ... 80%
+2026-11-03T18:55:56.4761060Z (Reading database ... 85%
+2026-11-03T18:55:56.4761230Z (Reading database ... 90%
+2026-11-03T18:55:56.4761397Z (Reading database ... 95%
+2026-11-03T18:55:56.4761581Z (Reading database ... 100%
+2026-11-03T18:55:56.4761848Z (Reading database ... 12394 files and directories currently installed.)
+2026-11-03T18:55:56.4762214Z #10 6.266 Preparing to unpack .../mount_2.39.3-9ubuntu6.6_amd64.deb ...
+2026-11-03T18:55:56.4762562Z #10 6.268 Unpacking mount (2.39.3-9ubuntu6.6) over (2.39.3-9ubuntu6.4) ...
+2026-11-03T18:55:56.4762911Z #10 6.300 Preparing to unpack .../libssl3t64_3.0.13-0ubuntu3.16_amd64.deb ...
+2026-11-03T18:55:56.4763283Z #10 6.303 Unpacking libssl3t64:amd64 (3.0.13-0ubuntu3.16) over (3.0.13-0ubuntu3.7) ...
+2026-11-03T18:55:56.5242491Z #10 6.502 Setting up libssl3t64:amd64 (3.0.13-0ubuntu3.16) ...
+2026-11-03T18:55:56.7323574Z #10 6.520 Selecting previously unselected package libpython3.12-minimal:amd64.
+2026-11-03T18:55:56.7324063Z #10 6.520 (Reading database ... 
+2026-11-03T18:55:56.7324283Z (Reading database ... 5%
+2026-11-03T18:55:56.7324479Z (Reading database ... 10%
+2026-11-03T18:55:56.7324871Z (Reading database ... 15%
+2026-11-03T18:55:56.7325076Z (Reading database ... 20%
+2026-11-03T18:55:56.7325260Z (Reading database ... 25%
+2026-11-03T18:55:56.7325480Z (Reading database ... 30%
+2026-11-03T18:55:56.7325721Z (Reading database ... 35%
+2026-11-03T18:55:56.7325898Z (Reading database ... 40%
+2026-11-03T18:55:56.7326074Z (Reading database ... 45%
+2026-11-03T18:55:56.7326302Z (Reading database ... 50%
+2026-11-03T18:55:56.7326511Z (Reading database ... 55%
+2026-11-03T18:55:56.7326684Z (Reading database ... 60%
+2026-11-03T18:55:56.7326865Z (Reading database ... 65%
+2026-11-03T18:55:56.7327082Z (Reading database ... 70%
+2026-11-03T18:55:56.7327298Z (Reading database ... 75%
+2026-11-03T18:55:56.7327470Z (Reading database ... 80%
+2026-11-03T18:55:56.7327643Z (Reading database ... 85%
+2026-11-03T18:55:56.7328131Z (Reading database ... 90%
+2026-11-03T18:55:56.7328313Z (Reading database ... 95%
+2026-11-03T18:55:56.7328495Z (Reading database ... 100%
+2026-11-03T18:55:56.7328844Z (Reading database ... 12394 files and directories currently installed.)
+2026-11-03T18:55:56.7329250Z #10 6.530 Preparing to unpack .../libpython3.12-minimal_3.12.3-1ubuntu0.17_amd64.deb ...
+2026-11-03T18:55:56.7329945Z #10 6.531 Unpacking libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.17) ...
+2026-11-03T18:55:56.7330364Z #10 6.591 Preparing to unpack .../libexpat1_2.6.1-2ubuntu0.6_amd64.deb ...
+2026-11-03T18:55:56.7330733Z #10 6.593 Unpacking libexpat1:amd64 (2.6.1-2ubuntu0.6) over (2.6.1-2ubuntu0.4) ...
+2026-11-03T18:55:56.7331194Z #10 6.710 Preparing to unpack .../zlib1g_1%3a1.3.dfsg-3.1ubuntu2.3_amd64.deb ...
+2026-11-03T18:55:56.8475158Z #10 6.719 Unpacking zlib1g:amd64 (1:1.3.dfsg-3.1ubuntu2.3) over (1:1.3.dfsg-3.1ubuntu2.1) ...
+2026-11-03T18:55:56.8475812Z #10 6.740 Setting up zlib1g:amd64 (1:1.3.dfsg-3.1ubuntu2.3) ...
+2026-11-03T18:55:56.8476193Z #10 6.758 Selecting previously unselected package python3.12-minimal.
+2026-11-03T18:55:56.8476494Z #10 6.758 (Reading database ... 
+2026-11-03T18:55:56.8476746Z (Reading database ... 5%
+2026-11-03T18:55:56.8477013Z (Reading database ... 10%
+2026-11-03T18:55:56.8477199Z (Reading database ... 15%
+2026-11-03T18:55:56.8477382Z (Reading database ... 20%
+2026-11-03T18:55:56.8477579Z (Reading database ... 25%
+2026-11-03T18:55:56.8477756Z (Reading database ... 30%
+2026-11-03T18:55:56.8477925Z (Reading database ... 35%
+2026-11-03T18:55:56.8478095Z (Reading database ... 40%
+2026-11-03T18:55:56.8478265Z (Reading database ... 45%
+2026-11-03T18:55:56.8478440Z (Reading database ... 50%
+2026-11-03T18:55:56.8478618Z (Reading database ... 55%
+2026-11-03T18:55:56.8478796Z (Reading database ... 60%
+2026-11-03T18:55:56.8478971Z (Reading database ... 65%
+2026-11-03T18:55:56.8479140Z (Reading database ... 70%
+2026-11-03T18:55:56.8479314Z (Reading database ... 75%
+2026-11-03T18:55:56.8479486Z (Reading database ... 80%
+2026-11-03T18:55:56.8479670Z (Reading database ... 85%
+2026-11-03T18:55:56.8479916Z (Reading database ... 90%
+2026-11-03T18:55:56.8480178Z (Reading database ... 95%
+2026-11-03T18:55:56.8480355Z (Reading database ... 100%
+2026-11-03T18:55:56.8480614Z (Reading database ... 12692 files and directories currently installed.)
+2026-11-03T18:55:56.8480991Z #10 6.768 Preparing to unpack .../python3.12-minimal_3.12.3-1ubuntu0.17_amd64.deb ...
+2026-11-03T18:55:56.8481359Z #10 6.782 Unpacking python3.12-minimal (3.12.3-1ubuntu0.17) ...
+2026-11-03T18:55:56.8481801Z #10 6.825 Setting up libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.17) ...
+2026-11-03T18:55:57.0028769Z #10 6.828 Setting up libexpat1:amd64 (2.6.1-2ubuntu0.6) ...
+2026-11-03T18:55:57.0029322Z #10 6.830 Setting up python3.12-minimal (3.12.3-1ubuntu0.17) ...
+2026-11-03T18:55:57.4433834Z #10 7.421 Selecting previously unselected package python3-minimal.
+2026-11-03T18:55:57.5499689Z #10 7.421 (Reading database ... 
+2026-11-03T18:55:57.5500268Z (Reading database ... 5%
+2026-11-03T18:55:57.5500723Z (Reading database ... 10%
+2026-11-03T18:55:57.5501014Z (Reading database ... 15%
+2026-11-03T18:55:57.5501282Z (Reading database ... 20%
+2026-11-03T18:55:57.5501544Z (Reading database ... 25%
+2026-11-03T18:55:57.5501803Z (Reading database ... 30%
+2026-11-03T18:55:57.5501984Z (Reading database ... 35%
+2026-11-03T18:55:57.5502175Z (Reading database ... 40%
+2026-11-03T18:55:57.5502376Z (Reading database ... 45%
+2026-11-03T18:55:57.5502561Z (Reading database ... 50%
+2026-11-03T18:55:57.5502735Z (Reading database ... 55%
+2026-11-03T18:55:57.5502913Z (Reading database ... 60%
+2026-11-03T18:55:57.5503092Z (Reading database ... 65%
+2026-11-03T18:55:57.5503278Z (Reading database ... 70%
+2026-11-03T18:55:57.5503447Z (Reading database ... 75%
+2026-11-03T18:55:57.5503619Z (Reading database ... 80%
+2026-11-03T18:55:57.5503789Z (Reading database ... 85%
+2026-11-03T18:55:57.5503965Z (Reading database ... 90%
+2026-11-03T18:55:57.5504142Z (Reading database ... 95%
+2026-11-03T18:55:57.5504573Z (Reading database ... 100%
+2026-11-03T18:55:57.5505053Z (Reading database ... 12703 files and directories currently installed.)
+2026-11-03T18:55:57.5505467Z #10 7.431 Preparing to unpack .../python3-minimal_3.12.3-0ubuntu2.1_amd64.deb ...
+2026-11-03T18:55:57.5505814Z #10 7.432 Unpacking python3-minimal (3.12.3-0ubuntu2.1) ...
+2026-11-03T18:55:57.5506113Z #10 7.446 Selecting previously unselected package media-types.
+2026-11-03T18:55:57.5506567Z #10 7.450 Preparing to unpack .../media-types_10.1.0_all.deb ...
+2026-11-03T18:55:57.5506838Z #10 7.451 Unpacking media-types (10.1.0) ...
+2026-11-03T18:55:57.5507092Z #10 7.464 Selecting previously unselected package netbase.
+2026-11-03T18:55:57.5507387Z #10 7.467 Preparing to unpack .../archives/netbase_6.4_all.deb ...
+2026-11-03T18:55:57.5507650Z #10 7.468 Unpacking netbase (6.4) ...
+2026-11-03T18:55:57.5507921Z #10 7.485 Preparing to unpack .../libbz2-1.0_1.0.8-5.1ubuntu0.1_amd64.deb ...
+2026-11-03T18:55:57.5508297Z #10 7.487 Unpacking libbz2-1.0:amd64 (1.0.8-5.1ubuntu0.1) over (1.0.8-5.1build0.1) ...
+2026-11-03T18:55:57.5508659Z #10 7.510 Setting up libbz2-1.0:amd64 (1.0.8-5.1ubuntu0.1) ...
+2026-11-03T18:55:57.6545845Z #10 7.527 (Reading database ... 
+2026-11-03T18:55:57.6546394Z (Reading database ... 5%
+2026-11-03T18:55:57.6546840Z (Reading database ... 10%
+2026-11-03T18:55:57.6547196Z (Reading database ... 15%
+2026-11-03T18:55:57.6547477Z (Reading database ... 20%
+2026-11-03T18:55:57.6547792Z (Reading database ... 25%
+2026-11-03T18:55:57.6548056Z (Reading database ... 30%
+2026-11-03T18:55:57.6548314Z (Reading database ... 35%
+2026-11-03T18:55:57.6548574Z (Reading database ... 40%
+2026-11-03T18:55:57.6548831Z (Reading database ... 45%
+2026-11-03T18:55:57.6549099Z (Reading database ... 50%
+2026-11-03T18:55:57.6549353Z (Reading database ... 55%
+2026-11-03T18:55:57.6549607Z (Reading database ... 60%
+2026-11-03T18:55:57.6549866Z (Reading database ... 65%
+2026-11-03T18:55:57.6550128Z (Reading database ... 70%
+2026-11-03T18:55:57.6550387Z (Reading database ... 75%
+2026-11-03T18:55:57.6550654Z (Reading database ... 80%
+2026-11-03T18:55:57.6550909Z (Reading database ... 85%
+2026-11-03T18:55:57.6551160Z (Reading database ... 90%
+2026-11-03T18:55:57.6551413Z (Reading database ... 95%
+2026-11-03T18:55:57.6551678Z (Reading database ... 100%
+2026-11-03T18:55:57.6552073Z (Reading database ... 12732 files and directories currently installed.)
+2026-11-03T18:55:57.6552667Z #10 7.538 Preparing to unpack .../liblzma5_5.6.1+really5.4.5-1ubuntu0.4_amd64.deb ...
+2026-11-03T18:55:57.6553344Z #10 7.544 Unpacking liblzma5:amd64 (5.6.1+really5.4.5-1ubuntu0.4) over (5.6.1+really5.4.5-1ubuntu0.2) ...
+2026-11-03T18:55:57.6553953Z #10 7.566 Setting up liblzma5:amd64 (5.6.1+really5.4.5-1ubuntu0.4) ...
+2026-11-03T18:55:57.6554455Z #10 7.584 Selecting previously unselected package libsqlite3-0:amd64.
+2026-11-03T18:55:57.6555036Z #10 7.584 (Reading database ... 
+2026-11-03T18:55:57.6555318Z (Reading database ... 5%
+2026-11-03T18:55:57.6555582Z (Reading database ... 10%
+2026-11-03T18:55:57.6555854Z (Reading database ... 15%
+2026-11-03T18:55:57.6556115Z (Reading database ... 20%
+2026-11-03T18:55:57.6556363Z (Reading database ... 25%
+2026-11-03T18:55:57.6556618Z (Reading database ... 30%
+2026-11-03T18:55:57.6556870Z (Reading database ... 35%
+2026-11-03T18:55:57.6557125Z (Reading database ... 40%
+2026-11-03T18:55:57.6557380Z (Reading database ... 45%
+2026-11-03T18:55:57.6557635Z (Reading database ... 50%
+2026-11-03T18:55:57.6557896Z (Reading database ... 55%
+2026-11-03T18:55:57.6558148Z (Reading database ... 60%
+2026-11-03T18:55:57.6558399Z (Reading database ... 65%
+2026-11-03T18:55:57.6558655Z (Reading database ... 70%
+2026-11-03T18:55:57.6558907Z (Reading database ... 75%
+2026-11-03T18:55:57.6559170Z (Reading database ... 80%
+2026-11-03T18:55:57.6559427Z (Reading database ... 85%
+2026-11-03T18:55:57.6559680Z (Reading database ... 90%
+2026-11-03T18:55:57.6559933Z (Reading database ... 95%
+2026-11-03T18:55:57.6560191Z (Reading database ... 100%
+2026-11-03T18:55:57.6560852Z (Reading database ... 12732 files and directories currently installed.)
+2026-11-03T18:55:57.6561400Z #10 7.595 Preparing to unpack .../libsqlite3-0_3.45.1-1ubuntu2.8_amd64.deb ...
+2026-11-03T18:55:57.6561890Z #10 7.613 Unpacking libsqlite3-0:amd64 (3.45.1-1ubuntu2.8) ...
+2026-11-03T18:55:57.6562393Z #10 7.632 Selecting previously unselected package libpython3.12-stdlib:amd64.
+2026-11-03T18:55:57.7552567Z #10 7.636 Preparing to unpack .../libpython3.12-stdlib_3.12.3-1ubuntu0.17_amd64.deb ...
+2026-11-03T18:55:57.7553508Z #10 7.637 Unpacking libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.17) ...
+2026-11-03T18:55:57.7553966Z #10 7.713 Selecting previously unselected package python3.12.
+2026-11-03T18:55:57.7554416Z #10 7.717 Preparing to unpack .../python3.12_3.12.3-1ubuntu0.17_amd64.deb ...
+2026-11-03T18:55:57.7555019Z #10 7.717 Unpacking python3.12 (3.12.3-1ubuntu0.17) ...
+2026-11-03T18:55:57.7555451Z #10 7.733 Selecting previously unselected package libpython3-stdlib:amd64.
+2026-11-03T18:55:57.8983379Z #10 7.736 Preparing to unpack .../libpython3-stdlib_3.12.3-0ubuntu2.1_amd64.deb ...
+2026-11-03T18:55:57.8984199Z #10 7.737 Unpacking libpython3-stdlib:amd64 (3.12.3-0ubuntu2.1) ...
+2026-11-03T18:55:57.8985012Z #10 7.756 Setting up python3-minimal (3.12.3-0ubuntu2.1) ...
+2026-11-03T18:55:57.8985371Z #10 7.876 Selecting previously unselected package python3.
+2026-11-03T18:55:58.0224288Z #10 7.876 (Reading database ... 
+2026-11-03T18:55:58.0224604Z (Reading database ... 5%
+2026-11-03T18:55:58.0225001Z (Reading database ... 10%
+2026-11-03T18:55:58.0225285Z (Reading database ... 15%
+2026-11-03T18:55:58.0225558Z (Reading database ... 20%
+2026-11-03T18:55:58.0225763Z (Reading database ... 25%
+2026-11-03T18:55:58.0225945Z (Reading database ... 30%
+2026-11-03T18:55:58.0226118Z (Reading database ... 35%
+2026-11-03T18:55:58.0226294Z (Reading database ... 40%
+2026-11-03T18:55:58.0226477Z (Reading database ... 45%
+2026-11-03T18:55:58.0226648Z (Reading database ... 50%
+2026-11-03T18:55:58.0226821Z (Reading database ... 55%
+2026-11-03T18:55:58.0226992Z (Reading database ... 60%
+2026-11-03T18:55:58.0227178Z (Reading database ... 65%
+2026-11-03T18:55:58.0227349Z (Reading database ... 70%
+2026-11-03T18:55:58.0227533Z (Reading database ... 75%
+2026-11-03T18:55:58.0227708Z (Reading database ... 80%
+2026-11-03T18:55:58.0227886Z (Reading database ... 85%
+2026-11-03T18:55:58.0228055Z (Reading database ... 90%
+2026-11-03T18:55:58.0228226Z (Reading database ... 95%
+2026-11-03T18:55:58.0228411Z (Reading database ... 100%
+2026-11-03T18:55:58.0228673Z (Reading database ... 13145 files and directories currently installed.)
+2026-11-03T18:55:58.0229038Z #10 7.887 Preparing to unpack .../python3_3.12.3-0ubuntu2.1_amd64.deb ...
+2026-11-03T18:55:58.0229340Z #10 7.891 Unpacking python3 (3.12.3-0ubuntu2.1) ...
+2026-11-03T18:55:58.0229639Z #10 8.000 Preparing to unpack .../libblkid1_2.39.3-9ubuntu6.6_amd64.deb ...
+2026-11-03T18:55:58.1360679Z #10 8.002 Unpacking libblkid1:amd64 (2.39.3-9ubuntu6.6) over (2.39.3-9ubuntu6.4) ...
+2026-11-03T18:55:58.1361121Z #10 8.056 Setting up libblkid1:amd64 (2.39.3-9ubuntu6.6) ...
+2026-11-03T18:55:58.1361405Z #10 8.076 (Reading database ... 
+2026-11-03T18:55:58.1361612Z (Reading database ... 5%
+2026-11-03T18:55:58.1361798Z (Reading database ... 10%
+2026-11-03T18:55:58.1361988Z (Reading database ... 15%
+2026-11-03T18:55:58.1362163Z (Reading database ... 20%
+2026-11-03T18:55:58.1362334Z (Reading database ... 25%
+2026-11-03T18:55:58.1362504Z (Reading database ... 30%
+2026-11-03T18:55:58.1362685Z (Reading database ... 35%
+2026-11-03T18:55:58.1362859Z (Reading database ... 40%
+2026-11-03T18:55:58.1363036Z (Reading database ... 45%
+2026-11-03T18:55:58.1363207Z (Reading database ... 50%
+2026-11-03T18:55:58.1363375Z (Reading database ... 55%
+2026-11-03T18:55:58.1363545Z (Reading database ... 60%
+2026-11-03T18:55:58.1363717Z (Reading database ... 65%
+2026-11-03T18:55:58.1363890Z (Reading database ... 70%
+2026-11-03T18:55:58.1364061Z (Reading database ... 75%
+2026-11-03T18:55:58.1364232Z (Reading database ... 80%
+2026-11-03T18:55:58.1364401Z (Reading database ... 85%
+2026-11-03T18:55:58.1365043Z (Reading database ... 90%
+2026-11-03T18:55:58.1365226Z (Reading database ... 95%
+2026-11-03T18:55:58.1365416Z (Reading database ... 100%
+2026-11-03T18:55:58.1365676Z (Reading database ... 13166 files and directories currently installed.)
+2026-11-03T18:55:58.1366045Z #10 8.087 Preparing to unpack .../libmount1_2.39.3-9ubuntu6.6_amd64.deb ...
+2026-11-03T18:55:58.1366573Z #10 8.089 Unpacking libmount1:amd64 (2.39.3-9ubuntu6.6) over (2.39.3-9ubuntu6.4) ...
+2026-11-03T18:55:58.1366911Z #10 8.114 Setting up libmount1:amd64 (2.39.3-9ubuntu6.6) ...
+2026-11-03T18:55:58.2731796Z #10 8.149 (Reading database ... 
+2026-11-03T18:55:58.2732198Z (Reading database ... 5%
+2026-11-03T18:55:58.2732454Z (Reading database ... 10%
+2026-11-03T18:55:58.2732703Z (Reading database ... 15%
+2026-11-03T18:55:58.2732958Z (Reading database ... 20%
+2026-11-03T18:55:58.2733202Z (Reading database ... 25%
+2026-11-03T18:55:58.2733450Z (Reading database ... 30%
+2026-11-03T18:55:58.2733686Z (Reading database ... 35%
+2026-11-03T18:55:58.2733976Z (Reading database ... 40%
+2026-11-03T18:55:58.2734237Z (Reading database ... 45%
+2026-11-03T18:55:58.2734500Z (Reading database ... 50%
+2026-11-03T18:55:58.2734969Z (Reading database ... 55%
+2026-11-03T18:55:58.2735236Z (Reading database ... 60%
+2026-11-03T18:55:58.2735495Z (Reading database ... 65%
+2026-11-03T18:55:58.2735727Z (Reading database ... 70%
+2026-11-03T18:55:58.2735995Z (Reading database ... 75%
+2026-11-03T18:55:58.2736250Z (Reading database ... 80%
+2026-11-03T18:55:58.2736513Z (Reading database ... 85%
+2026-11-03T18:55:58.2736769Z (Reading database ... 90%
+2026-11-03T18:55:58.2737001Z (Reading database ... 95%
+2026-11-03T18:55:58.2737257Z (Reading database ... 100%
+2026-11-03T18:55:58.2737640Z (Reading database ... 13166 files and directories currently installed.)
+2026-11-03T18:55:58.2738200Z #10 8.159 Preparing to unpack .../libpcre2-8-0_10.42-4ubuntu2.2_amd64.deb ...
+2026-11-03T18:55:58.2738775Z #10 8.179 Unpacking libpcre2-8-0:amd64 (10.42-4ubuntu2.2) over (10.42-4ubuntu2.1) ...
+2026-11-03T18:55:58.2739295Z #10 8.207 Setting up libpcre2-8-0:amd64 (10.42-4ubuntu2.2) ...
+2026-11-03T18:55:58.3859749Z #10 8.251 (Reading database ... 
+2026-11-03T18:55:58.3860140Z (Reading database ... 5%
+2026-11-03T18:55:58.3860386Z (Reading database ... 10%
+2026-11-03T18:55:58.3860578Z (Reading database ... 15%
+2026-11-03T18:55:58.3860755Z (Reading database ... 20%
+2026-11-03T18:55:58.3860969Z (Reading database ... 25%
+2026-11-03T18:55:58.3861147Z (Reading database ... 30%
+2026-11-03T18:55:58.3861331Z (Reading database ... 35%
+2026-11-03T18:55:58.3861507Z (Reading database ... 40%
+2026-11-03T18:55:58.3861698Z (Reading database ... 45%
+2026-11-03T18:55:58.3861890Z (Reading database ... 50%
+2026-11-03T18:55:58.3862064Z (Reading database ... 55%
+2026-11-03T18:55:58.3862237Z (Reading database ... 60%
+2026-11-03T18:55:58.3862407Z (Reading database ... 65%
+2026-11-03T18:55:58.3862579Z (Reading database ... 70%
+2026-11-03T18:55:58.3862752Z (Reading database ... 75%
+2026-11-03T18:55:58.3862930Z (Reading database ... 80%
+2026-11-03T18:55:58.3863098Z (Reading database ... 85%
+2026-11-03T18:55:58.3863271Z (Reading database ... 90%
+2026-11-03T18:55:58.3863443Z (Reading database ... 95%
+2026-11-03T18:55:58.3863617Z (Reading database ... 100%
+2026-11-03T18:55:58.3863884Z (Reading database ... 13166 files and directories currently installed.)
+2026-11-03T18:55:58.3864273Z #10 8.262 Preparing to unpack .../libsmartcols1_2.39.3-9ubuntu6.6_amd64.deb ...
+2026-11-03T18:55:58.3864678Z #10 8.264 Unpacking libsmartcols1:amd64 (2.39.3-9ubuntu6.6) over (2.39.3-9ubuntu6.4) ...
+2026-11-03T18:55:58.3865367Z #10 8.286 Setting up libsmartcols1:amd64 (2.39.3-9ubuntu6.6) ...
+2026-11-03T18:55:58.3865633Z #10 8.304 (Reading database ... 
+2026-11-03T18:55:58.3865826Z (Reading database ... 5%
+2026-11-03T18:55:58.3866005Z (Reading database ... 10%
+2026-11-03T18:55:58.3866184Z (Reading database ... 15%
+2026-11-03T18:55:58.3866356Z (Reading database ... 20%
+2026-11-03T18:55:58.3866536Z (Reading database ... 25%
+2026-11-03T18:55:58.3866950Z (Reading database ... 30%
+2026-11-03T18:55:58.3867128Z (Reading database ... 35%
+2026-11-03T18:55:58.3867297Z (Reading database ... 40%
+2026-11-03T18:55:58.3867470Z (Reading database ... 45%
+2026-11-03T18:55:58.3867643Z (Reading database ... 50%
+2026-11-03T18:55:58.3867815Z (Reading database ... 55%
+2026-11-03T18:55:58.3867985Z (Reading database ... 60%
+2026-11-03T18:55:58.3868157Z (Reading database ... 65%
+2026-11-03T18:55:58.3868472Z (Reading database ... 70%
+2026-11-03T18:55:58.3868645Z (Reading database ... 75%
+2026-11-03T18:55:58.3868819Z (Reading database ... 80%
+2026-11-03T18:55:58.3868993Z (Reading database ... 85%
+2026-11-03T18:55:58.3869158Z (Reading database ... 90%
+2026-11-03T18:55:58.3869329Z (Reading database ... 95%
+2026-11-03T18:55:58.3869502Z (Reading database ... 100%
+2026-11-03T18:55:58.3869757Z (Reading database ... 13166 files and directories currently installed.)
+2026-11-03T18:55:58.3870103Z #10 8.315 Preparing to unpack .../libuuid1_2.39.3-9ubuntu6.6_amd64.deb ...
+2026-11-03T18:55:58.3870483Z #10 8.317 Unpacking libuuid1:amd64 (2.39.3-9ubuntu6.6) over (2.39.3-9ubuntu6.4) ...
+2026-11-03T18:55:58.3870829Z #10 8.339 Setting up libuuid1:amd64 (2.39.3-9ubuntu6.6) ...
+2026-11-03T18:55:58.4901596Z #10 8.363 (Reading database ... 
+2026-11-03T18:55:58.4901965Z (Reading database ... 5%
+2026-11-03T18:55:58.4902166Z (Reading database ... 10%
+2026-11-03T18:55:58.4902361Z (Reading database ... 15%
+2026-11-03T18:55:58.4902572Z (Reading database ... 20%
+2026-11-03T18:55:58.4902745Z (Reading database ... 25%
+2026-11-03T18:55:58.4902924Z (Reading database ... 30%
+2026-11-03T18:55:58.4903095Z (Reading database ... 35%
+2026-11-03T18:55:58.4903267Z (Reading database ... 40%
+2026-11-03T18:55:58.4903442Z (Reading database ... 45%
+2026-11-03T18:55:58.4903621Z (Reading database ... 50%
+2026-11-03T18:55:58.4903800Z (Reading database ... 55%
+2026-11-03T18:55:58.4903994Z (Reading database ... 60%
+2026-11-03T18:55:58.4904170Z (Reading database ... 65%
+2026-11-03T18:55:58.4904342Z (Reading database ... 70%
+2026-11-03T18:55:58.4904576Z (Reading database ... 75%
+2026-11-03T18:55:58.4905057Z (Reading database ... 80%
+2026-11-03T18:55:58.4905227Z (Reading database ... 85%
+2026-11-03T18:55:58.4905396Z (Reading database ... 90%
+2026-11-03T18:55:58.4905565Z (Reading database ... 95%
+2026-11-03T18:55:58.4905745Z (Reading database ... 100%
+2026-11-03T18:55:58.4906012Z (Reading database ... 13166 files and directories currently installed.)
+2026-11-03T18:55:58.4906419Z #10 8.375 Preparing to unpack .../000-libglib2.0-0t64_2.80.0-6ubuntu3.10_amd64.deb ...
+2026-11-03T18:55:58.4906849Z #10 8.379 Unpacking libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.8) ...
+2026-11-03T18:55:58.4907233Z #10 8.468 Selecting previously unselected package gir1.2-glib-2.0:amd64.
+2026-11-03T18:55:58.6222720Z #10 8.471 Preparing to unpack .../001-gir1.2-glib-2.0_2.80.0-6ubuntu3.10_amd64.deb ...
+2026-11-03T18:55:58.6223626Z #10 8.472 Unpacking gir1.2-glib-2.0:amd64 (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:55:58.6224255Z #10 8.491 Preparing to unpack .../002-libglib2.0-data_2.80.0-6ubuntu3.10_all.deb ...
+2026-11-03T18:55:58.6225727Z #10 8.493 Unpacking libglib2.0-data (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.8) ...
+2026-11-03T18:55:58.6226211Z #10 8.511 Preparing to unpack .../003-libxml2_2.9.14+dfsg-1.3ubuntu3.10_amd64.deb ...
+2026-11-03T18:55:58.6226739Z #10 8.513 Unpacking libxml2:amd64 (2.9.14+dfsg-1.3ubuntu3.10) over (2.9.14+dfsg-1.3ubuntu3.7) ...
+2026-11-03T18:55:58.6227433Z #10 8.555 Preparing to unpack .../004-openssl_3.0.13-0ubuntu3.16_amd64.deb ...
+2026-11-03T18:55:58.6227865Z #10 8.557 Unpacking openssl (3.0.13-0ubuntu3.16) over (3.0.13-0ubuntu3.7) ...
+2026-11-03T18:55:58.6228243Z #10 8.600 Preparing to unpack .../005-libpng16-16t64_1.6.43-5ubuntu0.7_amd64.deb ...
+2026-11-03T18:55:58.8671527Z #10 8.601 Unpacking libpng16-16t64:amd64 (1.6.43-5ubuntu0.7) over (1.6.43-5ubuntu0.5) ...
+2026-11-03T18:55:58.8671971Z #10 8.620 Selecting previously unselected package libuv1t64:amd64.
+2026-11-03T18:55:58.8672680Z #10 8.624 Preparing to unpack .../006-libuv1t64_1.48.0-1.1build1_amd64.deb ...
+2026-11-03T18:55:58.8673016Z #10 8.625 Unpacking libuv1t64:amd64 (1.48.0-1.1build1) ...
+2026-11-03T18:55:58.8673338Z #10 8.642 Preparing to unpack .../007-libx11-6_2%3a1.8.7-1ubuntu0.1_amd64.deb ...
+2026-11-03T18:55:58.8673710Z #10 8.659 Unpacking libx11-6:amd64 (2:1.8.7-1ubuntu0.1) over (2:1.8.7-1build1) ...
+2026-11-03T18:55:58.8674085Z #10 8.692 Preparing to unpack .../008-libx11-xcb1_2%3a1.8.7-1ubuntu0.1_amd64.deb ...
+2026-11-03T18:55:58.8674632Z #10 8.694 Unpacking libx11-xcb1:amd64 (2:1.8.7-1ubuntu0.1) over (2:1.8.7-1build1) ...
+2026-11-03T18:55:59.1291603Z #10 9.107 Preparing to unpack .../009-libx11-data_2%3a1.8.7-1ubuntu0.1_all.deb ...
+2026-11-03T18:55:59.2809891Z #10 9.108 Unpacking libx11-data (2:1.8.7-1ubuntu0.1) over (2:1.8.7-1build1) ...
+2026-11-03T18:55:59.2870608Z #10 9.265 Selecting previously unselected package libarchive13t64:amd64.
+2026-11-03T18:55:59.4180472Z #10 9.268 Preparing to unpack .../010-libarchive13t64_3.7.2-2ubuntu0.9_amd64.deb ...
+2026-11-03T18:55:59.4180937Z #10 9.269 Unpacking libarchive13t64:amd64 (3.7.2-2ubuntu0.9) ...
+2026-11-03T18:55:59.4181482Z #10 9.304 Preparing to unpack .../011-libbrotli1_1.1.0-2ubuntu0.1_amd64.deb ...
+2026-11-03T18:55:59.4182151Z #10 9.306 Unpacking libbrotli1:amd64 (1.1.0-2ubuntu0.1) over (1.1.0-2build2) ...
+2026-11-03T18:55:59.4182766Z #10 9.333 Preparing to unpack .../012-libcurl4t64_8.5.0-2ubuntu10.16_amd64.deb ...
+2026-11-03T18:55:59.4183376Z #10 9.334 Unpacking libcurl4t64:amd64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.7) ...
+2026-11-03T18:55:59.4183948Z #10 9.395 Selecting previously unselected package libjsoncpp25:amd64.
+2026-11-03T18:55:59.6132574Z #10 9.399 Preparing to unpack .../013-libjsoncpp25_1.9.5-6build1_amd64.deb ...
+2026-11-03T18:55:59.6133101Z #10 9.400 Unpacking libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-11-03T18:55:59.6133426Z #10 9.414 Selecting previously unselected package librhash0:amd64.
+2026-11-03T18:55:59.6133782Z #10 9.417 Preparing to unpack .../014-librhash0_1.4.3-3build1_amd64.deb ...
+2026-11-03T18:55:59.6134112Z #10 9.418 Unpacking librhash0:amd64 (1.4.3-3build1) ...
+2026-11-03T18:55:59.6134926Z #10 9.432 Selecting previously unselected package cmake-data.
+2026-11-03T18:55:59.6150227Z #10 9.436 Preparing to unpack .../015-cmake-data_3.28.3-1build7_all.deb ...
+2026-11-03T18:55:59.6150572Z #10 9.440 Unpacking cmake-data (3.28.3-1build7) ...
+2026-11-03T18:56:00.6010606Z #10 10.58 Selecting previously unselected package cmake.
+2026-11-03T18:56:00.7137934Z #10 10.58 Preparing to unpack .../016-cmake_3.28.3-1build7_amd64.deb ...
+2026-11-03T18:56:00.7138704Z #10 10.69 Unpacking cmake (3.28.3-1build7) ...
+2026-11-03T18:56:01.2477686Z #10 11.23 Selecting previously unselected package libcairo-gobject2:amd64.
+2026-11-03T18:56:01.4284654Z #10 11.23 Preparing to unpack .../017-libcairo-gobject2_1.18.0-3build1_amd64.deb ...
+2026-11-03T18:56:01.4285295Z #10 11.26 Unpacking libcairo-gobject2:amd64 (1.18.0-3build1) ...
+2026-11-03T18:56:02.1738049Z #10 12.15 Selecting previously unselected package gir1.2-freedesktop:amd64.
+2026-11-03T18:56:02.2877238Z #10 12.15 Preparing to unpack .../018-gir1.2-freedesktop_1.80.1-1_amd64.deb ...
+2026-11-03T18:56:02.2877980Z #10 12.26 Unpacking gir1.2-freedesktop:amd64 (1.80.1-1) ...
+2026-11-03T18:56:03.2766512Z #10 13.25 Selecting previously unselected package gir1.2-glib-2.0-dev:amd64.
+2026-11-03T18:56:03.4176517Z #10 13.26 Preparing to unpack .../019-gir1.2-glib-2.0-dev_2.80.0-6ubuntu3.10_amd64.deb ...
+2026-11-03T18:56:03.4177330Z #10 13.39 Unpacking gir1.2-glib-2.0-dev:amd64 (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:56:03.9158620Z #10 13.89 Selecting previously unselected package gir1.2-freedesktop-dev:amd64.
+2026-11-03T18:56:04.0682284Z #10 13.90 Preparing to unpack .../020-gir1.2-freedesktop-dev_1.80.1-1_amd64.deb ...
+2026-11-03T18:56:04.0683076Z #10 13.90 Unpacking gir1.2-freedesktop-dev:amd64 (1.80.1-1) ...
+2026-11-03T18:56:04.0684139Z #10 14.05 Selecting previously unselected package libharfbuzz-gobject0:amd64.
+2026-11-03T18:56:04.2098475Z #10 14.05 Preparing to unpack .../021-libharfbuzz-gobject0_8.3.0-2build2_amd64.deb ...
+2026-11-03T18:56:04.2099708Z #10 14.19 Unpacking libharfbuzz-gobject0:amd64 (8.3.0-2build2) ...
+2026-11-03T18:56:04.3111817Z #10 14.29 Selecting previously unselected package gir1.2-harfbuzz-0.0:amd64.
+2026-11-03T18:56:04.3112368Z #10 14.29 Preparing to unpack .../022-gir1.2-harfbuzz-0.0_8.3.0-2build2_amd64.deb ...
+2026-11-03T18:56:04.4305841Z #10 14.29 Unpacking gir1.2-harfbuzz-0.0:amd64 (8.3.0-2build2) ...
+2026-11-03T18:56:04.4306419Z #10 14.41 Selecting previously unselected package icu-devtools.
+2026-11-03T18:56:04.5722408Z #10 14.41 Preparing to unpack .../023-icu-devtools_74.2-1ubuntu3.1_amd64.deb ...
+2026-11-03T18:56:04.5722989Z #10 14.46 Unpacking icu-devtools (74.2-1ubuntu3.1) ...
+2026-11-03T18:56:04.5723470Z #10 14.55 Selecting previously unselected package libbrotli-dev:amd64.
+2026-11-03T18:56:04.7376401Z #10 14.55 Preparing to unpack .../024-libbrotli-dev_1.1.0-2ubuntu0.1_amd64.deb ...
+2026-11-03T18:56:04.7376862Z #10 14.56 Unpacking libbrotli-dev:amd64 (1.1.0-2ubuntu0.1) ...
+2026-11-03T18:56:04.7428479Z #10 14.72 Selecting previously unselected package libbz2-dev:amd64.
+2026-11-03T18:56:04.9024191Z #10 14.72 Preparing to unpack .../025-libbz2-dev_1.0.8-5.1ubuntu0.1_amd64.deb ...
+2026-11-03T18:56:05.3597465Z #10 14.73 Unpacking libbz2-dev:amd64 (1.0.8-5.1ubuntu0.1) ...
+2026-11-03T18:56:05.3597957Z #10 15.34 Preparing to unpack .../026-libfreetype6_2.13.2+dfsg-1ubuntu0.2_amd64.deb ...
+2026-11-03T18:56:05.4641146Z #10 15.34 Unpacking libfreetype6:amd64 (2.13.2+dfsg-1ubuntu0.2) over (2.13.2+dfsg-1build3) ...
+2026-11-03T18:56:05.4641817Z #10 15.36 Selecting previously unselected package liblzo2-2:amd64.
+2026-11-03T18:56:05.4642342Z #10 15.37 Preparing to unpack .../027-liblzo2-2_2.10-2build4_amd64.deb ...
+2026-11-03T18:56:05.4642808Z #10 15.37 Unpacking liblzo2-2:amd64 (2.10-2build4) ...
+2026-11-03T18:56:05.4643325Z #10 15.38 Selecting previously unselected package libcairo-script-interpreter2:amd64.
+2026-11-03T18:56:05.4644041Z #10 15.38 Preparing to unpack .../028-libcairo-script-interpreter2_1.18.0-3build1_amd64.deb ...
+2026-11-03T18:56:05.4644661Z #10 15.39 Unpacking libcairo-script-interpreter2:amd64 (1.18.0-3build1) ...
+2026-11-03T18:56:05.4645443Z #10 15.41 Selecting previously unselected package libexpat1-dev:amd64.
+2026-11-03T18:56:05.4645971Z #10 15.41 Preparing to unpack .../029-libexpat1-dev_2.6.1-2ubuntu0.6_amd64.deb ...
+2026-11-03T18:56:05.4646478Z #10 15.41 Unpacking libexpat1-dev:amd64 (2.6.1-2ubuntu0.6) ...
+2026-11-03T18:56:05.4646938Z #10 15.42 Selecting previously unselected package zlib1g-dev:amd64.
+2026-11-03T18:56:05.4647487Z #10 15.43 Preparing to unpack .../030-zlib1g-dev_1%3a1.3.dfsg-3.1ubuntu2.3_amd64.deb ...
+2026-11-03T18:56:05.4647991Z #10 15.43 Unpacking zlib1g-dev:amd64 (1:1.3.dfsg-3.1ubuntu2.3) ...
+2026-11-03T18:56:05.4648436Z #10 15.44 Selecting previously unselected package libpng-dev:amd64.
+2026-11-03T18:56:05.5642824Z #10 15.44 Preparing to unpack .../031-libpng-dev_1.6.43-5ubuntu0.7_amd64.deb ...
+2026-11-03T18:56:05.5643537Z #10 15.44 Unpacking libpng-dev:amd64 (1.6.43-5ubuntu0.7) ...
+2026-11-03T18:56:05.5644230Z #10 15.46 Selecting previously unselected package libfreetype-dev:amd64.
+2026-11-03T18:56:05.5644998Z #10 15.46 Preparing to unpack .../032-libfreetype-dev_2.13.2+dfsg-1ubuntu0.2_amd64.deb ...
+2026-11-03T18:56:05.5645511Z #10 15.46 Unpacking libfreetype-dev:amd64 (2.13.2+dfsg-1ubuntu0.2) ...
+2026-11-03T18:56:05.5646059Z #10 15.49 Selecting previously unselected package uuid-dev:amd64.
+2026-11-03T18:56:05.5646595Z #10 15.49 Preparing to unpack .../033-uuid-dev_2.39.3-9ubuntu6.6_amd64.deb ...
+2026-11-03T18:56:05.5647100Z #10 15.49 Unpacking uuid-dev:amd64 (2.39.3-9ubuntu6.6) ...
+2026-11-03T18:56:05.5647586Z #10 15.51 Selecting previously unselected package libpkgconf3:amd64.
+2026-11-03T18:56:05.5648141Z #10 15.51 Preparing to unpack .../034-libpkgconf3_1.8.1-2build1_amd64.deb ...
+2026-11-03T18:56:05.5648647Z #10 15.51 Unpacking libpkgconf3:amd64 (1.8.1-2build1) ...
+2026-11-03T18:56:05.5649470Z #10 15.54 Selecting previously unselected package pkgconf-bin.
+2026-11-03T18:56:05.5649989Z #10 15.54 Preparing to unpack .../035-pkgconf-bin_1.8.1-2build1_amd64.deb ...
+2026-11-03T18:56:05.6681785Z #10 15.54 Unpacking pkgconf-bin (1.8.1-2build1) ...
+2026-11-03T18:56:05.6682550Z #10 15.56 Selecting previously unselected package pkgconf:amd64.
+2026-11-03T18:56:05.6683228Z #10 15.56 Preparing to unpack .../036-pkgconf_1.8.1-2build1_amd64.deb ...
+2026-11-03T18:56:05.6683973Z #10 15.56 Unpacking pkgconf:amd64 (1.8.1-2build1) ...
+2026-11-03T18:56:05.6684371Z #10 15.58 Selecting previously unselected package libfontconfig-dev:amd64.
+2026-11-03T18:56:05.6684939Z #10 15.58 Preparing to unpack .../037-libfontconfig-dev_2.15.0-1.1ubuntu2_amd64.deb ...
+2026-11-03T18:56:05.6685393Z #10 15.58 Unpacking libfontconfig-dev:amd64 (2.15.0-1.1ubuntu2) ...
+2026-11-03T18:56:05.6685711Z #10 15.59 Selecting previously unselected package libffi-dev:amd64.
+2026-11-03T18:56:05.6686060Z #10 15.60 Preparing to unpack .../038-libffi-dev_3.4.6-1build1_amd64.deb ...
+2026-11-03T18:56:05.6686374Z #10 15.60 Unpacking libffi-dev:amd64 (3.4.6-1build1) ...
+2026-11-03T18:56:05.6686664Z #10 15.61 Selecting previously unselected package libglib2.0-bin.
+2026-11-03T18:56:05.6687001Z #10 15.61 Preparing to unpack .../039-libglib2.0-bin_2.80.0-6ubuntu3.10_amd64.deb ...
+2026-11-03T18:56:05.6687330Z #10 15.61 Unpacking libglib2.0-bin (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:56:05.6687667Z #10 15.63 Selecting previously unselected package python3-packaging.
+2026-11-03T18:56:05.6688034Z #10 15.63 Preparing to unpack .../040-python3-packaging_24.0-1_all.deb ...
+2026-11-03T18:56:05.6688336Z #10 15.63 Unpacking python3-packaging (24.0-1) ...
+2026-11-03T18:56:05.6688632Z #10 15.65 Selecting previously unselected package libglib2.0-dev-bin.
+2026-11-03T18:56:05.7861269Z #10 15.65 Preparing to unpack .../041-libglib2.0-dev-bin_2.80.0-6ubuntu3.10_amd64.deb ...
+2026-11-03T18:56:05.7861768Z #10 15.65 Unpacking libglib2.0-dev-bin (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:56:05.7862140Z #10 15.67 Selecting previously unselected package libblkid-dev:amd64.
+2026-11-03T18:56:05.7862526Z #10 15.67 Preparing to unpack .../042-libblkid-dev_2.39.3-9ubuntu6.6_amd64.deb ...
+2026-11-03T18:56:05.7862887Z #10 15.67 Unpacking libblkid-dev:amd64 (2.39.3-9ubuntu6.6) ...
+2026-11-03T18:56:05.7863201Z #10 15.68 Selecting previously unselected package libsepol-dev:amd64.
+2026-11-03T18:56:05.7863558Z #10 15.68 Preparing to unpack .../043-libsepol-dev_3.5-2build1_amd64.deb ...
+2026-11-03T18:56:05.7863871Z #10 15.69 Unpacking libsepol-dev:amd64 (3.5-2build1) ...
+2026-11-03T18:56:05.7864189Z #10 15.71 Preparing to unpack .../044-libpcre2-16-0_10.42-4ubuntu2.2_amd64.deb ...
+2026-11-03T18:56:05.7864568Z #10 15.74 Unpacking libpcre2-16-0:amd64 (10.42-4ubuntu2.2) over (10.42-4ubuntu2.1) ...
+2026-11-03T18:56:05.7865097Z #10 15.76 Preparing to unpack .../045-libpcre2-32-0_10.42-4ubuntu2.2_amd64.deb ...
+2026-11-03T18:56:06.0209619Z #10 15.77 Unpacking libpcre2-32-0:amd64 (10.42-4ubuntu2.2) over (10.42-4ubuntu2.1) ...
+2026-11-03T18:56:06.0210352Z #10 15.79 Preparing to unpack .../046-libpcre2-posix3_10.42-4ubuntu2.2_amd64.deb ...
+2026-11-03T18:56:06.0210933Z #10 15.79 Unpacking libpcre2-posix3:amd64 (10.42-4ubuntu2.2) over (10.42-4ubuntu2.1) ...
+2026-11-03T18:56:06.0211325Z #10 15.80 Selecting previously unselected package libpcre2-dev:amd64.
+2026-11-03T18:56:06.0211702Z #10 15.80 Preparing to unpack .../047-libpcre2-dev_10.42-4ubuntu2.2_amd64.deb ...
+2026-11-03T18:56:06.0212049Z #10 15.80 Unpacking libpcre2-dev:amd64 (10.42-4ubuntu2.2) ...
+2026-11-03T18:56:06.0212371Z #10 15.83 Selecting previously unselected package libselinux1-dev:amd64.
+2026-11-03T18:56:06.0212728Z #10 15.83 Preparing to unpack .../048-libselinux1-dev_3.5-2ubuntu2.1_amd64.deb ...
+2026-11-03T18:56:06.0213068Z #10 15.83 Unpacking libselinux1-dev:amd64 (3.5-2ubuntu2.1) ...
+2026-11-03T18:56:06.0213389Z #10 15.85 Selecting previously unselected package libmount-dev:amd64.
+2026-11-03T18:56:06.0213973Z #10 15.85 Preparing to unpack .../049-libmount-dev_2.39.3-9ubuntu6.6_amd64.deb ...
+2026-11-03T18:56:06.0214329Z #10 15.85 Unpacking libmount-dev:amd64 (2.39.3-9ubuntu6.6) ...
+2026-11-03T18:56:06.0214668Z #10 16.00 Selecting previously unselected package libgirepository-2.0-0:amd64.
+2026-11-03T18:56:06.1493065Z #10 16.00 Preparing to unpack .../050-libgirepository-2.0-0_2.80.0-6ubuntu3.10_amd64.deb ...
+2026-11-03T18:56:06.1493945Z #10 16.00 Unpacking libgirepository-2.0-0:amd64 (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:56:06.1495049Z #10 16.01 Selecting previously unselected package libglib2.0-dev:amd64.
+2026-11-03T18:56:06.1495757Z #10 16.02 Preparing to unpack .../051-libglib2.0-dev_2.80.0-6ubuntu3.10_amd64.deb ...
+2026-11-03T18:56:06.1496148Z #10 16.02 Unpacking libglib2.0-dev:amd64 (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:56:06.1496490Z #10 16.09 Selecting previously unselected package libpixman-1-dev:amd64.
+2026-11-03T18:56:06.1496873Z #10 16.10 Preparing to unpack .../052-libpixman-1-dev_0.42.2-1build1_amd64.deb ...
+2026-11-03T18:56:06.1497241Z #10 16.10 Unpacking libpixman-1-dev:amd64 (0.42.2-1build1) ...
+2026-11-03T18:56:06.1497560Z #10 16.13 Selecting previously unselected package xorg-sgml-doctools.
+2026-11-03T18:56:06.2506096Z #10 16.13 Preparing to unpack .../053-xorg-sgml-doctools_1%3a1.11-1.1_all.deb ...
+2026-11-03T18:56:06.2506495Z #10 16.13 Unpacking xorg-sgml-doctools (1:1.11-1.1) ...
+2026-11-03T18:56:06.2506815Z #10 16.14 Selecting previously unselected package x11proto-dev.
+2026-11-03T18:56:06.2507182Z #10 16.14 Preparing to unpack .../054-x11proto-dev_2023.2-1_all.deb ...
+2026-11-03T18:56:06.2507472Z #10 16.14 Unpacking x11proto-dev (2023.2-1) ...
+2026-11-03T18:56:06.2507768Z #10 16.18 Selecting previously unselected package x11proto-core-dev.
+2026-11-03T18:56:06.2508111Z #10 16.18 Preparing to unpack .../055-x11proto-core-dev_2023.2-1_all.deb ...
+2026-11-03T18:56:06.2508417Z #10 16.18 Unpacking x11proto-core-dev (2023.2-1) ...
+2026-11-03T18:56:06.2508705Z #10 16.21 Selecting previously unselected package libice-dev:amd64.
+2026-11-03T18:56:06.2509054Z #10 16.21 Preparing to unpack .../056-libice-dev_2%3a1.0.10-1build3_amd64.deb ...
+2026-11-03T18:56:06.2509379Z #10 16.21 Unpacking libice-dev:amd64 (2:1.0.10-1build3) ...
+2026-11-03T18:56:06.2509682Z #10 16.23 Selecting previously unselected package libsm-dev:amd64.
+2026-11-03T18:56:06.3649507Z #10 16.23 Preparing to unpack .../057-libsm-dev_2%3a1.2.3-1build3_amd64.deb ...
+2026-11-03T18:56:06.3649996Z #10 16.23 Unpacking libsm-dev:amd64 (2:1.2.3-1build3) ...
+2026-11-03T18:56:06.3650312Z #10 16.24 Selecting previously unselected package libxau-dev:amd64.
+2026-11-03T18:56:06.3650670Z #10 16.24 Preparing to unpack .../058-libxau-dev_1%3a1.0.9-1build6_amd64.deb ...
+2026-11-03T18:56:06.3651002Z #10 16.24 Unpacking libxau-dev:amd64 (1:1.0.9-1build6) ...
+2026-11-03T18:56:06.3651315Z #10 16.26 Selecting previously unselected package libxdmcp-dev:amd64.
+2026-11-03T18:56:06.3651677Z #10 16.26 Preparing to unpack .../059-libxdmcp-dev_1%3a1.1.3-0ubuntu6_amd64.deb ...
+2026-11-03T18:56:06.3652020Z #10 16.26 Unpacking libxdmcp-dev:amd64 (1:1.1.3-0ubuntu6) ...
+2026-11-03T18:56:06.3652315Z #10 16.27 Selecting previously unselected package xtrans-dev.
+2026-11-03T18:56:06.3652633Z #10 16.27 Preparing to unpack .../060-xtrans-dev_1.4.0-1_all.deb ...
+2026-11-03T18:56:06.3652913Z #10 16.27 Unpacking xtrans-dev (1.4.0-1) ...
+2026-11-03T18:56:06.3653223Z #10 16.29 Selecting previously unselected package libpthread-stubs0-dev:amd64.
+2026-11-03T18:56:06.3653620Z #10 16.29 Preparing to unpack .../061-libpthread-stubs0-dev_0.4-1build3_amd64.deb ...
+2026-11-03T18:56:06.3653977Z #10 16.29 Unpacking libpthread-stubs0-dev:amd64 (0.4-1build3) ...
+2026-11-03T18:56:06.3654294Z #10 16.30 Selecting previously unselected package libxcb1-dev:amd64.
+2026-11-03T18:56:06.3654630Z #10 16.30 Preparing to unpack .../062-libxcb1-dev_1.15-1ubuntu2_amd64.deb ...
+2026-11-03T18:56:06.3655153Z #10 16.30 Unpacking libxcb1-dev:amd64 (1.15-1ubuntu2) ...
+2026-11-03T18:56:06.3655451Z #10 16.32 Selecting previously unselected package libx11-dev:amd64.
+2026-11-03T18:56:06.3656038Z #10 16.32 Preparing to unpack .../063-libx11-dev_2%3a1.8.7-1ubuntu0.1_amd64.deb ...
+2026-11-03T18:56:06.3656381Z #10 16.32 Unpacking libx11-dev:amd64 (2:1.8.7-1ubuntu0.1) ...
+2026-11-03T18:56:06.3656707Z #10 16.34 Selecting previously unselected package libxcb-render0-dev:amd64.
+2026-11-03T18:56:06.5216382Z #10 16.34 Preparing to unpack .../064-libxcb-render0-dev_1.15-1ubuntu2_amd64.deb ...
+2026-11-03T18:56:06.5217092Z #10 16.34 Unpacking libxcb-render0-dev:amd64 (1.15-1ubuntu2) ...
+2026-11-03T18:56:06.5217438Z #10 16.36 Selecting previously unselected package libxcb-shm0-dev:amd64.
+2026-11-03T18:56:06.5217821Z #10 16.36 Preparing to unpack .../065-libxcb-shm0-dev_1.15-1ubuntu2_amd64.deb ...
+2026-11-03T18:56:06.5218172Z #10 16.36 Unpacking libxcb-shm0-dev:amd64 (1.15-1ubuntu2) ...
+2026-11-03T18:56:06.5218497Z #10 16.37 Selecting previously unselected package libxext-dev:amd64.
+2026-11-03T18:56:06.5218857Z #10 16.37 Preparing to unpack .../066-libxext-dev_2%3a1.3.4-1build2_amd64.deb ...
+2026-11-03T18:56:06.5219191Z #10 16.37 Unpacking libxext-dev:amd64 (2:1.3.4-1build2) ...
+2026-11-03T18:56:06.5219513Z #10 16.39 Selecting previously unselected package libxrender-dev:amd64.
+2026-11-03T18:56:06.5219884Z #10 16.39 Preparing to unpack .../067-libxrender-dev_1%3a0.9.10-1.1build1_amd64.deb ...
+2026-11-03T18:56:06.5220233Z #10 16.41 Unpacking libxrender-dev:amd64 (1:0.9.10-1.1build1) ...
+2026-11-03T18:56:06.5220554Z #10 16.42 Selecting previously unselected package libcairo2-dev:amd64.
+2026-11-03T18:56:06.5220909Z #10 16.42 Preparing to unpack .../068-libcairo2-dev_1.18.0-3build1_amd64.deb ...
+2026-11-03T18:56:06.5221233Z #10 16.42 Unpacking libcairo2-dev:amd64 (1.18.0-3build1) ...
+2026-11-03T18:56:06.5221567Z #10 16.44 Selecting previously unselected package libcurl4-openssl-dev:amd64.
+2026-11-03T18:56:06.5221960Z #10 16.44 Preparing to unpack .../069-libcurl4-openssl-dev_8.5.0-2ubuntu10.16_amd64.deb ...
+2026-11-03T18:56:06.5222337Z #10 16.44 Unpacking libcurl4-openssl-dev:amd64 (8.5.0-2ubuntu10.16) ...
+2026-11-03T18:56:06.5222678Z #10 16.50 Selecting previously unselected package libdeflate-dev:amd64.
+2026-11-03T18:56:06.6447644Z #10 16.50 Preparing to unpack .../070-libdeflate-dev_1.19-1build1.1_amd64.deb ...
+2026-11-03T18:56:06.6448131Z #10 16.50 Unpacking libdeflate-dev:amd64 (1.19-1build1.1) ...
+2026-11-03T18:56:06.6448484Z #10 16.51 Selecting previously unselected package libfontconfig1-dev:amd64.
+2026-11-03T18:56:06.6448916Z #10 16.52 Preparing to unpack .../071-libfontconfig1-dev_2.15.0-1.1ubuntu2_amd64.deb ...
+2026-11-03T18:56:06.6449297Z #10 16.52 Unpacking libfontconfig1-dev:amd64 (2.15.0-1.1ubuntu2) ...
+2026-11-03T18:56:06.6449644Z #10 16.55 Selecting previously unselected package libfribidi-dev:amd64.
+2026-11-03T18:56:06.6449996Z #10 16.55 Preparing to unpack .../072-libfribidi-dev_1.0.13-3build1_amd64.deb ...
+2026-11-03T18:56:06.6450323Z #10 16.55 Unpacking libfribidi-dev:amd64 (1.0.13-3build1) ...
+2026-11-03T18:56:06.6450676Z #10 16.57 Preparing to unpack .../073-libgraphite2-3_1.3.14-2ubuntu0.24.04.1_amd64.deb ...
+2026-11-03T18:56:06.6451091Z #10 16.57 Unpacking libgraphite2-3:amd64 (1.3.14-2ubuntu0.24.04.1) over (1.3.14-2build1) ...
+2026-11-03T18:56:06.6451490Z #10 16.59 Selecting previously unselected package libgraphite2-dev:amd64.
+2026-11-03T18:56:06.6451867Z #10 16.59 Preparing to unpack .../074-libgraphite2-dev_1.3.14-2ubuntu0.24.04.1_amd64.deb ...
+2026-11-03T18:56:06.6452238Z #10 16.59 Unpacking libgraphite2-dev:amd64 (1.3.14-2ubuntu0.24.04.1) ...
+2026-11-03T18:56:06.6452589Z #10 16.62 Selecting previously unselected package libharfbuzz-cairo0:amd64.
+2026-11-03T18:56:06.8480197Z #10 16.62 Preparing to unpack .../075-libharfbuzz-cairo0_8.3.0-2build2_amd64.deb ...
+2026-11-03T18:56:06.8480686Z #10 16.62 Unpacking libharfbuzz-cairo0:amd64 (8.3.0-2build2) ...
+2026-11-03T18:56:06.8481042Z #10 16.64 Selecting previously unselected package libharfbuzz-icu0:amd64.
+2026-11-03T18:56:06.8481441Z #10 16.64 Preparing to unpack .../076-libharfbuzz-icu0_8.3.0-2build2_amd64.deb ...
+2026-11-03T18:56:06.8482053Z #10 16.64 Unpacking libharfbuzz-icu0:amd64 (8.3.0-2build2) ...
+2026-11-03T18:56:06.8482395Z #10 16.65 Selecting previously unselected package libharfbuzz-subset0:amd64.
+2026-11-03T18:56:06.8482779Z #10 16.66 Preparing to unpack .../077-libharfbuzz-subset0_8.3.0-2build2_amd64.deb ...
+2026-11-03T18:56:06.8483127Z #10 16.66 Unpacking libharfbuzz-subset0:amd64 (8.3.0-2build2) ...
+2026-11-03T18:56:06.8483583Z #10 16.67 Selecting previously unselected package libicu-dev:amd64.
+2026-11-03T18:56:06.8483921Z #10 16.67 Preparing to unpack .../078-libicu-dev_74.2-1ubuntu3.1_amd64.deb ...
+2026-11-03T18:56:06.8484237Z #10 16.68 Unpacking libicu-dev:amd64 (74.2-1ubuntu3.1) ...
+2026-11-03T18:56:06.8613198Z #10 16.84 Selecting previously unselected package libharfbuzz-dev:amd64.
+2026-11-03T18:56:06.9627279Z #10 16.84 Preparing to unpack .../079-libharfbuzz-dev_8.3.0-2build2_amd64.deb ...
+2026-11-03T18:56:06.9627706Z #10 16.84 Unpacking libharfbuzz-dev:amd64 (8.3.0-2build2) ...
+2026-11-03T18:56:06.9628066Z #10 16.86 Selecting previously unselected package libjpeg8-dev:amd64.
+2026-11-03T18:56:06.9628438Z #10 16.86 Preparing to unpack .../080-libjpeg8-dev_8c-2ubuntu11_amd64.deb ...
+2026-11-03T18:56:06.9628760Z #10 16.87 Unpacking libjpeg8-dev:amd64 (8c-2ubuntu11) ...
+2026-11-03T18:56:06.9629070Z #10 16.88 Selecting previously unselected package libjpeg-dev:amd64.
+2026-11-03T18:56:06.9629415Z #10 16.88 Preparing to unpack .../081-libjpeg-dev_8c-2ubuntu11_amd64.deb ...
+2026-11-03T18:56:06.9629751Z #10 16.88 Unpacking libjpeg-dev:amd64 (8c-2ubuntu11) ...
+2026-11-03T18:56:06.9630050Z #10 16.89 Selecting previously unselected package liblerc-dev:amd64.
+2026-11-03T18:56:06.9630400Z #10 16.89 Preparing to unpack .../082-liblerc-dev_4.0.0+ds-4ubuntu2_amd64.deb ...
+2026-11-03T18:56:06.9630726Z #10 16.89 Unpacking liblerc-dev:amd64 (4.0.0+ds-4ubuntu2) ...
+2026-11-03T18:56:06.9631040Z #10 16.91 Selecting previously unselected package libsharpyuv-dev:amd64.
+2026-11-03T18:56:06.9632177Z #10 16.91 Preparing to unpack .../083-libsharpyuv-dev_1.3.2-0.4build3_amd64.deb ...
+2026-11-03T18:56:06.9632632Z #10 16.91 Unpacking libsharpyuv-dev:amd64 (1.3.2-0.4build3) ...
+2026-11-03T18:56:06.9633035Z #10 16.92 Selecting previously unselected package libsodium23:amd64.
+2026-11-03T18:56:06.9633477Z #10 16.92 Preparing to unpack .../084-libsodium23_1.0.18-1ubuntu0.24.04.1_amd64.deb ...
+2026-11-03T18:56:06.9633883Z #10 16.93 Unpacking libsodium23:amd64 (1.0.18-1ubuntu0.24.04.1) ...
+2026-11-03T18:56:06.9634233Z #10 16.94 Selecting previously unselected package libsodium-dev:amd64.
+2026-11-03T18:56:06.9634685Z #10 16.94 Preparing to unpack .../085-libsodium-dev_1.0.18-1ubuntu0.24.04.1_amd64.deb ...
+2026-11-03T18:56:07.0666742Z #10 16.94 Unpacking libsodium-dev:amd64 (1.0.18-1ubuntu0.24.04.1) ...
+2026-11-03T18:56:07.0667160Z #10 16.96 Selecting previously unselected package libssl-dev:amd64.
+2026-11-03T18:56:07.0667536Z #10 16.96 Preparing to unpack .../086-libssl-dev_3.0.13-0ubuntu3.16_amd64.deb ...
+2026-11-03T18:56:07.0667902Z #10 16.96 Unpacking libssl-dev:amd64 (3.0.13-0ubuntu3.16) ...
+2026-11-03T18:56:07.0668216Z #10 17.04 Selecting previously unselected package libjbig-dev:amd64.
+2026-11-03T18:56:07.1691046Z #10 17.05 Preparing to unpack .../087-libjbig-dev_2.1-6.1ubuntu2_amd64.deb ...
+2026-11-03T18:56:07.1691557Z #10 17.06 Unpacking libjbig-dev:amd64 (2.1-6.1ubuntu2) ...
+2026-11-03T18:56:07.1691966Z #10 17.08 Selecting previously unselected package liblzma-dev:amd64.
+2026-11-03T18:56:07.1692556Z #10 17.08 Preparing to unpack .../088-liblzma-dev_5.6.1+really5.4.5-1ubuntu0.4_amd64.deb ...
+2026-11-03T18:56:07.1693119Z #10 17.08 Unpacking liblzma-dev:amd64 (5.6.1+really5.4.5-1ubuntu0.4) ...
+2026-11-03T18:56:07.1693588Z #10 17.10 Selecting previously unselected package libzstd-dev:amd64.
+2026-11-03T18:56:07.1694089Z #10 17.10 Preparing to unpack .../089-libzstd-dev_1.5.5+dfsg2-2build1.1_amd64.deb ...
+2026-11-03T18:56:07.1694587Z #10 17.10 Unpacking libzstd-dev:amd64 (1.5.5+dfsg2-2build1.1) ...
+2026-11-03T18:56:07.1695591Z #10 17.12 Selecting previously unselected package libwebpdemux2:amd64.
+2026-11-03T18:56:07.1696079Z #10 17.12 Preparing to unpack .../090-libwebpdemux2_1.3.2-0.4build3_amd64.deb ...
+2026-11-03T18:56:07.1696553Z #10 17.12 Unpacking libwebpdemux2:amd64 (1.3.2-0.4build3) ...
+2026-11-03T18:56:07.1697009Z #10 17.13 Selecting previously unselected package libwebpmux3:amd64.
+2026-11-03T18:56:07.1697519Z #10 17.13 Preparing to unpack .../091-libwebpmux3_1.3.2-0.4build3_amd64.deb ...
+2026-11-03T18:56:07.1698221Z #10 17.13 Unpacking libwebpmux3:amd64 (1.3.2-0.4build3) ...
+2026-11-03T18:56:07.1698710Z #10 17.15 Selecting previously unselected package libwebpdecoder3:amd64.
+2026-11-03T18:56:07.2759340Z #10 17.15 Preparing to unpack .../092-libwebpdecoder3_1.3.2-0.4build3_amd64.deb ...
+2026-11-03T18:56:07.2760044Z #10 17.15 Unpacking libwebpdecoder3:amd64 (1.3.2-0.4build3) ...
+2026-11-03T18:56:07.2760558Z #10 17.17 Selecting previously unselected package libwebp-dev:amd64.
+2026-11-03T18:56:07.2760957Z #10 17.17 Preparing to unpack .../093-libwebp-dev_1.3.2-0.4build3_amd64.deb ...
+2026-11-03T18:56:07.2761329Z #10 17.17 Unpacking libwebp-dev:amd64 (1.3.2-0.4build3) ...
+2026-11-03T18:56:07.2761674Z #10 17.19 Preparing to unpack .../094-libtiff6_4.5.1+git230720-4ubuntu2.5_amd64.deb ...
+2026-11-03T18:56:07.2762109Z #10 17.19 Unpacking libtiff6:amd64 (4.5.1+git230720-4ubuntu2.5) over (4.5.1+git230720-4ubuntu2.4) ...
+2026-11-03T18:56:07.2762544Z #10 17.23 Preparing to unpack .../095-libtiffxx6_4.5.1+git230720-4ubuntu2.5_amd64.deb ...
+2026-11-03T18:56:07.2762990Z #10 17.25 Unpacking libtiffxx6:amd64 (4.5.1+git230720-4ubuntu2.5) over (4.5.1+git230720-4ubuntu2.4) ...
+2026-11-03T18:56:07.4199108Z #10 17.27 Selecting previously unselected package libtiff-dev:amd64.
+2026-11-03T18:56:07.4199961Z #10 17.27 Preparing to unpack .../096-libtiff-dev_4.5.1+git230720-4ubuntu2.5_amd64.deb ...
+2026-11-03T18:56:07.4200669Z #10 17.27 Unpacking libtiff-dev:amd64 (4.5.1+git230720-4ubuntu2.5) ...
+2026-11-03T18:56:07.4201396Z #10 17.29 Preparing to unpack .../097-libtiff-doc_4.5.1+git230720-4ubuntu2.5_all.deb ...
+2026-11-03T18:56:07.4201895Z #10 17.29 Unpacking libtiff-doc (4.5.1+git230720-4ubuntu2.5) over (4.5.1+git230720-4ubuntu2.4) ...
+2026-11-03T18:56:07.4202350Z #10 17.33 Preparing to unpack .../098-libtiff-opengl_4.5.1+git230720-4ubuntu2.5_amd64.deb ...
+2026-11-03T18:56:07.4202801Z #10 17.33 Unpacking libtiff-opengl (4.5.1+git230720-4ubuntu2.5) over (4.5.1+git230720-4ubuntu2.4) ...
+2026-11-03T18:56:07.4203273Z #10 17.34 Preparing to unpack .../099-libtiff-tools_4.5.1+git230720-4ubuntu2.5_amd64.deb ...
+2026-11-03T18:56:07.4203715Z #10 17.35 Unpacking libtiff-tools (4.5.1+git230720-4ubuntu2.5) over (4.5.1+git230720-4ubuntu2.4) ...
+2026-11-03T18:56:07.4204117Z #10 17.40 Selecting previously unselected package libxml2-dev:amd64.
+2026-11-03T18:56:07.5400902Z #10 17.40 Preparing to unpack .../100-libxml2-dev_2.9.14+dfsg-1.3ubuntu3.10_amd64.deb ...
+2026-11-03T18:56:07.5401476Z #10 17.41 Unpacking libxml2-dev:amd64 (2.9.14+dfsg-1.3ubuntu3.10) ...
+2026-11-03T18:56:07.5402055Z #10 17.44 Preparing to unpack .../101-liblzma-doc_5.6.1+really5.4.5-1ubuntu0.4_all.deb ...
+2026-11-03T18:56:07.5402520Z #10 17.47 Unpacking liblzma-doc (5.6.1+really5.4.5-1ubuntu0.4) over (5.6.1+really5.4.5-1ubuntu0.2) ...
+2026-11-03T18:56:07.5402975Z #10 17.52 Setting up media-types (10.1.0) ...
+2026-11-03T18:56:07.6409371Z #10 17.52 Setting up libgraphite2-3:amd64 (1.3.14-2ubuntu0.24.04.1) ...
+2026-11-03T18:56:07.6409899Z #10 17.52 Setting up libharfbuzz-icu0:amd64 (8.3.0-2build2) ...
+2026-11-03T18:56:07.6410376Z #10 17.53 Setting up libsodium23:amd64 (1.0.18-1ubuntu0.24.04.1) ...
+2026-11-03T18:56:07.6410788Z #10 17.53 Setting up libpixman-1-dev:amd64 (0.42.2-1build1) ...
+2026-11-03T18:56:07.6411107Z #10 17.53 Setting up libzstd-dev:amd64 (1.5.5+dfsg2-2build1.1) ...
+2026-11-03T18:56:07.6411410Z #10 17.54 Setting up libfribidi-dev:amd64 (1.0.13-3build1) ...
+2026-11-03T18:56:07.6411696Z #10 17.54 Setting up libwebpdemux2:amd64 (1.3.2-0.4build3) ...
+2026-11-03T18:56:07.6411977Z #10 17.54 Setting up libbrotli1:amd64 (1.1.0-2ubuntu0.1) ...
+2026-11-03T18:56:07.6412469Z #10 17.55 Setting up libsqlite3-0:amd64 (3.45.1-1ubuntu2.8) ...
+2026-11-03T18:56:07.6412882Z #10 17.55 Setting up libuv1t64:amd64 (1.48.0-1.1build1) ...
+2026-11-03T18:56:07.6413164Z #10 17.55 Setting up libjbig-dev:amd64 (2.1-6.1ubuntu2) ...
+2026-11-03T18:56:07.6413554Z #10 17.55 Setting up libwebpdecoder3:amd64 (1.3.2-0.4build3) ...
+2026-11-03T18:56:07.6413842Z #10 17.55 Setting up liblzo2-2:amd64 (2.10-2build4) ...
+2026-11-03T18:56:07.6414281Z #10 17.55 Setting up libffi-dev:amd64 (3.4.6-1build1) ...
+2026-11-03T18:56:07.6414673Z #10 17.56 Setting up libpthread-stubs0-dev:amd64 (0.4-1build3) ...
+2026-11-03T18:56:07.6415193Z #10 17.56 Setting up libpcre2-16-0:amd64 (10.42-4ubuntu2.2) ...
+2026-11-03T18:56:07.6415482Z #10 17.56 Setting up xtrans-dev (1.4.0-1) ...
+2026-11-03T18:56:07.6415870Z #10 17.56 Setting up libgraphite2-dev:amd64 (1.3.14-2ubuntu0.24.04.1) ...
+2026-11-03T18:56:07.6416264Z #10 17.56 Setting up libpcre2-32-0:amd64 (10.42-4ubuntu2.2) ...
+2026-11-03T18:56:07.6416579Z #10 17.56 Setting up libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:56:07.6416931Z #10 17.57 No schema files found: doing nothing.
+2026-11-03T18:56:07.6417258Z #10 17.58 Setting up liblzma-doc (5.6.1+really5.4.5-1ubuntu0.4) ...
+2026-11-03T18:56:07.6417551Z #10 17.58 Setting up libglib2.0-data (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:56:07.6417833Z #10 17.58 Setting up libpkgconf3:amd64 (1.8.1-2build1) ...
+2026-11-03T18:56:07.6418116Z #10 17.58 Setting up libexpat1-dev:amd64 (2.6.1-2ubuntu0.6) ...
+2026-11-03T18:56:07.6418408Z #10 17.59 Setting up libharfbuzz-cairo0:amd64 (8.3.0-2build2) ...
+2026-11-03T18:56:07.6418692Z #10 17.59 Setting up libx11-data (2:1.8.7-1ubuntu0.1) ...
+2026-11-03T18:56:07.6418959Z #10 17.59 Setting up uuid-dev:amd64 (2.39.3-9ubuntu6.6) ...
+2026-11-03T18:56:07.6419356Z #10 17.59 Setting up libssl-dev:amd64 (3.0.13-0ubuntu3.16) ...
+2026-11-03T18:56:07.6419643Z #10 17.59 Setting up libpng16-16t64:amd64 (1.6.43-5ubuntu0.7) ...
+2026-11-03T18:56:07.6420021Z #10 17.60 Setting up libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-11-03T18:56:07.6420308Z #10 17.60 Setting up icu-devtools (74.2-1ubuntu3.1) ...
+2026-11-03T18:56:07.6420570Z #10 17.60 Setting up libsepol-dev:amd64 (3.5-2build1) ...
+2026-11-03T18:56:07.6420861Z #10 17.60 Setting up pkgconf-bin (1.8.1-2build1) ...
+2026-11-03T18:56:07.6421229Z #10 17.60 Setting up gir1.2-glib-2.0:amd64 (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:56:07.6421551Z #10 17.60 Setting up libsodium-dev:amd64 (1.0.18-1ubuntu0.24.04.1) ...
+2026-11-03T18:56:07.6421863Z #10 17.61 Setting up liblerc-dev:amd64 (4.0.0+ds-4ubuntu2) ...
+2026-11-03T18:56:07.6422230Z #10 17.61 Setting up liblzma-dev:amd64 (5.6.1+really5.4.5-1ubuntu0.4) ...
+2026-11-03T18:56:07.6422638Z #10 17.61 Setting up zlib1g-dev:amd64 (1:1.3.dfsg-3.1ubuntu2.3) ...
+2026-11-03T18:56:07.6422950Z #10 17.61 Setting up libpcre2-posix3:amd64 (10.42-4ubuntu2.2) ...
+2026-11-03T18:56:07.6423369Z #10 17.62 Setting up mount (2.39.3-9ubuntu6.6) ...
+2026-11-03T18:56:07.6423661Z #10 17.62 Setting up gir1.2-glib-2.0-dev:amd64 (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:56:07.7423577Z #10 17.62 Setting up librhash0:amd64 (1.4.3-3build1) ...
+2026-11-03T18:56:07.7424377Z #10 17.62 Setting up libtiff6:amd64 (4.5.1+git230720-4ubuntu2.5) ...
+2026-11-03T18:56:07.7425118Z #10 17.62 Setting up libharfbuzz-subset0:amd64 (8.3.0-2build2) ...
+2026-11-03T18:56:07.7425570Z #10 17.63 Setting up libx11-6:amd64 (2:1.8.7-1ubuntu0.1) ...
+2026-11-03T18:56:07.7425894Z #10 17.63 Setting up xorg-sgml-doctools (1:1.11-1.1) ...
+2026-11-03T18:56:07.7426231Z #10 17.63 Setting up netbase (6.4) ...
+2026-11-03T18:56:07.7426626Z #10 17.63 Setting up libtiff-doc (4.5.1+git230720-4ubuntu2.5) ...
+2026-11-03T18:56:07.7427115Z #10 17.63 Setting up libcairo-gobject2:amd64 (1.18.0-3build1) ...
+2026-11-03T18:56:07.7427573Z #10 17.64 Setting up cmake-data (3.28.3-1build7) ...
+2026-11-03T18:56:07.7427867Z #10 17.69 Setting up libjpeg8-dev:amd64 (8c-2ubuntu11) ...
+2026-11-03T18:56:07.7428219Z #10 17.69 Setting up libsharpyuv-dev:amd64 (1.3.2-0.4build3) ...
+2026-11-03T18:56:07.7428793Z #10 17.69 Setting up openssl (3.0.13-0ubuntu3.16) ...
+2026-11-03T18:56:07.7429074Z #10 17.70 Setting up libwebpmux3:amd64 (1.3.2-0.4build3) ...
+2026-11-03T18:56:07.7429370Z #10 17.70 Setting up libtiffxx6:amd64 (4.5.1+git230720-4ubuntu2.5) ...
+2026-11-03T18:56:07.7429802Z #10 17.70 Setting up libtiff-tools (4.5.1+git230720-4ubuntu2.5) ...
+2026-11-03T18:56:07.7430133Z #10 17.70 Setting up libdeflate-dev:amd64 (1.19-1build1.1) ...
+2026-11-03T18:56:07.7430621Z #10 17.71 Setting up libicu-dev:amd64 (74.2-1ubuntu3.1) ...
+2026-11-03T18:56:07.7430957Z #10 17.71 Setting up libxml2:amd64 (2.9.14+dfsg-1.3ubuntu3.10) ...
+2026-11-03T18:56:07.7431269Z #10 17.71 Setting up libbrotli-dev:amd64 (1.1.0-2ubuntu0.1) ...
+2026-11-03T18:56:07.7431679Z #10 17.71 Setting up libbz2-dev:amd64 (1.0.8-5.1ubuntu0.1) ...
+2026-11-03T18:56:07.7431940Z #10 17.72 Setting up x11proto-dev (2023.2-1) ...
+2026-11-03T18:56:07.7432258Z #10 17.72 Setting up libblkid-dev:amd64 (2.39.3-9ubuntu6.6) ...
+2026-11-03T18:56:07.7432565Z #10 17.72 Setting up libx11-xcb1:amd64 (2:1.8.7-1ubuntu0.1) ...
+2026-11-03T18:56:07.9090019Z #10 17.72 Setting up gir1.2-freedesktop:amd64 (1.80.1-1) ...
+2026-11-03T18:56:07.9090545Z #10 17.72 Setting up libxau-dev:amd64 (1:1.0.9-1build6) ...
+2026-11-03T18:56:07.9091059Z #10 17.72 Setting up libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.17) ...
+2026-11-03T18:56:07.9091568Z #10 17.73 Setting up libpcre2-dev:amd64 (10.42-4ubuntu2.2) ...
+2026-11-03T18:56:07.9092067Z #10 17.73 Setting up libcurl4t64:amd64 (8.5.0-2ubuntu10.16) ...
+2026-11-03T18:56:07.9092520Z #10 17.73 Setting up libice-dev:amd64 (2:1.0.10-1build3) ...
+2026-11-03T18:56:07.9093009Z #10 17.73 Setting up libgirepository-2.0-0:amd64 (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:56:07.9093511Z #10 17.73 Setting up libsm-dev:amd64 (2:1.2.3-1build3) ...
+2026-11-03T18:56:07.9093977Z #10 17.73 Setting up libselinux1-dev:amd64 (3.5-2ubuntu2.1) ...
+2026-11-03T18:56:07.9094439Z #10 17.74 Setting up python3.12 (3.12.3-1ubuntu0.17) ...
+2026-11-03T18:56:08.3900389Z #10 18.37 Setting up libpng-dev:amd64 (1.6.43-5ubuntu0.7) ...
+2026-11-03T18:56:08.5960806Z #10 18.37 Setting up libjpeg-dev:amd64 (8c-2ubuntu11) ...
+2026-11-03T18:56:08.5961327Z #10 18.37 Setting up libglib2.0-bin (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:56:08.5961656Z #10 18.37 Setting up libharfbuzz-gobject0:amd64 (8.3.0-2build2) ...
+2026-11-03T18:56:08.5962065Z #10 18.37 Setting up gir1.2-harfbuzz-0.0:amd64 (8.3.0-2build2) ...
+2026-11-03T18:56:08.5962388Z #10 18.38 Setting up pkgconf:amd64 (1.8.1-2build1) ...
+2026-11-03T18:56:08.5962669Z #10 18.38 Setting up libxdmcp-dev:amd64 (1:1.1.3-0ubuntu6) ...
+2026-11-03T18:56:08.5962970Z #10 18.41 Setting up libxml2-dev:amd64 (2.9.14+dfsg-1.3ubuntu3.10) ...
+2026-11-03T18:56:08.5963280Z #10 18.41 Setting up libwebp-dev:amd64 (1.3.2-0.4build3) ...
+2026-11-03T18:56:08.5963576Z #10 18.41 Setting up libfreetype6:amd64 (2.13.2+dfsg-1ubuntu0.2) ...
+2026-11-03T18:56:08.5963895Z #10 18.42 Setting up libtiff-dev:amd64 (4.5.1+git230720-4ubuntu2.5) ...
+2026-11-03T18:56:08.5964231Z #10 18.42 Setting up libcurl4-openssl-dev:amd64 (8.5.0-2ubuntu10.16) ...
+2026-11-03T18:56:08.5964524Z #10 18.42 Setting up x11proto-core-dev (2023.2-1) ...
+2026-11-03T18:56:08.5964974Z #10 18.42 Setting up gir1.2-freedesktop-dev:amd64 (1.80.1-1) ...
+2026-11-03T18:56:08.5965284Z #10 18.42 Setting up libtiff-opengl (4.5.1+git230720-4ubuntu2.5) ...
+2026-11-03T18:56:08.5965585Z #10 18.42 Setting up libarchive13t64:amd64 (3.7.2-2ubuntu0.9) ...
+2026-11-03T18:56:08.5965884Z #10 18.43 Setting up libmount-dev:amd64 (2.39.3-9ubuntu6.6) ...
+2026-11-03T18:56:08.5966191Z #10 18.43 Setting up libpython3-stdlib:amd64 (3.12.3-0ubuntu2.1) ...
+2026-11-03T18:56:08.5966523Z #10 18.43 Setting up libcairo-script-interpreter2:amd64 (1.18.0-3build1) ...
+2026-11-03T18:56:08.5966980Z #10 18.43 Setting up libxcb1-dev:amd64 (1.15-1ubuntu2) ...
+2026-11-03T18:56:08.5967370Z #10 18.43 Setting up libx11-dev:amd64 (2:1.8.7-1ubuntu0.1) ...
+2026-11-03T18:56:08.5967652Z #10 18.43 Setting up python3 (3.12.3-0ubuntu2.1) ...
+2026-11-03T18:56:08.5968261Z #10 18.44 running python rtupdate hooks for python3.12...
+2026-11-03T18:56:08.5968572Z #10 18.57 running python post-rtupdate hooks for python3.12...
+2026-11-03T18:56:08.7540657Z #10 18.64 Setting up libfreetype-dev:amd64 (2.13.2+dfsg-1ubuntu0.2) ...
+2026-11-03T18:56:08.7541245Z #10 18.64 Setting up libxcb-shm0-dev:amd64 (1.15-1ubuntu2) ...
+2026-11-03T18:56:08.7541599Z #10 18.64 Setting up python3-packaging (24.0-1) ...
+2026-11-03T18:56:08.7542287Z #10 18.73 Setting up libxcb-render0-dev:amd64 (1.15-1ubuntu2) ...
+2026-11-03T18:56:08.9870296Z #10 18.73 Setting up libxext-dev:amd64 (2:1.3.4-1build2) ...
+2026-11-03T18:56:08.9870647Z #10 18.73 Setting up cmake (3.28.3-1build7) ...
+2026-11-03T18:56:08.9870934Z #10 18.74 Setting up libxrender-dev:amd64 (1:0.9.10-1.1build1) ...
+2026-11-03T18:56:08.9871242Z #10 18.74 Setting up libglib2.0-dev-bin (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:56:08.9871557Z #10 18.81 Setting up libfontconfig-dev:amd64 (2.15.0-1.1ubuntu2) ...
+2026-11-03T18:56:08.9871900Z #10 18.81 Setting up libglib2.0-dev:amd64 (2.80.0-6ubuntu3.10) ...
+2026-11-03T18:56:08.9872206Z #10 18.81 Setting up libcairo2-dev:amd64 (1.18.0-3build1) ...
+2026-11-03T18:56:08.9872509Z #10 18.81 Setting up libharfbuzz-dev:amd64 (8.3.0-2build2) ...
+2026-11-03T18:56:08.9872819Z #10 18.81 Setting up libfontconfig1-dev:amd64 (2.15.0-1.1ubuntu2) ...
+2026-11-03T18:56:08.9873206Z #10 18.81 Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+2026-11-03T18:56:10.5771255Z #10 DONE 20.6s
+2026-11-03T18:56:10.7866589Z 
+2026-11-03T18:56:10.7867049Z #11 [3/9] WORKDIR /app
+2026-11-03T18:56:10.7867379Z #11 DONE 0.0s
+2026-11-03T18:56:10.7867523Z 
+2026-11-03T18:56:10.7867652Z #12 [4/9] COPY renv.lock ./renv.lock
+2026-11-03T18:56:10.7867965Z #12 DONE 0.0s
+2026-11-03T18:56:10.7868094Z 
+2026-11-03T18:56:10.7875490Z #13 [5/9] RUN CODENAME="$(. /etc/os-release && echo "$VERSION_CODENAME")"  && REPO="https://packagemanager.posit.co/cran/__linux__/${CODENAME}/2026-10-31"  && Rscript -e "install.packages('renv', repos = '${REPO}')"  && Rscript -e "options(renv.config.repos.override = '${REPO}'); renv::restore(lockfile = 'renv.lock', library = .libPaths()[1], prompt = FALSE)"  && Rscript -e "stopifnot(as.character(packageVersion('lavaan')) == '0.7.2')"
+2026-11-03T18:56:10.8898532Z #13 0.254 Installing package into ‘/usr/local/lib/R/site-library’
+2026-11-03T18:56:10.8899088Z #13 0.254 (as ‘lib’ is unspecified)
+2026-11-03T18:56:11.5938056Z #13 0.958 trying URL 'https://packagemanager.posit.co/cran/__linux__/noble/2026-10-31/src/contrib/renv_1.3.1.tar.gz'
+2026-11-03T18:56:11.9166971Z #13 1.281 Content type 'binary/octet-stream' length 2744268 bytes (2.6 MB)
+2026-11-03T18:56:12.1771364Z #13 1.282 ==================================================
+2026-11-03T18:56:12.1771669Z #13 1.391 downloaded 2.6 MB
+2026-11-03T18:56:12.1771857Z #13 1.391 
+2026-11-03T18:56:12.2918014Z #13 1.656 * installing *binary* package ‘renv’ ...
+2026-11-03T18:56:12.4608933Z #13 1.665 * DONE (renv)
+2026-11-03T18:56:12.4609176Z #13 1.674 
+2026-11-03T18:56:12.4609401Z #13 1.674 The downloaded source packages are in
+2026-11-03T18:56:12.4609977Z #13 1.674 	‘/tmp/RtmpIFeqZf/downloaded_packages’
+2026-11-03T18:56:12.7952418Z #13 2.159 The following required system packages are not installed:
+2026-11-03T18:56:12.7952950Z #13 2.159 - libuv1-dev  [required by fs]
+2026-11-03T18:56:12.7953351Z #13 2.159 - pandoc      [required by knitr, rmarkdown]
+2026-11-03T18:56:12.7953867Z #13 2.159 The R packages depending on these system packages may fail to install.
+2026-11-03T18:56:12.7954368Z #13 2.159 
+2026-11-03T18:56:12.9324413Z #13 2.161 An administrator can install these packages with:
+2026-11-03T18:56:12.9324978Z #13 2.161 - sudo apt install libuv1-dev pandoc
+2026-11-03T18:56:12.9325215Z #13 2.161 
+2026-11-03T18:56:12.9325413Z #13 2.296 The following package(s) will be updated:
+2026-11-03T18:56:12.9325722Z #13 2.296 
+2026-11-03T18:56:12.9325995Z #13 2.296 # Repository -----------------------------------------------------------------
+2026-11-03T18:56:12.9326321Z #13 2.296 - lattice             [0.22-6 -> 0.23-1]
+2026-11-03T18:56:12.9326909Z #13 2.296 - MASS                [7.3-64 -> 7.3-66]
+2026-11-03T18:56:12.9327146Z #13 2.296 - nlme                [3.1-167 -> 3.1-170]
+2026-11-03T18:56:12.9327395Z #13 2.296 - askpass             [* -> 1.2.1]
+2026-11-03T18:56:12.9327615Z #13 2.296 - base64enc           [* -> 0.1-6]
+2026-11-03T18:56:12.9327834Z #13 2.296 - brio                [* -> 1.1.5]
+2026-11-03T18:56:12.9328200Z #13 2.296 - bslib               [* -> 0.12.0]
+2026-11-03T18:56:12.9328412Z #13 2.296 - cachem              [* -> 1.1.0]
+2026-11-03T18:56:12.9328616Z #13 2.296 - callr               [* -> 3.7.6]
+2026-11-03T18:56:12.9328822Z #13 2.296 - cellranger          [* -> 1.1.0]
+2026-11-03T18:56:12.9329028Z #13 2.296 - cli                 [* -> 3.6.6]
+2026-11-03T18:56:12.9329231Z #13 2.296 - cpp11               [* -> 0.5.5]
+2026-11-03T18:56:12.9329434Z #13 2.296 - crayon              [* -> 1.5.3]
+2026-11-03T18:56:12.9329640Z #13 2.296 - curl                [* -> 8.0.0]
+2026-11-03T18:56:12.9329859Z #13 2.296 - data.table          [* -> 1.18.6.1]
+2026-11-03T18:56:12.9330081Z #13 2.296 - desc                [* -> 1.4.3]
+2026-11-03T18:56:12.9330285Z #13 2.296 - diffobj             [* -> 0.3.9]
+2026-11-03T18:56:12.9330489Z #13 2.296 - digest              [* -> 0.6.39]
+2026-11-03T18:56:12.9330696Z #13 2.296 - dplyr               [* -> 1.2.1]
+2026-11-03T18:56:12.9331174Z #13 2.296 - evaluate            [* -> 1.0.5]
+2026-11-03T18:56:12.9331597Z #13 2.296 - fastmap             [* -> 1.2.0]
+2026-11-03T18:56:12.9331992Z #13 2.296 - flextable           [* -> 0.10.3]
+2026-11-03T18:56:12.9332389Z #13 2.296 - fontawesome         [* -> 0.5.3]
+2026-11-03T18:56:12.9332795Z #13 2.296 - fontBitstreamVera   [* -> 0.1.1]
+2026-11-03T18:56:12.9333183Z #13 2.296 - fontLiberation      [* -> 0.1.0]
+2026-11-03T18:56:12.9333571Z #13 2.296 - fontquiver          [* -> 0.2.1]
+2026-11-03T18:56:12.9333946Z #13 2.296 - fs                  [* -> 2.1.0]
+2026-11-03T18:56:12.9334318Z #13 2.296 - gdtools             [* -> 0.5.1]
+2026-11-03T18:56:12.9334705Z #13 2.296 - generics            [* -> 0.1.4]
+2026-11-03T18:56:12.9335213Z #13 2.296 - glue                [* -> 1.8.1]
+2026-11-03T18:56:12.9335545Z #13 2.296 - GPArotation         [* -> 2026.8-2]
+2026-11-03T18:56:12.9335908Z #13 2.296 - highr               [* -> 0.12]
+2026-11-03T18:56:12.9336238Z #13 2.296 - hms                 [* -> 1.1.4]
+2026-11-03T18:56:12.9336555Z #13 2.296 - htmltools           [* -> 0.5.9]
+2026-11-03T18:56:12.9336886Z #13 2.296 - httpuv              [* -> 1.6.17]
+2026-11-03T18:56:12.9337125Z #13 2.296 - httr2               [* -> 1.3.0]
+2026-11-03T18:56:12.9337333Z #13 2.296 - jquerylib           [* -> 0.1.4]
+2026-11-03T18:56:12.9337550Z #13 2.296 - jsonlite            [* -> 2.0.0]
+2026-11-03T18:56:12.9337761Z #13 2.296 - knitr               [* -> 1.52]
+2026-11-03T18:56:12.9337970Z #13 2.296 - later               [* -> 1.4.8]
+2026-11-03T18:56:12.9338176Z #13 2.296 - lavaan              [* -> 0.7-2]
+2026-11-03T18:56:12.9338382Z #13 2.296 - lifecycle           [* -> 1.0.5]
+2026-11-03T18:56:12.9338594Z #13 2.296 - magrittr            [* -> 2.0.5]
+2026-11-03T18:56:12.9338794Z #13 2.296 - memoise             [* -> 2.0.1]
+2026-11-03T18:56:12.9338998Z #13 2.296 - mime                [* -> 0.13]
+2026-11-03T18:56:12.9339212Z #13 2.296 - mirai               [* -> 2.7.2]
+2026-11-03T18:56:12.9339421Z #13 2.296 - mnormt              [* -> 2.1.1]
+2026-11-03T18:56:12.9339639Z #13 2.296 - mvtnorm             [* -> 1.4-2]
+2026-11-03T18:56:12.9339857Z #13 2.296 - nanonext            [* -> 1.10.4]
+2026-11-03T18:56:12.9340084Z #13 2.296 - numDeriv            [* -> 2016.8-1.1]
+2026-11-03T18:56:12.9340311Z #13 2.296 - officer             [* -> 0.7.7]
+2026-11-03T18:56:12.9340525Z #13 2.296 - openssl             [* -> 2.4.2]
+2026-11-03T18:56:12.9340732Z #13 2.296 - otel                [* -> 0.2.0]
+2026-11-03T18:56:12.9340944Z #13 2.296 - pbivnorm            [* -> 0.6.0]
+2026-11-03T18:56:12.9341160Z #13 2.296 - pillar              [* -> 1.11.1]
+2026-11-03T18:56:12.9341407Z #13 2.296 - pkgbuild            [* -> 1.4.8]
+2026-11-03T18:56:12.9341771Z #13 2.296 - pkgconfig           [* -> 2.0.3]
+2026-11-03T18:56:12.9341984Z #13 2.296 - pkgload             [* -> 1.5.3]
+2026-11-03T18:56:12.9342190Z #13 2.296 - plumber             [* -> 1.3.3]
+2026-11-03T18:56:12.9342396Z #13 2.296 - praise              [* -> 1.0.0]
+2026-11-03T18:56:12.9342606Z #13 2.296 - prettyunits         [* -> 1.2.0]
+2026-11-03T18:56:12.9342917Z #13 2.296 - processx            [* -> 3.9.0]
+2026-11-03T18:56:12.9343123Z #13 2.296 - progress            [* -> 1.2.3]
+2026-11-03T18:56:12.9343335Z #13 2.296 - promises            [* -> 1.5.0]
+2026-11-03T18:56:12.9343541Z #13 2.296 - ps                  [* -> 1.9.3]
+2026-11-03T18:56:12.9343742Z #13 2.296 - psych               [* -> 2.6.9]
+2026-11-03T18:56:12.9343957Z #13 2.296 - purrr               [* -> 1.2.2]
+2026-11-03T18:56:12.9344164Z #13 2.296 - quadprog            [* -> 1.5-8]
+2026-11-03T18:56:12.9344366Z #13 2.296 - R6                  [* -> 2.6.1]
+2026-11-03T18:56:12.9344576Z #13 2.296 - ragg                [* -> 1.5.2]
+2026-11-03T18:56:12.9344956Z #13 2.296 - rappdirs            [* -> 0.3.4]
+2026-11-03T18:56:12.9345193Z #13 2.296 - Rcpp                [* -> 1.1.2]
+2026-11-03T18:56:12.9345395Z #13 2.296 - readxl              [* -> 1.6.0]
+2026-11-03T18:56:12.9345612Z #13 2.296 - rematch             [* -> 2.0.0]
+2026-11-03T18:56:12.9345818Z #13 2.296 - rlang               [* -> 1.3.0]
+2026-11-03T18:56:12.9346041Z #13 2.296 - rmarkdown           [* -> 2.32]
+2026-11-03T18:56:12.9346253Z #13 2.296 - rprojroot           [* -> 2.1.1]
+2026-11-03T18:56:12.9346462Z #13 2.296 - sass                [* -> 0.4.10]
+2026-11-03T18:56:12.9346674Z #13 2.296 - semTools            [* -> 0.5-10]
+2026-11-03T18:56:12.9346884Z #13 2.296 - sodium              [* -> 1.4.0]
+2026-11-03T18:56:12.9347090Z #13 2.296 - stringi             [* -> 1.8.9]
+2026-11-03T18:56:12.9347298Z #13 2.296 - stringr             [* -> 1.6.0]
+2026-11-03T18:56:12.9347504Z #13 2.296 - swagger             [* -> 5.32.1]
+2026-11-03T18:56:12.9347722Z #13 2.296 - sys                 [* -> 3.4.3]
+2026-11-03T18:56:12.9347929Z #13 2.296 - systemfonts         [* -> 1.3.2]
+2026-11-03T18:56:12.9348135Z #13 2.296 - testthat            [* -> 3.3.2]
+2026-11-03T18:56:12.9348346Z #13 2.296 - textshaping         [* -> 1.0.5]
+2026-11-03T18:56:12.9348557Z #13 2.296 - tibble              [* -> 3.3.1]
+2026-11-03T18:56:12.9348761Z #13 2.296 - tidyr               [* -> 1.3.2]
+2026-11-03T18:56:12.9348969Z #13 2.296 - tidyselect          [* -> 1.2.1]
+2026-11-03T18:56:12.9349181Z #13 2.296 - tinytex             [* -> 0.60]
+2026-11-03T18:56:12.9349387Z #13 2.296 - utf8                [* -> 1.2.6]
+2026-11-03T18:56:12.9349591Z #13 2.296 - uuid                [* -> 1.2-2]
+2026-11-03T18:56:12.9349801Z #13 2.296 - vctrs               [* -> 0.7.3]
+2026-11-03T18:56:12.9350001Z #13 2.296 - waldo               [* -> 0.6.2]
+2026-11-03T18:56:12.9350223Z #13 2.296 - webutils            [* -> 1.2.3]
+2026-11-03T18:56:12.9350426Z #13 2.296 - withr               [* -> 3.0.3]
+2026-11-03T18:56:12.9350632Z #13 2.296 - xfun                [* -> 0.61]
+2026-11-03T18:56:12.9350833Z #13 2.296 - xml2                [* -> 1.6.0]
+2026-11-03T18:56:12.9351034Z #13 2.296 - yaml                [* -> 2.3.12]
+2026-11-03T18:56:12.9351247Z #13 2.296 - zip                 [* -> 3.0.2]
+2026-11-03T18:56:12.9351443Z #13 2.296 
+2026-11-03T18:56:13.8598645Z #13 2.513 - Querying repositories for available source packages ... Done!
+2026-11-03T18:56:18.5960360Z #13 7.960 # Downloading packages -------------------------------------------------------
+2026-11-03T18:56:18.7764946Z #13 8.140 [?25l
+2026-11-03T18:56:55.6142176Z   (0/101) Downloading: tidyselect, psych, dplyr, fastmap, ...                   
+2026-11-03T18:56:55.7756475Z                                                                                 
+2026-11-03T18:56:55.7757549Z [32m✔[0m askpass 1.2.1                           
+2026-11-03T18:56:55.7758460Z #13 44.98 [32m✔[0m base64enc 0.1-6                         
+2026-11-03T18:56:55.7759323Z #13 44.98 [32m✔[0m brio 1.1.5                              
+2026-11-03T18:56:55.7759748Z #13 44.98 [32m✔[0m bslib 0.12.0                            
+2026-11-03T18:56:55.7760194Z #13 44.98 [32m✔[0m cachem 1.1.0                            
+2026-11-03T18:56:55.7760647Z #13 44.98 [32m✔[0m callr 3.7.6                             
+2026-11-03T18:56:55.7761100Z #13 44.98 [32m✔[0m cellranger 1.1.0                        
+2026-11-03T18:56:55.7761778Z #13 44.98 [32m✔[0m cli 3.6.6                               
+2026-11-03T18:56:55.7762216Z #13 44.98 [32m✔[0m cpp11 0.5.5                             
+2026-11-03T18:56:55.7762667Z #13 44.98 [32m✔[0m crayon 1.5.3                            
+2026-11-03T18:56:55.7763111Z #13 44.98 [32m✔[0m curl 8.0.0                              
+2026-11-03T18:56:55.7763553Z #13 44.98 [32m✔[0m data.table 1.18.6.1                     
+2026-11-03T18:56:55.7763996Z #13 44.98 [32m✔[0m desc 1.4.3                              
+2026-11-03T18:56:55.7764435Z #13 44.98 [32m✔[0m diffobj 0.3.9                           
+2026-11-03T18:56:55.7765050Z #13 44.98 [32m✔[0m digest 0.6.39                           
+2026-11-03T18:56:55.7765520Z #13 44.98 [32m✔[0m dplyr 1.2.1                             
+2026-11-03T18:56:55.7765968Z #13 44.98 [32m✔[0m evaluate 1.0.5                          
+2026-11-03T18:56:55.7766421Z #13 44.98 [32m✔[0m fastmap 1.2.0                           
+2026-11-03T18:56:55.7766907Z #13 44.98 [32m✔[0m flextable 0.10.3                        
+2026-11-03T18:56:55.7767285Z #13 44.98 [32m✔[0m fontawesome 0.5.3                       
+2026-11-03T18:56:55.7767658Z #13 44.98 [32m✔[0m fontBitstreamVera 0.1.1                 
+2026-11-03T18:56:55.7767961Z #13 44.98 [32m✔[0m fontLiberation 0.1.0                    
+2026-11-03T18:56:55.7768250Z #13 44.98 [32m✔[0m fontquiver 0.2.1                        
+2026-11-03T18:56:55.7768530Z #13 44.98 [32m✔[0m fs 2.1.0                                
+2026-11-03T18:56:55.7768812Z #13 44.98 [32m✔[0m gdtools 0.5.1                           
+2026-11-03T18:56:55.7769179Z #13 44.98 [32m✔[0m generics 0.1.4                          
+2026-11-03T18:56:55.7769554Z #13 44.98 [32m✔[0m glue 1.8.1                              
+2026-11-03T18:56:55.7769846Z #13 44.98 [32m✔[0m GPArotation 2026.8-2                    
+2026-11-03T18:56:55.7770128Z #13 44.98 [32m✔[0m highr 0.12                              
+2026-11-03T18:56:55.7770411Z #13 44.98 [32m✔[0m hms 1.1.4                               
+2026-11-03T18:56:55.7770766Z #13 44.98 [32m✔[0m htmltools 0.5.9                         
+2026-11-03T18:56:55.7771131Z #13 44.98 [32m✔[0m httpuv 1.6.17                           
+2026-11-03T18:56:55.7771412Z #13 44.98 [32m✔[0m httr2 1.3.0                             
+2026-11-03T18:56:55.7771684Z #13 44.98 [32m✔[0m jquerylib 0.1.4                         
+2026-11-03T18:56:55.7771963Z #13 44.98 [32m✔[0m jsonlite 2.0.0                          
+2026-11-03T18:56:55.7772248Z #13 44.98 [32m✔[0m knitr 1.52                              
+2026-11-03T18:56:55.7772635Z #13 44.98 [32m✔[0m later 1.4.8                             
+2026-11-03T18:56:55.7772925Z #13 44.98 [32m✔[0m lattice 0.23-1                          
+2026-11-03T18:56:55.7773207Z #13 44.98 [32m✔[0m lavaan 0.7-2                            
+2026-11-03T18:56:55.7773491Z #13 44.98 [32m✔[0m lifecycle 1.0.5                         
+2026-11-03T18:56:55.7773783Z #13 44.98 [32m✔[0m magrittr 2.0.5                          
+2026-11-03T18:56:55.7774067Z #13 44.98 [32m✔[0m MASS 7.3-66                             
+2026-11-03T18:56:55.7774352Z #13 44.98 [32m✔[0m memoise 2.0.1                           
+2026-11-03T18:56:55.7774709Z #13 44.98 [32m✔[0m mime 0.13                               
+2026-11-03T18:56:55.7775167Z #13 44.98 [32m✔[0m mirai 2.7.2                             
+2026-11-03T18:56:55.7775445Z #13 44.98 [32m✔[0m mnormt 2.1.1                            
+2026-11-03T18:56:55.7775718Z #13 44.98 [32m✔[0m mvtnorm 1.4-2                           
+2026-11-03T18:56:55.7776142Z #13 44.98 [32m✔[0m nanonext 1.10.4                         
+2026-11-03T18:56:55.7776459Z #13 44.98 [32m✔[0m nlme 3.1-170                            
+2026-11-03T18:56:55.7776787Z #13 44.98 [32m✔[0m numDeriv 2016.8-1.1                     
+2026-11-03T18:56:55.7777076Z #13 44.98 [32m✔[0m officer 0.7.7                           
+2026-11-03T18:56:55.7777350Z #13 44.98 [32m✔[0m openssl 2.4.2                           
+2026-11-03T18:56:55.7777732Z #13 44.98 [32m✔[0m otel 0.2.0                              
+2026-11-03T18:56:55.7778156Z #13 44.98 [32m✔[0m pbivnorm 0.6.0                          
+2026-11-03T18:56:55.7778447Z #13 44.98 [32m✔[0m pillar 1.11.1                           
+2026-11-03T18:56:55.7778724Z #13 44.98 [32m✔[0m pkgbuild 1.4.8                          
+2026-11-03T18:56:55.7779008Z #13 44.98 [32m✔[0m pkgconfig 2.0.3                         
+2026-11-03T18:56:55.7779377Z #13 44.98 [32m✔[0m pkgload 1.5.3                           
+2026-11-03T18:56:55.7779660Z #13 44.98 [32m✔[0m plumber 1.3.3                           
+2026-11-03T18:56:55.7779955Z #13 44.98 [32m✔[0m praise 1.0.0                            
+2026-11-03T18:56:55.7780236Z #13 44.98 [32m✔[0m prettyunits 1.2.0                       
+2026-11-03T18:56:55.7780514Z #13 44.98 [32m✔[0m processx 3.9.0                          
+2026-11-03T18:56:55.7780796Z #13 44.98 [32m✔[0m progress 1.2.3                          
+2026-11-03T18:56:55.7781085Z #13 44.98 [32m✔[0m promises 1.5.0                          
+2026-11-03T18:56:55.7781359Z #13 44.98 [32m✔[0m ps 1.9.3                                
+2026-11-03T18:56:55.7781638Z #13 44.99 [32m✔[0m psych 2.6.9                             
+2026-11-03T18:56:55.7781918Z #13 44.99 [32m✔[0m purrr 1.2.2                             
+2026-11-03T18:56:55.7782196Z #13 44.99 [32m✔[0m quadprog 1.5-8                          
+2026-11-03T18:56:55.7782481Z #13 44.99 [32m✔[0m R6 2.6.1                                
+2026-11-03T18:56:55.7782757Z #13 44.99 [32m✔[0m ragg 1.5.2                              
+2026-11-03T18:56:55.7783044Z #13 44.99 [32m✔[0m rappdirs 0.3.4                          
+2026-11-03T18:56:55.7783320Z #13 44.99 [32m✔[0m Rcpp 1.1.2                              
+2026-11-03T18:56:55.7783596Z #13 44.99 [32m✔[0m readxl 1.6.0                            
+2026-11-03T18:56:55.7783870Z #13 44.99 [32m✔[0m rematch 2.0.0                           
+2026-11-03T18:56:55.7784144Z #13 44.99 [32m✔[0m rlang 1.3.0                             
+2026-11-03T18:56:55.7784427Z #13 44.99 [32m✔[0m rmarkdown 2.32                          
+2026-11-03T18:56:55.7784709Z #13 44.99 [32m✔[0m rprojroot 2.1.1                         
+2026-11-03T18:56:55.7785169Z #13 44.99 [32m✔[0m sass 0.4.10                             
+2026-11-03T18:56:55.7785450Z #13 44.99 [32m✔[0m semTools 0.5-10                         
+2026-11-03T18:56:55.7785732Z #13 44.99 [32m✔[0m sodium 1.4.0                            
+2026-11-03T18:56:55.7786007Z #13 44.99 [32m✔[0m stringi 1.8.9                           
+2026-11-03T18:56:55.7786284Z #13 44.99 [32m✔[0m stringr 1.6.0                           
+2026-11-03T18:56:55.7786562Z #13 44.99 [32m✔[0m swagger 5.32.1                          
+2026-11-03T18:56:55.7786837Z #13 44.99 [32m✔[0m sys 3.4.3                               
+2026-11-03T18:56:55.7787118Z #13 44.99 [32m✔[0m systemfonts 1.3.2                       
+2026-11-03T18:56:55.7787407Z #13 44.99 [32m✔[0m testthat 3.3.2                          
+2026-11-03T18:56:55.7787694Z #13 44.99 [32m✔[0m textshaping 1.0.5                       
+2026-11-03T18:56:55.7787974Z #13 44.99 [32m✔[0m tibble 3.3.1                            
+2026-11-03T18:56:55.7788251Z #13 44.99 [32m✔[0m tidyr 1.3.2                             
+2026-11-03T18:56:55.7788532Z #13 44.99 [32m✔[0m tidyselect 1.2.1                        
+2026-11-03T18:56:55.7788820Z #13 44.99 [32m✔[0m tinytex 0.60                            
+2026-11-03T18:56:55.7789098Z #13 44.99 [32m✔[0m utf8 1.2.6                              
+2026-11-03T18:56:55.7789503Z #13 44.99 [32m✔[0m uuid 1.2-2                              
+2026-11-03T18:56:55.7789960Z #13 44.99 [32m✔[0m vctrs 0.7.3                             
+2026-11-03T18:56:55.7797919Z #13 44.99 [32m✔[0m waldo 0.6.2                             
+2026-11-03T18:56:55.7798551Z #13 44.99 [32m✔[0m webutils 1.2.3                          
+2026-11-03T18:56:55.7799040Z #13 44.99 [32m✔[0m withr 3.0.3                             
+2026-11-03T18:56:55.7799547Z #13 44.99 [32m✔[0m xfun 0.61                               
+2026-11-03T18:56:55.7799853Z #13 44.99 [32m✔[0m xml2 1.6.0                              
+2026-11-03T18:56:55.7800290Z #13 44.99 [32m✔[0m yaml 2.3.12                             
+2026-11-03T18:56:55.7800605Z #13 44.99 [32m✔[0m zip 3.0.2                               
+2026-11-03T18:56:55.7800881Z #13 44.99 Successfully downloaded 101 packages in 37 seconds.
+2026-11-03T18:56:55.7801128Z #13 44.99 
+2026-11-03T18:56:55.7801413Z #13 44.99 # Installing packages --------------------------------------------------------
+2026-11-03T18:56:56.6916066Z #13 46.06 
+2026-11-03T18:56:56.8419925Z                                                                                 
+2026-11-03T18:56:56.8420823Z [32m✔[0m base64enc 0.1-6                          [installed binary]
+2026-11-03T18:56:56.8583376Z #13 46.22 
+2026-11-03T18:56:57.0088080Z                                                                                 
+2026-11-03T18:56:57.0088799Z [32m✔[0m brio 1.1.5                               [installed binary]
+2026-11-03T18:56:57.0276323Z #13 46.39 
+2026-11-03T18:56:57.1782431Z                                                                                 
+2026-11-03T18:56:57.1783320Z [32m✔[0m cli 3.6.6                                [installed binary]
+2026-11-03T18:56:57.2343835Z #13 46.60 
+2026-11-03T18:56:57.3847591Z                                                                                 
+2026-11-03T18:56:57.3848452Z [32m✔[0m cpp11 0.5.5                              [installed binary]
+2026-11-03T18:56:57.4046704Z #13 46.77 
+2026-11-03T18:56:57.5555845Z                                                                                 
+2026-11-03T18:56:57.5556777Z [32m✔[0m crayon 1.5.3                             [installed binary]
+2026-11-03T18:56:57.5787867Z #13 46.94 
+2026-11-03T18:56:57.7292429Z                                                                                 
+2026-11-03T18:56:57.7293196Z [32m✔[0m curl 8.0.0                               [installed binary]
+2026-11-03T18:56:57.7768562Z #13 47.14 
+2026-11-03T18:56:57.9273035Z                                                                                 
+2026-11-03T18:56:57.9273971Z [32m✔[0m data.table 1.18.6.1                      [installed binary]
+2026-11-03T18:56:57.9921846Z #13 47.36 
+2026-11-03T18:56:58.1425618Z                                                                                 
+2026-11-03T18:56:58.1426522Z [32m✔[0m digest 0.6.39                            [installed binary]
+2026-11-03T18:56:58.1570256Z #13 47.52 
+2026-11-03T18:56:58.3074624Z                                                                                 
+2026-11-03T18:56:58.3075495Z [32m✔[0m evaluate 1.0.5                           [installed binary]
+2026-11-03T18:56:58.3212377Z #13 47.69 
+2026-11-03T18:56:58.4716852Z                                                                                 
+2026-11-03T18:56:58.4717744Z [32m✔[0m fastmap 1.2.0                            [installed binary]
+2026-11-03T18:56:58.4888122Z #13 47.85 
+2026-11-03T18:56:58.6392578Z                                                                                 
+2026-11-03T18:56:58.6393443Z [32m✔[0m fontBitstreamVera 0.1.1                  [installed binary]
+2026-11-03T18:56:58.6952652Z #13 48.06 
+2026-11-03T18:56:58.8456741Z                                                                                 
+2026-11-03T18:56:58.8457646Z [32m✔[0m fontLiberation 0.1.0                     [installed binary]
+2026-11-03T18:56:58.8611322Z #13 48.22 
+2026-11-03T18:56:59.0118089Z                                                                                 
+2026-11-03T18:56:59.0118890Z [32m✔[0m fs 2.1.0                                 [installed binary]
+2026-11-03T18:56:59.0581085Z #13 48.42 
+2026-11-03T18:56:59.2083810Z                                                                                 
+2026-11-03T18:56:59.2084590Z [32m✔[0m generics 0.1.4                           [installed binary]
+2026-11-03T18:56:59.2211671Z #13 48.59 
+2026-11-03T18:56:59.3716934Z                                                                                 
+2026-11-03T18:56:59.3717801Z [32m✔[0m glue 1.8.1                               [installed binary]
+2026-11-03T18:56:59.4255593Z #13 48.79 
+2026-11-03T18:56:59.5770748Z                                                                                 
+2026-11-03T18:56:59.5771444Z [32m✔[0m GPArotation 2026.8-2                     [installed binary]
+2026-11-03T18:56:59.6007020Z #13 48.96 
+2026-11-03T18:56:59.7512115Z                                                                                 
+2026-11-03T18:56:59.7512783Z [32m✔[0m jsonlite 2.0.0                           [installed binary]
+2026-11-03T18:56:59.7856200Z #13 49.15 
+2026-11-03T18:56:59.9359382Z                                                                                 
+2026-11-03T18:56:59.9360234Z [32m✔[0m lattice 0.23-1                           [installed binary]
+2026-11-03T18:56:59.9738548Z #13 49.34 
+2026-11-03T18:57:00.1241758Z                                                                                 
+2026-11-03T18:57:00.1420885Z [32m✔[0m magrittr 2.0.5                           [installed binary]
+2026-11-03T18:57:00.1421204Z #13 49.51 
+2026-11-03T18:57:00.2925636Z                                                                                 
+2026-11-03T18:57:00.2926326Z [32m✔[0m MASS 7.3-66                              [installed binary]
+2026-11-03T18:57:00.3115280Z #13 49.68 
+2026-11-03T18:57:00.4618909Z                                                                                 
+2026-11-03T18:57:00.4619599Z [32m✔[0m mime 0.13                                [installed binary]
+2026-11-03T18:57:00.4723602Z #13 49.84 
+2026-11-03T18:57:00.6227588Z                                                                                 
+2026-11-03T18:57:00.6228465Z [32m✔[0m mnormt 2.1.1                             [installed binary]
+2026-11-03T18:57:00.6436995Z #13 50.01 
+2026-11-03T18:57:00.7941000Z                                                                                 
+2026-11-03T18:57:00.7941908Z [32m✔[0m mvtnorm 1.4-2                            [installed binary]
+2026-11-03T18:57:00.8185415Z #13 50.18 
+2026-11-03T18:57:00.9690630Z                                                                                 
+2026-11-03T18:57:00.9691339Z [32m✔[0m nanonext 1.10.4                          [installed binary]
+2026-11-03T18:57:00.9877341Z #13 50.35 
+2026-11-03T18:57:01.1381250Z                                                                                 
+2026-11-03T18:57:01.1382070Z [32m✔[0m numDeriv 2016.8-1.1                      [installed binary]
+2026-11-03T18:57:01.1493739Z #13 50.51 
+2026-11-03T18:57:01.2995104Z                                                                                 
+2026-11-03T18:57:01.2996040Z [32m✔[0m otel 0.2.0                               [installed binary]
+2026-11-03T18:57:01.3203944Z #13 50.68 
+2026-11-03T18:57:01.4708993Z                                                                                 
+2026-11-03T18:57:01.4709924Z [32m✔[0m pbivnorm 0.6.0                           [installed binary]
+2026-11-03T18:57:01.4818148Z #13 50.85 
+2026-11-03T18:57:01.6322430Z                                                                                 
+2026-11-03T18:57:01.6323330Z [32m✔[0m pkgconfig 2.0.3                          [installed binary]
+2026-11-03T18:57:01.6430654Z #13 51.01 
+2026-11-03T18:57:01.7935573Z                                                                                 
+2026-11-03T18:57:01.7936841Z [32m✔[0m praise 1.0.0                             [installed binary]
+2026-11-03T18:57:01.8122510Z #13 51.18 
+2026-11-03T18:57:01.9632541Z                                                                                 
+2026-11-03T18:57:01.9633575Z [32m✔[0m prettyunits 1.2.0                        [installed binary]
+2026-11-03T18:57:01.9798141Z #13 51.34 
+2026-11-03T18:57:02.1303542Z                                                                                 
+2026-11-03T18:57:02.1304999Z [32m✔[0m ps 1.9.3                                 [installed binary]
+2026-11-03T18:57:02.1478721Z #13 51.51 
+2026-11-03T18:57:02.2983241Z                                                                                 
+2026-11-03T18:57:02.2984030Z [32m✔[0m quadprog 1.5-8                           [installed binary]
+2026-11-03T18:57:02.3105965Z #13 51.67 
+2026-11-03T18:57:02.4611061Z                                                                                 
+2026-11-03T18:57:02.4613273Z [32m✔[0m R6 2.6.1                                 [installed binary]
+2026-11-03T18:57:02.5038893Z #13 51.87 
+2026-11-03T18:57:02.6544412Z                                                                                 
+2026-11-03T18:57:02.6545423Z [32m✔[0m rappdirs 0.3.4                           [installed binary]
+2026-11-03T18:57:02.7048392Z #13 52.07 
+2026-11-03T18:57:02.8551849Z                                                                                 
+2026-11-03T18:57:02.8552550Z [32m✔[0m Rcpp 1.1.2                               [installed binary]
+2026-11-03T18:57:02.9646211Z #13 52.33 
+2026-11-03T18:57:03.1150519Z                                                                                 
+2026-11-03T18:57:03.1151413Z [32m✔[0m rematch 2.0.0                            [installed binary]
+2026-11-03T18:57:03.1363693Z #13 52.50 
+2026-11-03T18:57:03.2868014Z                                                                                 
+2026-11-03T18:57:03.2869011Z [32m✔[0m rlang 1.3.0                              [installed binary]
+2026-11-03T18:57:03.3747257Z #13 52.74 
+2026-11-03T18:57:03.5259603Z                                                                                 
+2026-11-03T18:57:03.5260388Z [32m✔[0m rprojroot 2.1.1                          [installed binary]
+2026-11-03T18:57:03.5439526Z #13 52.91 
+2026-11-03T18:57:03.6943453Z                                                                                 
+2026-11-03T18:57:03.6944189Z [32m✔[0m sodium 1.4.0                             [installed binary]
+2026-11-03T18:57:03.7529411Z #13 53.12 
+2026-11-03T18:57:03.9032298Z                                                                                 
+2026-11-03T18:57:03.9033173Z [32m✔[0m stringi 1.8.9                            [installed binary]
+2026-11-03T18:57:03.9689285Z #13 53.33 
+2026-11-03T18:57:04.1192358Z                                                                                 
+2026-11-03T18:57:04.1193150Z [32m✔[0m swagger 5.32.1                           [installed binary]
+2026-11-03T18:57:04.1356498Z #13 53.50 
+2026-11-03T18:57:04.2860939Z                                                                                 
+2026-11-03T18:57:04.2861819Z [32m✔[0m sys 3.4.3                                [installed binary]
+2026-11-03T18:57:04.2971123Z #13 53.66 
+2026-11-03T18:57:04.4476479Z                                                                                 
+2026-11-03T18:57:04.4477197Z [32m✔[0m utf8 1.2.6                               [installed binary]
+2026-11-03T18:57:04.4615676Z #13 53.83 
+2026-11-03T18:57:04.6120231Z                                                                                 
+2026-11-03T18:57:04.6120908Z [32m✔[0m uuid 1.2-2                               [installed binary]
+2026-11-03T18:57:04.6246055Z #13 53.99 
+2026-11-03T18:57:04.7752495Z                                                                                 
+2026-11-03T18:57:04.7753370Z [32m✔[0m withr 3.0.3                              [installed binary]
+2026-11-03T18:57:04.7901419Z #13 54.15 
+2026-11-03T18:57:04.9406653Z                                                                                 
+2026-11-03T18:57:04.9407515Z [32m✔[0m xfun 0.61                                [installed binary]
+2026-11-03T18:57:04.9552071Z #13 54.32 
+2026-11-03T18:57:05.1056274Z                                                                                 
+2026-11-03T18:57:05.1057478Z [32m✔[0m yaml 2.3.12                              [installed binary]
+2026-11-03T18:57:05.1338780Z #13 54.50 
+2026-11-03T18:57:05.2842770Z                                                                                 
+2026-11-03T18:57:05.2843535Z [32m✔[0m zip 3.0.2                                [installed binary]
+2026-11-03T18:57:05.3017809Z #13 54.67 
+2026-11-03T18:57:05.4520916Z                                                                                 
+2026-11-03T18:57:05.4521649Z [32m✔[0m diffobj 0.3.9                            [installed binary]
+2026-11-03T18:57:05.5561731Z #13 54.92 
+2026-11-03T18:57:05.7065327Z                                                                                 
+2026-11-03T18:57:05.7066183Z [32m✔[0m fontquiver 0.2.1                         [installed binary]
+2026-11-03T18:57:05.7198747Z #13 55.08 
+2026-11-03T18:57:05.8703278Z                                                                                 
+2026-11-03T18:57:05.8704149Z [32m✔[0m webutils 1.2.3                           [installed binary]
+2026-11-03T18:57:05.9077805Z #13 55.27 
+2026-11-03T18:57:06.0581509Z                                                                                 
+2026-11-03T18:57:06.0582576Z [32m✔[0m nlme 3.1-170                             [installed binary]
+2026-11-03T18:57:06.1050517Z #13 55.47 
+2026-11-03T18:57:06.2562122Z                                                                                 
+2026-11-03T18:57:06.2562775Z [32m✔[0m mirai 2.7.2                              [installed binary]
+2026-11-03T18:57:06.3387204Z #13 55.70 
+2026-11-03T18:57:06.4890863Z                                                                                 
+2026-11-03T18:57:06.4891639Z [32m✔[0m lavaan 0.7-2                             [installed binary]
+2026-11-03T18:57:06.5785588Z #13 55.94 
+2026-11-03T18:57:06.7287592Z                                                                                 
+2026-11-03T18:57:06.7288425Z [32m✔[0m desc 1.4.3                               [installed binary]
+2026-11-03T18:57:06.7466733Z #13 56.11 
+2026-11-03T18:57:06.8971079Z                                                                                 
+2026-11-03T18:57:06.8971994Z [32m✔[0m processx 3.9.0                           [installed binary]
+2026-11-03T18:57:06.9168759Z #13 56.28 
+2026-11-03T18:57:07.0673882Z                                                                                 
+2026-11-03T18:57:07.0675131Z [32m✔[0m cachem 1.1.0                             [installed binary]
+2026-11-03T18:57:07.1571122Z #13 56.52 
+2026-11-03T18:57:07.3075700Z                                                                                 
+2026-11-03T18:57:07.3076432Z [32m✔[0m htmltools 0.5.9                          [installed binary]
+2026-11-03T18:57:07.4011066Z #13 56.76 
+2026-11-03T18:57:07.5513974Z                                                                                 
+2026-11-03T18:57:07.5515034Z [32m✔[0m later 1.4.8                              [installed binary]
+2026-11-03T18:57:07.6246139Z #13 56.99 
+2026-11-03T18:57:07.7749278Z                                                                                 
+2026-11-03T18:57:07.7750188Z [32m✔[0m lifecycle 1.0.5                          [installed binary]
+2026-11-03T18:57:07.8599315Z #13 57.22 
+2026-11-03T18:57:08.0103216Z                                                                                 
+2026-11-03T18:57:08.0104152Z [32m✔[0m xml2 1.6.0                               [installed binary]
+2026-11-03T18:57:08.1101438Z #13 57.47 
+2026-11-03T18:57:08.2612605Z                                                                                 
+2026-11-03T18:57:08.2613284Z [32m✔[0m askpass 1.2.1                            [installed binary]
+2026-11-03T18:57:08.2715894Z #13 57.64 
+2026-11-03T18:57:08.4220133Z                                                                                 
+2026-11-03T18:57:08.4221013Z [32m✔[0m highr 0.12                               [installed binary]
+2026-11-03T18:57:08.4376367Z #13 57.80 
+2026-11-03T18:57:08.5880926Z                                                                                 
+2026-11-03T18:57:08.5881681Z [32m✔[0m tinytex 0.60                             [installed binary]
+2026-11-03T18:57:08.6115126Z #13 57.98 
+2026-11-03T18:57:08.7618824Z                                                                                 
+2026-11-03T18:57:08.7619635Z [32m✔[0m waldo 0.6.2                              [installed binary]
+2026-11-03T18:57:08.8648875Z #13 58.23 
+2026-11-03T18:57:09.0152661Z                                                                                 
+2026-11-03T18:57:09.0153928Z [32m✔[0m psych 2.6.9                              [installed binary]
+2026-11-03T18:57:09.0831023Z #13 58.45 
+2026-11-03T18:57:09.2334456Z                                                                                 
+2026-11-03T18:57:09.2335479Z [32m✔[0m semTools 0.5-10                          [installed binary]
+2026-11-03T18:57:09.3396257Z #13 58.70 
+2026-11-03T18:57:09.4900510Z                                                                                 
+2026-11-03T18:57:09.4901260Z [32m✔[0m callr 3.7.6                              [installed binary]
+2026-11-03T18:57:09.5228973Z #13 58.89 
+2026-11-03T18:57:09.6733594Z                                                                                 
+2026-11-03T18:57:09.6734500Z [32m✔[0m memoise 2.0.1                            [installed binary]
+2026-11-03T18:57:09.7704649Z #13 59.13 
+2026-11-03T18:57:09.9206207Z                                                                                 
+2026-11-03T18:57:09.9206931Z [32m✔[0m fontawesome 0.5.3                        [installed binary]
+2026-11-03T18:57:10.0236224Z #13 59.39 
+2026-11-03T18:57:10.1739560Z                                                                                 
+2026-11-03T18:57:10.1740471Z [32m✔[0m jquerylib 0.1.4                          [installed binary]
+2026-11-03T18:57:10.2945323Z #13 59.66 
+2026-11-03T18:57:10.4449291Z                                                                                 
+2026-11-03T18:57:10.4449993Z [32m✔[0m sass 0.4.10                              [installed binary]
+2026-11-03T18:57:10.5670946Z #13 59.93 
+2026-11-03T18:57:10.7175145Z                                                                                 
+2026-11-03T18:57:10.7176034Z [32m✔[0m promises 1.5.0                           [installed binary]
+2026-11-03T18:57:10.8810546Z #13 60.24 
+2026-11-03T18:57:11.0314197Z                                                                                 
+2026-11-03T18:57:11.0315885Z [32m✔[0m systemfonts 1.3.2                        [installed binary]
+2026-11-03T18:57:11.1372297Z #13 60.50 
+2026-11-03T18:57:11.2881197Z                                                                                 
+2026-11-03T18:57:11.2882053Z [32m✔[0m vctrs 0.7.3                              [installed binary]
+2026-11-03T18:57:11.4169736Z #13 60.78 
+2026-11-03T18:57:11.5673179Z                                                                                 
+2026-11-03T18:57:11.5674017Z [32m✔[0m openssl 2.4.2                            [installed binary]
+2026-11-03T18:57:11.5994947Z #13 60.96 
+2026-11-03T18:57:11.7497481Z                                                                                 
+2026-11-03T18:57:11.7498159Z [32m✔[0m knitr 1.52                               [installed binary]
+2026-11-03T18:57:11.8666820Z #13 61.23 
+2026-11-03T18:57:12.0171125Z                                                                                 
+2026-11-03T18:57:12.0172447Z [32m✔[0m pkgbuild 1.4.8                           [installed binary]
+2026-11-03T18:57:12.1059034Z #13 61.47 
+2026-11-03T18:57:12.2564629Z                                                                                 
+2026-11-03T18:57:12.2565642Z [32m✔[0m bslib 0.12.0                             [installed binary]
+2026-11-03T18:57:12.4488601Z #13 61.81 
+2026-11-03T18:57:12.5994029Z                                                                                 
+2026-11-03T18:57:12.5995242Z [32m✔[0m httpuv 1.6.17                            [installed binary]
+2026-11-03T18:57:12.7529880Z #13 62.12 
+2026-11-03T18:57:12.9035179Z                                                                                 
+2026-11-03T18:57:12.9036055Z [32m✔[0m gdtools 0.5.1                            [installed binary]
+2026-11-03T18:57:13.0639257Z #13 62.43 
+2026-11-03T18:57:13.2141951Z                                                                                 
+2026-11-03T18:57:13.2142840Z [32m✔[0m textshaping 1.0.5                        [installed binary]
+2026-11-03T18:57:13.3175851Z #13 62.68 
+2026-11-03T18:57:13.4679926Z                                                                                 
+2026-11-03T18:57:13.4680806Z [32m✔[0m hms 1.1.4                                [installed binary]
+2026-11-03T18:57:13.5881064Z #13 62.95 
+2026-11-03T18:57:13.7385290Z                                                                                 
+2026-11-03T18:57:13.7386221Z [32m✔[0m pillar 1.11.1                            [installed binary]
+2026-11-03T18:57:13.9015142Z #13 63.27 
+2026-11-03T18:57:14.0518058Z                                                                                 
+2026-11-03T18:57:14.0518739Z [32m✔[0m purrr 1.2.2                              [installed binary]
+2026-11-03T18:57:14.1732299Z #13 63.54 
+2026-11-03T18:57:14.3235735Z                                                                                 
+2026-11-03T18:57:14.3236414Z [32m✔[0m stringr 1.6.0                            [installed binary]
+2026-11-03T18:57:14.4506559Z #13 63.81 
+2026-11-03T18:57:14.6010462Z                                                                                 
+2026-11-03T18:57:14.6011507Z [32m✔[0m tidyselect 1.2.1                         [installed binary]
+2026-11-03T18:57:14.7130836Z #13 64.08 
+2026-11-03T18:57:14.8635062Z                                                                                 
+2026-11-03T18:57:14.8635884Z [32m✔[0m httr2 1.3.0                              [installed binary]
+2026-11-03T18:57:14.9892360Z #13 64.35 
+2026-11-03T18:57:15.1396468Z                                                                                 
+2026-11-03T18:57:15.1397583Z [32m✔[0m pkgload 1.5.3                            [installed binary]
+2026-11-03T18:57:15.4403022Z #13 64.80 
+2026-11-03T18:57:15.5907212Z                                                                                 
+2026-11-03T18:57:15.5907875Z [32m✔[0m rmarkdown 2.32                           [installed binary]
+2026-11-03T18:57:15.7399439Z #13 65.10 
+2026-11-03T18:57:15.8901991Z                                                                                 
+2026-11-03T18:57:15.8902693Z [32m✔[0m plumber 1.3.3                            [installed binary]
+2026-11-03T18:57:16.0803823Z #13 65.44 
+2026-11-03T18:57:16.2314252Z                                                                                 
+2026-11-03T18:57:16.2315302Z [32m✔[0m ragg 1.5.2                               [installed binary]
+2026-11-03T18:57:16.3340060Z #13 65.70 
+2026-11-03T18:57:16.4843250Z                                                                                 
+2026-11-03T18:57:16.4843925Z [32m✔[0m progress 1.2.3                           [installed binary]
+2026-11-03T18:57:16.6119396Z #13 65.98 
+2026-11-03T18:57:16.7623425Z                                                                                 
+2026-11-03T18:57:16.7624327Z [32m✔[0m tibble 3.3.1                             [installed binary]
+2026-11-03T18:57:16.9779242Z #13 66.34 
+2026-11-03T18:57:17.1282752Z                                                                                 
+2026-11-03T18:57:17.1283650Z [32m✔[0m testthat 3.3.2                           [installed binary]
+2026-11-03T18:57:17.2445817Z #13 66.61 
+2026-11-03T18:57:17.3949597Z                                                                                 
+2026-11-03T18:57:17.3950489Z [32m✔[0m cellranger 1.1.0                         [installed binary]
+2026-11-03T18:57:17.4188884Z #13 66.78 
+2026-11-03T18:57:17.5698510Z                                                                                 
+2026-11-03T18:57:17.5699389Z [32m✔[0m dplyr 1.2.1                              [installed binary]
+2026-11-03T18:57:17.8168920Z #13 67.18 
+2026-11-03T18:57:17.9672595Z                                                                                 
+2026-11-03T18:57:17.9673466Z [32m✔[0m readxl 1.6.0                             [installed binary]
+2026-11-03T18:57:17.9925282Z #13 67.36 
+2026-11-03T18:57:18.1429636Z                                                                                 
+2026-11-03T18:57:18.1430311Z [32m✔[0m tidyr 1.3.2                              [installed binary]
+2026-11-03T18:57:18.4092550Z #13 67.77 
+2026-11-03T18:57:18.5596451Z                                                                                 
+2026-11-03T18:57:18.5597327Z [32m✔[0m officer 0.7.7                            [installed binary]
+2026-11-03T18:57:18.8943631Z #13 68.26 
+2026-11-03T18:57:19.0447147Z                                                                                 
+2026-11-03T18:57:19.0448069Z [32m✔[0m flextable 0.10.3                         [installed binary]
+2026-11-03T18:57:19.5675448Z #13 68.93 Successfully installed 101 packages in 24 seconds.
+2026-11-03T18:57:19.8005098Z #13 68.93 [?25hWarning message:
+2026-11-03T18:57:19.8005717Z #13 69.01 curl does not appear to be installed; downloads will fail.
+2026-11-03T18:57:19.8006355Z #13 69.01 See <https://rstudio.github.io/renv/articles/renv.html#downloads> for more information. 
+2026-11-03T18:57:22.1301342Z #13 DONE 71.5s
+2026-11-03T18:57:22.2469732Z 
+2026-11-03T18:57:22.2470325Z #14 [6/9] COPY plumber.R run.R healthcheck.R ./
+2026-11-03T18:57:22.2470761Z #14 DONE 0.1s
+2026-11-03T18:57:22.4036110Z 
+2026-11-03T18:57:22.4036546Z #15 [7/9] COPY R ./R
+2026-11-03T18:57:22.4036903Z #15 DONE 0.0s
+2026-11-03T18:57:22.4037069Z 
+2026-11-03T18:57:22.4037432Z #16 [8/9] COPY tests ./tests
+2026-11-03T18:57:22.4037839Z #16 DONE 0.0s
+2026-11-03T18:57:22.4038040Z 
+2026-11-03T18:57:22.4040973Z #17 [9/9] RUN useradd -m -u 1000 olceklab  && mkdir -p /app/test-results  && chown olceklab:olceklab /app/test-results
+2026-11-03T18:57:22.4041724Z #17 DONE 0.1s
+2026-11-03T18:57:22.5563658Z 
+2026-11-03T18:57:22.5564244Z #18 exporting to image
+2026-11-03T18:57:22.5564889Z #18 exporting layers
+2026-11-03T18:57:33.6847203Z #18 exporting layers 11.3s done
+2026-11-03T18:57:33.8530862Z #18 exporting manifest sha256:f6a4f31cab99840753ab690715444aff1a1e90ffb9823d1bdda35a3e6c912265 done
+2026-11-03T18:57:33.8531497Z #18 exporting config sha256:388c633fe6f10c165e0cdb60b7b59e1b359becc05cbe4e6a2c3b349ae8222c60 done
+2026-11-03T18:57:33.8532053Z #18 exporting attestation manifest sha256:433c3817e82f906c54fe28d8c270dadc440f2d2af241b06517908d52ab645c20 done
+2026-11-03T18:57:33.8532623Z #18 exporting manifest list sha256:7a9b3993eed9195cbf2e5540174d00aa24a0dfb8e669d2daa93d1d3ed233d51e done
+2026-11-03T18:57:33.8533050Z #18 naming to docker.io/library/olceklab-engine:test done
+2026-11-03T18:57:33.8533340Z #18 unpacking to docker.io/library/olceklab-engine:test
+2026-11-03T18:57:37.6354278Z #18 unpacking to docker.io/library/olceklab-engine:test 3.9s done
+2026-11-03T18:57:37.7019020Z #18 DONE 15.2s
+2026-11-03T18:57:37.7114542Z ##[group]Run docker run --name engine-tests -e ONLINE_LIMITS=false olceklab-engine:test Rscript tests/testthat.R
+2026-11-03T18:57:37.7115364Z [36;1mdocker run --name engine-tests -e ONLINE_LIMITS=false olceklab-engine:test Rscript tests/testthat.R[0m
+2026-11-03T18:57:37.7143587Z shell: /usr/bin/bash -e {0}
+2026-11-03T18:57:37.7143804Z ##[endgroup]
+2026-11-03T18:57:42.1875535Z ✔ | F W  S  OK | Context
+2026-11-03T18:57:42.1989164Z 
+2026-11-03T18:57:43.5520212Z ⠏ |          0 | api-analyses                                                   
+2026-11-03T18:57:43.6583470Z ⠋ |          1 | api-analyses                                                   
+2026-11-03T18:57:43.9624515Z ⠴ |          6 | api-analyses                                                   
+2026-11-03T18:57:44.7502848Z ⠦ |          7 | api-analyses                                                   
+2026-11-03T18:57:45.5880711Z ⠇ |          9 | api-analyses                                                   
+2026-11-03T18:57:47.5918877Z ⠼ |         15 | api-analyses                                                   
+2026-11-03T18:57:49.1296137Z ⠦ |         17 | api-analyses                                                   
+2026-11-03T18:58:02.8964069Z ⠹ |         23 | api-analyses                                                   
+2026-11-03T18:58:03.0254004Z ⠦ |         27 | api-analyses                                                   
+2026-11-03T18:58:03.1525204Z ⠧ |         28 | api-analyses                                                   
+2026-11-03T18:58:03.5418327Z ⠋ |         31 | api-analyses                                                   
+2026-11-03T18:58:04.6853723Z ⠹ |         33 | api-analyses                                                   
+2026-11-03T18:58:06.0000855Z ⠴ |         36 | api-analyses                                                   
+2026-11-03T18:58:06.8097495Z ⠋ |         41 | api-analyses                                                   
+2026-11-03T18:58:08.9870831Z ⠹ |         43 | api-analyses                                                   
+2026-11-03T18:58:09.4519522Z ⠧ |         48 | api-analyses                                                   
+2026-11-03T18:58:09.4570211Z ⠙ |         52 | api-analyses                                                   
+2026-11-03T18:58:09.4571005Z ✔ |         53 | api-analyses [27.3s]
+2026-11-03T18:58:09.4580332Z 
+2026-11-03T18:58:12.0812926Z ⠏ |          0 | api-simulation                                                 
+2026-11-03T18:58:12.3859147Z ⠋ |          1 | api-simulation                                                 
+2026-11-03T18:58:13.9003524Z ⠴ |          6 | api-simulation                                                 
+2026-11-03T18:58:17.9095248Z ⠦ |          7 | api-simulation                                                 
+2026-11-03T18:58:23.1122881Z ⠧ |          8 | api-simulation                                                 
+2026-11-03T18:58:23.8217214Z ⠋ |         11 | api-simulation                                                 
+2026-11-03T18:58:34.8139939Z ⠹ |         13 | api-simulation                                                 
+2026-11-03T18:58:35.2132464Z ⠸ |         14 | api-simulation                                                 
+2026-11-03T18:58:35.3249190Z ⠹ |         23 | api-simulation                                                 
+2026-11-03T18:58:35.3767228Z ⠧ |         28 | api-simulation                                                 
+2026-11-03T18:58:35.3767623Z ✔ |         30 | api-simulation [25.9s]
+2026-11-03T18:58:35.3847931Z 
+2026-11-03T18:58:36.3439966Z ⠏ |          0 | api                                                            
+2026-11-03T18:58:36.5636403Z ⠋ |          1 | api                                                            
+2026-11-03T18:58:36.6875507Z ⠏ |         10 | api                                                            
+2026-11-03T18:58:36.7872193Z ⠼ |         15 | api                                                            
+2026-11-03T18:58:36.8893887Z ⠧ |         18 | api                                                            
+2026-11-03T18:58:36.9923956Z ⠹ |         23 | api                                                            
+2026-11-03T18:58:37.2256351Z ⠴ |         26 | api                                                            
+2026-11-03T18:58:37.2796242Z ⠦ |         27 | api                                                            
+2026-11-03T18:58:37.2796705Z ✔ |         29 | api [1.9s]
+2026-11-03T18:58:37.2803319Z 
+2026-11-03T18:58:46.2561304Z ⠏ |          0 | bidekcet-harness                                               
+2026-11-03T18:58:48.1194690Z ⠹ |          3 | bidekcet-harness                                               
+2026-11-03T18:58:49.8234905Z ⠼ |         65 | bidekcet-harness                                               
+2026-11-03T18:58:51.5565170Z ⠦ |         87 | bidekcet-harness                                               
+2026-11-03T18:58:51.5596846Z ⠧ |         88 | bidekcet-harness                                               
+2026-11-03T18:58:51.5597865Z ✔ |         88 | bidekcet-harness [14.3s]
+2026-11-03T18:58:51.5607425Z 
+2026-11-03T18:58:52.5016276Z ⠏ |          0 | cfa-compare                                                    
+2026-11-03T18:58:54.0375611Z ⠋ |          1 | cfa-compare                                                    
+2026-11-03T18:58:54.4611472Z ⠦ |         17 | cfa-compare                                                    
+2026-11-03T18:58:54.9890907Z ⠧ |         18 | cfa-compare                                                    
+2026-11-03T18:58:57.3878676Z ⠏ |         20 | cfa-compare                                                    
+2026-11-03T18:58:57.7099742Z ⠴ |         26 | cfa-compare                                                    
+2026-11-03T18:58:58.5802532Z ⠇ |         29 | cfa-compare                                                    
+2026-11-03T18:58:58.5955913Z ⠴ |         36 | cfa-compare                                                    
+2026-11-03T18:58:58.5956495Z ✔ |         41 | cfa-compare [7.0s]
+2026-11-03T18:58:58.5965667Z 
+2026-11-03T18:58:58.8512706Z ⠏ |          0 | cfa                                                            
+2026-11-03T18:58:59.0985077Z ⠋ |          1 | cfa                                                            
+2026-11-03T18:58:59.4069085Z ⠹ |         13 | cfa                                                            
+2026-11-03T18:58:59.7850612Z ⠋ |         21 | cfa                                                            
+2026-11-03T18:59:00.0497584Z ⠸ |         24 | cfa                                                            
+2026-11-03T18:59:01.0315346Z ⠧ |         28 | cfa                                                            
+2026-11-03T18:59:07.2129487Z ⠼ |         35 | cfa                                                            
+2026-11-03T18:59:10.3972929Z ⠹ |         43 | cfa                                                            
+2026-11-03T18:59:10.5470210Z ⠙ |         52 | cfa                                                            
+2026-11-03T18:59:10.8100615Z ⠼ |         55 | cfa                                                            
+2026-11-03T18:59:10.9221554Z ⠋ |         61 | cfa                                                            
+2026-11-03T18:59:11.1693663Z ⠸ |         64 | cfa                                                            
+2026-11-03T18:59:11.3403425Z ⠼ |         65 | cfa                                                            
+2026-11-03T18:59:11.5699561Z ⠧ |         68 | cfa                                                            
+2026-11-03T18:59:11.5822055Z ⠼ |         75 | cfa                                                            
+2026-11-03T18:59:11.5823031Z ✔ |         79 | cfa [13.0s]
+2026-11-03T18:59:11.5831623Z 
+2026-11-03T18:59:11.5959040Z ⠏ |          0 | cors                                                           
+2026-11-03T18:59:11.5959900Z ✔ |          2 | cors
+2026-11-03T18:59:11.5967204Z 
+2026-11-03T18:59:11.7076654Z ⠏ |          0 | data-clean                                                     
+2026-11-03T18:59:11.8197544Z ⠦ |         37 | data-clean                                                     
+2026-11-03T18:59:11.8682001Z ⠧ |         68 | data-clean                                                     
+2026-11-03T18:59:11.8682372Z ✔ |         73 | data-clean
+2026-11-03T18:59:11.8687810Z 
+2026-11-03T18:59:12.1420085Z ⠏ |          0 | efa                                                            
+2026-11-03T18:59:12.3090008Z ⠋ |          1 | efa                                                            
+2026-11-03T18:59:12.4861321Z ⠇ |         19 | efa                                                            
+2026-11-03T18:59:13.9259657Z ⠙ |         22 | efa                                                            
+2026-11-03T18:59:14.2821667Z ⠧ |         28 | efa                                                            
+2026-11-03T18:59:14.9976985Z ⠏ |         30 | efa                                                            
+2026-11-03T18:59:15.1070565Z ⠸ |         34 | efa                                                            
+2026-11-03T18:59:15.2330797Z ⠼ |         35 | efa                                                            
+2026-11-03T18:59:16.8759793Z ⠹ |         43 | efa                                                            
+2026-11-03T18:59:16.8986650Z Error in if (s < eps) break : missing value where TRUE/FALSE needed
+2026-11-03T18:59:17.0317897Z ⠴ |         46 | efa                                                            
+2026-11-03T18:59:17.0455026Z ⠼ |         55 | efa                                                            
+2026-11-03T18:59:17.0455401Z ✔ |         60 | efa [5.2s]
+2026-11-03T18:59:17.0460555Z 
+2026-11-03T18:59:17.1150426Z ⠏ |          0 | errors                                                         
+2026-11-03T18:59:17.1150923Z ✔ |         22 | errors
+2026-11-03T18:59:17.1156251Z 
+2026-11-03T18:59:19.0882729Z ⠏ |          0 | factor-number                                                  
+2026-11-03T18:59:20.0731470Z ⠋ |          1 | factor-number                                                  
+2026-11-03T18:59:20.7563629Z ⠹ |          3 | factor-number                                                  
+2026-11-03T18:59:23.0855625Z ⠸ |          4 | factor-number                                                  
+2026-11-03T18:59:24.5428145Z ⠼ |          5 | factor-number                                                  
+2026-11-03T18:59:24.6486587Z ⠴ |          6 | factor-number                                                  
+2026-11-03T18:59:25.4937576Z ⠏ |         10 | factor-number                                                  
+2026-11-03T18:59:25.9018550Z ⠙ |         12 | factor-number                                                  
+2026-11-03T18:59:26.7489199Z ⠼ |         15 | factor-number                                                  
+2026-11-03T18:59:27.1666124Z ⠧ |         18 | factor-number                                                  
+2026-11-03T18:59:33.4545445Z ⠋ |         21 | factor-number                                                  
+2026-11-03T18:59:34.0042110Z ⠸ |         24 | factor-number                                                  
+2026-11-03T18:59:34.1317876Z ⠼ |         25 | factor-number                                                  
+2026-11-03T18:59:34.7505111Z ⠧ |         28 | factor-number                                                  
+2026-11-03T18:59:34.8763968Z ⠇ |         29 | factor-number                                                  
+2026-11-03T18:59:35.0981280Z ⠼ |         35 | factor-number                                                  
+2026-11-03T18:59:35.7106203Z ⠧ |         38 | factor-number                                                  
+2026-11-03T18:59:35.7241417Z ⠋ |         41 | factor-number                                                  
+2026-11-03T18:59:35.7241971Z ✔ |         50 | factor-number [18.6s]
+2026-11-03T18:59:35.7246802Z 
+2026-11-03T18:59:35.7937490Z ⠏ |          0 | format                                                         
+2026-11-03T18:59:35.7938294Z ✔ |         30 | format
+2026-11-03T18:59:35.7943232Z 
+2026-11-03T18:59:37.1513100Z ⠏ |          0 | invariance                                                     
+2026-11-03T18:59:37.2589745Z ⠋ |          1 | invariance                                                     
+2026-11-03T18:59:38.0376309Z ⠧ |         18 | invariance                                                     
+2026-11-03T18:59:38.6458297Z ⠦ |         27 | invariance                                                     
+2026-11-03T18:59:39.3556540Z ⠸ |         34 | invariance                                                     
+2026-11-03T18:59:40.9211472Z ⠼ |         35 | invariance                                                     
+2026-11-03T18:59:41.6539444Z ⠏ |         40 | invariance                                                     
+2026-11-03T18:59:42.3432167Z ⠹ |         43 | invariance                                                     
+2026-11-03T18:59:42.8324067Z ⠏ |         50 | invariance                                                     
+2026-11-03T18:59:43.5169888Z ⠙ |         52 | invariance                                                     
+2026-11-03T18:59:43.6404178Z ⠼ |         55 | invariance                                                     
+2026-11-03T18:59:49.4146127Z ⠴ |         56 | invariance                                                     
+2026-11-03T18:59:52.7217613Z ⠦ |         57 | invariance                                                     
+2026-11-03T18:59:56.0766779Z ⠧ |         58 | invariance                                                     
+2026-11-03T18:59:56.4107278Z ⠴ |         66 | invariance                                                     
+2026-11-03T18:59:56.5135123Z ⠏ |         70 | invariance                                                     
+2026-11-03T18:59:56.5159327Z ⠼ |         75 | invariance                                                     
+2026-11-03T18:59:56.5159961Z ✔ |         75 | invariance [20.7s]
+2026-11-03T18:59:56.5167958Z 
+2026-11-03T18:59:56.8211396Z ⠏ |          0 | item-analysis                                                  
+2026-11-03T18:59:56.9276299Z ⠋ |          1 | item-analysis                                                  
+2026-11-03T18:59:57.0581571Z ⠋ |         11 | item-analysis                                                  
+2026-11-03T18:59:57.2619730Z ⠹ |         23 | item-analysis                                                  
+2026-11-03T18:59:57.3713595Z ⠦ |         37 | item-analysis                                                  
+2026-11-03T18:59:57.3791681Z ⠙ |         42 | item-analysis                                                  
+2026-11-03T18:59:57.3792263Z ✔ |         45 | item-analysis
+2026-11-03T18:59:57.3798484Z 
+2026-11-03T18:59:57.4234458Z ⠏ |          0 | json                                                           
+2026-11-03T18:59:57.4235162Z ✔ |         18 | json
+2026-11-03T18:59:57.4240433Z 
+2026-11-03T18:59:57.5197165Z ⠏ |          0 | model                                                          
+2026-11-03T18:59:57.5197675Z ✔ |         29 | model
+2026-11-03T18:59:57.5202434Z 
+2026-11-03T18:59:57.6461773Z ⠏ |          0 | packages                                                       
+2026-11-03T18:59:57.7972726Z ⠇ |          9 | packages                                                       
+2026-11-03T18:59:57.8061785Z ⠴ |         16 | packages                                                       
+2026-11-03T18:59:57.8062290Z ✔ |         17 | packages
+2026-11-03T18:59:57.8070932Z 
+2026-11-03T18:59:57.8518656Z ⠏ |          0 | private-bidekcet                                               
+2026-11-03T18:59:57.8519210Z ✔ |      2   0 | private-bidekcet
+2026-11-03T18:59:57.8526563Z 
+2026-11-03T19:00:03.0560751Z ⠏ |          0 | project                                                        
+2026-11-03T19:00:03.3097044Z ⠋ |          1 | project                                                        
+2026-11-03T19:00:03.6061656Z ⠹ |         13 | project                                                        
+2026-11-03T19:00:05.8673901Z ⠼ |         15 | project                                                        
+2026-11-03T19:00:06.1403843Z ⠇ |         19 | project                                                        
+2026-11-03T19:00:06.3500936Z ⠇ |         29 | project                                                        
+2026-11-03T19:00:06.5832446Z ⠏ |         30 | project                                                        
+2026-11-03T19:00:08.7934037Z ⠹ |         33 | project                                                        
+2026-11-03T19:00:09.0493271Z ⠼ |         35 | project                                                        
+2026-11-03T19:00:11.1924890Z ⠦ |         37 | project                                                        
+2026-11-03T19:00:11.4716025Z ⠇ |         39 | project                                                        
+2026-11-03T19:00:15.0304203Z ⠸ |         44 | project                                                        
+2026-11-03T19:00:18.2965140Z ⠦ |         47 | project                                                        
+2026-11-03T19:00:18.4207489Z ⠇ |         49 | project                                                        
+2026-11-03T19:00:21.0328287Z ⠋ |         51 | project                                                        
+2026-11-03T19:00:21.3364094Z ⠹ |         53 | project                                                        
+2026-11-03T19:00:21.4835183Z ⠼ |         55 | project                                                        
+2026-11-03T19:00:21.5357378Z ⠏ |         60 | project                                                        
+2026-11-03T19:00:21.5357776Z ✔ |         63 | project [23.7s]
+2026-11-03T19:00:21.5363630Z 
+2026-11-03T19:00:21.8716337Z ⠏ |          0 | reliability                                                    
+2026-11-03T19:00:22.3402207Z ⠋ |          1 | reliability                                                    
+2026-11-03T19:00:22.6011178Z ⠼ |         15 | reliability                                                    
+2026-11-03T19:00:23.8197565Z ⠹ |         33 | reliability                                                    
+2026-11-03T19:00:24.0263954Z ⠼ |         35 | reliability                                                    
+2026-11-03T19:00:24.4160270Z ⠋ |         41 | reliability                                                    
+2026-11-03T19:00:24.6181102Z ⠙ |         42 | reliability                                                    
+2026-11-03T19:00:24.8129333Z ⠹ |         43 | reliability                                                    
+2026-11-03T19:00:25.8972533Z ⠸ |         44 | reliability                                                    
+2026-11-03T19:00:26.0850299Z ⠼ |         45 | reliability                                                    
+2026-11-03T19:00:26.3239519Z ⠴ |         46 | reliability                                                    
+2026-11-03T19:00:26.4534814Z ⠙ |         52 | reliability                                                    
+2026-11-03T19:00:26.7192929Z ⠼ |         55 | reliability                                                    
+2026-11-03T19:00:26.7222724Z ⠏ |         60 | reliability                                                    
+2026-11-03T19:00:26.7223508Z ✔ |         60 | reliability [5.2s]
+2026-11-03T19:00:26.7231757Z 
+2026-11-03T19:00:27.1360227Z ⠏ |          0 | report-ai                                                      
+2026-11-03T19:00:28.6182826Z ⠋ |          1 | report-ai                                                      
+2026-11-03T19:00:30.0328547Z ⠸ |          4 | report-ai                                                      
+2026-11-03T19:00:30.0674984Z ⠋ |         11 | report-ai                                                      
+2026-11-03T19:00:30.0675511Z ✔ |         20 | report-ai [3.3s]
+2026-11-03T19:00:30.0683887Z 
+2026-11-03T19:00:34.6598336Z ⠏ |          0 | report                                                         
+2026-11-03T19:00:35.1915477Z ⠋ |          1 | report                                                         
+2026-11-03T19:00:36.6975715Z ⠙ |          2 | report                                                         
+2026-11-03T19:00:37.4184909Z ⠹ |         33 | report                                                         
+2026-11-03T19:00:40.5431672Z ⠇ |         49 | report                                                         
+2026-11-03T19:00:40.6228005Z ⠋ |         51 | report                                                         
+2026-11-03T19:00:40.6228523Z ✔ |      1  63 | report [10.6s]
+2026-11-03T19:00:40.6233732Z 
+2026-11-03T19:00:41.4458827Z ⠏ |          0 | script-export                                                  
+2026-11-03T19:00:42.1490632Z ⠋ |          1 | script-export                                                  
+2026-11-03T19:00:42.5797968Z ⠼ |          5 | script-export                                                  
+2026-11-03T19:00:43.6693249Z ⠴ |          6 | script-export                                                  
+2026-11-03T19:00:44.2398097Z ⠧ |          8 | script-export                                                  
+2026-11-03T19:00:47.5158809Z ⠹ |         13 | script-export                                                  
+2026-11-03T19:00:50.9071469Z ⠴ |         16 | script-export                                                  
+2026-11-03T19:00:52.4730013Z ⠧ |         18 | script-export                                                  
+2026-11-03T19:00:53.7948593Z ⠹ |         23 | script-export                                                  
+2026-11-03T19:00:55.7925701Z ⠼ |         25 | script-export                                                  
+2026-11-03T19:00:57.6488388Z ⠇ |         29 | script-export                                                  
+2026-11-03T19:01:08.2297075Z ⠹ |         33 | script-export                                                  
+2026-11-03T19:01:09.0544302Z ⠴ |         36 | script-export                                                  
+2026-11-03T19:01:09.0586097Z ⠧ |         38 | script-export                                                  
+2026-11-03T19:01:09.0586626Z ✔ |         38 | script-export [28.4s]
+2026-11-03T19:01:09.0597558Z 
+2026-11-03T19:01:09.1091995Z ⠏ |          0 | session                                                        
+2026-11-03T19:01:09.1092497Z ✔ |          8 | session
+2026-11-03T19:01:09.1100465Z 
+2026-11-03T19:05:01.3454074Z ⠏ |          0 | simulation-acceptance                                          
+2026-11-03T19:05:41.1384392Z ⠋ |          1 | simulation-acceptance                                          
+2026-11-03T19:05:41.7371428Z ⠙ |          2 | simulation-acceptance                                          
+2026-11-03T19:05:41.7404009Z ⠹ |          3 | simulation-acceptance                                          
+2026-11-03T19:05:41.7437246Z   metric: Δχ² I. tip hata = 0.051 (MCSE 0.0070, geçerli R = 1000)
+2026-11-03T19:05:41.9487044Z   scalar: Δχ² I. tip hata = 0.040 (MCSE 0.0062, geçerli R = 1000)
+2026-11-03T19:05:41.9487487Z ✔ |          9 | simulation-acceptance [272.8s]
+2026-11-03T19:05:41.9493643Z 
+2026-11-03T19:05:42.0967102Z ⠏ |          0 | simulation                                                     
+2026-11-03T19:05:42.2266119Z ⠇ |          9 | simulation                                                     
+2026-11-03T19:05:42.3807838Z ⠏ |         10 | simulation                                                     
+2026-11-03T19:05:42.8685269Z ⠙ |         12 | simulation                                                     
+2026-11-03T19:05:42.9911185Z ⠦ |         17 | simulation                                                     
+2026-11-03T19:05:43.0903931Z ⠏ |         20 | simulation                                                     
+2026-11-03T19:05:57.1065011Z ⠹ |         23 | simulation                                                     
+2026-11-03T19:05:57.4526486Z ⠼ |         25 | simulation                                                     
+2026-11-03T19:06:07.3059125Z ⠴ |         26 | simulation                                                     
+2026-11-03T19:06:11.7263795Z ⠧ |         28 | simulation                                                     
+2026-11-03T19:06:12.0574096Z ⠏ |         30 | simulation                                                     
+2026-11-03T19:06:14.5044578Z ⠙ |         32 | simulation                                                     
+2026-11-03T19:06:21.9012937Z ⠹ |         33 | simulation                                                     
+2026-11-03T19:06:22.3054983Z ⠦ |         37 | simulation                                                     
+2026-11-03T19:06:22.9476989Z ⠏ |         70 | simulation                                                     
+2026-11-03T19:06:22.9536364Z ⠹ |         73 | simulation                                                     
+2026-11-03T19:06:22.9537421Z ✔ |         74 | simulation [41.0s]
+2026-11-03T19:06:22.9545483Z 
+2026-11-03T19:06:23.0547142Z ⠏ |          0 | source-files                                                   
+2026-11-03T19:06:23.2675581Z ⠋ |         41 | source-files                                                   
+2026-11-03T19:06:23.2718149Z ⠙ |         62 | source-files                                                   
+2026-11-03T19:06:23.2718668Z ✔ |         62 | source-files
+2026-11-03T19:06:23.2730584Z 
+2026-11-03T19:06:24.8183135Z ⠏ |          0 | suitability                                                    
+2026-11-03T19:06:24.8384377Z ⠇ |          9 | suitability                                                    
+2026-11-03T19:06:24.8385004Z ✔ |         14 | suitability [1.6s]
+2026-11-03T19:06:24.8392937Z 
+2026-11-03T19:06:24.9408767Z ⠏ |          0 | versions                                                       
+2026-11-03T19:06:24.9409161Z ✔ |          8 | versions
+2026-11-03T19:06:24.9411545Z 
+2026-11-03T19:06:24.9423572Z ══ Results ═════════════════════════════════════════════════════════════════════
+2026-11-03T19:06:24.9427451Z Duration: 522.8 s
+2026-11-03T19:06:24.9427618Z 
+2026-11-03T19:06:24.9432209Z ── Skipped tests (3) ───────────────────────────────────────────────────────────
+2026-11-03T19:06:24.9734091Z • BIDEKCET_DATA_DIR tanımlı değil; KVKK gereği veri depoda değil (SPEC §11.3)
+2026-11-03T19:06:24.9734938Z   (2): 'test-private-bidekcet.R:22:3', 'test-private-bidekcet.R:69:3'
+2026-11-03T19:06:24.9735483Z • LibreOffice yok (1): 'test-report.R:125:3'
+2026-11-03T19:06:24.9735760Z 
+2026-11-03T19:06:24.9737171Z [ FAIL 0 | WARN 0 | SKIP 3 | PASS 1160 ]
+2026-11-03T19:06:25.3693149Z ##[group]Run docker cp engine-tests:/app/test-results engine/test-results
+2026-11-03T19:06:25.3693577Z [36;1mdocker cp engine-tests:/app/test-results engine/test-results[0m
+2026-11-03T19:06:25.3720752Z shell: /usr/bin/bash -e {0}
+2026-11-03T19:06:25.3720971Z ##[endgroup]
+2026-11-03T19:06:25.3991449Z ##[group]Run actions/upload-artifact@v4
+2026-11-03T19:06:25.3991682Z with:
+2026-11-03T19:06:25.3991855Z   name: testthat-results
+2026-11-03T19:06:25.3992052Z   path: engine/test-results/
+2026-11-03T19:06:25.3992250Z   if-no-files-found: warn
+2026-11-03T19:06:25.3992438Z   compression-level: 6
+2026-11-03T19:06:25.3992620Z   overwrite: false
+2026-11-03T19:06:25.3992799Z   include-hidden-files: false
+2026-11-03T19:06:25.3993000Z ##[endgroup]
+2026-11-03T19:06:25.5350176Z (node:10135) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-03T19:06:25.5350740Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-03T19:06:25.5403413Z With the provided path, there will be 1 file uploaded
+2026-11-03T19:06:25.5408466Z Artifact name is valid!
+2026-11-03T19:06:25.5409074Z Root directory input is valid!
+2026-11-03T19:06:25.7419199Z Beginning upload of artifact content to blob storage
+2026-11-03T19:06:25.7705676Z (node:10135) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-03T19:06:25.8029533Z Uploaded bytes 12892
+2026-11-03T19:06:25.8192000Z Finished uploading artifact content to blob storage!
+2026-11-03T19:06:25.8192622Z SHA256 digest of uploaded artifact zip is 0fee4d74e13277cbd5bf6f6ce759c2e522a5059b4dee53d64284dbd78214e34f
+2026-11-03T19:06:25.8194022Z Finalizing artifact upload
+2026-11-03T19:06:26.2378848Z Artifact testthat-results.zip successfully finalized. Artifact ID 13262254058
+2026-11-03T19:06:26.2379685Z Artifact testthat-results has been successfully uploaded! Final size is 12892 bytes. Artifact ID is 13262254058
+2026-11-03T19:06:26.2385360Z Artifact download URL: https://github.com/AnubisZk/olceklab/actions/runs/41698411053/artifacts/13262254058
+2026-11-03T19:06:26.2527235Z ##[group]Run docker rm -f engine-tests
+2026-11-03T19:06:26.2527528Z [36;1mdocker rm -f engine-tests[0m
+2026-11-03T19:06:26.2553872Z shell: /usr/bin/bash -e {0}
+2026-11-03T19:06:26.2554117Z ##[endgroup]
+2026-11-03T19:06:26.3012356Z engine-tests
+2026-11-03T19:06:26.3129499Z Post job cleanup.
+2026-11-03T19:06:26.3830182Z [command]/usr/bin/git version
+2026-11-03T19:06:26.3866842Z git version 2.56.0
+2026-11-03T19:06:26.3895017Z Temporarily overriding HOME='/home/runner/work/_temp/3a1f61a5-0c91-474f-b8f3-94ef24d08499' before making global git config changes
+2026-11-03T19:06:26.3896003Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-03T19:06:26.3898905Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/olceklab/olceklab
+2026-11-03T19:06:26.3932015Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-03T19:06:26.3961156Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-03T19:06:26.4224040Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-03T19:06:26.4246888Z http.https://github.com/.extraheader
+2026-11-03T19:06:26.4262241Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-03T19:06:26.4285697Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-03T19:06:26.4543934Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T19:06:26.4595972Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T19:06:26.4959152Z Cleaning up orphan processes
+2026-11-03T19:06:26.5303161Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -7,7 +7,7 @@
 - Kodlama kuralları: [`AGENTS.md`](AGENTS.md)
 - Sürümler: [`docs/VERSIONS.md`](docs/VERSIONS.md)
 
-**Durum:** Faz 5 tamamlandı (SPEC §12'deki Faz 1–5). Veri yükleme ve temizleme (M1), madde analizi (M2), uygunluk (M3), faktör sayısı ve paralel analiz (M4), açımlayıcı faktör analizi (M5), doğrulayıcı faktör analizi ve model karşılaştırma (M6), güvenirlik ve geçerlik (M7), ölçme değişmezliği, kısmi değişmezlik sihirbazı ve gizil ortalamalar (M8), Monte Carlo simülasyonu (M9), APA 7 Word raporu, CSV ve grafik (SVG/PNG) dışa aktarma (M10), proje dosyası dışa/içe aktarma ve 17 basamaklı yeniden üretim (M12). Sıradaki: Faz 6 (M11 yapay zekâ yorum asistanı; ağ geçidi iskeleti hazır) ve Faz 7 (çevrim içi kurulum, kullanıcı kılavuzu).
+**Durum:** Faz 1–5 ve Faz 7a canlı yayını tamamlandı. Veri yükleme ve temizleme (M1), madde analizi (M2), uygunluk (M3), faktör sayısı ve paralel analiz (M4), açımlayıcı faktör analizi (M5), doğrulayıcı faktör analizi ve model karşılaştırma (M6), güvenirlik ve geçerlik (M7), ölçme değişmezliği, kısmi değişmezlik sihirbazı ve gizil ortalamalar (M8), Monte Carlo simülasyonu (M9), APA 7 Word raporu, CSV ve grafik (SVG/PNG) dışa aktarma (M10), proje dosyası dışa/içe aktarma ve 17 basamaklı yeniden üretim (M12) kullanılabilir. Faz 6 (M11 yapay zekâ yorum asistanı) kodu uygulandı; gerçek sağlayıcı doğrulaması ve Faz 7b yayını bekliyor. Canlı sürümde yapay zekâ kapalıdır.
 
 Simülasyon iş dosyaları `JOBS_DIR` altında tutulur (yalnızca sentetik veriden türetilmiş parçalar ve özetler). Çevrim içi kurulumda `ONLINE_LIMITS=true` ile tekrar × koşul, işçi ve süre sınırları açılır (`.env.example`).
 

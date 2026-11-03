@@ -1,6 +1,6 @@
 # Faz 6 — yapay zekâ yorum asistanı
 
-3 Kasım 2026. Kod uygulandı; Docker/R ve tam tarayıcı kabulü CI'da doğrulanmayı bekliyor. Canlı Faz 7a sitesinde AI hâlâ kapalıdır.
+3 Kasım 2026. Kod uygulandı (`b0257c2`). GitHub Actions 41698411053: Docker/R 1160 başarılı, 0 başarısız, 3 atlama; Node 24/26 web ve gateway başarılı. Compose mevcut analiz ve çevrim içi testleri geçti; son kontrol anında sahte AI sağlayıcılı uçtan uca aşama sürüyordu. Nihai kabul için [CI sonucunu](https://github.com/AnubisZk/olceklab/actions/runs/41698411053) kontrol edin. Canlı Faz 7a sitesinde AI hâlâ kapalıdır; yeni sürüm yayımlanmadı.
 
 ## Uygulama
 
@@ -31,6 +31,6 @@ Mevcut 13 bölümlü `USER_GUIDE_TR.md` korunur; başlangıç sayfasından GitHu
 
 ## Kalan işler
 
-1. GitHub'da HF Docker/R ve sahte sağlayıcılı tarayıcı kabulünü geçir; kanıtı VALIDATION'a ekle.
+1. GitHub Actions 41698411053 içindeki son sahte sağlayıcılı tarayıcı aşamasının sonucunu kontrol et; nihai kanıtı VALIDATION'a ekle. Docker/R kanıtı `test-logs/faz6/engine-ci.txt` içindedir.
 2. EVREN base URL'sini panelden doğrula. Gizli anahtarı yalnızca sunucu sırrı olarak ekle. Kullanıcı kendi hesabındaki kullanım şartlarını kabul etmeli.
 3. Gerçek modelle kontrollü doğrulama ve bütçe/kota ayarları ardından AI ağ geçidi yayını (Faz 7b), motor/web güncellemesi ve yeni arayüz ekran görüntüleri.

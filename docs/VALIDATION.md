@@ -95,4 +95,10 @@ Belge sahibinin 3 Kasım 2026 tarihli referans çıktısı: `docs/validation/bid
 | Son kod/test commit'i CI | `868738a` için 41633319478 tamamen başarılı: Node 24/26, HF Docker/R ve Compose/Playwright. | [GitHub Actions](https://github.com/AnubisZk/olceklab/actions/runs/41633319478), `test-logs/faz7/deployment/ci-final.json` |
 | Netlify üretim yayını | CLI `--prod --no-build` ile mevcut `olceklab` sitesine hazır paket yüklendi; deploy `6ae9e47841ec573fa1d298a9` ready. Kök ve SPA rotası HTTP 200. | `test-logs/faz7/deployment/netlify-deploy.json`, `test-logs/faz7/deployment/netlify-http.json` |
 
-Kullanıcının sonraki yayın talebi doğrultusunda **Faz 7a tamamlandı**. Ayrıntılı komutlar: [RELEASE_7A_TR.md](RELEASE_7A_TR.md). Faz 6 ve Faz 7b uygulanmadı; yapay zekâ kapalıdır.
+Kullanıcının sonraki yayın talebi doğrultusunda **Faz 7a tamamlandı**. Ayrıntılı komutlar: [RELEASE_7A_TR.md](RELEASE_7A_TR.md). Bu yayın anında Faz 6 ve Faz 7b uygulanmamıştı; canlı sürümde yapay zekâ kapalıdır. Sonraki Faz 6 çalışmasının durumu [PHASE6_TR.md](PHASE6_TR.md) içindedir.
+
+## Faz 6 — 3 Kasım 2026, ara kabul
+
+`b0257c2` için [CI 41698411053](https://github.com/AnubisZk/olceklab/actions/runs/41698411053): Node 24/26 web 102/102 ve gateway 34/34 başarılı; typecheck ve derlemeler geçti. Docker/R 1160 başarılı, 0 başarısız, 0 uyarı, 3 atlama (özel BİDEKÇET ×2 ve LibreOffice); 20 yeni AI rapor doğrulaması dahil. Kanıt: `test-logs/faz6/engine-ci.txt` ve yerel Vitest/derleme günlükleri.
+
+Compose mevcut analiz akışları ve çevrim içi duman testi başarılı. Son kontrol anında sahte AI sağlayıcısı hazırlanıyordu; AI yorum → onay → Word → günlük testi henüz sonuçlanmadı. Gerçek EVREN/Ollama kabulü yapılmadı. Canlı Netlify yayını `6ae9e47841ec573fa1d298a9` olarak korundu; motor sağlık kontrolü 19:13 UTC'de başarılıydı.
