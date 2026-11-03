@@ -20,7 +20,8 @@ export interface VersionsResponse {
 export interface GatewayHealthResponse {
   status: string;
   service: string;
-  provider: 'none' | 'local' | 'evren';
+  provider: 'none' | 'local' | 'api' | 'evren';
+  model?: string | null;
 }
 
 export const fetchEngineHealth = (signal?: AbortSignal) =>

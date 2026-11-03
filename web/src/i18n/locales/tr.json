@@ -1,4 +1,14 @@
 {
+  "guide": "Kullanım kılavuzu (GitHub)",
+  "ai": {
+    "title": "Yapay zekâ yorum asistanı", "interpret": "Yapay zekâ ile yorumla", "pending": "Yorum hazırlanıyor…",
+    "privacy": "Ağ geçidine yalnızca biçimli toplu tablolar gönderilir. Model sayıları görmez; sonuç anahtarlarını kullanır. Ham veri gönderilmez.",
+    "failed": "Bu yanıtta doğrulanamayan sayılar veya sonuç anahtarları var. İşaretli metni rapora ekleyemezsiniz.",
+    "approve": "Rapora ekle (onaylıyorum)", "approved": "Onaylı yorum rapora eklendi", "remove": "Yapay zekâ yorumunu kaldır",
+    "reportNote": "Raporda onayladığınız yapay zekâ yorumları etiketleri ve kullanım beyanıyla yer alacak.",
+    "logTitle": "Yapay zekâ oturum günlüğü", "logNote": "İstem, yanıt ve sayı denetimi yalnızca bu sekmenin belleğinde tutulur. Sayfayı yenilemeden önce JSON veya Markdown olarak indirebilirsiniz. Günlük ham veri, IP veya API anahtarı içermez.",
+    "exportLog": "Günlüğü indir", "clearLog": "Günlüğü temizle"
+  },
   "app": {
     "name": "ÖlçekLab",
     "tagline": "Ölçek geliştirme ve uyarlama analiz platformu",

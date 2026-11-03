@@ -23,6 +23,7 @@ export function StartPage() {
         <div className="actions">
           <button type="button" className="btn btn-primary" onClick={() => { ds.reset(); void navigate('/data'); }}>{t('start.newProject')}</button>
           <a className="btn" href="#imp-title">{t('start.importProject')}</a>
+          <a className="btn" href="https://github.com/AnubisZk/olceklab/blob/main/docs/USER_GUIDE_TR.md" target="_blank" rel="noopener noreferrer">{t('guide')}</a>
           <button type="button" className="btn" disabled={example.isPending} onClick={() => example.mutate()}>{t('start.tryExample')}</button>
         </div>
         <ErrorBox error={example.error} />

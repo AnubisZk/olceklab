@@ -7,6 +7,7 @@ import { useReport } from '../state/ReportContext';
 import type { AnalysisRecord, RWarning } from '../api/types';
 import { ApiError } from '../api/client';
 import { useLang } from '../useLang';
+import { AiInterpretation } from './AiInterpretation';
 
 export function Warnings({ warnings }: { warnings: RWarning[] }) {
   const lang = useLang();
@@ -99,6 +100,7 @@ export function ResultActions({ record }: { record: AnalysisRecord }) {
         <ErrorBox error={csv.error} />
       </div>
     )}
+    <AiInterpretation key={record.analysis_id} record={record} />
     </>
   );
 }

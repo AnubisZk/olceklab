@@ -101,6 +101,11 @@ jobs:
       - name: Çevrim içi duman testi (CORS, sınırlar ve rapor akışı)
         working-directory: web
         run: E2E_BASE_URL=http://localhost:5173 ENGINE_URL=http://localhost:8000 npx playwright test --config playwright.online.config.ts
+      - name: Faz 6 sahte sağlayıcıyı başlat (gerçek API yok)
+        run: docker compose -f docker-compose.yml -f docker-compose.ai-test.yml up --build --detach --wait --wait-timeout 900
+      - name: Faz 6 yorum, onay, Word ve günlük akışı
+        working-directory: web
+        run: E2E_BASE_URL=http://localhost:5173 ENGINE_URL=http://localhost:8000 npx playwright test --config playwright.ai.config.ts
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -108,7 +113,7 @@ jobs:
           path: web/test-results/
       - name: Günlükler
         if: failure()
-        run: docker compose logs
+        run: docker compose -f docker-compose.yml -f docker-compose.ai-test.yml logs
       - name: Kapat
         if: always()
-        run: docker compose down
+        run: docker compose -f docker-compose.yml -f docker-compose.ai-test.yml down

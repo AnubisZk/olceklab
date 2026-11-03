@@ -259,6 +259,7 @@ export interface BiasHeatmapData {
 // --- Faz 5: rapor ve proje -----------------------------------------------------------
 export interface TextSegment { text: string; italic: boolean }
 export interface ReportPreviewItem {
+  ai?: { text: string; label: string; provider: string; model: string }[];
   analysis_id: string; module: string; title: string;
   methods: TextSegment[][]; results: TextSegment[][]; limitations: TextSegment[][];
   tables: { id: string; number: number; title: string }[];

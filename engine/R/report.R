@@ -1,7 +1,7 @@
 # M10 — Raporlama (SPEC §7 M10; SPEC_REVIEW REP-3).
 # Word raporu officer + flextable ile kurulur. Tablolar analiz kayıtlarındaki R-biçimli değerlerden (rows_fmt) gelir;
 # Yöntem/Bulgular metinleri önceden yazılmış şablon cümlelerdir ve sayıları yine R'nin biçimlediği değerlerdir.
-# Bu modül YAPAY ZEKÂ KULLANMAZ ve hiçbir sayıyı yeniden hesaplamaz. Bir değer kayıtta yoksa ilgili cümle yazılmaz.
+# Şablonlar yapay zekâ kullanmaz ve hiçbir sayıyı yeniden hesaplamaz. Onaylı yapay zekâ metinleri ayrı, etiketli bölümde gösterilir.
 # Metinlerde *…* arası italik yazılır (APA 7: istatistik simgeleri).
 
 report_module_titles <- list(
@@ -276,18 +276,44 @@ report_layout <- function(recs, lang) {
   items
 }
 
-report_preview <- function(analysis_ids, lang = "tr") {
+report_ai_texts <- function(ai_texts, analysis_ids) {
+  if (is.null(ai_texts) || length(ai_texts) == 0L) return(list())
+  bad <- function() api_stop("invalid_ai_text", "Yapay zekâ metni geçersiz veya sayı denetiminden geçmemiş.", 422L)
+  if (!is.list(ai_texts) || is.data.frame(ai_texts) || length(ai_texts) > 100L) bad()
+  scalar <- function(x, limit) is.character(x) && length(x) == 1L && !is.na(x) && nzchar(trimws(x)) && nchar(x) <= limit
+  seen <- character()
+  lapply(ai_texts, function(a) {
+    if (!is.list(a) || !isTRUE(a$check_passed) || !scalar(a$record_id, 100L) ||
+        !(a$record_id %in% unlist(analysis_ids)) || a$record_id %in% seen ||
+        !scalar(a$text, 50000L) || !scalar(a$provider, 30L) || !(a$provider %in% c("api", "local", "evren")) ||
+        !scalar(a$model, 200L) || grepl("\\{\\{|\\}\\}", a$text)) bad()
+    seen <<- c(seen, a$record_id)
+    list(record_id = a$record_id, text = a$text, check_passed = TRUE, provider = a$provider, model = a$model)
+  })
+}
+report_ai_label <- function(lang) rpt_tr(lang, "Yapay zekâ yorumu — doğrulayınız", "AI interpretation — verify")
+report_disclosure <- function(ai, lang) {
+  if (!length(ai)) return(rpt_tr(lang,
+    "Bütün sayılar R motorunda hesaplanmış ve biçimlenmiştir. Metinler şablondan üretilmiştir; yapay zekâ kullanılmamıştır.",
+    "All numbers were computed and formatted by the R engine. The text was generated from templates; no AI was used."))
+  sources <- paste(unique(vapply(ai, function(a) paste(a$provider, a$model, sep = " / "), "")), collapse = "; ")
+  rpt_tr(lang,
+    sprintf("Bütün sayılar R motorunda hesaplanmış ve biçimlenmiştir. Şablon metinlere ek olarak, kullanıcı onayıyla etiketli yapay zekâ yorumları eklenmiştir. Sağlayıcı / model: %s. Yorumları doğrulama sorumluluğu kullanıcıdadır.", sources),
+    sprintf("All numbers were computed and formatted by the R engine. In addition to template text, labelled AI interpretations were included with user approval. Provider / model: %s. The user is responsible for verifying these interpretations.", sources))
+}
+report_preview <- function(analysis_ids, lang = "tr", ai_texts = NULL) {
   lang <- match.arg(lang, c("tr", "en"))
+  ai <- report_ai_texts(ai_texts, analysis_ids)
   lay <- report_layout(report_items(analysis_ids), lang)
   list(lang = lang, items = lapply(lay, function(it) {
     rec <- it$record
     list(analysis_id = rec$analysis_id, module = rec$module, title = report_module_titles[[rec$module]][[lang]],
+         ai = lapply(Filter(function(a) identical(a$record_id, rec$analysis_id), ai), function(a) list(text = a$text, label = report_ai_label(lang), provider = a$provider, model = a$model)),
          methods = lapply(it$text$methods, rpt_segments), results = lapply(it$text$results, rpt_segments),
          limitations = lapply(it$text$limitations, rpt_segments),
          tables = lapply(rec$tables, function(t) list(id = t$id, number = it$table_no[[t$id]], title = if (lang == "tr") t$title_tr else t$title_en)))
   }), references = I(report_refs_for(lapply(lay, `[[`, "text"))),
-  note = rpt_tr(lang, "Bütün sayılar R motorunda hesaplanmış ve biçimlenmiştir. Metinler şablondan üretilmiştir; yapay zekâ kullanılmamıştır.",
-                      "All numbers were computed and formatted by the R engine. The text was generated from templates; no AI was used."))
+  note = report_disclosure(ai, lang))
 }
 
 # --- Word belgesi ---------------------------------------------------------------------
@@ -317,8 +343,9 @@ rpt_flextable <- function(t, lang) {
   flextable::fit_to_width(flextable::autofit(ft), max_width = 6.5)
 }
 
-report_docx <- function(analysis_ids, lang = "tr", title = NULL) {
+report_docx <- function(analysis_ids, lang = "tr", title = NULL, ai_texts = NULL) {
   lang <- match.arg(lang, c("tr", "en"))
+  ai <- report_ai_texts(ai_texts, analysis_ids)
   recs <- report_items(analysis_ids)
   lay <- report_layout(recs, lang)
   v <- engine_versions()
@@ -327,12 +354,17 @@ report_docx <- function(analysis_ids, lang = "tr", title = NULL) {
   doc <- officer::body_add_fpar(doc, officer::fpar(officer::ftext(title, officer::fp_text(font.family = "Times New Roman", font.size = 14, bold = TRUE)),
                                                    fp_p = officer::fp_par(text.align = "center", padding.bottom = 6)))
   stamp <- format(Sys.time(), "%Y-%m-%d", tz = "UTC")
-  doc <- officer::body_add_fpar(doc, rpt_fpar(rpt_tr(lang,
-    sprintf("Oluşturulma: %s. ÖlçekLab R motoru (R %s). Bütün sayılar R'de hesaplanmış ve biçimlenmiştir; Yöntem ve Bulgular metinleri şablondan üretilmiştir, yapay zekâ kullanılmamıştır.", stamp, v$R),
-    sprintf("Created: %s. ÖlçekLab R engine (R %s). All numbers were computed and formatted in R; the Methods and Results text was generated from templates, no AI was used.", stamp, v$R)), size = 10))
+  doc <- officer::body_add_fpar(doc, rpt_fpar(paste(rpt_tr(lang,
+    sprintf("Oluşturulma: %s. ÖlçekLab R motoru (R %s).", stamp, v$R),
+    sprintf("Created: %s. ÖlçekLab R engine (R %s).", stamp, v$R)), report_disclosure(ai, lang)), size = 10))
   for (it in lay) {
     rec <- it$record
     doc <- officer::body_add_par(doc, report_module_titles[[rec$module]][[lang]], style = "heading 1")
+    for (a in Filter(function(a) identical(a$record_id, rec$analysis_id), ai)) {
+      doc <- officer::body_add_par(doc, report_ai_label(lang), style = "heading 2")
+      doc <- officer::body_add_par(doc, a$text)
+      doc <- officer::body_add_par(doc, paste(a$provider, a$model, sep = " / "))
+    }
     if (length(it$text$methods)) {
       doc <- officer::body_add_par(doc, rpt_tr(lang, "Yöntem", "Method"), style = "heading 2")
       for (p in it$text$methods) doc <- officer::body_add_fpar(doc, rpt_fpar(p))

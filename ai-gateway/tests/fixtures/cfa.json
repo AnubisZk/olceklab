@@ -1,0 +1,637 @@
+{
+  "analysis_id": "846bc51c-641a-4cbc-ac27-ce51be0a8060",
+  "module": "cfa",
+  "tables": [
+    {
+      "id": "T1",
+      "rows_fmt": {
+        "tr": [
+          {
+            "key": "chisq",
+            "label": "χ²",
+            "value": "85,022"
+          },
+          {
+            "key": "df",
+            "label": "sd",
+            "value": "24"
+          },
+          {
+            "key": "pvalue",
+            "label": "p",
+            "value": "< ,001"
+          },
+          {
+            "key": "bollen_stine_p",
+            "label": "Bollen–Stine p (B = 100)",
+            "value": "< ,01"
+          },
+          {
+            "key": "chisq_df",
+            "label": "χ²/sd (bilgi)",
+            "value": "3,54"
+          },
+          {
+            "key": "cfi",
+            "label": "CFI",
+            "value": ",931"
+          },
+          {
+            "key": "tli",
+            "label": "TLI",
+            "value": "0,896"
+          },
+          {
+            "key": "rmsea",
+            "label": "RMSEA",
+            "value": ",092"
+          },
+          {
+            "key": "rmsea_ci",
+            "label": "RMSEA %90 GA",
+            "value": "[,071; ,114]"
+          },
+          {
+            "key": "srmr",
+            "label": "SRMR",
+            "value": ",065"
+          },
+          {
+            "key": "aic",
+            "label": "AIC",
+            "value": "7.526,50"
+          },
+          {
+            "key": "bic",
+            "label": "BIC",
+            "value": "7.604,35"
+          },
+          {
+            "key": "ntotal",
+            "label": "n",
+            "value": "301"
+          },
+          {
+            "key": "npar",
+            "label": "Parametre sayısı",
+            "value": "21"
+          }
+        ],
+        "en": [
+          {
+            "key": "chisq",
+            "label": "χ²",
+            "value": "85.022"
+          },
+          {
+            "key": "df",
+            "label": "df",
+            "value": "24"
+          },
+          {
+            "key": "pvalue",
+            "label": "p",
+            "value": "< .001"
+          },
+          {
+            "key": "bollen_stine_p",
+            "label": "Bollen–Stine p (B = 100)",
+            "value": "< .01"
+          },
+          {
+            "key": "chisq_df",
+            "label": "χ²/df (information)",
+            "value": "3.54"
+          },
+          {
+            "key": "cfi",
+            "label": "CFI",
+            "value": ".931"
+          },
+          {
+            "key": "tli",
+            "label": "TLI",
+            "value": "0.896"
+          },
+          {
+            "key": "rmsea",
+            "label": "RMSEA",
+            "value": ".092"
+          },
+          {
+            "key": "rmsea_ci",
+            "label": "RMSEA 90% CI",
+            "value": "[.071, .114]"
+          },
+          {
+            "key": "srmr",
+            "label": "SRMR",
+            "value": ".065"
+          },
+          {
+            "key": "aic",
+            "label": "AIC",
+            "value": "7,526.50"
+          },
+          {
+            "key": "bic",
+            "label": "BIC",
+            "value": "7,604.35"
+          },
+          {
+            "key": "ntotal",
+            "label": "n",
+            "value": "301"
+          },
+          {
+            "key": "npar",
+            "label": "Number of parameters",
+            "value": "21"
+          }
+        ]
+      }
+    },
+    {
+      "id": "T2",
+      "rows_fmt": {
+        "tr": [
+          {
+            "factor": "visual",
+            "item": "x1",
+            "est": "1,000",
+            "se": "—",
+            "z": "—",
+            "p": "—",
+            "std": ",772",
+            "r2": ",596"
+          },
+          {
+            "factor": "visual",
+            "item": "x2",
+            "est": "0,554",
+            "se": "0,100",
+            "z": "5,54",
+            "p": "< ,001",
+            "std": ",424",
+            "r2": ",179"
+          },
+          {
+            "factor": "visual",
+            "item": "x3",
+            "est": "0,729",
+            "se": "0,109",
+            "z": "6,67",
+            "p": "< ,001",
+            "std": ",581",
+            "r2": ",338"
+          },
+          {
+            "factor": "textual",
+            "item": "x4",
+            "est": "1,000",
+            "se": "—",
+            "z": "—",
+            "p": "—",
+            "std": ",852",
+            "r2": ",725"
+          },
+          {
+            "factor": "textual",
+            "item": "x5",
+            "est": "1,113",
+            "se": "0,066",
+            "z": "16,99",
+            "p": "< ,001",
+            "std": ",855",
+            "r2": ",731"
+          },
+          {
+            "factor": "textual",
+            "item": "x6",
+            "est": "0,926",
+            "se": "0,056",
+            "z": "16,67",
+            "p": "< ,001",
+            "std": ",838",
+            "r2": ",702"
+          },
+          {
+            "factor": "speed",
+            "item": "x7",
+            "est": "1,000",
+            "se": "—",
+            "z": "—",
+            "p": "—",
+            "std": ",570",
+            "r2": ",324"
+          },
+          {
+            "factor": "speed",
+            "item": "x8",
+            "est": "1,180",
+            "se": "0,165",
+            "z": "7,14",
+            "p": "< ,001",
+            "std": ",723",
+            "r2": ",523"
+          },
+          {
+            "factor": "speed",
+            "item": "x9",
+            "est": "1,082",
+            "se": "0,151",
+            "z": "7,14",
+            "p": "< ,001",
+            "std": ",665",
+            "r2": ",442"
+          }
+        ],
+        "en": [
+          {
+            "factor": "visual",
+            "item": "x1",
+            "est": "1.000",
+            "se": "—",
+            "z": "—",
+            "p": "—",
+            "std": ".772",
+            "r2": ".596"
+          },
+          {
+            "factor": "visual",
+            "item": "x2",
+            "est": "0.554",
+            "se": "0.100",
+            "z": "5.54",
+            "p": "< .001",
+            "std": ".424",
+            "r2": ".179"
+          },
+          {
+            "factor": "visual",
+            "item": "x3",
+            "est": "0.729",
+            "se": "0.109",
+            "z": "6.67",
+            "p": "< .001",
+            "std": ".581",
+            "r2": ".338"
+          },
+          {
+            "factor": "textual",
+            "item": "x4",
+            "est": "1.000",
+            "se": "—",
+            "z": "—",
+            "p": "—",
+            "std": ".852",
+            "r2": ".725"
+          },
+          {
+            "factor": "textual",
+            "item": "x5",
+            "est": "1.113",
+            "se": "0.066",
+            "z": "16.99",
+            "p": "< .001",
+            "std": ".855",
+            "r2": ".731"
+          },
+          {
+            "factor": "textual",
+            "item": "x6",
+            "est": "0.926",
+            "se": "0.056",
+            "z": "16.67",
+            "p": "< .001",
+            "std": ".838",
+            "r2": ".702"
+          },
+          {
+            "factor": "speed",
+            "item": "x7",
+            "est": "1.000",
+            "se": "—",
+            "z": "—",
+            "p": "—",
+            "std": ".570",
+            "r2": ".324"
+          },
+          {
+            "factor": "speed",
+            "item": "x8",
+            "est": "1.180",
+            "se": "0.165",
+            "z": "7.14",
+            "p": "< .001",
+            "std": ".723",
+            "r2": ".523"
+          },
+          {
+            "factor": "speed",
+            "item": "x9",
+            "est": "1.082",
+            "se": "0.151",
+            "z": "7.14",
+            "p": "< .001",
+            "std": ".665",
+            "r2": ".442"
+          }
+        ]
+      }
+    },
+    {
+      "id": "T3",
+      "rows_fmt": {
+        "tr": [
+          {
+            "factor": "visual",
+            "visual": "1,000",
+            "textual": "",
+            "speed": ""
+          },
+          {
+            "factor": "textual",
+            "visual": ",459",
+            "textual": "1,000",
+            "speed": ""
+          },
+          {
+            "factor": "speed",
+            "visual": ",471",
+            "textual": ",283",
+            "speed": "1,000"
+          }
+        ],
+        "en": [
+          {
+            "factor": "visual",
+            "visual": "1.000",
+            "textual": "",
+            "speed": ""
+          },
+          {
+            "factor": "textual",
+            "visual": ".459",
+            "textual": "1.000",
+            "speed": ""
+          },
+          {
+            "factor": "speed",
+            "visual": ".471",
+            "textual": ".283",
+            "speed": "1.000"
+          }
+        ]
+      }
+    },
+    {
+      "id": "T5",
+      "rows_fmt": {
+        "tr": [
+          {
+            "lhs": "visual",
+            "op": "=~",
+            "rhs": "x9",
+            "mi": "36,41",
+            "epc": "0,577",
+            "sepc_all": "0,515"
+          },
+          {
+            "lhs": "x7",
+            "op": "~~",
+            "rhs": "x8",
+            "mi": "34,15",
+            "epc": "0,538",
+            "sepc_all": "0,859"
+          },
+          {
+            "lhs": "visual",
+            "op": "=~",
+            "rhs": "x7",
+            "mi": "18,63",
+            "epc": "−0,422",
+            "sepc_all": "−0,349"
+          },
+          {
+            "lhs": "x8",
+            "op": "~~",
+            "rhs": "x9",
+            "mi": "14,95",
+            "epc": "−0,425",
+            "sepc_all": "−0,805"
+          },
+          {
+            "lhs": "textual",
+            "op": "=~",
+            "rhs": "x3",
+            "mi": "9,15",
+            "epc": "−0,272",
+            "sepc_all": "−0,238"
+          },
+          {
+            "lhs": "x2",
+            "op": "~~",
+            "rhs": "x7",
+            "mi": "8,92",
+            "epc": "−0,183",
+            "sepc_all": "−0,192"
+          },
+          {
+            "lhs": "textual",
+            "op": "=~",
+            "rhs": "x1",
+            "mi": "8,90",
+            "epc": "0,350",
+            "sepc_all": "0,297"
+          },
+          {
+            "lhs": "x2",
+            "op": "~~",
+            "rhs": "x3",
+            "mi": "8,53",
+            "epc": "0,219",
+            "sepc_all": "0,223"
+          },
+          {
+            "lhs": "x3",
+            "op": "~~",
+            "rhs": "x5",
+            "mi": "7,86",
+            "epc": "−0,131",
+            "sepc_all": "−0,212"
+          },
+          {
+            "lhs": "visual",
+            "op": "=~",
+            "rhs": "x5",
+            "mi": "7,44",
+            "epc": "−0,210",
+            "sepc_all": "−0,147"
+          }
+        ],
+        "en": [
+          {
+            "lhs": "visual",
+            "op": "=~",
+            "rhs": "x9",
+            "mi": "36.41",
+            "epc": "0.577",
+            "sepc_all": "0.515"
+          },
+          {
+            "lhs": "x7",
+            "op": "~~",
+            "rhs": "x8",
+            "mi": "34.15",
+            "epc": "0.538",
+            "sepc_all": "0.859"
+          },
+          {
+            "lhs": "visual",
+            "op": "=~",
+            "rhs": "x7",
+            "mi": "18.63",
+            "epc": "−0.422",
+            "sepc_all": "−0.349"
+          },
+          {
+            "lhs": "x8",
+            "op": "~~",
+            "rhs": "x9",
+            "mi": "14.95",
+            "epc": "−0.425",
+            "sepc_all": "−0.805"
+          },
+          {
+            "lhs": "textual",
+            "op": "=~",
+            "rhs": "x3",
+            "mi": "9.15",
+            "epc": "−0.272",
+            "sepc_all": "−0.238"
+          },
+          {
+            "lhs": "x2",
+            "op": "~~",
+            "rhs": "x7",
+            "mi": "8.92",
+            "epc": "−0.183",
+            "sepc_all": "−0.192"
+          },
+          {
+            "lhs": "textual",
+            "op": "=~",
+            "rhs": "x1",
+            "mi": "8.90",
+            "epc": "0.350",
+            "sepc_all": "0.297"
+          },
+          {
+            "lhs": "x2",
+            "op": "~~",
+            "rhs": "x3",
+            "mi": "8.53",
+            "epc": "0.219",
+            "sepc_all": "0.223"
+          },
+          {
+            "lhs": "x3",
+            "op": "~~",
+            "rhs": "x5",
+            "mi": "7.86",
+            "epc": "−0.131",
+            "sepc_all": "−0.212"
+          },
+          {
+            "lhs": "visual",
+            "op": "=~",
+            "rhs": "x5",
+            "mi": "7.44",
+            "epc": "−0.210",
+            "sepc_all": "−0.147"
+          }
+        ]
+      }
+    },
+    {
+      "id": "T6",
+      "rows_fmt": {
+        "tr": [
+          {
+            "key": "requested",
+            "label": "İstenen B",
+            "value": "100"
+          },
+          {
+            "key": "boot_length",
+            "label": "Geçerli tekrar (B_etkin)",
+            "value": "100"
+          },
+          {
+            "key": "failed",
+            "label": "Başarısız ya da yakınsamayan tekrar",
+            "value": "0"
+          },
+          {
+            "key": "nonadmissible",
+            "label": "Uygunsuz çözümlü tekrar",
+            "value": "0"
+          },
+          {
+            "key": "boot_larger",
+            "label": "Gözlenen χ²'den büyük bootstrap χ² sayısı (b)",
+            "value": "0"
+          },
+          {
+            "key": "pvalue",
+            "label": "p (lavaan: b / B_etkin)",
+            "value": "< ,01"
+          },
+          {
+            "key": "pvalue_conservative",
+            "label": "Tutucu p: (b + 1) / (B_etkin + 1)",
+            "value": ",010"
+          }
+        ],
+        "en": [
+          {
+            "key": "requested",
+            "label": "Requested B",
+            "value": "100"
+          },
+          {
+            "key": "boot_length",
+            "label": "Valid replications (B_eff)",
+            "value": "100"
+          },
+          {
+            "key": "failed",
+            "label": "Failed or non-converged replications",
+            "value": "0"
+          },
+          {
+            "key": "nonadmissible",
+            "label": "Replications with nonadmissible solutions",
+            "value": "0"
+          },
+          {
+            "key": "boot_larger",
+            "label": "Bootstrap χ² larger than observed (b)",
+            "value": "0"
+          },
+          {
+            "key": "pvalue",
+            "label": "p (lavaan: b / B_eff)",
+            "value": "< .01"
+          },
+          {
+            "key": "pvalue_conservative",
+            "label": "Conservative p: (b + 1) / (B_eff + 1)",
+            "value": ".010"
+          }
+        ]
+      }
+    }
+  ]
+}

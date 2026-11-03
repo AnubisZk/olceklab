@@ -233,7 +233,7 @@ function(req) {
   analysis_model_preview(ds$config, spec)
 }
 
-#* M10: Word raporu (APA 7 tabloları, şablon Yöntem/Bulgular metni; yapay zekâ kullanılmaz)
+#* M10: Word raporu (R şablonları; isteğe bağlı, onaylı ve etiketli AI metinleri)
 #* @post /reports/docx
 #* @parser json list(simplifyVector = FALSE)
 #* @serializer contentType list(type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
@@ -241,7 +241,7 @@ function(req, res) {
   b <- req$body
   lang <- if (is.null(b$lang)) "tr" else as.character(b$lang)
   if (!(lang %in% c("tr", "en"))) api_stop("invalid_setting", "Rapor dili tr ya da en olmalıdır.", 422L)
-  raw <- report_docx(b$analysis_ids, lang, b$title)
+  raw <- report_docx(b$analysis_ids, lang, b$title, b$ai_texts)
   res$setHeader("Content-Disposition", "attachment; filename=\"olceklab_rapor.docx\"")
   raw
 }
@@ -253,7 +253,7 @@ function(req) {
   b <- req$body
   lang <- if (is.null(b$lang)) "tr" else as.character(b$lang)
   if (!(lang %in% c("tr", "en"))) api_stop("invalid_setting", "Rapor dili tr ya da en olmalıdır.", 422L)
-  report_preview(b$analysis_ids, lang)
+  report_preview(b$analysis_ids, lang, b$ai_texts)
 }
 
 #* M10: tablo CSV olarak (biçimli ya da ham değerler)

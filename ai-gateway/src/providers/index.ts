@@ -3,9 +3,12 @@ import type { AiProvider } from './types.js';
 import { noneProvider } from './none.js';
 import { createLocalProvider } from './local.js';
 import { createEvrenProvider } from './evren.js';
+import { createOpenAICompatible } from './openaiCompatible.js';
 
 export function createProvider(config: GatewayConfig): AiProvider {
   switch (config.provider) {
+    case 'api':
+      return createOpenAICompatible(config, 'api');
     case 'none':
       return noneProvider;
     case 'local':

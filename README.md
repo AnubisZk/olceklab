@@ -11,7 +11,9 @@
 
 Simülasyon iş dosyaları `JOBS_DIR` altında tutulur (yalnızca sentetik veriden türetilmiş parçalar ve özetler). Çevrim içi kurulumda `ONLINE_LIMITS=true` ile tekrar × koşul, işçi ve süre sınırları açılır (`.env.example`).
 
-Doğrulama kayıtları: [`docs/VALIDATION.md`](docs/VALIDATION.md). Yöntem notları: [`docs/METHODS_TR.md`](docs/METHODS_TR.md). Devir notu (Faz 6–7): [`docs/HANDOFF_CODEX.md`](docs/HANDOFF_CODEX.md).
+Güncel yayın: [olceklab.netlify.app](https://olceklab.netlify.app) — Faz 7a kabulü tamamlandı. Faz 6 yapay zekâ entegrasyonu geliştirme/doğrulama durumu: [`docs/PHASE6_TR.md`](docs/PHASE6_TR.md); canlıda henüz etkin değil.
+
+Kullanım kılavuzu: [`docs/USER_GUIDE_TR.md`](docs/USER_GUIDE_TR.md). Doğrulama kayıtları: [`docs/VALIDATION.md`](docs/VALIDATION.md). Yöntem notları: [`docs/METHODS_TR.md`](docs/METHODS_TR.md). Devir notu: [`docs/HANDOFF_CODEX.md`](docs/HANDOFF_CODEX.md).
 
 ## Yerel (çevrimdışı) çalıştırma
 

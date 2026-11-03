@@ -68,10 +68,10 @@ export async function downloadSimPackage(id: string): Promise<Blob> {
 }
 
 // --- Faz 5: rapor (M10) ve proje dosyası (M12) ------------------------------------------
-export const reportPreview = (analysisIds: string[], lang: 'tr' | 'en') =>
-  post<import('./types').ReportPreview>('/reports/preview', { analysis_ids: analysisIds, lang });
-export const reportDocx = (analysisIds: string[], lang: 'tr' | 'en', title: string) =>
-  requestBlob(engine, '/reports/docx', { method: 'POST', json: { analysis_ids: analysisIds, lang, title } });
+export const reportPreview = (analysisIds: string[], lang: 'tr' | 'en', aiTexts: import('./ai').ApprovedAiText[] = []) =>
+  post<import('./types').ReportPreview>('/reports/preview', { analysis_ids: analysisIds, lang, ...(aiTexts.length ? { ai_texts: aiTexts } : {}) });
+export const reportDocx = (analysisIds: string[], lang: 'tr' | 'en', title: string, aiTexts: import('./ai').ApprovedAiText[] = []) =>
+  requestBlob(engine, '/reports/docx', { method: 'POST', json: { analysis_ids: analysisIds, lang, title, ...(aiTexts.length ? { ai_texts: aiTexts } : {}) } });
 export const tableCsv = (analysisId: string, tableId: string, lang: 'tr' | 'en', values: 'formatted' | 'raw') =>
   requestBlob(engine, `/analyses/${analysisId}/tables/${tableId}/csv`, { query: { lang, values } });
 export const exportProject = (body: { dataset_id: string; analysis_ids: string[]; include_data: boolean; data_consent: boolean }) =>

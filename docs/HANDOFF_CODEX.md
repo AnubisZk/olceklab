@@ -1,5 +1,7 @@
 # Devir notu (Faz 5 sonu + Faz 7 hazırlığı → Faz 7a, 6, 7b)
 
+> **Faz 6 devamı:** API/local/EVREN istemcileri, sayı kökeni denetimi, açık onaylı rapor ve oturum günlüğü uygulandı. Kullanıcının EVREN modeli `google/gemma-4-31b`; gerçek API adresi ve sır henüz doğrulanmadı. Canlıya alınmış sayılmaz. Güncel kabul ve kalan adımlar: [PHASE6_TR.md](PHASE6_TR.md). Başlangıç sayfasına kullanım kılavuzu bağlantısı eklendi.
+
 > **Codex devamı, 3 Kasım 2026:** Aşağıdaki metin özgün devir bağlamını korur. Staged hazırlık `6bfcf9d` ile commit edildi; Faz 7a yayın hazırlığı `e7b311f` ile ilerletildi. Kullanıcı GitHub hedefini `AnubisZk/olceklab` olarak belirledi. Sonraki talebiyle **Faz 7a canlıya alma tamamlandı**. Güncel durum ve kanıtlar: [RELEASE_7A_TR.md](RELEASE_7A_TR.md).
 
 > **Canlı kabul:** [Ön yüz](https://olceklab.netlify.app) Netlify CLI ile yayımlandı; [motor](https://huggingface.co/spaces/OsirisZk/olceklab-engine) RUNNING. Son kod/test commit'i `868738a` için [CI 41633319478](https://github.com/AnubisZk/olceklab/actions/runs/41633319478) tamamen geçti. Gerçek servislerde Playwright 2/2 geçti: API kontrolleri ve temizleme → paralel analiz → DFA → simülasyon → Word. Faz 7a tamamlandı; Faz 6 ve 7b başlatılmadı. Aşağıdaki özgün notlardaki “Docker hiç derlenmedi / staged” ifadeleri geçmiş durumu anlatır.

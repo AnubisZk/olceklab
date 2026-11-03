@@ -1,5 +1,7 @@
 # Kullanılan sürümler
 
+Faz 6 (3 Kasım 2026): yeni uygulama bağımlılığı eklenmedi; `renv.lock` ve iki `package-lock.json` değişmedi. Windows doğrulaması Node 24.22.1 ile yapıldı. EVREN için kullanıcı `google/gemma-4-31b` modelini seçti; gerçek API bağlantısı henüz doğrulanmadı. Gateway ve arayüz sürümleri aşağıdaki kilitlerle aynıdır.
+
 Son güncelleme: 3 Kasım 2026 (Faz 5). Faz 3–5'te yeni paket eklenmedi; `pbivnorm` ve `zip` (Faz 4'ten beri kullanılıyor) artık analiz kayıtlarındaki sürüm listesine de yazılıyor.
 
 ## 1. Testlerin gerçekten koştuğu ortam

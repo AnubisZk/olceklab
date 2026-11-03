@@ -1,4 +1,14 @@
 {
+  "guide": "User guide (Turkish, GitHub)",
+  "ai": {
+    "title": "AI interpretation assistant", "interpret": "Interpret with AI", "pending": "Preparing interpretation…",
+    "privacy": "Only formatted aggregate tables reach the gateway. The model sees result keys, not values. No raw data is sent.",
+    "failed": "This response contains unverified numbers or result keys. The highlighted text cannot be added to the report.",
+    "approve": "Add to report (I approve)", "approved": "Approved interpretation added", "remove": "Remove AI interpretation",
+    "reportNote": "Approved AI interpretations will appear with labels and a usage disclosure.",
+    "logTitle": "AI session log", "logNote": "Prompts, responses and number checks stay in this tab's memory. Download JSON or Markdown before reloading. Logs contain no raw data, IP address or API key.",
+    "exportLog": "Download log", "clearLog": "Clear log"
+  },
   "app": {
     "name": "ÖlçekLab",
     "tagline": "Scale development and adaptation analysis platform",

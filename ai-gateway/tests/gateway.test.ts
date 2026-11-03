@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { buildApp } from '../src/app.js';
 import { ConfigError, loadConfig } from '../src/config.js';
@@ -45,7 +45,7 @@ describe('uç noktalar', () => {
     const app = buildApp(loadConfig({}));
     const r = await app.inject({ method: 'GET', url: '/health' });
     expect(r.statusCode).toBe(200);
-    expect(r.json()).toEqual({ status: 'ok', service: 'ai-gateway', provider: 'none' });
+    expect(r.json()).toEqual({ status: 'ok', service: 'ai-gateway', provider: 'none', model: null });
     expect(fetchSpy).not.toHaveBeenCalled();
   });
 
@@ -54,22 +54,10 @@ describe('uç noktalar', () => {
     const app = buildApp(loadConfig({}));
     const r = await app.inject({
       method: 'POST', url: '/v1/interpret',
-      payload: { module: 'cfa', results: { a: 1 }, tables: [], language: 'tr' },
+      payload: { record_id: 'record', module: 'cfa', tables: [{ id: 'T1', rows_fmt: { tr: [], en: [] } }], language: 'tr' },
     });
     expect(r.statusCode).toBe(503);
     expect(r.json().error.code).toBe('ai_disabled');
-    expect(fetchSpy).not.toHaveBeenCalled();
-  });
-
-  it.each([
-    ['local', { AI_PROVIDER: 'local', OLLAMA_MODEL: 'm' }],
-    ['evren', { AI_PROVIDER: 'evren', EVREN_BASE_URL: 'https://example.invalid', EVREN_API_KEY: 'k', EVREN_MODEL: 'm' }],
-  ])('%s sağlayıcısı Faz 0\'da 501 döner ve dış istek yapmaz', async (_name, env) => {
-    const fetchSpy = noFetch();
-    const app = buildApp(loadConfig(env));
-    const r = await app.inject({ method: 'POST', url: '/v1/interpret', payload: { module: 'cfa', results: {}, tables: [], language: 'tr' } });
-    expect(r.statusCode).toBe(501);
-    expect(r.json().error.code).toBe('not_implemented');
     expect(fetchSpy).not.toHaveBeenCalled();
   });
 
@@ -92,9 +80,9 @@ describe('uç noktalar', () => {
 });
 
 describe('kaynak kod denetimi', () => {
-  it('Faz 0 sağlayıcıları ağ kütüphanesi içe aktarmaz ve fetch çağırmaz', () => {
+  it('none sağlayıcısı ağ kütüphanesi içe aktarmaz ve fetch çağırmaz', () => {
     const dir = join(import.meta.dirname, '..', 'src', 'providers');
-    for (const f of readdirSync(dir)) {
+    for (const f of ['none.ts']) {
       const src = readFileSync(join(dir, f), 'utf8');
       expect(src, f).not.toMatch(/from ['"](node:)?(http|https|net|tls|undici)['"]/);
       expect(src, f).not.toMatch(/\bfetch\s*\(/);

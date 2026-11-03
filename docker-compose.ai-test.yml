@@ -1,0 +1,15 @@
+# Explicit test override; never use with production credentials.
+services:
+  mock-ai:
+    image: node:24.22.1-alpine
+    volumes:
+      - ./tests/mock-ai/server.mjs:/app/server.mjs:ro
+    command: ["node", "/app/server.mjs"]
+  ai-gateway:
+    environment:
+      AI_PROVIDER: api
+      AI_API_BASE_URL: http://mock-ai:8790/v1
+      AI_API_KEY: synthetic-test-key
+      AI_API_MODEL: test-model
+    depends_on:
+      - mock-ai

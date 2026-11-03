@@ -61,8 +61,8 @@ export function ReportPage() {
   const [lang, setLang] = useState<Lang>(uiLang);
   const [title, setTitle] = useState('');
   const ids = report.items.map((x) => x.analysis_id);
-  const preview = useMutation({ mutationFn: () => reportPreview(ids, lang) });
-  const docx = useMutation({ mutationFn: () => reportDocx(ids, lang, title), onSuccess: (b) => saveBlob(b, 'olceklab_rapor.docx') });
+  const preview = useMutation({ mutationFn: () => reportPreview(ids, lang, report.aiTexts) });
+  const docx = useMutation({ mutationFn: () => reportDocx(ids, lang, title, report.aiTexts), onSuccess: (b) => saveBlob(b, 'olceklab_rapor.docx') });
   return (
     <>
       <PageHeader pageKey="report" />
@@ -75,6 +75,7 @@ export function ReportPage() {
                 <span>{t(`report.modules.${it.module}`, { defaultValue: it.module })}</span>
                 <span className="muted small mono"> {it.analysis_id.slice(0, 8)}</span>
                 <span className="report-item-actions">
+                  {report.aiTexts.some(x => x.record_id === it.analysis_id) && <button type="button" className="btn btn-small" onClick={() => report.removeAi(it.analysis_id)}>{t('ai.remove')}</button>}
                   <button type="button" className="btn btn-small" disabled={i === 0} aria-label={t('report.up')} onClick={() => report.move(it.analysis_id, -1)}>↑</button>
                   <button type="button" className="btn btn-small" disabled={i === report.items.length - 1} aria-label={t('report.down')} onClick={() => report.move(it.analysis_id, 1)}>↓</button>
                   <button type="button" className="btn btn-small" aria-label={t('report.remove')} onClick={() => report.remove(it.analysis_id)}>✕</button>
@@ -92,7 +93,7 @@ export function ReportPage() {
           <button type="button" className="btn" disabled={!ids.length || preview.isPending} onClick={() => preview.mutate()}>{t('report.preview')}</button>
           <button type="button" className="btn btn-primary" disabled={!ids.length || docx.isPending} onClick={() => docx.mutate()}>{t('report.docx')}</button>
         </div>
-        <p className="muted small">{t('report.noAi')}</p>
+        <p className="muted small">{t(report.aiTexts.length ? 'ai.reportNote' : 'report.noAi')}</p>
         {(preview.isPending || docx.isPending) && <Busy label={t('result.running')} />}
         <ErrorBox error={preview.error} />
         <ErrorBox error={docx.error} />
@@ -104,6 +105,7 @@ export function ReportPage() {
           {preview.data.items.map((it) => (
             <article key={it.analysis_id} data-module={it.module}>
               <h3>{it.title}</h3>
+              {it.ai?.map((ai, index) => <section className="ai-panel" key={index}><h4>{ai.label}</h4><p className="ai-text">{ai.text}</p><p className="muted small">{ai.provider} · {ai.model}</p></section>)}
               {it.methods.length > 0 && <><h4>{lang === 'tr' ? 'Yöntem' : 'Method'}</h4>{it.methods.map((p, i) => <Segments key={i} segs={p} />)}</>}
               {it.results.length > 0 && <><h4>{lang === 'tr' ? 'Bulgular' : 'Results'}</h4>{it.results.map((p, i) => <Segments key={i} segs={p} />)}</>}
               {it.limitations.length > 0 && <><h4>{lang === 'tr' ? 'Sınırlılıklar' : 'Limitations'}</h4>{it.limitations.map((p, i) => <Segments key={i} segs={p} />)}</>}

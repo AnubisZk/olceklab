@@ -353,3 +353,7 @@ details > summary { cursor: pointer; font-weight: 600; margin-bottom: 8px; }
 .figure-actions { justify-content: flex-end; margin: 4px 0 0; }
 .project-summary, .project-result, .report-list { overflow-wrap: anywhere; }
 .project-result { overflow-x: auto; }
+/* AI outputs remain plain text; uncertainty is also expressed in an alert. */
+.ai-panel { border: 1px solid currentColor; border-radius: .5rem; padding: 1rem; margin-block: 1rem; }
+.ai-text { white-space: pre-wrap; overflow-wrap: anywhere; }
+.ai-number-error { background: #ffe0e0; color: #800000; text-decoration: underline; font-weight: 600; }
