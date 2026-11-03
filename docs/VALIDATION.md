@@ -90,5 +90,7 @@ Belge sahibinin 3 Kasım 2026 tarihli referans çıktısı: `docs/validation/bid
 | Canlı Hugging Face motoru | RUNNING; health, sürümler, CORS gerçek istek reddi ve 2000 sınırı testi 1/1 geçti. HF ön vekili OPTIONS'a 200 döndürür; doğrudan motorun 204/403 sözleşmesi Docker testlerinde korunur. | `test-logs/faz7/deployment/hf-runtime.json`, `test-logs/faz7/deployment/hf-live-api.txt` |
 | Tam canlı tarayıcı akışı | **Henüz koşmadı.** Netlify CLI giriş onayı ve arayüz yayını bekleniyor. | [RELEASE_7A_TR.md](RELEASE_7A_TR.md) |
 | HF test uyarlaması sonrası Windows kontrolü | Typecheck temiz. Varsayılan paralel Vitest çalışmasında dört UI bekleme/zaman aşımı hatası görüldü; `--maxWorkers 1` ile aynı 96 testin tamamı geçti. Ürün kodu ve zaman aşımı değerleri değiştirilmedi. | `test-logs/faz7/deployment/web-vitest.txt` |
+| CI test kararlılığı | `3eb5f26` için CI 41632919999 Node 24'te iki lazy rota bekleme hatası verdi; Node 26 geçti. Vitest `maxWorkers: 1` ile aynı yalıtım ve başarı ölçütlerini koruyarak çalışacak şekilde ayarlandı. | [Başarısız çalışmanın kaydı](https://github.com/AnubisZk/olceklab/actions/runs/41632919999) |
+| Canlı simülasyon | N=300, 20 tekrar, ML işi `done`; R tarafından üretilen sonuç tabloları alındı ve bağımsız R ZIP paketinin indirilmesi doğrulandı. | `test-logs/faz7/deployment/hf-live-simulation.json` |
 
 Kullanıcı yayın dosyalarının hazırlanmasını ve kalan kontrollerin belgelenmesini seçti. Faz 7a tamamlanmış sayılmaz. Ayrıntılı komutlar: [RELEASE_7A_TR.md](RELEASE_7A_TR.md). Faz 6 ve Faz 7b uygulanmadı.

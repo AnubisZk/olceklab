@@ -1,0 +1,44 @@
+{
+  "engine": "https://osiriszk-olceklab-engine.hf.space",
+  "checked_at": "2026-11-03T12:07:16.875Z",
+  "input": {
+    "N": 300,
+    "reps": 20,
+    "estimators": [
+      "ML"
+    ]
+  },
+  "job": {
+    "job_id": "5d225533-a212-4fe2-abd9-988c6cc2f22a",
+    "status": "done",
+    "chunks_done": 1,
+    "chunks_total": 1,
+    "reps_done": 20,
+    "reps_total": 20,
+    "progress": 1,
+    "in_flight": 0,
+    "elapsed_seconds": 4.4318811893463135,
+    "eta_seconds": 0,
+    "error": null,
+    "text": {
+      "tr": {
+        "progress": "20 / 20 tekrar (%100)",
+        "elapsed": "4 sn",
+        "eta": "0 sn"
+      },
+      "en": {
+        "progress": "20 / 20 replications (100%)",
+        "elapsed": "4 s",
+        "eta": "0 s"
+      }
+    }
+  },
+  "table_ids": [
+    "T1",
+    "T2",
+    "T3",
+    "T5",
+    "T7"
+  ],
+  "package_bytes": 33914
+}
