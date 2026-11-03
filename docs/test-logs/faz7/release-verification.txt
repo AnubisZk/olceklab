@@ -1,0 +1,3 @@
+PASS: YAML structure .github/workflows/ci.yml (not a Docker or GitHub execution)
+PASS: YAML structure docker-compose.yml (not a Docker or GitHub execution)
+PASS: 121 file SHA-256 hashes; correct engine URL; no localhost engine/gateway; SPA routing; HF port; no .env/.git/node_modules

@@ -1,0 +1,57 @@
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 799 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                   0.61 kB │ gzip:   0.34 kB
+dist/assets/jetbrains-mono-greek-400-normal-C190GLew.woff2        4.22 kB
+dist/assets/jetbrains-mono-greek-700-normal-C6CZE3T8.woff2        4.30 kB
+dist/assets/jetbrains-mono-greek-600-normal-H7WoG9Et.woff2        4.30 kB
+dist/assets/jetbrains-mono-cyrillic-400-normal-BEIGL1Tu.woff2     5.32 kB
+dist/assets/jetbrains-mono-cyrillic-700-normal-BWTpRfYl.woff2     5.33 kB
+dist/assets/jetbrains-mono-vietnamese-400-normal-CqNFfHCs.woff    5.37 kB
+dist/assets/jetbrains-mono-cyrillic-600-normal-EVf6-Yzo.woff2     5.38 kB
+dist/assets/jetbrains-mono-vietnamese-700-normal-BDLVIk2r.woff    5.45 kB
+dist/assets/jetbrains-mono-vietnamese-600-normal-OWROknRo.woff    5.47 kB
+dist/assets/jetbrains-mono-greek-400-normal-B9oWc5Lo.woff         5.66 kB
+dist/assets/jetbrains-mono-greek-700-normal-DEigVDxa.woff         5.69 kB
+dist/assets/jetbrains-mono-greek-600-normal-mc2nkWzM.woff         5.70 kB
+dist/assets/jetbrains-mono-cyrillic-400-normal-ugxPyKxw.woff      6.97 kB
+dist/assets/jetbrains-mono-cyrillic-700-normal-CEoEElIJ.woff      7.01 kB
+dist/assets/jetbrains-mono-cyrillic-600-normal-8K4wrrwR.woff      7.02 kB
+dist/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2    7.33 kB
+dist/assets/jetbrains-mono-latin-ext-700-normal-CZipNAKV.woff2    7.47 kB
+dist/assets/jetbrains-mono-latin-ext-600-normal-BfB_LPfz.woff2    7.51 kB
+dist/assets/jetbrains-mono-latin-ext-400-normal-fXTG6kC5.woff    10.12 kB
+dist/assets/jetbrains-mono-latin-ext-700-normal-CxPITLHs.woff    10.30 kB
+dist/assets/jetbrains-mono-latin-ext-600-normal-DObL3zCW.woff    10.31 kB
+dist/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2       21.16 kB
+dist/assets/jetbrains-mono-latin-600-normal-C8RAYTDA.woff2       21.86 kB
+dist/assets/jetbrains-mono-latin-700-normal-BYuf6tUa.woff2       21.90 kB
+dist/assets/jetbrains-mono-latin-400-normal-6-qcROiO.woff        27.49 kB
+dist/assets/jetbrains-mono-latin-600-normal-BfsvjouI.woff        28.18 kB
+dist/assets/jetbrains-mono-latin-700-normal-D3wTyLJW.woff        28.20 kB
+dist/assets/index-5jIqDRHm.css                                   44.81 kB │ gzip:  23.73 kB
+dist/assets/NeedsCleanData-C2SgeSMB.js                            0.33 kB │ gzip:   0.24 kB
+dist/assets/rolldown-runtime-XKyaHtl9.js                          0.72 kB │ gzip:   0.42 kB
+dist/assets/Fields-CXDXduHs.js                                    1.15 kB │ gzip:   0.46 kB
+dist/assets/FigureDownload-CJlbw-4z.js                            1.25 kB │ gzip:   0.72 kB
+dist/assets/ReliabilityPage-Dr3Ce-6P.js                           2.89 kB │ gzip:   1.20 kB
+dist/assets/ItemsPage-B9PikoWm.js                                 3.91 kB │ gzip:   1.54 kB
+dist/assets/FactorNumberPage-C7IvYYsI.js                          5.52 kB │ gzip:   2.15 kB
+dist/assets/ReportPage-BhBCj7tK.js                                5.70 kB │ gzip:   1.73 kB
+dist/assets/EfaPage-VcuB5aVJ.js                                   6.28 kB │ gzip:   2.28 kB
+dist/assets/InvariancePage-B8I_4MnP.js                            8.84 kB │ gzip:   2.85 kB
+dist/assets/SimulationPage-CgAchSvf.js                           14.35 kB │ gzip:   4.65 kB
+dist/assets/CfaPage-C8BMRbO_.js                                  14.49 kB │ gzip:   4.67 kB
+dist/assets/PageHeader-iP5td3mO.js                               86.46 kB │ gzip:  28.17 kB
+dist/assets/index-BJF8MJwb.js                                   384.18 kB │ gzip: 119.77 kB
+dist/assets/EChart-BwgG-8-0.js                                  582.14 kB │ gzip: 196.15 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 308ms
+Yayın dosyaları: C:\Users\PC\Documents\Codex\2026-11-03\files-mentioned-by-the-user-handoff\outputs\release-candidate

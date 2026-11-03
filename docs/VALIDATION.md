@@ -77,3 +77,16 @@ Belge sahibinin 3 Kasım 2026 tarihli referans çıktısı: `docs/validation/bid
 | V08 | Tekrar başına tohum, mirai işçi sayısından bağımsız. |
 | V09 | psych `fa()` döndürmesi tohuma bağlı (n.rotations = 20). |
 | V10 | semTools 0.5-9 ile 0.5-10 arasında htmt, compRelSEM, AVE ve measEq.syntax çıktıları birebir aynı (21/21). |
+
+## Faz 7a devamı — 3 Kasım 2026 (Windows / Codex)
+
+| Kontrol | Sonuç | Kanıt |
+|---|---|---|
+| Web / gateway vitest | 96/96 ve 11/11 geçti | `test-logs/faz7/web-vitest.txt`, `test-logs/faz7/ai-gateway-vitest.txt` |
+| Typecheck ve derlemeler | Web ve gateway temiz; online web AI kapalı derlendi. ECharts parçasında 500 kB uyarısı sürüyor. | `test-logs/faz7/*-typecheck.txt`, `test-logs/faz7/*-build.txt` |
+| Paketleme testleri | 2/2 geçti | `test-logs/faz7/deploy-tests.txt` |
+| Yayın paketi / YAML yapısı | 121 dosya hash'i, hedef URL, yönlendirme ve port kontrolü geçti | `test-logs/faz7/release-verification.txt` |
+| Docker / R testthat / GitHub CI | **Koşmadı.** Docker, R, WSL yok; GitHub'a gönderilmedi. Yeni R CORS regresyonları henüz çalıştırılmadı. | `test-logs/faz7/environment.txt` |
+| Canlı Playwright | **Koşmadı.** İki yeni test keşfedildi; hedef Netlify ve HF health adresleri 404. | `test-logs/faz7/online-test-list.txt`, `test-logs/faz7/endpoint-probe.txt` |
+
+Kullanıcı yayın dosyalarının hazırlanmasını ve kalan kontrollerin belgelenmesini seçti. Faz 7a tamamlanmış sayılmaz. Ayrıntılı komutlar: [RELEASE_7A_TR.md](RELEASE_7A_TR.md). Faz 6 ve Faz 7b uygulanmadı.

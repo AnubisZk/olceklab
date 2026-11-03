@@ -89,3 +89,11 @@ Bu ortamda Docker daemon'ı yoktu ve Docker Hub ile Posit Package Manager erişi
 |---|---|
 | LibreOffice (soffice, headless) | `test-report.R`: Word raporunun açılıp PDF'e dönüştürülebildiği denetlenir; yoksa test atlanır |
 | Firefox + geckodriver, Selenium, python-docx | `docs/test-logs/faz*/browser_flow.py`: gerçek tarayıcı akışları; indirilen .docx python-docx ile okunur |
+
+## Faz 7a hazırlığı — 3 Kasım 2026, Windows
+
+- Gerçek çalıştırma ortamı: Windows, Node.js 24.22.1, taşınabilir npm 11.19.1.
+- `npm ci` ile web ve gateway kilitleri aynen kullanıldı; uygulama bağımlılıkları değiştirilmedi.
+- Dağıtım betiği yalnızca Node yerleşik modüllerini ve Git kullanır.
+- YAML yapı denetimi için çalışma alanının geçici `work/` dizininde yaml 2.8.1 kullanıldı; uygulama bağımlılığı değildir.
+- R ve Docker kurulu olmadığı için yeni motor değişiklikleri bu ortamda çalıştırılmadı. Önceki ortamın R test sonuçları güncel doğrulama olarak sunulmaz.

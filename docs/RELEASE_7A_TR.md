@@ -1,6 +1,6 @@
 # Faz 7a — yayın adayı ve kalan doğrulamalar
 
-Tarih: 3 Kasım 2026. Durum: **hazırlık tamamlanıyor; canlıya alma kabulü henüz tamamlanmadı.** Kullanıcı bu bilgisayarda Docker kurmak yerine yayın dosyalarının hazırlanmasını ve kalan kontrollerin belgelenmesini seçti.
+Tarih: 3 Kasım 2026. Durum: **yayın adayı hazır; canlıya alma kabulü henüz tamamlanmadı.** Kullanıcı bu bilgisayarda Docker kurmak yerine yayın dosyalarının hazırlanmasını ve kalan kontrollerin belgelenmesini seçti.
 
 GitHub hedefi: <https://github.com/AnubisZk/olceklab>. Yerel `origin` bu adrese ayarlandı. Bu çalışmada GitHub'a push veya Hugging Face/Netlify yayını yapılmadı.
 
@@ -24,12 +24,16 @@ Windows; Node 24.22.1; taşınabilir npm 11.19.1. Paket kilitleri değiştirilme
 | Gateway vitest | 11/11 geçti | `test-logs/faz7/ai-gateway-vitest.txt` |
 | Web ve gateway typecheck | Geçti | `test-logs/faz7/*-typecheck.txt` |
 | Gateway derleme | Geçti | `test-logs/faz7/ai-gateway-build.txt` |
+| Çevrim içi web derleme (AI kapalı) | Geçti; ECharts parçası için 500 kB boyut uyarısı var | `test-logs/faz7/web-online-build.txt` |
 | Paketleme ve iki Dockerfile'ın tutarlılığı | 2/2 geçti | `test-logs/faz7/deploy-tests.txt` |
+| Yayın içeriği ve YAML yapıları | 121 dosya SHA-256 doğrulandı; motor URL'si, SPA yönlendirmesi, HF portu ve localhost adreslerinin bulunmaması doğrulandı | `test-logs/faz7/release-verification.txt` |
 | Çevrim içi Playwright test keşfi | 2 test bulundu; çalıştırma değildir | `test-logs/faz7/online-test-list.txt` |
 | Docker / R / uçtan uca akış | Koşmadı: Docker, R ve WSL yok | `test-logs/faz7/environment.txt` |
 | Hedef adresler | Netlify kökü ve HF `/health`: HTTP 404 | `test-logs/faz7/endpoint-probe.txt` |
 
 Geçmiş Faz 1–5 sonuçları güncel kodun yeniden doğrulandığı anlamına gelmez. Özellikle yeni R CORS davranışı Docker'da çalıştırılmayı bekler. Özel BİDEKÇET testi ve LibreOffice testi için gerekli ortam yoksa atlamalar ayrıca raporlanmalıdır.
+
+Hazır dosyalar: `olceklab-netlify.zip` (statik web), `olceklab-hf-space.zip` (motor kaynakları), `olceklab-phase7a-source.zip` (güncel kaynak depo; bağımlılıklar ve Git geçmişi hariç). Yayın adayı `e7b311f` kaynak commit'inden oluşturuldu; `release-candidate/manifest.json` dosya bazında SHA-256 içerir. Sonraki belge/kanıt commit'i uygulama kodunu değiştirmez.
 
 ## Paketleri yeniden üretme
 

@@ -1,5 +1,7 @@
 # Devir notu (Faz 5 sonu + Faz 7 hazırlığı → Faz 7a, 6, 7b)
 
+> **Codex devamı, 3 Kasım 2026:** Aşağıdaki metin özgün devir bağlamını korur. Staged hazırlık `6bfcf9d` ile commit edildi; Faz 7a yayın hazırlığı `e7b311f` ile ilerletildi. Kullanıcı GitHub hedefini `AnubisZk/olceklab` olarak belirledi ve Docker kurulumu yerine yayın dosyalarının hazırlanmasını seçti. Güncel durum, test kanıtları ve kalan işler: [RELEASE_7A_TR.md](RELEASE_7A_TR.md). Canlıya alma henüz tamamlanmadı.
+
 Tarih: 3 Kasım 2026. Bu not, depoyu devralan kodlama ajanı (Codex) için yazılmıştır. Kurallar `AGENTS.md` ve
 `SPEC.md` (v1.3) içindedir; bu not onların yerini tutmaz.
 
