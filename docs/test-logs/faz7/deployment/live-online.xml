@@ -1,0 +1,8 @@
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="23.423557999999996">
+<testsuite name="release.spec.ts" timestamp="2026-11-03T13:42:12.353Z" hostname="chromium" tests="2" failures="0" skipped="0" time="22.42" errors="0">
+<testcase name="çevrim içi motor: sürümler, CORS ve 2000 tekrar × koşul sınırı" classname="release.spec.ts" time="1.33">
+</testcase>
+<testcase name="canlı akış: temizleme → paralel analiz → DFA → N=300, 20 tekrar → Word" classname="release.spec.ts" time="21.09">
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,8 +1,10 @@
-# Faz 7a — yayın adayı ve kalan doğrulamalar
+# Faz 7a — canlı yayın ve kabul kaydı
 
-Tarih: 3 Kasım 2026. Durum: **yayın adayı hazır; canlıya alma kabulü henüz tamamlanmadı.** Kullanıcı bu bilgisayarda Docker kurmak yerine yayın dosyalarının hazırlanmasını ve kalan kontrollerin belgelenmesini seçti.
+Tarih: 3 Kasım 2026. Durum: **Faz 7a canlıya alma kabulü tamamlandı.** Kullanıcının devam talebiyle GitHub CI, Hugging Face motoru ve Netlify CLI yayını tamamlandı. Netlify + Hugging Face üzerinde canlı Playwright testleri 2/2 geçti.
 
-GitHub hedefi: <https://github.com/AnubisZk/olceklab>. `f949cee` main'e gönderildi; [GitHub Actions 41596147430](https://github.com/AnubisZk/olceklab/actions/runs/41596147430) tamamlandı ve başarılı. Motor [OsirisZk/olceklab-engine](https://huggingface.co/spaces/OsirisZk/olceklab-engine) Space'inde `522a467d633ef0bf98bc2986f43cefa0b5d5c1db` commit'iyle RUNNING. Netlify CLI giriş onayı bekleniyor; arayüz yayını ve tam canlı tarayıcı kabulü henüz tamamlanmadı.
+GitHub hedefi: <https://github.com/AnubisZk/olceklab>. Son kod/test commit'i `868738a` için [GitHub Actions 41633319478](https://github.com/AnubisZk/olceklab/actions/runs/41633319478) tamamlandı ve başarılı. Motor [OsirisZk/olceklab-engine](https://huggingface.co/spaces/OsirisZk/olceklab-engine) Space'inde `522a467d633ef0bf98bc2986f43cefa0b5d5c1db` commit'iyle RUNNING. Ön yüz [olceklab.netlify.app](https://olceklab.netlify.app) adresine CLI ile yayımlandı; deploy `6ae9e47841ec573fa1d298a9`, durum `ready`, yayın zamanı 3 Kasım 2026 16:41 (Türkiye).
+
+Canlı kabul: `/health`, `/versions`, CORS ve çevrim içi sınır; örnek veri → temizleme → paralel analiz → DFA → N=300/20 tekrar simülasyon → Word indirme. Playwright 2/2 geçti (23,4 sn). Kök ve `/simulation` doğrudan erişimi HTTP 200; SPA yönlendirmesi ve `nosniff` başlığı doğrulandı. Kanıtlar `test-logs/faz7/deployment/live-playwright.txt`, `live-online.xml`, `netlify-deploy.json`, `netlify-http.json` ve `ci-final.json` içinde.
 
 ## Yapılan değişiklikler
 
@@ -49,9 +51,9 @@ node deploy/prepare-release.mjs --output dist/release
 
 Çıktı dizini önceden varsa komut durur; yeni bir `--output` seçin. `hf-space/` içeriği Space deposunun köküne, `netlify/` içeriği statik siteye gider. Yalnız motor kaynakları için `--engine-only` kullanılabilir. Web varsayılan olarak `https://osiriszk-olceklab-engine.hf.space` adresiyle ve AI kapalı olarak derlenir. Adres `VITE_ENGINE_URL` ortam değişkeniyle değiştirilebilir; karşılık gelen `ALLOWED_ORIGINS` ayrıca kontrol edilmelidir.
 
-## Kalan kabul adımları — sırayla
+## Tamamlanan kabul adımları — yeniden doğrulama komutları
 
-**Güncel ilerleme:** 1–3 GitHub CI'da tamamlandı; 4 tamamlandı ve canlı API testi geçti. 5–7 Netlify girişi/yayını ve tam canlı tarayıcı akışını bekliyor. Aşağıdaki komutlar yeniden doğrulama için korunur.
+**Güncel ilerleme:** 1–3 GitHub CI'da, 4–7 canlı servislerde tamamlandı. Aşağıdaki komutlar yeniden doğrulama için korunur. Faz 6 ve Faz 7b uygulanmadı; yapay zekâ kapalıdır.
 
 1. Docker bulunan makinede **yayınlanacak HF imajını** derleyin ve testleri çalıştırın:
 

@@ -1,0 +1,12 @@
+{
+  "root_status": 200,
+  "spa_status": 200,
+  "spa_matches_index": true,
+  "content_type": [
+    "text/html; charset=UTF-8"
+  ],
+  "csp": null,
+  "nosniff": [
+    "nosniff"
+  ]
+}

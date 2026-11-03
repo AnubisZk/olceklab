@@ -1,8 +1,8 @@
 # Devir notu (Faz 5 sonu + Faz 7 hazırlığı → Faz 7a, 6, 7b)
 
-> **Codex devamı, 3 Kasım 2026:** Aşağıdaki metin özgün devir bağlamını korur. Staged hazırlık `6bfcf9d` ile commit edildi; Faz 7a yayın hazırlığı `e7b311f` ile ilerletildi. Kullanıcı GitHub hedefini `AnubisZk/olceklab` olarak belirledi ve Docker kurulumu yerine yayın dosyalarının hazırlanmasını seçti. Güncel durum, test kanıtları ve kalan işler: [RELEASE_7A_TR.md](RELEASE_7A_TR.md). Canlıya alma henüz tamamlanmadı.
+> **Codex devamı, 3 Kasım 2026:** Aşağıdaki metin özgün devir bağlamını korur. Staged hazırlık `6bfcf9d` ile commit edildi; Faz 7a yayın hazırlığı `e7b311f` ile ilerletildi. Kullanıcı GitHub hedefini `AnubisZk/olceklab` olarak belirledi. Sonraki talebiyle **Faz 7a canlıya alma tamamlandı**. Güncel durum ve kanıtlar: [RELEASE_7A_TR.md](RELEASE_7A_TR.md).
 
-> **Yayın devamı:** Kullanıcının sonraki talebiyle main GitHub'a gönderildi ve [CI 41596147430](https://github.com/AnubisZk/olceklab/actions/runs/41596147430) tamamen geçti. Hugging Face motoru `OsirisZk/olceklab-engine` üzerinde RUNNING; canlı API testi başarılı. Sıradaki iş Netlify CLI girişini tamamlayıp hazır arayüzü yayınlamak ve tam canlı Playwright akışını geçirmek. Aşağıdaki özgün notlardaki “Docker hiç derlenmedi / staged” ifadeleri geçmiş durumu anlatır.
+> **Canlı kabul:** [Ön yüz](https://olceklab.netlify.app) Netlify CLI ile yayımlandı; [motor](https://huggingface.co/spaces/OsirisZk/olceklab-engine) RUNNING. Son kod/test commit'i `868738a` için [CI 41633319478](https://github.com/AnubisZk/olceklab/actions/runs/41633319478) tamamen geçti. Gerçek servislerde Playwright 2/2 geçti: API kontrolleri ve temizleme → paralel analiz → DFA → simülasyon → Word. Faz 7a tamamlandı; Faz 6 ve 7b başlatılmadı. Aşağıdaki özgün notlardaki “Docker hiç derlenmedi / staged” ifadeleri geçmiş durumu anlatır.
 
 Tarih: 3 Kasım 2026. Bu not, depoyu devralan kodlama ajanı (Codex) için yazılmıştır. Kurallar `AGENTS.md` ve
 `SPEC.md` (v1.3) içindedir; bu not onların yerini tutmaz.
