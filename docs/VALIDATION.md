@@ -86,7 +86,9 @@ Belge sahibinin 3 Kasım 2026 tarihli referans çıktısı: `docs/validation/bid
 | Typecheck ve derlemeler | Web ve gateway temiz; online web AI kapalı derlendi. ECharts parçasında 500 kB uyarısı sürüyor. | `test-logs/faz7/*-typecheck.txt`, `test-logs/faz7/*-build.txt` |
 | Paketleme testleri | 2/2 geçti | `test-logs/faz7/deploy-tests.txt` |
 | Yayın paketi / YAML yapısı | 121 dosya hash'i, hedef URL, yönlendirme ve port kontrolü geçti | `test-logs/faz7/release-verification.txt` |
-| Docker / R testthat / GitHub CI | **Koşmadı.** Docker, R, WSL yok; GitHub'a gönderilmedi. Yeni R CORS regresyonları henüz çalıştırılmadı. | `test-logs/faz7/environment.txt` |
-| Canlı Playwright | **Koşmadı.** İki yeni test keşfedildi; hedef Netlify ve HF health adresleri 404. | `test-logs/faz7/online-test-list.txt`, `test-logs/faz7/endpoint-probe.txt` |
+| Docker / R testthat / GitHub CI | **Geçti.** R 1140 geçti, 0 başarısız, 0 uyarı, 3 atlama (özel BİDEKÇET ×2, LibreOffice). Sürüm kilidi ve CORS regresyonları dahil. Node 24/26 web 96/96, gateway 11/11; Compose yerel 5/5 ve çevrim içi 2/2 Playwright başarılı. | [GitHub Actions 41596147430](https://github.com/AnubisZk/olceklab/actions/runs/41596147430), `test-logs/faz7/deployment/ci-run.json` |
+| Canlı Hugging Face motoru | RUNNING; health, sürümler, CORS gerçek istek reddi ve 2000 sınırı testi 1/1 geçti. HF ön vekili OPTIONS'a 200 döndürür; doğrudan motorun 204/403 sözleşmesi Docker testlerinde korunur. | `test-logs/faz7/deployment/hf-runtime.json`, `test-logs/faz7/deployment/hf-live-api.txt` |
+| Tam canlı tarayıcı akışı | **Henüz koşmadı.** Netlify CLI giriş onayı ve arayüz yayını bekleniyor. | [RELEASE_7A_TR.md](RELEASE_7A_TR.md) |
+| HF test uyarlaması sonrası Windows kontrolü | Typecheck temiz. Varsayılan paralel Vitest çalışmasında dört UI bekleme/zaman aşımı hatası görüldü; `--maxWorkers 1` ile aynı 96 testin tamamı geçti. Ürün kodu ve zaman aşımı değerleri değiştirilmedi. | `test-logs/faz7/deployment/web-vitest.txt` |
 
 Kullanıcı yayın dosyalarının hazırlanmasını ve kalan kontrollerin belgelenmesini seçti. Faz 7a tamamlanmış sayılmaz. Ayrıntılı komutlar: [RELEASE_7A_TR.md](RELEASE_7A_TR.md). Faz 6 ve Faz 7b uygulanmadı.

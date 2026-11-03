@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
 
 const engine = process.env.ENGINE_URL ?? 'https://osiriszk-olceklab-engine.hf.space';
+const usesHuggingFaceProxy = new URL(engine).hostname.endsWith('.hf.space');
 // Simülasyon girdileri; beklenen istatistiksel sonuçlar yalnızca R yanıtlarından alınır.
 const population = {
   factors: [{ name: 'F1', items: ['y1', 'y2', 'y3'] }, { name: 'F2', items: ['y4', 'y5', 'y6'] }],
@@ -27,9 +28,14 @@ test('çevrim içi motor: sürümler, CORS ve 2000 tekrar × koşul sınırı', 
   const preflight = await request.fetch(`${engine}/simulations`, {
     method: 'OPTIONS', headers: { Origin: origin, 'Access-Control-Request-Method': 'POST', 'Access-Control-Request-Headers': 'content-type' },
   });
-  expect(preflight.status()).toBe(204);
+  // HF'nin ön vekili OPTIONS'u motora iletmeden 200 ile yanıtlar.
+  // Doğrudan Docker/Compose hedefinde motorun 204/403 sözleşmesi korunur.
+  expect(preflight.status()).toBe(usesHuggingFaceProxy ? 200 : 204);
   expect(preflight.headers()['access-control-allow-origin']).toBe(origin);
-  for (const method of ['GET', 'OPTIONS', 'POST']) {
+  expect(preflight.headers()['access-control-allow-methods']).toMatch(/\bPOST\b/);
+  expect(preflight.headers()['access-control-allow-headers'].toLowerCase()).toContain('content-type');
+  const deniedMethods = usesHuggingFaceProxy ? ['GET', 'POST'] : ['GET', 'OPTIONS', 'POST'];
+  for (const method of deniedMethods) {
     const denied = await request.fetch(`${engine}/health`, { method, headers: { Origin: 'https://blocked.example' } });
     expect(denied.status()).toBe(403);
     expect((await denied.json()).error.code).toBe('origin_not_allowed');

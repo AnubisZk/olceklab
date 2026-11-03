@@ -2,6 +2,8 @@
 
 > **Codex devamı, 3 Kasım 2026:** Aşağıdaki metin özgün devir bağlamını korur. Staged hazırlık `6bfcf9d` ile commit edildi; Faz 7a yayın hazırlığı `e7b311f` ile ilerletildi. Kullanıcı GitHub hedefini `AnubisZk/olceklab` olarak belirledi ve Docker kurulumu yerine yayın dosyalarının hazırlanmasını seçti. Güncel durum, test kanıtları ve kalan işler: [RELEASE_7A_TR.md](RELEASE_7A_TR.md). Canlıya alma henüz tamamlanmadı.
 
+> **Yayın devamı:** Kullanıcının sonraki talebiyle main GitHub'a gönderildi ve [CI 41596147430](https://github.com/AnubisZk/olceklab/actions/runs/41596147430) tamamen geçti. Hugging Face motoru `OsirisZk/olceklab-engine` üzerinde RUNNING; canlı API testi başarılı. Sıradaki iş Netlify CLI girişini tamamlayıp hazır arayüzü yayınlamak ve tam canlı Playwright akışını geçirmek. Aşağıdaki özgün notlardaki “Docker hiç derlenmedi / staged” ifadeleri geçmiş durumu anlatır.
+
 Tarih: 3 Kasım 2026. Bu not, depoyu devralan kodlama ajanı (Codex) için yazılmıştır. Kurallar `AGENTS.md` ve
 `SPEC.md` (v1.3) içindedir; bu not onların yerini tutmaz.
 

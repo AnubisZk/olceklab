@@ -1,0 +1,13 @@
+
+ RUN  v5.1.0 C:/Users/PC/Documents/Codex/2026-11-03/files-mentioned-by-the-user-handoff/outputs/olceklab/web
+
+Not implemented: navigation to another Document
+
+ Test Files  10 passed (10)
+      Tests  96 passed (96)
+   Start at  15:05:25
+   Duration  29.00s (tests 76%, environment 17%, import 4%, setup 3%, transform 1%)
+
+    Isolate  10 workers spawned · ~546ms startup each (spawn + environment, per file)
+             at least ~4.91s faster with isolate: false — reuses workers across files instead of one per file
+
