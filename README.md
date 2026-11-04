@@ -7,11 +7,11 @@
 - Kodlama kuralları: [`AGENTS.md`](AGENTS.md)
 - Sürümler: [`docs/VERSIONS.md`](docs/VERSIONS.md)
 
-**Durum:** Faz 1–5 ve Faz 7a canlı yayını tamamlandı. Veri yükleme ve temizleme (M1), madde analizi (M2), uygunluk (M3), faktör sayısı ve paralel analiz (M4), açımlayıcı faktör analizi (M5), doğrulayıcı faktör analizi ve model karşılaştırma (M6), güvenirlik ve geçerlik (M7), ölçme değişmezliği, kısmi değişmezlik sihirbazı ve gizil ortalamalar (M8), Monte Carlo simülasyonu (M9), APA 7 Word raporu, CSV ve grafik (SVG/PNG) dışa aktarma (M10), proje dosyası dışa/içe aktarma ve 17 basamaklı yeniden üretim (M12) kullanılabilir. Faz 6 (M11 yapay zekâ yorum asistanı) kodu uygulandı; gerçek sağlayıcı doğrulaması ve Faz 7b yayını bekliyor. Canlı sürümde yapay zekâ kapalıdır.
+**Durum:** Faz 1–5 ve Faz 7a canlı yayını tamamlandı. Veri yükleme ve temizleme (M1), madde analizi (M2), uygunluk (M3), faktör sayısı ve paralel analiz (M4), açımlayıcı faktör analizi (M5), doğrulayıcı faktör analizi ve model karşılaştırma (M6), güvenirlik ve geçerlik (M7), ölçme değişmezliği, kısmi değişmezlik sihirbazı ve gizil ortalamalar (M8), Monte Carlo simülasyonu (M9), APA 7 Word raporu, CSV ve grafik (SVG/PNG) dışa aktarma (M10), proje dosyası dışa/içe aktarma ve 17 basamaklı yeniden üretim (M12) kullanılabilir. M11 yorum asistanı canlı sitede EVREN ile çalışır.
 
 Simülasyon iş dosyaları `JOBS_DIR` altında tutulur (yalnızca sentetik veriden türetilmiş parçalar ve özetler). Çevrim içi kurulumda `ONLINE_LIMITS=true` ile tekrar × koşul, işçi ve süre sınırları açılır (`.env.example`).
 
-Güncel yayın: [olceklab.netlify.app](https://olceklab.netlify.app) — Faz 7a kabulü tamamlandı. Faz 6 yapay zekâ entegrasyonu geliştirme/doğrulama durumu: [`docs/PHASE6_TR.md`](docs/PHASE6_TR.md); canlıda henüz etkin değil.
+[Canlı ÖlçekLab](https://olceklab.netlify.app) · [Yapay zekâ yorum asistanı ve doğrulaması](docs/PHASE6_TR.md)
 
 Kullanım kılavuzu: [`docs/USER_GUIDE_TR.md`](docs/USER_GUIDE_TR.md). Doğrulama kayıtları: [`docs/VALIDATION.md`](docs/VALIDATION.md). Yöntem notları: [`docs/METHODS_TR.md`](docs/METHODS_TR.md). Devir notu: [`docs/HANDOFF_CODEX.md`](docs/HANDOFF_CODEX.md).
 

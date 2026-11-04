@@ -16,7 +16,9 @@ export function createOpenAICompatible(config: GatewayConfig, name: 'api' | 'loc
       'Never calculate, choose a model, free a constraint, invent a result, or state numeric thresholds.',
       'You cannot see values, so do not judge fit, significance, reliability or recommend a decision based on magnitude.',
       'Explain the available statistics and suggest only conditional next steps for human review.',
+      'Give a short summary of at most three sentences. Select at most two distinct statistics from the list. Do not enumerate the tables or repeat the same statistic.',
       'Use only the exact supplied {{keys}} for numbers. Never write digits, numbered lists, number words, percentages or citations yourself.',
+      ...(req.language === 'tr' ? ['Avoid Turkish number words even as articles, including "bir".'] : []),
       'Key structure: module.table.statistic.column; row_N is an anonymous row. value=ordinary, scaled=scaled, robust=robust estimate.',
       `Analysis: ${req.module}. Available keys:`, ...[...values.keys()].map(k => `{{${k}}}`),
     ].join('\n');
@@ -43,6 +45,7 @@ export function createOpenAICompatible(config: GatewayConfig, name: 'api' | 'loc
       }
       const data = JSON.parse(Buffer.concat(chunks).toString('utf8'));
       const choice = data.choices?.[0];
+      if (choice?.finish_reason === 'length') throw new GatewayError('provider_output_limit', 'Model yanıtı uzunluk sınırında kesildi. Lütfen yeniden deneyin.', 502);
       if (choice?.finish_reason !== 'stop' || typeof choice.message?.content !== 'string' || !choice.message.content.trim()) throw new Error();
       const template = redact(choice.message.content);
       const checked = fillAndCheck(template, values);

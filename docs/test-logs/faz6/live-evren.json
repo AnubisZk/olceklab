@@ -1,0 +1,12 @@
+{
+  "site": "https://olceklab.netlify.app",
+  "time": "2026-11-04T18:05:50.959Z",
+  "module": "cfa",
+  "status": 200,
+  "provider": "evren",
+  "model": "gemma-4-31b",
+  "displayed": true,
+  "number_check": true,
+  "issue_count": 0,
+  "approved_preview": true
+}

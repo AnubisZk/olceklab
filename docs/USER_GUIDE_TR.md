@@ -375,13 +375,15 @@ Bu sayfada şunlar bulunur:
 
 ### 12.1 Yapay zekâ yorum asistanı
 
-**Yayın durumu:** Faz 7a canlı sürümünde yapay zekâ kapalıdır. Aşağıdaki akış Faz 6 geliştirmesine aittir; bağlantı yapılandırılıp doğrulanmış sürüm yayımlandığında görünür. Düğme yoksa mevcut istatistiksel analizleri ve Word raporunu yapay zekâ olmadan kullanabilirsiniz.
+Canlı sitede analiz sonucunun altında **Yapay zekâ ile yorumla** düğmesi bulunur. Düğmeye bastığınızda EVREN üzerinden yorum oluşturulur.
 
 1. Önce analizi çalıştırın. Sonuç kartındaki **Yapay zekâ ile yorumla** düğmesine basın. Bu düğme yalnızca yapılandırılmış ve çalışan bir yapay zekâ sağlayıcısı varsa görünür.
 2. Ağ geçidine yalnızca biçimli toplu sonuç tabloları gönderilir. Modele sayısal değerler veya ham veri gönderilmez; model sonuç anahtarlarıyla bir metin üretir. R'nin biçimlediği değerler bu anahtarların yerine yerleştirilir. Model değerleri görmediği için istatistiksel kararın yerini alamaz.
 3. Yanıt **Yapay zekâ yorumu — doğrulayınız** etiketiyle gösterilir. Yanlış ya da bilinmeyen sonuç anahtarları ve modelin kendisinin yazdığı sayılar kırmızı işaretlenir. Uyarılı metin rapora eklenemez. Denetim temkinlidir: metin içindeki sayı sözcükleri de işaretlenebilir.
 4. Denetim başarılı olsa bile yorumu okuyup değerlendirin. **Rapora ekle (onaylıyorum)** düğmesine basmadan yorum rapora girmez. Bu işlem ilgili analiz sonucunu da rapora ekler.
 5. Rapor sayfasında **Yapay zekâ yorumunu kaldır** ile yorumu çıkarabilirsiniz. Onaylı yorumlar önizleme ve Word dosyasında etiketleriyle görünür. Rapor kullanılan sağlayıcı ve modeli belirtir. Yorum eklenmezse yapay zekâ kullanılmadığı beyanı korunur.
+
+![Canlı sitede DFA sonucu için EVREN yorumu](img/17_evren_yorumu.png)
 
 ### 12.2 Oturum günlüğü
 

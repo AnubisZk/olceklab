@@ -1,11 +1,11 @@
 # Faz 6 — yapay zekâ yorum asistanı
 
-3 Kasım 2026. Kod uygulandı (`b0257c2`). GitHub Actions 41698411053: Docker/R 1160 başarılı, 0 başarısız, 3 atlama; Node 24/26 web ve gateway başarılı. Compose mevcut analiz ve çevrim içi testleri geçti; son kontrol anında sahte AI sağlayıcılı uçtan uca aşama sürüyordu. Nihai kabul için [CI sonucunu](https://github.com/AnubisZk/olceklab/actions/runs/41698411053) kontrol edin. Canlı Faz 7a sitesinde AI hâlâ kapalıdır; yeni sürüm yayımlanmadı.
+4 Kasım 2026. Netlify CLI ile yayımlanan sürüm (6aeb73732212d9b723780742) Chromium ile doğrulandı. DFA sonucunda EVREN yorumu ekranda gösterildi. Sayı denetimi geçti ve kullanıcı onayından sonra aynı metin rapor önizlemesine eklendi. [Canlı test kaydı](test-logs/faz6/live-evren.json) · [Docker ve sahte sağlayıcı testleri](https://github.com/AnubisZk/olceklab/actions/runs/41698411053)
 
 ## Uygulama
 
 - `none` dış istek yapmaz. `local`, `api` ve `evren` ortak chat/completions istemcisini kullanır. `api` Bearer, `evren` X-API-Key gönderir. EVREN başlığı ve yolu, kullanıcının sağladığı EVREN LLM API panelindeki belgeye dayanır. Şartlar uygulama tarafından otomatik kabul edilmez.
-- Kullanıcının model tercihi: `google/gemma-4-31b`. Gerçek base URL, gizli anahtar ve hesap erişim/kota doğrulaması henüz tamamlanmadı. Bunlar kodda varsayılmaz.
+- Üretim modeli gemma-4-31b, temel adres https://evren-llmapi.ssyz.org.tr/v1. Anahtar, ağ geçidinin Secrets ayarında tutulur. Üretimde istek başına çıktı sınırı 2048 tokendir.
 - Ağ geçidi yalnızca kayıt kimliği, modül, dil ve biçimli toplu tablolar kabul eder. Modele sadece üretilmiş yer tutucu anahtarları ve açıklama talimatları gider. Ham veri, dosya adı, veri özeti, R betiği ve tablo değerleri isteme girmez.
 - R'nin biçimlediği hücreler yer tutuculara aynen konur. Bilinmeyen anahtarlar, rakamlar, yüzde/aralık/Unicode eksi ve TR/EN sayı sözcükleri denetlenir. Sayının başka bir hücreyle tesadüfen eşleşmesini yeterli saymayız: modelin elle yazdığı sayılar da reddedilir. Bu, özgün tolerans önerisinden daha temkinli bir köken denetimidir; gündelik dilde kullanılan sayı sözcükleri de işaretlenebilir.
 - Model değerleri görmez; istem, uyum/anlamlılık/güvenirlik hakkında büyüklüğe dayalı karar vermesini yasaklar. Etiket ve kullanıcı incelemesi bu yüzden zorunludur.
@@ -27,10 +27,8 @@ Bu test düzeni gerçek API veya ücretli model çağırmaz. Sahte sağlayıcı 
 
 ## Kılavuz
 
-Mevcut 13 bölümlü `USER_GUIDE_TR.md` korunur; başlangıç sayfasından GitHub bağlantısı eklenmiştir. Bölüm 12, yorum/denetim/onay/günlük akışını açıklar ve yayımlanmamış özelliği canlı özellik olarak sunmaz. Bağlantı internet gerektirir; çevrimdışı kopya depodaki `docs/USER_GUIDE_TR.md` ve `docs/img/` dizinidir.
+Mevcut 13 bölümlü `USER_GUIDE_TR.md` korunur; başlangıç sayfasından GitHub bağlantısı eklenmiştir. Bölüm 12, yorum/denetim/onay/günlük akışını açıklar. Bağlantı internet gerektirir; çevrimdışı kopya depodaki `docs/USER_GUIDE_TR.md` ve `docs/img/` dizinidir.
 
-## Kalan işler
+## Yayın sürümleri
 
-1. GitHub Actions 41698411053 içindeki son sahte sağlayıcılı tarayıcı aşamasının sonucunu kontrol et; nihai kanıtı VALIDATION'a ekle. Docker/R kanıtı `test-logs/faz6/engine-ci.txt` içindedir.
-2. EVREN base URL'sini panelden doğrula. Gizli anahtarı yalnızca sunucu sırrı olarak ekle. Kullanıcı kendi hesabındaki kullanım şartlarını kabul etmeli.
-3. Gerçek modelle kontrollü doğrulama ve bütçe/kota ayarları ardından AI ağ geçidi yayını (Faz 7b), motor/web güncellemesi ve yeni arayüz ekran görüntüleri.
+R motoru 54eb86cb, ağ geçidi c056b4e5. Web üretim derlemesinde VITE_DEPLOY_MODE=online, VITE_ENGINE_URL=https://osiriszk-olceklab-engine.hf.space ve VITE_AI_GATEWAY_URL=https://osiriszk-olceklab-ai.hf.space kullanıldı. Gerçek Ollama modeliyle çevrimdışı doğrulama ayrı bir açık iştir.
